@@ -10,7 +10,7 @@
   --accent:#5b5be8;--green:#0a946f;--shadow:0 12px 32px rgba(24,30,48,.07)
 }
 *{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif;overflow-x:hidden}
 .layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
 aside{position:sticky;top:0;height:100vh;background:#12141a;color:#fff;padding:28px 20px}
 .brand{font-size:22px;font-weight:900}.brand small{display:block;font-size:11px;color:#9ba4b3;margin-top:6px;font-weight:500}
@@ -47,15 +47,15 @@ td.sticky-score{box-shadow:8px 0 12px -12px rgba(0,0,0,.45)}
 .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .reason,.links{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
 .reason h4,.links h4{margin:0 0 8px;font-size:13px}.reason p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}
-.link-list{display:grid;gap:8px}.link-list a{display:flex;justify-content:space-between;gap:12px;text-decoration:none;color:#3f4650;border:1px solid var(--line);padding:9px 10px;border-radius:10px;font-size:12px}
+.link-list{display:grid;gap:8px;min-width:0}.link-list a{display:flex;justify-content:space-between;gap:12px;text-decoration:none;color:#3f4650;border:1px solid var(--line);padding:9px 10px;border-radius:10px;font-size:12px;min-width:0;overflow-wrap:anywhere}
 .link-list a:hover{background:#f8f8fd}.link-kind{color:var(--accent);font-weight:800}
 .metrics{display:grid;gap:9px}.mrow{display:grid;grid-template-columns:150px 1fr 52px;align-items:center;gap:10px}
 .track{height:10px;border-radius:999px;background:#eceef4;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#5b5be8,#9e9af8)}
 .mlabel{font-size:12px}.mscore{text-align:right;font-size:12px;font-weight:900}
 .category-filter{display:flex;gap:8px;overflow:auto;padding:4px 0 10px;scrollbar-width:none}.category-filter::-webkit-scrollbar{display:none}
-.mobile-list{display:none}.mobile-card{padding:16px}.mobile-card+.mobile-card{margin-top:12px}
-.mobile-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.mobile-rank{font-size:12px;color:var(--muted);font-weight:800}
-.mobile-title{font-size:18px;font-weight:900;margin-top:2px}.mobile-score{font-size:28px;font-weight:950}
+.mobile-list{display:none;min-width:0;width:100%}.mobile-card{padding:16px;min-width:0;width:100%;overflow:hidden}.mobile-card+.mobile-card{margin-top:12px}
+.mobile-top{display:block;min-width:0}.mobile-rank{font-size:12px;color:var(--muted);font-weight:800}
+.mobile-title{font-size:18px;font-weight:900;margin-top:2px;overflow-wrap:anywhere}.mobile-score-wrap{display:flex;align-items:baseline;gap:7px;margin-top:8px}.mobile-score-label{font-size:10px;letter-spacing:.7px;color:var(--muted);font-weight:900}.mobile-score{font-size:30px;font-weight:950;line-height:1}
 .mobile-meta{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.mobile-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
 .mobile-metric{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fcfcfe}.mobile-metric b{display:block;font-size:14px}.mobile-metric span{font-size:10px;color:var(--muted)}
 .mobile-evidence{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.mobile-evidence.open{display:block}
@@ -70,7 +70,7 @@ svg{width:100%;min-width:760px;height:330px;display:block}.axis{stroke:#cfd3dc}.
 footer{text-align:center;padding:28px 0;color:var(--muted);font-size:12px}
 @media(max-width:1000px){
   .layout{grid-template-columns:1fr}aside{position:relative;height:auto;padding:18px 16px}nav{display:flex;overflow:auto;margin-top:14px}
-  main{padding:18px}.hero{flex-direction:column}h1{font-size:28px}.monthbox{min-width:0;width:100%}
+  main{padding:18px;min-width:0;overflow-x:hidden}.hero{flex-direction:column;min-width:0}h1{font-size:28px}.monthbox{min-width:0;width:100%}
   .desktop-ranking{display:none}.mobile-list{display:block}.detail-grid,.appendix-body,.category-grid{grid-template-columns:1fr}.category-grid{grid-template-columns:repeat(2,1fr)}
   svg{min-width:0;height:280px}.chart-wrap{overflow:hidden}.appendix-toggle{display:inline-flex}.appendix-body.collapsed,.note.collapsed{display:none}
 }
@@ -122,7 +122,7 @@ footer{text-align:center;padding:28px 0;color:var(--muted);font-size:12px}
 <div class="method"><h3>Actionability</h3><p>今すぐ触れられるか。</p><b>10点満点</b></div>
 <div class="method"><h3>Opportunity Value</h3><p>会話・人とのつながり・将来の体験につながる価値。</p><b>10点満点</b></div>
 </div><div class="note collapsed" id="appendixNote">※ 各スコアには根拠と関連URLを保存する。</div></div></section>
-<footer>Prototype v7 · Trend Radar</footer>
+<footer>Prototype v8 · Trend Radar</footer>
 </main></div>
 
 <script>
@@ -156,7 +156,7 @@ function renderRanking(){
  <div><div class="metrics">${Object.entries(x.metrics).map(([k,[v,m]])=>`<div class="mrow"><div class="mlabel">${k}</div><div class="track"><div class="fill" style="width:${v/m*100}%"></div></div><div class="mscore">${v}/${m}</div></div>`).join("")}</div><div class="reason" style="margin-top:12px"><h4>Evidence</h4><p>${x.reason}</p></div></div>
  <div class="links"><h4>Related Links</h4><div class="link-list">${linkHtml(x)}</div></div></div></div>`).join("");
  document.querySelectorAll(".desktop-evidence").forEach(b=>b.addEventListener("click",()=>document.querySelector(`[data-panel="${b.dataset.name}"]`).classList.toggle("open")));
- document.getElementById("mobileList").innerHTML=d.map(x=>`<div class="card mobile-card"><div class="mobile-top"><div><div class="mobile-rank">#${x.rank}</div><div class="mobile-title">${x.name}</div></div><div class="mobile-score">${x.total}</div></div>
+ document.getElementById("mobileList").innerHTML=d.map(x=>`<div class="card mobile-card"><div class="mobile-top"><div class="mobile-rank">#${x.rank}</div><div class="mobile-title">${x.name}</div><div class="mobile-score-wrap"><span class="mobile-score-label">TOTAL</span><span class="mobile-score">${x.total}</span><span class="mobile-score-label">/100</span></div></div>
  <div class="mobile-meta"><span class="badge early">${x.cat}</span><span class="badge early">${waveLabel(x.history)}</span><span class="badge early">MoM ${x.mom}</span></div>
  <div class="mobile-metrics">${Object.entries(x.metrics).map(([k,[v,m]])=>`<div class="mobile-metric"><b>${v}/${m}</b><span>${k}</span></div>`).join("")}</div>
  <button class="detail-btn mobile-evidence-btn" data-mobile="${x.name}" style="margin-top:12px">根拠・URLを見る</button><div class="mobile-evidence" data-mobile-panel="${x.name}">
