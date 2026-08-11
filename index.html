@@ -1,1 +1,53 @@
-__FROM_FILE_NOT_SUPPORTED__
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trend Radar</title><style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#17191e;--muted:#707783;--line:#e6e9ef;--accent:#5b5be8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI",sans-serif;overflow-x:hidden}
+header{background:#12141a;color:#fff;padding:22px 18px}header h2{margin:0 0 6px}.nav{display:flex;gap:18px;margin-top:18px;overflow:auto}.nav a{color:#cbd0da;text-decoration:none;white-space:nowrap}
+main{max-width:1180px;margin:auto;padding:22px}.eyebrow{font-size:12px;color:var(--accent);font-weight:900;letter-spacing:1px}h1{margin:8px 0 6px;font-size:34px}.sub{color:var(--muted);line-height:1.6}
+.months,.filters,.series{display:flex;gap:8px;overflow:auto;padding:12px 0}.btn{border:1px solid var(--line);background:#fff;padding:8px 11px;border-radius:10px;font-weight:800;white-space:nowrap}.btn.on{background:#efeeff;color:#4b46c8;border-color:#d8d5ff}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin:14px 0}.top{display:flex;justify-content:space-between;gap:12px}.rank{font-size:12px;color:var(--muted);font-weight:800}.name{font-size:20px;font-weight:900}.total{font-size:30px;font-weight:950}.total small{font-size:10px;color:var(--muted);font-weight:900}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.chip{background:#edf7f3;color:#15755d;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{border:1px solid var(--line);border-radius:12px;padding:10px;background:#fcfcfe}.metric b{display:block}.metric span{font-size:10px;color:var(--muted)}
+.detail{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.6}.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}.links a{border:1px solid var(--line);padding:7px 9px;border-radius:9px;text-decoration:none;color:#4b46c8;font-size:12px}
+.catgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}.cat h3{margin:0 0 8px;font-size:15px}.row{display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.chart{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px;overflow:hidden}svg{width:100%;height:290px}.grid{stroke:#eceef3}.label{fill:#747b86;font-size:11px}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:18px}summary{font-weight:900;cursor:pointer}
+@media(max-width:700px){main{padding:14px}h1{font-size:27px}.metrics{grid-template-columns:repeat(2,1fr)}.catgrid{grid-template-columns:1fr}.top{display:block}.total{margin-top:8px}}
+</style></head><body>
+<header><h2>Trend Radar</h2><div style="color:#9fa6b4;font-size:13px">Monthly actionable trend intelligence</div><div class="nav"><a href="#ranking">Ranking</a><a href="#categories">Categories</a><a href="#history">Trend History</a><a href="#appendix">Appendix</a></div></header>
+<main><div class="eyebrow">MONTHLY TREND INTELLIGENCE</div><h1 id="title"></h1><div class="sub">月ごとのランキングを保存し、過去月に切り替えて比較。推移グラフは選択月までのデータを表示。</div><div class="months" id="months"></div>
+<section id="ranking"><h2>総合トレンドランキング</h2><div class="filters" id="filters"></div><div id="list"></div></section>
+<section id="categories"><h2>カテゴリー別ランキング</h2><div class="catgrid" id="catgrid"></div></section>
+<section id="history"><h2>トレンド推移</h2><div class="series" id="series"></div><div class="chart"><svg id="chart" viewBox="0 0 900 300"></svg></div></section>
+<details id="appendix"><summary>Appendix / Scoring Methodology</summary><p>Momentum 25 / Youth Signal 20 / Mainstream Potential 20 / Cultural Heat 15 / Actionability 10 / Opportunity Value 10。各点数には根拠と関連URLを残す。</p></details>
+</main><script>
+const cats=["All","Video / Streaming","SNS / Apps","Music / Artist","Character / Goods","Fashion","Beauty","Food / Drink","Hobby / Experience","Internet / Meme","Tech / AI"];
+const A={
+"2026-08":{label:"2026年8月",title:"August 2026 Trend Radar",months:["4月","5月","6月","7月","8月"],items:[
+["Setlog","SNS / Apps",92,[24,20,17,14,10,7],[22,39,68,81,92],"+11","若年層での認知・利用が急伸。",[["Official","https://setlog.app/"]]],
+["シール帳 / シール交換","Character / Goods",89,[20,19,18,14,9,9],[61,68,76,84,89],"+5","若年女性を中心に参加型の遊びとして定着。",[["Learn More","https://example.com/sticker-trend"]]],
+["VIVANT","Video / Streaming",86,[18,14,20,15,9,10],[60,66,74,82,86],"+4","幅広い世代での話題性が高い。",[["Official","https://www.tbs.co.jp/VIVANT_tbs/"]]],
+["Netflix「STARLIGHT AUDITION」","Video / Streaming",84,[23,18,17,12,8,6],[0,0,25,56,84],"+28","サンプル。若年層SNSで言及が増加。",[["Watch","https://www.netflix.com/"]]],
+["ちいかわ映画","Video / Streaming",83,[21,18,18,13,6,7],[28,35,49,65,83],"+18","関連イベントやコラボも話題化しやすい。",[["Official","https://www.anime-chiikawa.jp/"],["Event","https://www.tokyo-skytree.jp/"]]],
+["TikTokバズ曲A","Music / Artist",78,[21,19,14,11,10,3],[26,34,45,63,78],"+15","10〜20代女性のSNS利用で先行。",[["Listen","https://open.spotify.com/"]]]
+]},
+"2026-07":{label:"2026年7月",title:"July 2026 Trend Radar",months:["4月","5月","6月","7月"],items:[
+["シール帳 / シール交換","Character / Goods",84,[21,19,16,13,9,6],[61,68,76,84],"+8","サンプル。一般層にも波及し始めた段階。",[["Learn More","https://example.com/sticker-trend"]]],
+["VIVANT","Video / Streaming",82,[20,13,19,14,8,8],[60,66,74,82],"+8","サンプル。MainstreamとHeatが強い。",[["Official","https://www.tbs.co.jp/VIVANT_tbs/"]]],
+["Setlog","SNS / Apps",81,[23,19,14,11,9,5],[22,39,68,81],"+13","サンプル。8月の急伸前夜という位置づけ。",[["Official","https://setlog.app/"]]],
+["ちいかわ映画","Video / Streaming",65,[19,17,13,9,3,4],[28,35,49,65],"+16","サンプル。公開前情報で注目度が上昇中。",[["Official","https://www.anime-chiikawa.jp/"]]],
+["TikTokバズ曲A","Music / Artist",63,[22,18,9,8,6,0],[26,34,45,63],"+18","サンプル。若年女性から先行して伸長。",[["Listen","https://open.spotify.com/"]]],
+["Netflix「STARLIGHT AUDITION」","Video / Streaming",56,[24,16,7,5,4,0],[0,0,25,56],"+31","サンプル。絶対量は小さいが伸びが強い。",[["Watch","https://www.netflix.com/"]]]
+]}};
+let M="2026-08",C="All",S=new Set(["Setlog"]);const colors=["#5b5be8","#0a946f","#d78916","#c94a4a","#8c5bc9","#1976a8"];
+const max=[25,20,20,15,10,10],labels=["Momentum","Youth","Mainstream","Heat","Actionability","Opportunity"];
+function wave(h){let v=h.filter(Boolean),d=v.at(-1)-v.at(-2);if(d>=15)return"🚀 急上昇";if(d>=6)return"🌱 上昇中";if(v.at(-1)>=80&&Math.abs(d)<=5)return"🔥 高止まり";if(d<0)return"🌙 下降転換";return"↘️ 減速"}
+function render(){let a=A[M];title.textContent=a.title;months.innerHTML=Object.keys(A).map(k=>`<button class="btn ${k==M?"on":""}" data-m="${k}">${A[k].label}</button>`).join("");document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{M=b.dataset.m;C="All";S=new Set([A[M].items[0][0]]);render()});
+filters.innerHTML=cats.map(c=>`<button class="btn ${c==C?"on":""}" data-c="${c}">${c}</button>`).join("");document.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{C=b.dataset.c;render()});
+let d=a.items.map((x,i)=>({rank:i+1,n:x[0],c:x[1],t:x[2],m:x[3],h:x[4],mom:x[5],r:x[6],l:x[7]})).filter(x=>C=="All"||x.c==C);
+list.innerHTML=d.map(x=>`<div class="card"><div class="top"><div><div class="rank">#${x.rank}</div><div class="name">${x.n}</div><div class="total"><small>TOTAL</small> ${x.t}<small>/100</small></div></div></div><div class="chips"><span class="chip">${x.c}</span><span class="chip">${wave(x.h)}</span><span class="chip">MoM ${x.mom}</span></div><div class="metrics">${x.m.map((v,i)=>`<div class="metric"><b>${v}/${max[i]}</b><span>${labels[i]}</span></div>`).join("")}</div><div class="detail">${x.r}<div class="links">${x.l.map(z=>`<a href="${z[1]}" target="_blank">${z[0]} ↗</a>`).join("")}</div></div></div>`).join("");
+catgrid.innerHTML=cats.slice(1).map(c=>{let q=a.items.filter(x=>x[1]==c).slice(0,3);return`<div class="cat"><h3>${c}</h3>${q.length?q.map(x=>`<div class="row"><span>${x[0]}</span><b>${x[2]}</b></div>`).join(""):`<div class="row"><span>今月の登録なし</span><span>-</span></div>`}</div>`}).join("");
+series.innerHTML=a.items.map(x=>`<button class="btn ${S.has(x[0])?"on":""}" data-s="${x[0]}">${x[0]}</button>`).join("");document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{S.has(b.dataset.s)?S.size>1&&S.delete(b.dataset.s):S.add(b.dataset.s);draw();renderSeries()});draw()}
+function renderSeries(){let a=A[M];series.innerHTML=a.items.map(x=>`<button class="btn ${S.has(x[0])?"on":""}" data-s="${x[0]}">${x[0]}</button>`).join("");document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{S.has(b.dataset.s)?S.size>1&&S.delete(b.dataset.s):S.add(b.dataset.s);draw();renderSeries()})}
+function draw(){let a=A[M],ms=a.months,W=900,H=300,p={l:45,r:20,t:15,b:35},x=i=>p.l+i*(W-p.l-p.r)/Math.max(ms.length-1,1),y=v=>H-p.b-v*(H-p.t-p.b)/100,q="";[0,20,40,60,80,100].forEach(v=>q+=`<line class="grid" x1="${p.l}" x2="${W-p.r}" y1="${y(v)}" y2="${y(v)}"/><text class="label" x="${p.l-8}" y="${y(v)+4}" text-anchor="end">${v}</text>`);ms.forEach((m,i)=>q+=`<text class="label" x="${x(i)}" y="${H-10}" text-anchor="middle">${m}</text>`);a.items.forEach((it,si)=>{if(!S.has(it[0]))return;let pts=it[4].map((v,i)=>[x(i),y(v),v]).filter(z=>z[2]);q+=`<path d="${pts.map((z,i)=>(i?"L":"M")+z[0]+","+z[1]).join(" ")}" fill="none" stroke="${colors[si%colors.length]}" stroke-width="3"/>`;pts.forEach(z=>q+=`<circle cx="${z[0]}" cy="${z[1]}" r="4" fill="${colors[si%colors.length]}"/>`)});chart.innerHTML=q}
+render();
+</script></body></html>
