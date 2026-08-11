@@ -1,322 +1,39 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trend Radar Dashboard v3</title>
-<style>
-:root{
-  --bg:#f5f7fb;--card:#fff;--text:#17191e;--muted:#6d7480;--line:#e7e9ef;
-  --accent:#5b5be8;--green:#0a946f;--red:#c94a4a;--shadow:0 12px 32px rgba(24,30,48,.07)
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif}
-.layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
-aside{position:sticky;top:0;height:100vh;background:#12141a;color:#fff;padding:28px 20px}
-.brand{font-size:22px;font-weight:900}.brand small{display:block;font-size:11px;color:#9ba4b3;margin-top:6px;font-weight:500}
-nav{display:grid;gap:7px;margin-top:28px}nav a{color:#c9d0db;text-decoration:none;padding:10px 12px;border-radius:10px;font-size:14px}
-nav a:hover{background:#222630;color:#fff}
-main{padding:34px;max-width:1560px;width:100%;margin:auto}
-.hero{display:flex;justify-content:space-between;gap:22px;align-items:flex-start}
-.eyebrow{font-size:12px;color:var(--accent);font-weight:900;letter-spacing:1.1px}
-h1{font-size:34px;margin:7px 0 8px}.subtitle{color:var(--muted);max-width:900px;line-height:1.75}
-.monthbox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);min-width:190px}
-.monthbox b{display:block}.monthbox span{font-size:12px;color:var(--muted)}
-section{margin:30px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:14px}
-.section-head h2{margin:0;font-size:22px}.section-head p{margin:0;color:var(--muted);font-size:13px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
-.table-wrap{overflow:auto}.ranking{overflow:hidden}
-table{border-collapse:collapse;width:100%;min-width:1450px}
-th,td{padding:13px 12px;border-bottom:1px solid var(--line);font-size:12px;text-align:left;white-space:nowrap}
-th{background:#fbfcfe;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.45px}
-td strong{font-size:13px}.rank{font-size:16px;font-weight:900}
-.score-total{font-size:18px;font-weight:950}
-.metric-num{font-weight:800}.metric-num span{color:var(--muted);font-weight:500}
-.badge{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:900}
-.now{background:#ffe9e9;color:#b64040}.early{background:#e9f8f2;color:#08775d}.watch{background:#fff3df;color:#956109}
-.priority{display:inline-flex;padding:5px 8px;border-radius:8px;font-size:10px;font-weight:900}
-.pa{background:#eceaff;color:#4b46c8}.pb{background:#edf5ff;color:#356b9f}.pc{background:#f0f2f5;color:#6b7077}
-.delta{color:var(--green);font-weight:900}.new{color:var(--accent);font-weight:900}
-.detail-btn{border:none;background:#efeeff;color:#4c47c8;padding:7px 9px;border-radius:8px;font-weight:800;cursor:pointer}
-.detail-panel{display:none;padding:18px;border-top:1px solid var(--line);background:#fcfcfe}.detail-panel.open{display:block}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.reason{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}.reason h4{margin:0 0 7px;font-size:13px}.reason p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}
-.metrics{display:grid;gap:9px}.mrow{display:grid;grid-template-columns:150px 1fr 52px;align-items:center;gap:10px}
-.track{height:10px;border-radius:999px;background:#eceef4;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#5b5be8,#9e9af8)}
-.mlabel{font-size:12px}.mscore{text-align:right;font-size:12px;font-weight:900}
-.chart-shell{padding:18px}
-.chart-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.chart-toolbar button{border:1px solid var(--line);background:#fff;padding:7px 10px;border-radius:9px;font-size:12px;cursor:pointer}
-.chart-toolbar button.active{background:#efeeff;color:#4c47c8;border-color:#d8d5ff;font-weight:800}
-.chart-wrap{overflow:auto}
-svg{width:100%;min-width:760px;height:330px;display:block}
-.axis{stroke:#cfd3dc;stroke-width:1}.grid{stroke:#eceef3;stroke-width:1}.label{fill:#717884;font-size:11px}.title-label{fill:#343943;font-size:12px;font-weight:700}
-.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
-.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
-.insight{padding:18px}.insight p{margin:0;color:#4f5661;line-height:1.8;font-size:13px}
-.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.category-card{padding:16px}.category-card h3{margin:0 0 10px;font-size:15px}.category-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:12px}.category-row:last-child{border-bottom:none}.cat-badge{display:inline-flex;padding:4px 7px;border-radius:999px;background:#f0f2f7;color:#59616d;font-size:10px;font-weight:800}.trend-state{display:inline-flex;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:900}.rocket{background:#eeeaff;color:#5149d1}.rising{background:#e9f8f2;color:#08775d}.plateau{background:#fff0e1;color:#9b650a}.slowing{background:#f3f4f7;color:#68707b}.down{background:#ffe9e9;color:#b64040}
-.appendix{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:18px}
-.method{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fcfcfe}
-.method h3{margin:0 0 6px;font-size:14px}.method p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}.method b{display:block;margin-top:7px;color:var(--accent);font-size:11px}
-.note{padding:0 18px 18px;color:var(--muted);font-size:12px;line-height:1.6}
-footer{text-align:center;padding:28px 0;color:var(--muted);font-size:12px}
-@media(max-width:1000px){.layout{grid-template-columns:1fr}aside{position:relative;height:auto}nav{display:flex;overflow:auto}.hero{flex-direction:column}.detail-grid,.appendix,.category-grid{grid-template-columns:1fr}main{padding:20px}}
-</style>
-</head>
-<body>
-<div class="layout">
-<aside>
-  <div class="brand">Trend Radar<small>Monthly actionable trend intelligence</small></div>
-  <nav>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#ranking">Ranking</a>
-    <a href="#categories">Categories</a>
-    <a href="#history">Trend History</a>
-    <a href="#appendix">Appendix</a>
-  </nav>
-</aside>
-
-<main id="dashboard">
-  <div class="hero">
-    <div>
-      <div class="eyebrow">MONTHLY TREND INTELLIGENCE</div>
-      <h1>August 2026 Trend Radar</h1>
-      <div class="subtitle">
-        ランキング表で総合点と6指標を直接比較し、詳細では点数の根拠を確認。
-        過去月のスコア推移も保存し、「いつ立ち上がり、いつピークに向かっているか」を視覚化。カテゴリー別ランキングと波の自動ラベルも併用する。
-      </div>
-    </div>
-    <div class="monthbox"><b>2026年8月</b><span>Sample dataset / updated 2026/08/12</span></div>
-  </div>
-
-  <section id="ranking">
-    <div class="section-head">
-      <div><h2>総合トレンドランキング</h2><p>各指標の点数をランキング上で直接比較</p></div>
-    </div>
-    <div class="card ranking table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Rank</th><th>Trend</th><th>Category</th><th>Status</th>
-            <th>Total</th><th>Momentum<br>/25</th><th>Youth<br>/20</th><th>Mainstream<br>/20</th>
-            <th>Heat<br>/15</th><th>Actionability<br>/10</th><th>Opportunity<br>/10</th>
-            <th>MoM</th><th>Wave</th><th>Priority</th><th>Evidence</th>
-          </tr>
-        </thead>
-        <tbody id="rankingBody"></tbody>
-      </table>
-      <div id="panels"></div>
-    </div>
-  </section>
-
-  <section id="categories">
-    <div class="section-head">
-      <div><h2>カテゴリー別ランキング</h2><p>動画・アプリ・食・キャラクターなど、ジャンルごとに現在の上位を確認</p></div>
-    </div>
-    <div class="category-grid" id="categoryGrid"></div>
-  </section>
-
-  <section id="history">
-    <div class="section-head">
-      <div><h2>トレンド推移</h2><p>月次のTrend Scoreを保存し、立ち上がりからピークまで追跡</p></div>
-    </div>
-    <div class="card chart-shell">
-      <div class="chart-toolbar" id="toolbar"></div>
-      <div class="chart-wrap">
-        <svg id="trendChart" viewBox="0 0 900 330" role="img" aria-label="トレンドスコアの月次推移"></svg>
-      </div>
-      <div class="legend" id="legend"></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="card insight">
-      <div class="section-head"><div><h2>推移の読み方</h2><p>単月の順位より重要な情報</p></div></div>
-      <p>
-        例えば「40 → 58 → 78 → 92」と伸びているトレンドは、すでに90点台でも勢いが続いている。
-        一方「92 → 91 → 88 → 82」なら、知名度は高くてもピークアウト局面かもしれない。
-        そのため、現在値だけでなく傾きと過去数か月の形を一緒に見る。
-      </p>
-    </div>
-  </section>
-
-  <section id="appendix">
-    <div class="section-head"><div><h2>Appendix / Scoring Methodology</h2><p>毎月同じ基準で比較するための定義</p></div></div>
-    <div class="card">
-      <div class="appendix">
-        <div class="method"><h3>Momentum</h3><p>直近でどれだけ伸びているか。検索量、SNS言及、ランキング順位、DL数などの増加率を重視。</p><b>25点満点</b></div>
-        <div class="method"><h3>Youth Signal</h3><p>10〜20代女性を中心とする若年層でどれだけ先行しているか。若者向け調査やSNS反応を評価。</p><b>20点満点</b></div>
-        <div class="method"><h3>Mainstream Potential</h3><p>特定界隈だけで終わらず、一般層まで広がる可能性。媒体横断性や対象層の広がりを評価。</p><b>20点満点</b></div>
-        <div class="method"><h3>Cultural Heat</h3><p>現在どれだけ話題として熱いか。会話頻度、露出量、ランキング上位度など現在の絶対的な熱量。</p><b>15点満点</b></div>
-        <div class="method"><h3>Actionability</h3><p>今すぐ0→1で触れられるか。視聴、インストール、購入、来店などの手軽さを評価。</p><b>10点満点</b></div>
-        <div class="method"><h3>Opportunity Value</h3><p>今参加しておくことで、会話、人とのつながり、将来の体験や選択肢につながる価値。</p><b>10点満点</b></div>
-      </div>
-      <div class="note">※ 各スコアには、検索動向・SNS・若者調査・ランキング・メディア露出などの根拠を短文で残す。将来は月ごとの出典URLも保存する想定。</div>
-    </div>
-  </section>
-  <footer>Prototype v4 · Trend Radar Dashboard</footer>
-</main>
-</div>
-
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Trend Radar</title><style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#17191e;--muted:#6d7480;--line:#e7e9ef;--accent:#5b5be8;--green:#0a946f;--shadow:0 12px 32px rgba(24,30,48,.07)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI",sans-serif}.layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}aside{position:sticky;top:0;height:100vh;background:#12141a;color:#fff;padding:28px 20px}.brand{font-size:22px;font-weight:900}.brand small{display:block;color:#9ba4b3;font-size:11px;margin-top:6px}nav{display:grid;gap:7px;margin-top:28px}nav a{color:#c9d0db;text-decoration:none;padding:10px 12px;border-radius:10px;font-size:14px}nav a:hover{background:#222630;color:#fff}main{padding:34px;max-width:1600px;width:100%;margin:auto}.hero{display:flex;justify-content:space-between;gap:22px}.eyebrow{font-size:12px;color:var(--accent);font-weight:900;letter-spacing:1.1px}h1{font-size:34px;margin:7px 0 8px}.subtitle{color:var(--muted);max-width:920px;line-height:1.75}.monthbox,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.monthbox{padding:14px 16px;min-width:190px;height:max-content}.monthbox b{display:block}.monthbox span{font-size:12px;color:var(--muted)}section{margin:30px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:14px}.section-head h2{margin:0;font-size:22px}.section-head p{margin:0;color:var(--muted);font-size:13px}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:1500px}th,td{padding:13px 12px;border-bottom:1px solid var(--line);font-size:12px;text-align:left;white-space:nowrap}th{background:#fbfcfe;color:var(--muted);font-size:10px;text-transform:uppercase}.rank{font-size:16px;font-weight:900}.total{font-size:18px;font-weight:950}.num{font-weight:800}.num span{color:var(--muted);font-weight:500}.cat{display:inline-flex;padding:5px 8px;border-radius:999px;background:#f0f2f7;font-size:10px;font-weight:800}.wave{font-weight:900}.delta{color:var(--green);font-weight:900}.detail{border:none;background:#efeeff;color:#4c47c8;padding:7px 9px;border-radius:8px;font-weight:800;cursor:pointer}.panel{display:none;padding:18px;border-top:1px solid var(--line);background:#fcfcfe}.panel.open{display:block}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.metrics{display:grid;gap:9px}.mrow{display:grid;grid-template-columns:150px 1fr 52px;gap:10px;align-items:center}.track{height:10px;background:#eceef4;border-radius:999px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#5b5be8,#9e9af8)}.reason{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}.reason h4{margin:0 0 7px}.reason p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}.category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.category-card{padding:16px}.category-card h3{margin:0 0 5px;font-size:16px}.category-card .desc{color:var(--muted);font-size:11px;margin-bottom:10px}.crow{display:grid;grid-template-columns:28px 1fr 42px;gap:8px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:12px}.crow:last-child{border-bottom:none}.chart-shell{padding:18px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.toolbar button{border:1px solid var(--line);background:#fff;padding:7px 10px;border-radius:9px;font-size:11px;cursor:pointer}.toolbar button.active{background:#efeeff;color:#4c47c8;font-weight:800}.chart-wrap{overflow:auto}svg{width:100%;min-width:760px;height:330px}.grid{stroke:#eceef3}.axis{stroke:#cfd3dc}.label{fill:#717884;font-size:11px}.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}.legend-item{font-size:11px;color:var(--muted)}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:5px}.appendix{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:18px}.method{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fcfcfe}.method h3{margin:0 0 6px;font-size:14px}.method p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}.method b{display:block;margin-top:7px;color:var(--accent);font-size:11px}.note{padding:0 18px 18px;color:var(--muted);font-size:12px;line-height:1.6}footer{text-align:center;padding:28px;color:var(--muted);font-size:12px}@media(max-width:1000px){.layout{grid-template-columns:1fr}aside{position:relative;height:auto}nav{display:flex;overflow:auto}.hero{flex-direction:column}.category-grid,.detail-grid,.appendix{grid-template-columns:1fr}main{padding:20px}}
+</style></head><body><div class="layout"><aside><div class="brand">Trend Radar<small>Monthly trend intelligence</small></div><nav><a href="#ranking">Ranking</a><a href="#categories">10 Categories</a><a href="#history">Trend History</a><a href="#appendix">Appendix</a></nav></aside><main><div class="hero"><div><div class="eyebrow">MONTHLY TREND INTELLIGENCE</div><h1>August 2026 Trend Radar</h1><div class="subtitle">10〜20代女性の先行シグナルを重視しながら、具体的に触れられるトレンドを10カテゴリーで観測。総合点だけでなく6指標、根拠、波の形、月次推移を比較する。</div></div><div class="monthbox"><b>2026年8月</b><span>Sample dataset · 2026/08/12</span></div></div>
+<section id="ranking"><div class="section-head"><div><h2>総合トレンドランキング</h2><p>具体的な作品・サービス・商品・体験単位で比較</p></div></div><div class="card table-wrap"><table><thead><tr><th>Rank</th><th>Trend</th><th>Category</th><th>Total</th><th>Momentum /25</th><th>Youth /20</th><th>Mainstream /20</th><th>Heat /15</th><th>Action /10</th><th>Opportunity /10</th><th>MoM</th><th>Wave</th><th>Evidence</th></tr></thead><tbody id="tbody"></tbody></table><div id="panels"></div></div></section>
+<section id="categories"><div class="section-head"><div><h2>10 Categories</h2><p>世の中の波をジャンル別に見落とさないための固定分類</p></div></div><div class="category-grid" id="categoryGrid"></div></section>
+<section id="history"><div class="section-head"><div><h2>トレンド推移</h2><p>現在値ではなく「どんな軌道でここまで来たか」を見る</p></div></div><div class="card chart-shell"><div class="toolbar" id="toolbar"></div><div class="chart-wrap"><svg id="chart" viewBox="0 0 900 330"></svg></div><div class="legend" id="legend"></div></div></section>
+<section id="appendix"><div class="section-head"><div><h2>Appendix / Scoring Methodology</h2><p>毎月同じ尺度で比較</p></div></div><div class="card"><div class="appendix"><div class="method"><h3>Momentum</h3><p>直近の検索量、SNS言及、ランキング、DL等の伸び。</p><b>25点</b></div><div class="method"><h3>Youth Signal</h3><p>10〜20代女性を中心とする若年層での先行度。</p><b>20点</b></div><div class="method"><h3>Mainstream Potential</h3><p>特定界隈から一般層まで波及する可能性。</p><b>20点</b></div><div class="method"><h3>Cultural Heat</h3><p>現在の話題量、露出、会話頻度など絶対的な熱量。</p><b>15点</b></div><div class="method"><h3>Actionability</h3><p>今すぐ視聴、利用、購入、体験できる手軽さ。</p><b>10点</b></div><div class="method"><h3>Opportunity Value</h3><p>会話、人とのつながり、将来の体験や選択肢につながる価値。</p><b>10点</b></div></div><div class="note">カテゴリーは「何なのか」を表す固定分類。平成回帰やアナログ回帰などの抽象的な潮流はランキング対象にせず、必要な場合のみ分析上の背景として扱う。サンプルデータはUI検討用で、実運用時は最新情報と出典に置き換える。</div></div></section><footer>Trend Radar · Prototype v5</footer></main></div>
 <script>
-const items = [
-{
- rank:1,name:"Setlog",cat:"SNS & Apps",status:"🔥 NOW",total:92,mom:"+11",priority:"B",
- metrics:{Momentum:[24,25],Youth:[20,20],Mainstream:[17,20],Heat:[14,15],Actionability:[10,10],Opportunity:[7,10]},
- reason:"若年層での認知・利用が急伸。無料で始めやすく、グループ利用で会話・共有機会が増える。現在値だけでなく直近4か月の上昇角度も強い。"
-},
-{
- rank:2,name:"シール帳 / シール交換",cat:"Character & Hobby",status:"🔥 NOW",total:89,mom:"+5",priority:"B",
- metrics:{Momentum:[20,25],Youth:[19,20],Mainstream:[18,20],Heat:[14,15],Actionability:[9,10],Opportunity:[9,10]},
- reason:"若年女性を中心に参加型の遊びとして定着しつつあり、交換・会話・コレクションという機会価値が高い。伸びは続くがSetlogより傾きは緩やか。"
-},
-{
- rank:3,name:'Netflix「STARLIGHT AUDITION」',cat:"Entertainment",status:"🌱 EARLY",total:84,mom:"NEW",priority:"A",
- metrics:{Momentum:[23,25],Youth:[18,20],Mainstream:[17,20],Heat:[12,15],Actionability:[8,10],Opportunity:[6,10]},
- reason:"サンプル想定。若年層SNSで言及が増え、配信作品として一般化余地あり。まだHeatは最大ではない一方、Momentumが高く早期参加向き。"
-},
-{
- rank:4,name:"VIVANT",cat:"Entertainment",status:"🔥 NOW",total:86,mom:"+8",priority:"B",
- metrics:{Momentum:[18,25],Youth:[14,20],Mainstream:[20,20],Heat:[15,15],Actionability:[9,10],Opportunity:[10,10]},
- reason:"幅広い世代での話題性と会話参加価値が高い。Youth先行型ではないがMainstreamとHeatが強い。"
-},
-{
- rank:5,name:"ちいかわ映画",cat:"Entertainment",status:"🌱 EARLY",total:83,mom:"NEW",priority:"A",
- metrics:{Momentum:[21,25],Youth:[18,20],Mainstream:[18,20],Heat:[13,15],Actionability:[6,10],Opportunity:[7,10]},
- reason:"キャラクター人気の土台が大きく、公開情報の増加に伴い話題が上向く想定。公開前はActionabilityがやや低い。"
-}
+const categories=[
+["🎬 Video / Streaming","映画・ドラマ・配信作品・YouTube番組・オーディション・恋リア"],
+["📱 SNS / Apps","SNS・写真/動画・コミュニケーション系アプリ"],
+["🎵 Music / Artist","楽曲・アーティスト・アイドル・K-POP。若年女性の先行ヒットも重点観測"],
+["🧸 Character / Goods","キャラクター・シール・ガチャ・ぬい・コレクション商品"],
+["👗 Fashion","服・バッグ・靴・アクセサリー・コーデ"],
+["💄 Beauty","コスメ・スキンケア・ヘア・ネイル・香水"],
+["🍜 Food / Drink","流行フード・ドリンク・専門店・メニュー"],
+["🎨 Hobby / Experience","趣味・クラフト・遊び・ワークショップ・体験"],
+["😂 Internet / Meme","ミーム・言葉・ポーズ・ダンス・SNSネタ"],
+["🤖 Tech / AI","AIサービス・デバイス・デジタルツール"]];
+const items=[
+{name:"Setlog",cat:"📱 SNS / Apps",m:[24,20,17,14,10,7],total:92,mom:"+11",reason:"若年層での利用・認知の伸びが強い想定。無料で触れやすく、共有体験への接続もある。",hist:[22,39,68,81,92]},
+{name:"シール帳 / シール交換",cat:"🧸 Character / Goods",m:[20,19,18,14,9,9],total:89,mom:"+5",reason:"若年女性を中心に参加型の遊びとして浸透。交換や会話につながる機会価値も高い。",hist:[61,68,76,84,89]},
+{name:"VIVANT",cat:"🎬 Video / Streaming",m:[18,14,20,15,9,10],total:86,mom:"+8",reason:"幅広い世代での話題性と会話参加価値が高い想定。YouthよりMainstreamとHeatが強い。",hist:[60,66,74,82,86]},
+{name:"Netflix『サンプル・オーディション』",cat:"🎬 Video / Streaming",m:[23,18,17,12,8,6],total:84,mom:"NEW",reason:"UI確認用サンプル。若年女性で先行して伸びるオーディション作品を想定した表示例。",hist:[0,0,25,56,84]},
+{name:"ちいかわ映画",cat:"🎬 Video / Streaming",m:[21,18,18,13,6,7],total:83,mom:"NEW",reason:"UI確認用サンプル。既存IPの強さと公開前後の話題上昇を想定。",hist:[28,35,49,65,83]},
+{name:"TikTokバズ曲A",cat:"🎵 Music / Artist",m:[22,20,14,11,10,7],total:84,mom:"+19",reason:"若年女性で先に使われ始め、ショート動画からストリーミングへ波及する楽曲の表示例。",hist:[8,18,35,65,84]},
+{name:"モンチッチ",cat:"🧸 Character / Goods",m:[15,18,16,12,8,7],total:76,mom:"+7",reason:"キャラクター再注目の表示例。",hist:[45,53,61,69,76]},
+{name:"体験型カフェD",cat:"🍜 Food / Drink",m:[18,16,13,9,7,6],total:69,mom:"+12",reason:"SNSで体験そのものが共有される飲食トレンドの表示例。",hist:[18,29,40,57,69]},
+{name:"クラフト体験E",cat:"🎨 Hobby / Experience",m:[17,16,13,8,7,8],total:69,mom:"+10",reason:"一人でも始めやすく、コミュニティにも接続できる体験型トレンドの表示例。",hist:[25,34,45,59,69]},
+{name:"動画生成AI F",cat:"🤖 Tech / AI",m:[19,12,15,10,8,5],total:69,mom:"+14",reason:"新機能やSNS作例をきっかけに一般利用へ広がるデジタルトレンドの表示例。",hist:[12,24,37,55,69]}
 ];
-
-const history = {
- "Setlog":[["4月",22],["5月",39],["6月",68],["7月",81],["8月",92]],
- "シール帳 / シール交換":[["4月",61],["5月",68],["6月",76],["7月",84],["8月",89]],
- 'Netflix「STARLIGHT AUDITION」':[["4月",0],["5月",0],["6月",25],["7月",56],["8月",84]],
- "VIVANT":[["4月",60],["5月",66],["6月",74],["7月",82],["8月",86]],
- "ちいかわ映画":[["4月",28],["5月",35],["6月",49],["7月",65],["8月",83]]
-};
-
-function recentValues(name){ return (history[name]||[]).map(x=>x[1]).filter(v=>v>0); }
-function waveLabel(name){
-  const v=recentValues(name); if(v.length<2) return "NEW";
-  const last=v[v.length-1], prev=v[v.length-2], diff=last-prev;
-  const prev2=v.length>=3?v[v.length-3]:prev;
-  const diff2=prev-prev2;
-  if(diff>=15) return "🚀 急上昇";
-  if(diff>=6) return "🌱 上昇中";
-  if(last>=80 && Math.abs(diff)<=5) return "🔥 高止まり";
-  if(diff>0 && diff<6 && diff<diff2) return "↘️ 減速";
-  if(diff<0) return "🌙 下降転換";
-  return "→ 横ばい";
-}
-function waveClass(name){
-  const l=waveLabel(name);
-  if(l.includes("急上昇")) return "rocket";
-  if(l.includes("上昇中")) return "rising";
-  if(l.includes("高止まり")) return "plateau";
-  if(l.includes("下降")) return "down";
-  return "slowing";
-}
-
-const rankingBody=document.getElementById("rankingBody");
-const panels=document.getElementById("panels");
-rankingBody.innerHTML=items.map((x,i)=>`
-<tr>
-<td class="rank">${x.rank}</td>
-<td><strong>${x.name}</strong></td><td>${x.cat}</td><td>${x.status}</td>
-<td class="score-total">${x.total}</td>
-<td class="metric-num">${x.metrics.Momentum[0]}<span>/${x.metrics.Momentum[1]}</span></td>
-<td class="metric-num">${x.metrics.Youth[0]}<span>/${x.metrics.Youth[1]}</span></td>
-<td class="metric-num">${x.metrics.Mainstream[0]}<span>/${x.metrics.Mainstream[1]}</span></td>
-<td class="metric-num">${x.metrics.Heat[0]}<span>/${x.metrics.Heat[1]}</span></td>
-<td class="metric-num">${x.metrics.Actionability[0]}<span>/${x.metrics.Actionability[1]}</span></td>
-<td class="metric-num">${x.metrics.Opportunity[0]}<span>/${x.metrics.Opportunity[1]}</span></td>
-<td class="${x.mom==="NEW"?"new":"delta"}">${x.mom}</td>
-<td><span class="trend-state ${waveClass(x.name)}">${waveLabel(x.name)}</span></td>
-<td><span class="priority p${x.priority.toLowerCase()}">Priority ${x.priority}</span></td>
-<td><button class="detail-btn" data-index="${i}">根拠を見る</button></td>
-</tr>`).join("");
-
-panels.innerHTML=items.map((x,i)=>`
-<div class="detail-panel" id="panel-${i}">
-  <div class="detail-grid">
-    <div class="metrics">
-      ${Object.entries(x.metrics).map(([k,[v,max]])=>`
-      <div class="mrow">
-        <div class="mlabel">${k}</div>
-        <div class="track"><div class="fill" style="width:${(v/max)*100}%"></div></div>
-        <div class="mscore">${v}/${max}</div>
-      </div>`).join("")}
-    </div>
-    <div class="reason"><h4>Evidence / Why this score?</h4><p>${x.reason}</p></div>
-  </div>
-</div>`).join("");
-
-document.querySelectorAll(".detail-btn").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.getElementById(`panel-${btn.dataset.index}`).classList.toggle("open");
-  });
-});
-
-const categoryGrid=document.getElementById("categoryGrid");
-const grouped={};
-items.forEach(x=>{ (grouped[x.cat] ||= []).push(x); });
-Object.values(grouped).forEach(arr=>arr.sort((a,b)=>b.total-a.total));
-categoryGrid.innerHTML=Object.entries(grouped).map(([cat,arr])=>`
-  <div class="card category-card">
-    <h3><span class="cat-badge">${cat}</span></h3>
-    ${arr.map((x,i)=>`<div class="category-row"><span>${i+1}. ${x.name}</span><span><b>${x.total}</b> · ${waveLabel(x.name)}</span></div>`).join("")}
-  </div>`).join("");
-
-const seriesNames=Object.keys(history);
-const colors=["#5b5be8","#0a946f","#d78916","#c94a4a","#8c5bc9"];
-const toolbar=document.getElementById("toolbar");
-let active=new Set(seriesNames);
-
-toolbar.innerHTML=seriesNames.map((n,i)=>`<button class="active" data-name="${n}">${n}</button>`).join("");
-toolbar.querySelectorAll("button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const n=btn.dataset.name;
-    if(active.has(n)){ active.delete(n); btn.classList.remove("active"); }
-    else{ active.add(n); btn.classList.add("active"); }
-    drawChart();
-  });
-});
-
-function drawChart(){
-  const svg=document.getElementById("trendChart");
-  const W=900,H=330,pad={l:55,r:25,t:20,b:42};
-  const months=["4月","5月","6月","7月","8月"];
-  const x=i=>pad.l + i*((W-pad.l-pad.r)/(months.length-1));
-  const y=v=>H-pad.b - v*((H-pad.t-pad.b)/100);
-  let s="";
-  [0,20,40,60,80,100].forEach(v=>{
-    s+=`<line class="grid" x1="${pad.l}" x2="${W-pad.r}" y1="${y(v)}" y2="${y(v)}"></line>`;
-    s+=`<text class="label" x="${pad.l-10}" y="${y(v)+4}" text-anchor="end">${v}</text>`;
-  });
-  months.forEach((m,i)=>{
-    s+=`<text class="label" x="${x(i)}" y="${H-14}" text-anchor="middle">${m}</text>`;
-  });
-  s+=`<line class="axis" x1="${pad.l}" x2="${pad.l}" y1="${pad.t}" y2="${H-pad.b}"></line>`;
-  s+=`<line class="axis" x1="${pad.l}" x2="${W-pad.r}" y1="${H-pad.b}" y2="${H-pad.b}"></line>`;
-  seriesNames.forEach((name,si)=>{
-    if(!active.has(name)) return;
-    const pts=history[name];
-    const valid=pts.map(([,v],i)=>[x(i),y(v),v]).filter(p=>p[2]>0);
-    if(valid.length<1) return;
-    const d=valid.map((p,i)=>(i?"L":"M")+p[0]+","+p[1]).join(" ");
-    s+=`<path d="${d}" fill="none" stroke="${colors[si]}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>`;
-    valid.forEach(p=>{s+=`<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="${colors[si]}"><title>${name}: ${p[2]}</title></circle>`});
-    const last=valid[valid.length-1];
-    s+=`<text class="title-label" x="${last[0]+7}" y="${last[1]-7}" fill="${colors[si]}">${last[2]}</text>`;
-  });
-  svg.innerHTML=s;
-  document.getElementById("legend").innerHTML=seriesNames.filter(n=>active.has(n)).map(n=>{
-    const i=seriesNames.indexOf(n);
-    return `<div class="legend-item"><span class="dot" style="background:${colors[i]}"></span>${n}</div>`;
-  }).join("");
-}
-drawChart();
-</script>
-</body>
-</html>
+function wave(h){const n=h.length,last=n?h[n-1]:0,prev=n>1?h[n-2]:last,delta=last-prev,prevDelta=n>2?prev-h[n-3]:delta;if(delta>=15)return"🚀 急上昇";if(delta>=6)return"🌱 上昇中";if(last>=80&&Math.abs(delta)<=5)return"🔥 高止まり";if(delta>0&&delta<prevDelta)return"↘️ 減速";if(delta<0)return"🌙 下降転換";return"→ 横ばい"}
+const max=[25,20,20,15,10,10],labels=["Momentum","Youth Signal","Mainstream","Cultural Heat","Actionability","Opportunity"];
+document.getElementById("tbody").innerHTML=items.sort((a,b)=>b.total-a.total).map((x,i)=>`<tr><td class="rank">${i+1}</td><td><strong>${x.name}</strong></td><td><span class="cat">${x.cat}</span></td><td class="total">${x.total}</td>${x.m.map((v,j)=>`<td class="num">${v}<span>/${max[j]}</span></td>`).join("")}<td class="delta">${x.mom}</td><td class="wave">${wave(x.hist)}</td><td><button class="detail" onclick="toggle(${i})">根拠</button></td></tr>`).join("");
+document.getElementById("panels").innerHTML=items.map((x,i)=>`<div class="panel" id="p${i}"><div class="detail-grid"><div class="metrics">${x.m.map((v,j)=>`<div class="mrow"><span>${labels[j]}</span><div class="track"><div class="fill" style="width:${v/max[j]*100}%"></div></div><b>${v}/${max[j]}</b></div>`).join("")}</div><div class="reason"><h4>Evidence / Why this score?</h4><p>${x.reason}</p></div></div></div>`).join("");function toggle(i){document.getElementById("p"+i).classList.toggle("open")}
+const grid=document.getElementById("categoryGrid");grid.innerHTML=categories.map(([c,d])=>{const arr=items.filter(x=>x.cat===c).sort((a,b)=>b.total-a.total).slice(0,3);return `<div class="card category-card"><h3>${c}</h3><div class="desc">${d}</div>${arr.length?arr.map((x,i)=>`<div class="crow"><b>${i+1}</b><span>${x.name}</span><b>${x.total}</b></div>`).join(""):`<div class="desc">今月のサンプル候補なし</div>`}</div>`}).join("");
+const names=items.slice(0,6).map(x=>x.name),colors=["#5b5be8","#0a946f","#c94a4a","#d78916","#8c5bc9","#e65c98"],active=new Set(names),tb=document.getElementById("toolbar");tb.innerHTML=names.map(n=>`<button class="active" data-n="${n}">${n}</button>`).join("");tb.querySelectorAll("button").forEach(b=>b.onclick=()=>{active.has(b.dataset.n)?active.delete(b.dataset.n):active.add(b.dataset.n);b.classList.toggle("active");draw()});function draw(){const svg=document.getElementById("chart"),W=900,H=330,L=55,R=25,T=20,B=42,months=["4月","5月","6月","7月","8月"],X=i=>L+i*(W-L-R)/4,Y=v=>H-B-v*(H-T-B)/100;let s="";[0,20,40,60,80,100].forEach(v=>{s+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/><text class="label" x="${L-10}" y="${Y(v)+4}" text-anchor="end">${v}</text>`});months.forEach((m,i)=>s+=`<text class="label" x="${X(i)}" y="${H-14}" text-anchor="middle">${m}</text>`);s+=`<line class="axis" x1="${L}" x2="${L}" y1="${T}" y2="${H-B}"/><line class="axis" x1="${L}" x2="${W-R}" y1="${H-B}" y2="${H-B}"/>`;names.forEach((n,si)=>{if(!active.has(n))return;const it=items.find(x=>x.name===n),pts=it.hist.map((v,i)=>[X(i),Y(v),v]).filter(p=>p[2]>0);s+=`<path d="${pts.map((p,i)=>(i?'L':'M')+p[0]+','+p[1]).join(' ')}" fill="none" stroke="${colors[si]}" stroke-width="3"/>`;pts.forEach(p=>s+=`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="${colors[si]}"/>`)});svg.innerHTML=s;document.getElementById("legend").innerHTML=names.filter(n=>active.has(n)).map(n=>`<span class="legend-item"><span class="dot" style="background:${colors[names.indexOf(n)]}"></span>${n}</span>`).join("")}draw();
+</script></body></html>
