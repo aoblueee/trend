@@ -1,0 +1,64 @@
+name: Refine Shopping Radar
+on:
+  push:
+    paths:
+      - '.github/workflows/refine-shopping-radar.yml'
+permissions:
+  contents: write
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply freshness-first Shopping Radar policy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          s=s.replace('「え、今こんなの流行ってるんだ！」につながる具体商品をBeauty / Fashion / Character / Food / Goods / Lifestyleから横断。抽象トレンドはOverallに任せ、ここでは“何を買うか”まで落とします。','「え、今こんなの流行ってるんだ！」につながる具体商品を全ジャンルから横断。若者人気だけでは掲載せず、直近1〜3か月のNEW / BREAKOUT / REVIVAL / DISCOVERY / PRE-LAUNCHという“変化”を必須条件にします。')
+          s=s.replace('<b>✨ DISCOVERY</b><br>10〜20代の特定界隈では既に強いのに、一般にはまだ知られ切っていない商品を明示。掲載数に上限を設けず、根拠がある具体商品を積み上げます。','<b>📡 WHY NOW?</b><br>単なる定番人気は除外。🆕 NEW / 🚀 BREAKOUT / ♻️ REVIVAL / ✨ DISCOVERY / 🔮 PRE-LAUNCH のどれで「今」載っているのかを商品ごとに表示します。')
+          stale=[
+          "{n:'Torriden ダイブインセラム',sub:'韓国スキンケア美容液',cat:'Beauty',s:85,status:'HOT',price:'商品別',release:'発売中',disc:1,e:'韓国界隈ビューティー3位。',l:[['WE LABO','https://labo.wego.jp/firsthalfof2026-trendranking/']]},",
+          "{n:'MEDICUBE ブースタープロ',sub:'AGE-R 1台6役美顔器',cat:'Beauty',s:84,status:'HOT',price:'¥45,000',release:'発売中',disc:1,e:'MEDICUBE美顔器が三次元オタク界隈TOP3。',l:[['WE LABO','https://labo.wego.jp/firsthalfof2026-trendranking/'],['公式','https://themedicube.jp/collections/device-line']]},",
+          "{n:'Melojoy スクイーズ',sub:'高品質スクイーズ',cat:'Goods',s:78,status:'HOT',price:'商品別',release:'発売中',disc:1,e:'もちもち触感という体験価値で複数界隈に浸透。',l:[['WE LABO','https://labo.wego.jp/firsthalfof2026-trendranking/']]},"
+          ]
+          for x in stale:s=s.replace(x,'')
+          reps={
+          "{n:'おちゃめ 1day（せいやの瞳カラコン）',sub:":"{n:'おちゃめ 1day（せいやの瞳カラコン）',signal:'🚀 BREAKOUT',sub:",
+          "{n:'ボンボンドロップシール',sub:":"{n:'ボンボンドロップシール',signal:'🔥 CURRENT',sub:",
+          "{n:'loveil 水光カラコン',sub:":"{n:'loveil 水光カラコン',signal:'🚀 BREAKOUT',sub:",
+          "{n:'Darich ブラストフレアデニムパンツ',sub:":"{n:'Darich ブラストフレアデニムパンツ',signal:'🚀 BREAKOUT',sub:",
+          "{n:'CANMAKE クリーミータッチライナー',sub:":"{n:'CANMAKE クリーミータッチライナー',signal:'🆕 NEW COLOR',sub:",
+          "{n:'&honey マトメイク スティック MH4.0 MOMOREI限定',sub:":"{n:'&honey マトメイク スティック MH4.0 MOMOREI限定',signal:'🆕 NEW',sub:",
+          "{n:'パペットスンスン アクリルスライドミラーコレクション',sub:":"{n:'パペットスンスン アクリルスライドミラーコレクション',signal:'🆕 NEW',sub:",
+          "{n:'サンリオキャラクターズ くだものめじるしアクセサリー',sub:":"{n:'サンリオキャラクターズ くだものめじるしアクセサリー',signal:'🆕 NEW',sub:",
+          "{n:'Urumia × 矢沢あい Heroine Collection',sub:":"{n:'Urumia × 矢沢あい Heroine Collection',signal:'🔮 PRE-LAUNCH',sub:",
+          "{n:'rom&nd 豆乳エディション リップオイルセット 06 グレープフィグ',sub:":"{n:'rom&nd 豆乳エディション リップオイルセット 06 グレープフィグ',signal:'🔮 PRE-LAUNCH',sub:",
+          "{n:'CANMAKE クリーミータッチライナー シアー 限定パッケージ',sub:":"{n:'CANMAKE クリーミータッチライナー シアー 限定パッケージ',signal:'🔮 PRE-LAUNCH',sub:",
+          "{n:'ちいかわ ウエハース エールカードコレクション',sub:":"{n:'ちいかわ ウエハース エールカードコレクション',signal:'🔮 PRE-LAUNCH',sub:"
+          }
+          for a,b in reps.items():s=s.replace(a,b)
+          s=s.replace("${x.disc?'<span class=\"status discovery\">✨ DISCOVERY</span>':''}<h4>${x.n}</h4>","${x.signal?`<span class=\"status discovery\">${x.signal}</span>`:(x.disc?'<span class=\"status discovery\">✨ DISCOVERY</span>':'')}<h4>${x.n}</h4>")
+          s=s.replace('Buzz / Purchase Heat / Scarcity / Youth Fit / Novelty。','Freshness / Momentumを必須ゲートにし、Buzz / Purchase Heat / Scarcity / Youth Fit / Noveltyを加点。長期定番は新しい変化がない限り掲載しない。')
+          s=s.replace("['Shoppingは具体商品×発見性へ','Beauty / Fashion / Character / Food / Goodsを横断し、DISCOVERYとPRE-LAUNCHを導入。']","['ShoppingはFreshness-firstへ','若者人気そのものではなく、直近1〜3か月の変化を必須条件化。定番人気だけの商品は除外し、WHY NOWを明示。']")
+          p.write_text(s)
+          PY
+      - name: Verify protected sections and removed stale items
+        run: |
+          grep -q '総合トレンドランキング' index.html
+          grep -q 'Trend History' index.html
+          grep -q 'Early Signal' index.html
+          grep -q 'Music Radar' index.html
+          grep -q 'Monthly Analysis' index.html
+          grep -q 'Shopping Radar' index.html
+          grep -q 'WHY NOW' index.html
+          ! grep -q 'Torriden ダイブインセラム' index.html
+          ! grep -q 'MEDICUBE ブースタープロ' index.html
+      - name: Commit page update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Apply freshness-first Trend Radar policy' || exit 0
+          git push
