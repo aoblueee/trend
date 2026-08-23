@@ -1,0 +1,58 @@
+name: Refine Evidence Strength
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/refine-evidence-strength.yml']
+permissions:
+  contents: write
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch Trend Radar
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          # Refine methodology copy without changing layout.
+          s=s.replace('MAINは独立した複数系統の現在シグナルを原則必須化。単一調査の面白い候補はEarlyへ。Totalの直下に前月比を表示。','MAINは Evidence Strength × Source Diversity × Momentum/Freshness で判定。複数系統を原則としつつ、巨大で直接的なハードデータは単一系統でも重く評価。Totalの直下に前月比を表示。')
+          s=s.replace('<h3>Source Diversity Gate</h3><p>MAINは原則、Survey / Social・UGC / Search / Consumption / Platform・Chart等の独立した複数系統で確認。転載記事は同一ソースとして数える。</p>','<h3>Evidence Strength × Source Diversity</h3><p>MAINは規模・直接性・鮮度・継続性を持つEvidence Strengthと、独立観測系統のSource Diversityを両方評価。興収・販売本数・DL・利用率・再生・売切れ等の巨大な実行動データは重く評価し、Source Diversityを機械的な足切りにしない。転載記事は同一観測として数える。</p>')
+          s=s.replace('<h3>MAIN / EARLY</h3><p>面白さだけではMAINにしない。複数観測で波を確認できればMAIN、先行性は高いが証拠が単線ならEARLY。</p>','<h3>Trend Lifecycle</h3><p>Forecast → Early → Breakout/Main → Peak → Cooling → Out。人気が続くことと、今も波が伸びていることを分離して判定する。</p>')
+          marker="const aug=["
+          if marker not in s: raise SystemExit('aug marker missing')
+          movie="{n:'映画ちいかわ 人魚の島のひみつ',c:'Video / Streaming',s:96,w:'🔥 MAIN / MEGA HIT',v:[25,19,20,15,9,8],e:'【CONSUMPTION● OFFICIAL● SOCIAL● MOMENTUM●】7/24公開から30日で興収100億円。公開24日時点92.8億円からさらに伸長しており、単なる既存IP人気ではなく8月現在も巨大な実消費が増え続ける波。Source Diversityを機械的な足切りにせず、規模・直接性・鮮度・継続性が極めて強いハードデータをEvidence Strengthとして重く評価しMAIN上位へ復帰。',l:[['8/23 興収100億円','https://www.oricon.co.jp/news/2475206/full/'],['8/17 興収92.8億円・645万人','https://www.famitsu.com/article/202608/84684'],['公式サイト','https://www.anime-chiikawa.jp/']]},"
+          tomo="{n:'トモダチコレクション わくわく生活',c:'Hobby / Experience',s:86,w:'🔥 PEAK → COOLING監視',v:[16,18,20,13,9,10],e:'【CONSUMPTION● OFFICIAL● LONGITUDINAL●】4/16発売。発売2週間で全世界セルスルー380万本超、8月公表の決算ベースでは発売約4か月で約800万本。直近の加速は発売初期より鈍いが、巨大な実購買が8月に新たなハードデータとして確認されたためMAIN復帰。今後は「人気継続」と「新規Momentum」を分離しCooling移行を監視。',l:[['任天堂 2週間380万本超','https://www.nintendo.co.jp/ir/pdf/2026/260508_5.pdf'],['8月 約800万本報道','https://automaton-media.com/articles/newsjp/20260806-458802/'],['任天堂公式','https://www.nintendo.com/jp/switch/blfga/index.html']]},"
+          if "n:'映画ちいかわ 人魚の島のひみつ',c:'Video / Streaming',s:96" not in s:
+              s=s.replace(marker,marker+movie+tomo,1)
+          # Add borderline items to Early rather than silently dropping them.
+          early_marker="const early={jul:"
+          if early_marker not in s: raise SystemExit('early marker missing')
+          target="aug:[["
+          pos=s.find(target,s.find(early_marker))
+          if pos<0: raise SystemExit('early aug missing')
+          insert="['パペットスンスン','YouTubeは8月中旬時点で登録約91.5万人、直近30日+約1.3万人・約550万再生。商品展開だけでなく視聴MomentumもあるためMAIN境界として重点監視。'],['Mellojoy','上半期の若者調査では強いが、8月現在の独立した再加速データがMAIN基準には不足。定番人気化と再Breakoutを分離してEARLY監視。'],"
+          if "['パペットスンスン'" not in s:
+              s=s[:pos+5]+insert+s[pos+5:]
+          # Monthly analysis: add the rule change explicitly.
+          a="aug:[["
+          apos=s.find(a,s.find('const analysis='))
+          if apos<0: raise SystemExit('analysis aug missing')
+          note="['Evidence StrengthをSource Diversityと同格に','複数ソース数を機械的に数えるのではなく、興収・販売本数・DL・利用率・再生数など直接的なハードデータの規模、鮮度、継続性を評価する。映画ちいかわの公開30日100億円、トモコレの約4か月800万本級は、それ自体が巨大な現在シグナル。逆に転載記事が多いだけの候補は強く扱わない。'],"
+          if 'Evidence StrengthをSource Diversityと同格に' not in s:
+              s=s[:apos+5]+note+s[apos+5:]
+          # Basic preservation checks.
+          required=['id="ranking"','id="categories"','id="history"','id="early"','id="shopping"','id="music"','id="analysis"','id="appendix"','const jul=','const aug=','document.getElementById']
+          missing=[x for x in required if x not in s]
+          if missing: raise SystemExit('preservation check failed: '+str(missing))
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'Refine MAIN with evidence strength and restore mega-hit signals'
+          git push
