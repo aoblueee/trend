@@ -1,4 +1,4 @@
-name: Refine Shopping Radar
+name: Weekly Trend Radar Refresh 2026-08-23
 on:
   push:
     paths:
@@ -6,59 +6,78 @@ on:
 permissions:
   contents: write
 jobs:
-  refine:
+  refresh:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply freshness-first Shopping Radar policy
+        with:
+          fetch-depth: 0
+      - name: Apply zero-base weekly trend refresh
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
+
           p=Path('index.html')
           s=p.read_text()
-          s=s.replace('「え、今こんなの流行ってるんだ！」につながる具体商品をBeauty / Fashion / Character / Food / Goods / Lifestyleから横断。抽象トレンドはOverallに任せ、ここでは“何を買うか”まで落とします。','「え、今こんなの流行ってるんだ！」につながる具体商品を全ジャンルから横断。若者人気だけでは掲載せず、直近1〜3か月のNEW / BREAKOUT / REVIVAL / DISCOVERY / PRE-LAUNCHという“変化”を必須条件にします。')
-          s=s.replace('<b>✨ DISCOVERY</b><br>10〜20代の特定界隈では既に強いのに、一般にはまだ知られ切っていない商品を明示。掲載数に上限を設けず、根拠がある具体商品を積み上げます。','<b>📡 WHY NOW?</b><br>単なる定番人気は除外。🆕 NEW / 🚀 BREAKOUT / ♻️ REVIVAL / ✨ DISCOVERY / 🔮 PRE-LAUNCH のどれで「今」載っているのかを商品ごとに表示します。')
-          stale=[
-          "{n:'Torriden ダイブインセラム',sub:'韓国スキンケア美容液',cat:'Beauty',s:85,status:'HOT',price:'商品別',release:'発売中',disc:1,e:'韓国界隈ビューティー3位。',l:[['WE LABO','https://labo.wego.jp/firsthalfof2026-trendranking/']]},",
-          "{n:'MEDICUBE ブースタープロ',sub:'AGE-R 1台6役美顔器',cat:'Beauty',s:84,status:'HOT',price:'¥45,000',release:'発売中',disc:1,e:'MEDICUBE美顔器が三次元オタク界隈TOP3。',l:[['WE LABO','https://labo.wego.jp/firsthalfof2026-trendranking/'],['公式','https://themedicube.jp/collections/device-line']]},",
-          "{n:'Melojoy スクイーズ',sub:'高品質スクイーズ',cat:'Goods',s:78,status:'HOT',price:'商品別',release:'発売中',disc:1,e:'もちもち触感という体験価値で複数界隈に浸透。',l:[['WE LABO','https://labo.wego.jp/firsthalfof2026-trendranking/']]},"
-          ]
-          for x in stale:s=s.replace(x,'')
-          reps={
-          "{n:'おちゃめ 1day（せいやの瞳カラコン）',sub:":"{n:'おちゃめ 1day（せいやの瞳カラコン）',signal:'🚀 BREAKOUT',sub:",
-          "{n:'ボンボンドロップシール',sub:":"{n:'ボンボンドロップシール',signal:'🔥 CURRENT',sub:",
-          "{n:'loveil 水光カラコン',sub:":"{n:'loveil 水光カラコン',signal:'🚀 BREAKOUT',sub:",
-          "{n:'Darich ブラストフレアデニムパンツ',sub:":"{n:'Darich ブラストフレアデニムパンツ',signal:'🚀 BREAKOUT',sub:",
-          "{n:'CANMAKE クリーミータッチライナー',sub:":"{n:'CANMAKE クリーミータッチライナー',signal:'🆕 NEW COLOR',sub:",
-          "{n:'&honey マトメイク スティック MH4.0 MOMOREI限定',sub:":"{n:'&honey マトメイク スティック MH4.0 MOMOREI限定',signal:'🆕 NEW',sub:",
-          "{n:'パペットスンスン アクリルスライドミラーコレクション',sub:":"{n:'パペットスンスン アクリルスライドミラーコレクション',signal:'🆕 NEW',sub:",
-          "{n:'サンリオキャラクターズ くだものめじるしアクセサリー',sub:":"{n:'サンリオキャラクターズ くだものめじるしアクセサリー',signal:'🆕 NEW',sub:",
-          "{n:'Urumia × 矢沢あい Heroine Collection',sub:":"{n:'Urumia × 矢沢あい Heroine Collection',signal:'🔮 PRE-LAUNCH',sub:",
-          "{n:'rom&nd 豆乳エディション リップオイルセット 06 グレープフィグ',sub:":"{n:'rom&nd 豆乳エディション リップオイルセット 06 グレープフィグ',signal:'🔮 PRE-LAUNCH',sub:",
-          "{n:'CANMAKE クリーミータッチライナー シアー 限定パッケージ',sub:":"{n:'CANMAKE クリーミータッチライナー シアー 限定パッケージ',signal:'🔮 PRE-LAUNCH',sub:",
-          "{n:'ちいかわ ウエハース エールカードコレクション',sub:":"{n:'ちいかわ ウエハース エールカードコレクション',signal:'🔮 PRE-LAUNCH',sub:"
-          }
-          for a,b in reps.items():s=s.replace(a,b)
-          s=s.replace("${x.disc?'<span class=\"status discovery\">✨ DISCOVERY</span>':''}<h4>${x.n}</h4>","${x.signal?`<span class=\"status discovery\">${x.signal}</span>`:(x.disc?'<span class=\"status discovery\">✨ DISCOVERY</span>':'')}<h4>${x.n}</h4>")
-          s=s.replace('Buzz / Purchase Heat / Scarcity / Youth Fit / Novelty。','Freshness / Momentumを必須ゲートにし、Buzz / Purchase Heat / Scarcity / Youth Fit / Noveltyを加点。長期定番は新しい変化がない限り掲載しない。')
-          s=s.replace("['Shoppingは具体商品×発見性へ','Beauty / Fashion / Character / Food / Goodsを横断し、DISCOVERYとPRE-LAUNCHを導入。']","['ShoppingはFreshness-firstへ','若者人気そのものではなく、直近1〜3か月の変化を必須条件化。定番人気だけの商品は除外し、WHY NOWを明示。']")
+          before=s
+          old_jul=s[s.index('const jul='):s.index(';const aug=')]
+
+          def between(text,start,end,middle):
+              i=text.index(start)+len(start)
+              j=text.index(end,i)
+              return text[:i]+middle+text[j:]
+
+          s=s.replace('最終更新 2026/8/18。','最終更新 2026/8/23。')
+          s=s.replace("const cats=['All','Video / Streaming','SNS / Apps','Character / Goods','Food / Drink','Hobby / Experience'];","const cats=['All','Video / Streaming','SNS / Apps','Character / Goods','Food / Drink','Fashion / Beauty','Culture / Language','Hobby / Experience'];")
+
+          aug="""[{n:'Setlog',c:'SNS / Apps',s:95,w:'🔥 高浸透 / PEAK WATCH',v:[22,20,20,15,10,8],e:'8月3日公表の学生479人調査で認知91.4%、利用73.7%、利用者の93.1%が直近3カ月以内に開始。一方51.0%が一過性を予想しており、規模は最大級だが伸びのピーク警戒を反映して前回97→95。',l:[['8月Setlog利用実態調査','https://prtimes.jp/main/html/rd/p/000000102.000033964.html']]},{n:'シール帳 / シール交換',c:'Character / Goods',s:92,w:'🔥 高止まり',v:[21,20,18,14,9,10],e:'高校生夏調査の首位級シグナルは維持。ただし今週は新規加速より高止まりと判断し前回94→92。',l:[['高校生夏トレンド調査','https://prtimes.jp/main/html/rd/p/000000215.000026876.html']]},{n:'天女界隈',c:'Fashion / Beauty',s:91,w:'🚀 急上昇',v:[24,20,16,13,9,9],e:'SHIBUYA109 lab.の2026年トレンド分析会議で現在の若者ファッションとして浮上。カーディガンやシャツを少しはだけさせ、天女のように着るスタイル。',l:[['TBS×SHIBUYA109 lab.','https://newsdig.tbs.co.jp/articles/-/2848838?display=1']]},{n:'めじるしアクセサリー',c:'Character / Goods',s:89,w:'🚀 再加速',v:[22,19,16,13,9,10],e:'夏の若者トレンド分析会議でも改めて主要キーワードとして登場。バッグや傘などへのジャラ付け・目印化という行動まで含めて再加速を評価。',l:[['TBS×SHIBUYA109 lab.','https://newsdig.tbs.co.jp/articles/-/2848173'],['高校生夏トレンド調査','https://prtimes.jp/main/html/rd/p/000000215.000026876.html']]},{n:'穴あけパンチ加工 / チカチカ加工',c:'SNS / Apps',s:88,w:'🚀 急上昇',v:[24,20,15,13,8,8],e:'写真に丸・星の穴や点滅エフェクトを加える凝った加工が若者会議で浮上。加工そのものに集中して頭を空にする行為としても語られている。',l:[['TBS×SHIBUYA109 lab.','https://newsdig.tbs.co.jp/articles/-/2848838?page=2']]},{n:'ジェリーバッグ / ジェリーシューズ',c:'Fashion / Beauty',s:87,w:'♻️ REVIVAL',v:[22,19,17,13,9,7],e:'2000年代初頭のクリアPVC小物が、パステル・半透明のジェリー素材として今夏再編集。8月13日にはPUMAもSpeedcat Ballet Jellyを国内投入。',l:[['TBS×SHIBUYA109 lab.','https://newsdig.tbs.co.jp/articles/-/2848838?page=2'],['PUMA発売予定','https://jp.puma.com/jp/ja/launch-calendar']]},{n:'ボンボンドロップシール',c:'Character / Goods',s:86,w:'🔥 高止まり→成熟',v:[17,20,18,13,9,9],e:'シール交換の中心商品として依然強いが、今週の新しい加速材料は限定的。大きさと人気は認めつつFreshnessを下げ、前回93→86。',l:[['若年層流行調査','https://prtimes.jp/main/html/rd/p/000000670.000018991.html']]},{n:'今日、好きになりました。夏休み編2026',c:'Video / Streaming',s:84,w:'🔥 継続',v:[18,20,17,13,9,7],e:'夏休み編の配信期間で高校生接触は引き続き強い。一方、前週までの立ち上がりほどの新鮮な加速ではないため88→84。',l:[['ABEMA','https://abema.tv/video/genre/romance'],['高校生夏トレンド調査','https://prtimes.jp/main/html/rd/p/000000215.000026876.html']]},{n:'ファッションスピ / スピ活',c:'Hobby / Experience',s:83,w:'🌱 上昇中',v:[22,19,14,12,8,8],e:'神社・パワースポット・お守り・御朱印を、強い信仰というより軽いお出かけ・心の拠り所として楽しむ動きが若者会議で浮上。',l:[['TBS×SHIBUYA109 lab.','https://newsdig.tbs.co.jp/articles/-/2848838?page=2']]},{n:'おかず系かき氷',c:'Food / Drink',s:82,w:'🌱 上昇中',v:[22,18,15,12,8,7],e:'甘味ではなくポタージュや奈良漬などを使い、20代がランチ・食事としてかき氷を食べる動き。8月4日の若者トレンド会議で浮上。',l:[['TBS若者トレンド分析','https://newsdig.tbs.co.jp/articles/-/2848173?page=2']]},{n:'たまごっち',c:'Character / Goods',s:80,w:'🔥 継続→成熟',v:[14,19,17,12,9,9],e:'平成リバイバルの強い土台は残るが、今週の新しい加速シグナルは弱い。前回91から大きく減点し、人気とトレンドの変化を分離。',l:[['たまごっち公式','https://tamagotchi-official.com/jp/']]},{n:'山手線一周ウォーク',c:'Hobby / Experience',s:79,w:'👀 WATCH',v:[22,17,13,10,8,9],e:'山手線30駅・約34.5kmを歩き、全駅で動画を撮ってVlog化するチャレンジが若者会議で登場。オフライン体験×記録の先行シグナル。',l:[['TBS若者トレンド分析','https://newsdig.tbs.co.jp/articles/-/2848173']]},{n:'「顔ない」「シャバい」',c:'Culture / Language',s:78,w:'👀 WATCH',v:[23,19,13,11,6,6],e:'「顔ない」は面目がない・恥ずかしい状況、「シャバい」は今の若者文脈で「違う・つまらない」に近い用法として高校生から挙がった。',l:[['TBS若者トレンド分析','https://newsdig.tbs.co.jp/articles/-/2848173']]},{n:'デカドリンク',c:'Food / Drink',s:77,w:'👀 WATCH',v:[18,18,15,11,8,7],e:'顔より大きいサイズのドリンクを持ち歩く体験・写真性が若者トレンド会議で継続的に話題。規模確認はまだ必要なためWATCH。',l:[['TBS若者トレンド分析','https://newsdig.tbs.co.jp/articles/-/2848173']]}]"""
+          s=between(s,'const aug=',';const early=',aug)
+
+          early="""{jul:[['AIイラスト','若年層のネクスト候補。'],['日本三國','ネクスト候補。'],['伊能忠敬界隈','ネット文脈の次点シグナル。'],['ねぎ塩豚丼','次の食候補。'],['お菓子帳','交換・収集文化の派生。']],aug:[['ランジェリーコア','2016年に流行したサテンキャミなどのインナーを外着化。SHIBUYA109 lab.の分析会議で「これからさらに流行る」候補として浮上。'],['ウォーリーストーン','ファッションスピの派生。高校生が粘土で自作し、触って落ち着く小物として持ち歩く先行シグナル。'],['チョーカー一体型トップス','チョーカー復活そのものではなく、トップスと一体化させる形へ進化。単純な平成復刻から再編集へ。'],['イベント準備の型化（プリ・グッズ制作）','8月19日の15〜24歳女性484名調査から、イベントの楽しさが当日だけでなく事前準備・定番行動まで含むことを監視。']]}"""
+          s=between(s,'const early=',';const shopCats=',early)
+
+          shops="""{jul:[{n:'おちゃめ 1day（せいやの瞳カラコン）',signal:'🚀 BREAKOUT',sub:'せいやの裸眼色を再現',cat:'Beauty',s:78,status:'HOT',price:'10枚 ¥1,760',release:'7/15',e:'SNS発の商品化。',l:[['公式','https://hotelovers.co.jp/news/press-release/2990']]},{n:'ボンボンドロップシール',signal:'🔥 CURRENT',sub:'ぷっくり立体シール',cat:'Goods',s:95,status:'HOT',price:'商品別',release:'発売中',e:'シール交換の購買中心。',l:[['調査','https://prtimes.jp/main/html/rd/p/000000670.000018991.html']]},{n:'めじるしアクセサリー',sub:'キャラクター系ガシャポン',cat:'Character',s:84,status:'HOT',price:'¥300〜',release:'発売中',e:'7月はカテゴリ全体を捕捉。',l:[['調査','https://prtimes.jp/main/html/rd/p/000000215.000026876.html']]},{n:'Melojoy スクイーズ',sub:'高品質スクイーズ',cat:'Goods',s:72,status:'HOT',price:'商品別',release:'発売中',e:'触感系アイテム。',l:[['調査','https://prtimes.jp/main/html/rd/p/000000215.000026876.html']]},{n:'おもちゃコスメ',sub:'持ち歩いて遊べるコスメ',cat:'Beauty',s:68,status:'HOT',price:'商品別',release:'発売中',e:'2026年予測枠。',l:[['SHIBUYA109 lab.','https://www.shibuya109.co.jp/shibuya109lab/reports/shibuya109-lab-%E3%83%88%E3%83%AC%E3%83%B3%E3%83%89%E4%BA%88%E6%B8%AC2026/']]}],aug:[{n:'Urumia × 矢沢あい Heroine Collection',signal:'🚀 BREAKOUT',sub:'NANA / ご近所物語 / 天使なんかじゃない / Paradise Kiss ヒロイン全5色',cat:'Beauty',s:96,status:'HOT',price:'10枚 ¥1,870',release:'8/19 / ラフォーレ原宿POPUP 8/19〜31',disc:1,e:'前回PRE-LAUNCHから発売済みへ移行。少女漫画コア・平成リバイバルとカラコンを具体SKUで接続する8月19日新商品。',l:[['公式発表','https://prtimes.jp/main/html/rd/p/000000036.000096388.html']]},{n:'PUMA ウィメンズ スピードキャット バレエ ジェリー',signal:'🆕 NEW',sub:'ジェリー素材×バレエスニーカー / 5色',cat:'Fashion',s:93,status:'HOT',price:'¥12,100',release:'8/13',disc:1,e:'今夏のジェリーバッグ・ジェリーシューズ再燃とロープロファイル/バレエ系を一足に統合。PUMA公式で8月13日発売。',l:[['PUMA公式','https://jp.puma.com/jp/ja/launch-calendar'],['若者トレンド分析','https://newsdig.tbs.co.jp/articles/-/2848838?page=2']]},{n:'studio CLIP × NARUMIYA CHARACTERS エナメルバッグポーチ',signal:'♻️ REVIVAL',sub:'ANGEL BLUE / DAISY LOVERS',cat:'Goods',s:91,status:'HOT',price:'¥2,000',release:'8/20',disc:1,e:'8月20日発売。平成女児カルチャーを当時感のあるエナメルバッグ型ポーチとして再編集した、今週の具体的なリバイバル商品。',l:[['公式発表','https://prtimes.jp/main/html/rd/p/000003243.000001304.html']]},{n:'サンリオキャラクターズ くだものめじるしアクセサリー',signal:'🆕 NEW',sub:'全5種',cat:'Character',s:82,status:'HOT',price:'¥300',release:'8月第2週',local:1,e:'「めじるし」トレンドを8月の具体商品まで落としたカプセルトイ。今週は全国発売とローカル在庫を分離し、店舗入荷は未確認扱い。',l:[['公式','https://gashapon.jp/sanrio-characters/item/']]},{n:'rom&nd 豆乳エディション リップオイルセット 06 グレープフィグ',signal:'🔮 PRE-LAUNCH',sub:'数量限定 / ミニ付き',cat:'Beauty',s:92,status:'PRE',price:'¥1,760',release:'8/29',disc:1,e:'発売まで1週間。韓国コスメの限定エディションとしてRelease Proximityが高まり、売り切れ前の監視価値が上昇。',l:[['商品情報','https://maquia.hpplus.jp/cosme/176086/']]},{n:'ANGEL BLUE × サンキューマート 限定コレクション',signal:'♻️ REVIVAL / 🔮 PRE-LAUNCH',sub:'シールバインダー・ランダムミラー等 全17アイテム',cat:'Goods',s:90,status:'PRE',price:'各¥429',release:'9月上旬 / 8/6〜先行予約',disc:1,e:'2000年代キャラの平成リバイバルを、現在のシール文化・デコ需要へ接続。全17商品、予約上限ありで発売前需要を監視。',l:[['公式発表','https://prtimes.jp/main/html/rd/p/000000794.000002319.html']]},{n:'サンキューマート ぬい仮装コンテストシリーズ',signal:'🔮 PRE-LAUNCH',sub:'メイド服・ドレス・羽など推しぬい用 全8アイテム',cat:'Goods',s:84,status:'PRE',price:'各¥429',release:'9月上旬 / 8/20〜先行予約',e:'8月19日発表・20日予約開始の新鮮な発売前シグナル。ハロウィン×ぬい活を「ぬいを着せ替えて参加する」行動へ拡張。',l:[['公式発表','https://prtimes.jp/main/html/rd/p/000000802.000002319.html']]}]}"""
+          s=between(s,'const shops=',';const music=',shops)
+
+          music="""{jul:[['Hug feat. kojikoji','空音'],['きゃわぽっぴんどぅー','iLiFE!'],['Partner','有華'],['はくちゅーむ','BPM15Q & Yunomi'],['SUMMER SONG','YUI'],['夜の踊り子','サカナクション'],['愛のレンタル','マカロニえんぴつ'],['おつかれSUMMER','HALCALI'],['君セン！','iLiFE!'],['お姫様の作り方','=LOVE']],aug:[['Yes! 東京 (feat. EBiDAN)','EBiDAN'],['好きすぎて滅！','M!LK'],['This & That','Stray Kids'],['モンストロ','Ado'],['Toyfriend','SB19 & BE:FIRST'],['うさぎラップ (リズム感のある者たちver.)','うさぎ・モモンガ・人魚'],['夜の踊り子','サカナクション'],['Brand New','Mrs. GREEN APPLE'],['JANE DOE','米津玄師, 宇多田ヒカル'],['SODA SODA','TWS']]}"""
+          s=between(s,'const music=',';const analysis=',music)
+
+          analysis="""{jul:[['7月の中心は「シール文化」','収集・交換行動そのものが強かった。'],['Setlogは7月時点ですでに急上昇','若い女性で強いシグナル。'],['VIVANTは7月MAINから除外','月末スタートのため根拠不足。'],['Late July breakout','月末開始コンテンツは月全体と分離評価。']],aug:[['「大流行」より「変化の速さ」で順位が入れ替わる','Setlogやシールは依然大きいが、規模だけで高得点を固定しない。Setlogにはピーク警戒、シール系には成熟減点を入れ、今週浮上したファッション・加工文化を上へ動かした。'],['平成・2016リバイバルは「復刻」から「再編集」へ','ジェリー素材、ランジェリーコア、チョーカー一体型トップス、ナルミヤ雑貨に共通するのは、そのまま昔を再現するのではなく現在の着方・デコ・小物へ変換する動き。'],['アテンション・デトックスは「スマホを捨てる」ではなく「集中先を選ぶ」','凝った写真加工を無心で行う、少人数で記録する、神社やウォーリーストーンに心の拠り所を作るなど、注意を細切れに奪われない一つの行為へ没入する傾向がつながっている。'],['イベント消費は「当日」より前から始まる','8月19日の15〜24歳女性484名調査ではイベントのタイミングと楽しみ方が可視化された。プリやグッズ制作など事前準備の「型」まで含めて若者消費を捉える必要がある。'],['成熟トレンドは落とす','麻辣湯、ドバイチョコ餅、Melojoy、トモコレ等は「人気がなくなった」のではなく、今週のFreshness / Momentumが弱いためMAINから外した。Radarは人気名簿ではなく波形として運用する。']]}"""
+          s=between(s,'const analysis=',';let month=',analysis)
+
+          s=s.replace("📍 KINSHICHO：公式店舗リンクで確認<br>📍 RYOGOKU：未確認（推測なし）","📍 KINSHICHO：未確認（公式在庫情報なし）<br>📍 RYOGOKU：未確認（推測なし）")
+
+          # Preserve history-critical July data and page architecture.
+          assert old_jul in s, 'July ranking data changed'
+          for token in ['id="ranking"','id="categories"','id="history"','id="early"','id="shopping"','id="music"','id="analysis"','id="appendix"','2026年7月 REAL','2026年8月 REAL','const E=id=>document.getElementById(id)','Trend History','Shopping Radar','Music Radar','Monthly Analysis','根拠・URL']:
+              assert token in s, token
+          # Stale Shopping items must not survive the current August shopping set.
+          for stale in ['Darich ブラストフレアデニムパンツ','&honey マトメイク スティック MH4.0 MOMOREI限定','CANMAKE クリーミータッチライナー シアー 限定パッケージ','ちいかわ ウエハース エールカードコレクション']:
+              assert stale not in s, stale
+          assert 'Torriden ダイブインセラム' not in s
+          assert 'MEDICUBE ブースタープロ' not in s
+          assert s != before
+
           p.write_text(s)
+          script=re.search(r'<script>(.*)</script>',s,re.S).group(1)
+          Path('/tmp/trend-radar.js').write_text(script)
           PY
-      - name: Verify protected sections and removed stale items
+          node --check /tmp/trend-radar.js
+          git diff --check
+      - name: Verify visible sections and freshness policy
         run: |
-          grep -q '総合トレンドランキング' index.html
-          grep -q 'Trend History' index.html
-          grep -q 'Early Signal' index.html
-          grep -q 'Music Radar' index.html
-          grep -q 'Monthly Analysis' index.html
-          grep -q 'Shopping Radar' index.html
-          grep -q 'WHY NOW' index.html
-          ! grep -q 'Torriden ダイブインセラム' index.html
-          ! grep -q 'MEDICUBE ブースタープロ' index.html
+          grep -q '天女界隈' index.html
+          grep -q '穴あけパンチ加工 / チカチカ加工' index.html
+          grep -q 'PUMA ウィメンズ スピードキャット バレエ ジェリー' index.html
+          grep -q 'studio CLIP × NARUMIYA CHARACTERS' index.html
+          grep -q 'Yes! 東京 (feat. EBiDAN)' index.html
+          grep -q 'イベント準備の型化' index.html
+          grep -q '最終更新 2026/8/23' index.html
       - name: Commit page update
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add index.html
-          git commit -m 'Apply freshness-first Trend Radar policy' || exit 0
+          git commit -m 'Apply weekly Trend Radar refresh 2026-08-23' || exit 0
           git push
