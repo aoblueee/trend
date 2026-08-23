@@ -1,0 +1,54 @@
+name: Update Music Radar
+on:
+  push:
+    paths:
+      - '.github/workflows/update-music-radar.yml'
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch Music Radar
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          old='<section id="music" class="section"><h2>Music Radar 🎧</h2><div class="desc">TikTok・YouTube・週間チャートなど複数シグナルから10曲。</div><div class="music" id="musiclist"></div></section>'
+          new='''<section id="music" class="section"><h2>Music Radar 🎧</h2><div class="desc">日本市場とGlobal市場を分離して観測。JAPANは国内の10〜20代で今動く10曲、GLOBALは海外の若者・TikTok / Reels / Spotify / YouTube等を横断したHOT 10＋大ヒット前を狙うEARLY WAVES 5曲。GlobalのBGM FITはInstagram投稿との相性を示す補助タグで、順位には影響しません。</div><div class="filters" id="musicfilters"><button class="active" data-music="japan">🇯🇵 JAPAN</button><button data-music="global">🌍 GLOBAL</button></div><div id="musicintro" class="shopbox" style="margin-bottom:10px"></div><h3 id="musichotlabel">🔥 HOT NOW — 10 tracks</h3><div class="music" id="musiclist"></div><div id="musicearlywrap"><h3 style="margin-top:20px">✨ EARLY WAVES — 5 tracks</h3><div class="desc">まだ総合チャート上位でなくても、UGC増加・特定地域からの急伸・新曲の異常な伸び・REVIVALを先回りして捕捉。</div><div class="music" id="musicearly"></div></div></section>'''
+          assert old in s
+          s=s.replace(old,new)
+          start=s.index('const music=')
+          end=s.index(';const analysis=',start)
+          music="""const music={jul:{japan:[['Hug feat. kojikoji','空音','🔥 HOT','VLOG'],['きゃわぽっぴんどぅー','iLiFE!','🔥 HOT','UPBEAT'],['Partner','有華','🔥 HOT','VLOG'],['はくちゅーむ','BPM15Q & Yunomi','✨ DISCOVERY','AESTHETIC'],['SUMMER SONG','YUI','♻️ REVIVAL','TRAVEL'],['夜の踊り子','サカナクション','♻️ REVIVAL','MOODY'],['愛のレンタル','マカロニえんぴつ','🔥 HOT','MOODY'],['おつかれSUMMER','HALCALI','♻️ REVIVAL','TRAVEL'],['君セン！','iLiFE!','🔥 HOT','UPBEAT'],['お姫様の作り方','=LOVE','🔥 HOT','AESTHETIC']],global:[],early:[]},aug:{japan:[['好きすぎて滅！','M!LK','🔥 HOT','UPBEAT'],['Yes! 東京 (feat. EBiDAN)','EBiDAN','🚀 BREAKOUT','UPBEAT'],['Brand New','Mrs. GREEN APPLE','🔥 HOT','VLOG'],['This & That','Stray Kids','🚀 BREAKOUT','UPBEAT'],['JANE DOE','米津玄師, 宇多田ヒカル','🆕 NEW','MOODY'],['Toyfriend','SB19 & BE:FIRST','🚀 BREAKOUT','UPBEAT'],['島のうた (セイレーンver.)','セイレーン・人魚','🔥 HOT','AESTHETIC'],['GG EZ','M.Sasuke','✨ DISCOVERY','UPBEAT'],['モンストロ','Ado','🆕 NEW','MOODY'],['セツナハナビ (Setsuna Hanabi)','TOMORROW X TOGETHER','🆕 NEW','TRAVEL']],global:[['Heaven Baby (feat. ZAYN)','Ayra Starr, ZAYN','🚀 BREAKOUT','AESTHETIC'],['Bat Signal','Noodah05 & FattMack','🚀 BREAKOUT','UPBEAT'],['FREAKED OUT','Fat Papi, prodshushy','🔥 HOT','FASHION'],['Stateside + Zara Larsson','PinkPantheress, Zara Larsson','🔥 HOT','AESTHETIC'],['Boston','STELLA LEFTY','🚀 BREAKOUT','TRAVEL'],['petal','Ariana Grande','🔥 HOT','AESTHETIC'],['bloodstream','Alyssa Grace','🚀 BREAKOUT','MOODY'],['Earrings','Malcolm Todd','🔥 HOT','VLOG'],['Risk It All','Bruno Mars','🔥 HOT','TRAVEL'],['Dai Dai','Shakira, Burna Boy','🔥 HOT','UPBEAT']],early:[['Sharp Shooter','Zayle Manroe','✨ EARLY','UPBEAT'],['Ain’t In LA','ADÉLA','✨ EARLY','FASHION'],['do i clench my fists?','ridgeclub','✨ EARLY','MOODY'],['iloveitiloveitiloveit','Bella Kay','✨ EARLY','AESTHETIC'],['Landslide','Fleetwood Mac','♻️ REVIVAL','TRAVEL']]}}"""
+          s=s[:start]+music+s[end:]
+          oldrender="E('musiclist').innerHTML=music[month].map((x,i)=>`<div class=\"song\"><div>${String(i+1).padStart(2,'0')}</div><div><b>${x[0]}</b><small>${x[1]}</small></div><a class=\"sp\" target=\"_blank\" href=\"https://open.spotify.com/search/${encodeURIComponent(x[0]+' '+x[1])}\">Spotify ↗</a></div>`).join('');"
+          newrender="rmusic();"
+          assert oldrender in s
+          s=s.replace(oldrender,newrender)
+          marker="function render(){"
+          fn="""let musicMarket='japan';function songrow(x,i){return`<div class=\"song\"><div>${String(i+1).padStart(2,'0')}</div><div><b>${x[0]}</b><small>${x[1]} · ${x[2]||''}${x[3]?` · 🎬 ${x[3]}`:''}</small></div><a class=\"sp\" target=\"_blank\" rel=\"noopener\" href=\"https://open.spotify.com/search/${encodeURIComponent(x[0]+' '+x[1])}\">Spotify ↗</a></div>`}function rmusic(){let m=music[month];if(!m)return;E('musicfilters').querySelectorAll('button').forEach(b=>{b.classList.toggle('active',b.dataset.music===musicMarket);b.onclick=()=>{musicMarket=b.dataset.music;rmusic()}});if(musicMarket==='japan'){E('musicintro').innerHTML='<b>🇯🇵 JAPAN MUSIC RADAR</b><br>日本の10〜20代で「今」動いている曲を、Billboard Japan / YouTube / TikTok・UGC / streaming等から横断。前回曲を惰性で残さず10曲を再選定。';E('musichotlabel').textContent='🔥 HOT NOW — 10 tracks';E('musiclist').innerHTML=(m.japan||[]).map(songrow).join('');E('musicearlywrap').style.display='none'}else{E('musicintro').innerHTML='<b>🌍 GLOBAL MUSIC RADAR</b><br>海外の10〜20代を中心に、Spotify Global / Billboard Global / TikTok・Reels系UGC / YouTube / Shazam等を横断。日本での知名度は選定条件にしません。🎬 BGM FITはInstagramのVlog・旅行・カフェ・ファッション等への使いやすさを示す補助タグです。';E('musichotlabel').textContent='🔥 HOT NOW — 10 tracks';E('musiclist').innerHTML=(m.global||[]).map(songrow).join('')||'<div class=\"song\"><div>—</div><div><b>7月データなし</b><small>Global Radarは8月から観測開始</small></div><div></div></div>';E('musicearlywrap').style.display='block';E('musicearly').innerHTML=(m.early||[]).map(songrow).join('')||'<div class=\"song\"><div>—</div><div><b>7月データなし</b><small>Early Wavesは8月から観測開始</small></div><div></div></div>'}}"""
+          s=s.replace(marker,fn+marker,1)
+          appendix='<div class="method"><h3>Global Music Radar</h3><p>HOT 10は海外若者の現在波、EARLY WAVES 5は次に来る可能性のある曲。Spotify / Billboard / YouTube / TikTok・Reels UGC / Shazam等を独立観測し、Freshness × Momentum × Evidence Strength × Source Diversityで選定。日本で流行しているかはGlobalの条件にしない。BGM FITはInstagram投稿との相性を示す補助情報でスコアには影響しない。</p></div>'
+          s=s.replace('<div class="method"><h3>Local Status</h3>',appendix+'<div class="method"><h3>Local Status</h3>',1)
+          p.write_text(s)
+          PY
+      - name: Validate
+        run: |
+          grep -q 'GLOBAL MUSIC RADAR' index.html
+          grep -q 'EARLY WAVES' index.html
+          grep -q 'Shopping Radar' index.html
+          grep -q 'Trend History' index.html
+          grep -q 'Monthly Analysis' index.html
+          grep -q 'const jul=' index.html
+          grep -q 'const aug=' index.html
+          grep -q "document.getElementById" index.html
+      - name: Commit
+        run: |
+          git config user.name 'trend-radar-bot'
+          git config user.email 'trend-radar-bot@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Split Music Radar into Japan and Global' || exit 0
+          git push
