@@ -1,0 +1,59 @@
+name: Weekly Trend Radar refresh 2026-08-30
+on:
+  push:
+    paths:
+      - '.github/workflows/weekly-refresh-20260830.yml'
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch weekly data
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html')
+          s=p.read_text()
+          aug="""[{n:'映画ちいかわ 人魚の島のひみつ',c:'Video / Streaming',s:96,w:'🔥 MAIN / MEGA HIT',v:[23,19,20,15,10,9],e:'【CONSUMPTION● OFFICIAL● SOCIAL●】7/24公開後、8月下旬まで100億円級へ伸長した巨大な実消費を維持。今週は新規加速より高水準継続と判断し96据え置き。',l:[['公式','https://www.anime-chiikawa.jp/'],['興収100億円到達','https://www.oricon.co.jp/news/2475206/full/']]},{n:'Setlog',c:'SNS / Apps',s:95,w:'🔥 MAIN / 高浸透',v:[21,20,19,15,10,10],e:'【SURVEY● PLATFORM● BEHAVIOR●】15〜24歳4,729人調査で若年女性上位、学生479人調査で認知91.4%・利用73.7%。8月中旬App Store上位も確認済み。急上昇期から高浸透局面へ移ったため前週97から95へ。',l:[['LINEリサーチ','https://note.com/linesurveys_jp/n/n0ba6dfe47563'],['学生利用実態','https://prtimes.jp/main/html/rd/p/000000102.000033964.html'],['App Store','https://apps.apple.com/jp/app/setlog/id6587576438']]},{n:'シール交換 / シール帳',c:'Character / Goods',s:95,w:'🔥 MAIN / 高止まり',v:[21,20,19,14,10,11],e:'【SURVEY● RETAIL● SCARCITY● SOCIAL●】複数若者調査で上位が続き、8月後半もボンボンドロップ新作の売切れ・二次流通高騰が発生。文化全体の新規加速は春より弱いが、購買熱が再点火しているため94→95。',l:[['高校生夏トレンド','https://shibuya-trendresearch.jp/monthlytrendsurvey/4480/'],['LINEリサーチ','https://note.com/linesurveys_jp/n/n0ba6dfe47563'],['ドラえもん新作高騰','https://bonbon-navi.com/info/news/doraemon-bonbon-drop-seal-mercari-price-rise-202608/']]},{n:'M!LK / 「○○すぎて滅」',c:'Culture / Language',s:91,w:'🔥 MAIN / 高水準',v:[18,20,19,14,10,10],e:'【SURVEY● UGC● VIDEO●】若者調査で言葉・アーティスト双方が強く、8月後半もM!LK新規ライブ映像がYouTube Trending入り。前週の再加速ピークからは一段落として93→91。',l:[['10代女子調査','https://gakumado.mynavi.jp/teens/articles/88881'],['YouTube Japan 8/29','https://yt-trends.sarojmeher.com/japan/music']]},{n:'EBiDAN「Yes! 東京」',c:'Video / Streaming',s:90,w:'🔥 MAIN / BREAKOUT継続',v:[22,18,18,14,9,9],e:'【SALES● VIDEO● CHART●】初週ミリオン級セールス後も、8/17〜23集計のBillboard JAPAN Hot 100で3位、動画指標は1位を継続。初動ピーク後も複数指標で残っているためMAIN維持。',l:[['Billboard JAPAN 8/26','https://www.billboard-japan.com/d_news/detail/164871/2'],['YouTube Japan','https://yt-trends.sarojmeher.com/japan/music']]},{n:'ボンボンドロップシール',c:'Character / Goods',s:88,w:'🚀 PRODUCT HEAT 再加速',v:[21,20,17,14,8,8],e:'【SURVEY● RETAIL● SCARCITY● PRODUCT●】8/14ドラえもん限定新作が売切れ後に定価の約8倍水準で二次流通成立。8/29には派生の前髪クリップ新柄12種も出荷開始。商品熱の再加速を受け84→88。',l:[['ドラえもん高騰','https://bonbon-navi.com/info/news/doraemon-bonbon-drop-seal-mercari-price-rise-202608/'],['前髪クリップ新柄','https://happycruise.jp/bonbondrop-bangs-clip-2026/']]},{n:'トモダチコレクション わくわく生活',c:'Hobby / Experience',s:84,w:'🟡 PEAK → COOLING',v:[13,18,20,13,10,10],e:'【CONSUMPTION● OFFICIAL●】4/16発売から約4か月で世界800万本超という巨大実績。ただし今週の新たな加速材料は乏しく、人気継続とMomentumを分離して86→84。MAINには残すがCooling監視。',l:[['任天堂公式','https://www.nintendo.com/jp/topics/article/45d42c50-0991-4405-895a-64f0ad37fa89'],['800万本超','https://news.denfaminicogamer.jp/news/2608062w']]},{n:'めじるしアクセサリー / チャーム',c:'Character / Goods',s:83,w:'🟡 PEAK監視',v:[15,18,17,13,10,10],e:'【SURVEY● PRODUCT● SOCIAL●】複数若者調査とInstagram投稿量で強さは確認できる一方、8月最終週の新規加速を示す販売データは弱い。85→83でPeak監視。',l:[['上半期Z世代トレンド','https://www.fun-japan.jp/en/articles/14663'],['ガシャポン発売予定','https://gashapon.jp/schedule/']]},{n:'フレネミー',c:'Culture / Language',s:79,w:'🟡 COOLING監視',v:[17,20,14,11,8,9],e:'【SURVEY● SOCIAL●】複数若者パネルで一致した言葉だが、8月最終週の再加速データが薄い。MAIN下位に残し81→79。',l:[['αZ総研','https://prtimes.jp/main/html/rd/p/000000116.000020799.html'],['中高生調査','https://alpha-gen-lab.com/news/XCgNsL9s']]}]"""
+          early_aug="""[['パペットスンスン','上半期キャラクター調査1位級に加え、8/23に細野晴臣とのYouTube Music Weekendコラボ。露出の質は上がっているが、8月最終週の利用・購買急増という独立ハードデータがまだ弱いためMAIN昇格は保留。'],['Mellojoy','上半期若者調査では強いが、8月最終週の再加速データ不足。定番人気とBreakoutを分けて監視継続。'],['ボンボンドロップ前髪クリップ','8/29に新柄12種が出荷開始。巨大なシール熱が別カテゴリへ派生する兆候としてEARLY。実売・UGCが追随すればMAIN/Shopping上位へ。'],['AIイラスト','下半期ネクスト予測上位。現在利用量の独立した急増確認待ち。'],['GG EZ / AI生成楽曲×ダンス','AI生成楽曲×TikTokダンスの先行事例。単曲ヒットからカテゴリ波へ広がるか監視。'],['天女界隈','先行観測はあるが、独立した検索・購買・別パネルの追随待ち。'],['ジェリーバッグ / ジェリーシューズ','商品投入は続くが、若者全体の実購買を示すデータ待ち。'],['ランジェリーコア / 2016リバイバル','2016 nostalgiaの大きな波と整合。ファッション購買へ転換するか監視。'],['お菓子帳','シール交換の収集・交換行動が菓子パッケージへ派生する兆候。'],['ワホー（SEIKINミーム再燃）','REVIVAL型ミーム。8月末の再加速確認待ち。']]"""
+          shops_aug="""[{n:'ボンボンドロップシール ドラえもん / 藤子・F・不二雄キャラクターズ',signal:'🚀 BREAKOUT / 🔥 SCARCITY',sub:'8/14限定新作2種',cat:'Goods',s:95,status:'HOT',price:'定価各¥550',release:'8/14',e:'【RETAIL● SCARCITY● RESALE●】売切れ後、2種セットが8,000〜10,000円台、8,888円で成約表示も確認。定価合計1,100円の約8倍という異常な二次流通熱で92→95。',l:[['高騰・売切れ','https://bonbon-navi.com/info/news/doraemon-bonbon-drop-seal-mercari-price-rise-202608/']]},{n:'rom&nd 豆乳エディション 42 ソイフィグ',signal:'🆕 NEW / 🚀 LAUNCH',sub:'ザ ジューシーラスティングティント限定色',cat:'Beauty',s:92,status:'HOT',price:'¥1,320',release:'8/28先行 / 9/11全国',disc:1,e:'【OVERSEAS SALES● RETAIL● OFFICIAL●】韓国Qoo10公式でシリーズ発売1週間約42,000個、日本では8/28からLOFT・PLAZA・@cosme先行発売へ移行。PREからHOTへ昇格。国内実売は次週再評価。',l:[['韓国実売・日本発売','https://prtimes.jp/main/html/rd/p/000000373.000076505.html']]},{n:'Urumia × 矢沢あい Heroine Collection',signal:'🔥 HOT',sub:'NANA / ご近所物語 / 天使なんかじゃない / Paradise Kiss',cat:'Beauty',s:90,status:'HOT',price:'10枚 ¥1,870',release:'8/19',e:'初週の売切れ・POPUP行列という強いEvidenceは維持。ただし発売初動から時間が経過したため96→90。',l:[['公式','https://urumia.com/']]},{n:'ボンボンドロップ前髪クリップ 新柄12種',signal:'🆕 NEW / ✨ DISCOVERY',sub:'ハシビロコウ・マヌルネコ等',cat:'Goods',s:84,status:'HOT',price:'各¥660',release:'8/29出荷開始',disc:1,e:'【OFFICIAL● PRODUCT● CULTURE FIT●】8/29に新柄12種の出荷開始。シールで形成されたボンボンドロップの購買熱がアクセサリーへ横展開する新規シグナル。実売は次週確認。',l:[['新柄12種','https://happycruise.jp/bonbondrop-bangs-clip-2026/']]},{n:'rom&nd ジューシーフラッシュリップオイル 11 ソイミルク',signal:'🆕 NEW / 🚀 LAUNCH',sub:'豆乳エディション限定色',cat:'Beauty',s:88,status:'HOT',price:'¥1,485',release:'8/28先行 / 9/11全国',e:'豆乳エディションの具体SKU。8/28先行発売へ移行したためPREからHOTへ。国内実売待ちでスコアは抑制。',l:[['発売情報','https://prtimes.jp/main/html/rd/p/000000373.000076505.html']]},{n:'ANGEL BLUE × サンキューマート シールバインダー',signal:'♻️ REVIVAL / 🔮 PRE-LAUNCH',sub:'平成女児×シール文化',cat:'Goods',s:86,status:'PRE',price:'¥429',release:'9月上旬',disc:1,e:'平成女児リバイバルと現在のシール交換を接続する具体SKU。発売直前のため継続監視。',l:[['公式','https://thankyoumart.jp/blogs/news/angelblue']]},{n:'サンリオキャラクターズ くだものめじるしアクセサリー',signal:'🆕 NEW',sub:'全5種',cat:'Character',s:75,status:'HOT',price:'¥300',release:'8月第2週',local:1,e:'カテゴリ人気は強いが、このSKU単体の8月最終週販売熱は未確認。78→75。',l:[['ガシャポン公式','https://gashapon.jp/schedule/']]}]"""
+          music_aug="""{japan:[['セツナハナビ (Setsuna Hanabi)','TOMORROW X TOGETHER','🚀 BREAKOUT','TRAVEL'],['Yes! 東京 (feat. EBiDAN)','EBiDAN','🔥 HOT','UPBEAT'],['好きish','AKB48','🆕 NEW','UPBEAT'],['show time...','Snow Man','🚀 BREAKOUT','FASHION'],['灰色','大森元貴','🚀 BREAKOUT','MOODY'],['爆裂愛してる','M!LK','🚀 BREAKOUT','UPBEAT'],['好きすぎて滅！','M!LK','🔥 HOT','UPBEAT'],['Brand New','Mrs. GREEN APPLE','🔥 HOT','VLOG'],['JANE DOE','米津玄師, 宇多田ヒカル','🔥 HOT','MOODY'],['This & That','Stray Kids','🔥 HOT','UPBEAT']],global:[['Dai Dai','Shakira, Burna Boy','🔥 HOT','TRAVEL'],['Earrings','Malcolm Todd','🚀 BREAKOUT','VLOG'],['Loser','Tame Impala','🚀 BREAKOUT','AESTHETIC'],['Boston','STELLA LEFTY','🚀 BREAKOUT','TRAVEL'],['hate that i made you love me','Ariana Grande','🔥 HOT','MOODY'],['So Easy (To Fall In Love)','Olivia Dean','🔥 HOT','AESTHETIC'],['Animal','KATSEYE','🚀 BREAKOUT','FASHION'],['petal','Ariana Grande','🔥 HOT','AESTHETIC'],['Stateside + Zara Larsson','PinkPantheress, Zara Larsson','🔥 HOT','FASHION'],['Risk It All','Bruno Mars','🔥 HOT','TRAVEL']],early:[['FREAKED OUT','Fat Papi, prodshushy','✨ EARLY','UPBEAT'],['End of August','Noah Kahan','✨ EARLY','TRAVEL'],['Landslide','Fleetwood Mac','♻️ REVIVAL','MOODY'],['Gut Genug','KITSCHKRIEG, Blumengarten, Shirin David','✨ EARLY','AESTHETIC'],['Movin’ to the Sun','HUGEL, Imael Angel, Ultra Naté','✨ EARLY','TRAVEL']]}"""
+          analysis_aug="""[['8月最終週は「巨大ヒット」と「今週の伸び」を分離','映画ちいかわ・トモコレは巨大な実消費を維持する一方、今週の新規加速は限定的。規模の強さでMAINを維持しつつ、Momentumは下げてPeak/Coolingを明示した。'],['シール文化は商品側で再点火','文化全体は成熟局面だが、8/14ドラえもん限定ボンボンドロップが売切れ後に定価の約8倍で二次流通成立。8/29には前髪クリップ新柄12種も登場し、熱がSKUと派生カテゴリへ移っている。'],['音楽は「市場を二枚に分ける」ことで解像度が上がった','JAPANは8/17〜23集計のBillboard JAPANとYouTube Japanを重視し、TXT・EBiDAN・Snow Man・大森元貴・M!LKなど直近の動きを反映。GLOBALはBillboard Global、Spotify Global、TikTok系UGCを独立観測し、日本の知名度を条件にしない。'],['Globalでは大ヒットとUGC先行を分離','Dai DaiはBillboard Global 200で6週首位、Spotify GlobalではEarrings・Loser・Dai Daiが最上位圏。一方FREAKED OUT、End of August、Landslide等はTikTok利用文脈が先行しておりEARLY WAVESとして分離した。'],['EARLYは昇格を急がない','パペットスンスンは細野晴臣とのYouTube Music Weekendコラボで露出の質が上がったが、購買・利用の新規急増が確認できるまではEarlyに残す。Mellojoyも同様に上半期実績と8月末Momentumを分けて判断する。']]"""
+          s=s.replace('最終更新 2026/8/23。','最終更新 2026/8/30。')
+          s=re.sub(r"const aug=\[.*?\];const early=", 'const aug='+aug+';const early=', s, count=1, flags=re.S)
+          m=re.search(r"const early=\{jul:(\[.*?\]),aug:\[.*?\]\};const shopCats=",s,re.S); assert m
+          s=s[:m.start()]+'const early={jul:'+m.group(1)+',aug:'+early_aug+'};const shopCats='+s[m.end():]
+          m=re.search(r"const shops=\{jul:(\[.*?\]),aug:\[.*?\]\};const music=",s,re.S); assert m
+          s=s[:m.start()]+'const shops={jul:'+m.group(1)+',aug:'+shops_aug+'};const music='+s[m.end():]
+          m=re.search(r"const music=\{jul:(\{.*?\}),aug:\{.*?\}\};const analysis=",s,re.S); assert m
+          s=s[:m.start()]+'const music={jul:'+m.group(1)+',aug:'+music_aug+'};const analysis='+s[m.end():]
+          m=re.search(r"const analysis=\{jul:(\[.*?\]),aug:\[.*?\]\};let month=",s,re.S); assert m
+          s=s[:m.start()]+'const analysis={jul:'+m.group(1)+',aug:'+analysis_aug+'};let month='+s[m.end():]
+          p.write_text(s)
+          PY
+      - name: Validate
+        run: |
+          grep -q '最終更新 2026/8/30' index.html
+          grep -q '映画ちいかわ' index.html
+          grep -q 'パペットスンスン' index.html
+          grep -q 'ボンボンドロップ前髪クリップ' index.html
+          grep -q 'JAPAN MUSIC RADAR' index.html
+          grep -q 'GLOBAL MUSIC RADAR' index.html
+          grep -q 'EARLY WAVES' index.html
+          grep -q 'Dai Dai' index.html
+          grep -q 'Trend History' index.html
+          grep -q 'Shopping Radar' index.html
+          grep -q 'Monthly Analysis' index.html
+          grep -q 'Appendix' index.html
+          grep -q 'const jul=' index.html
+          grep -q 'document.getElementById' index.html
+      - name: Commit
+        run: |
+          git config user.name 'trend-radar-bot'
+          git config user.email 'trend-radar-bot@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Weekly Trend Radar refresh 2026-08-30' || exit 0
+          git push
