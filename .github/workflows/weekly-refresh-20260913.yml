@@ -1,0 +1,126 @@
+name: Weekly Trend Radar refresh 2026-09-13
+on:
+  push:
+    paths:
+      - '.github/workflows/weekly-refresh-20260913.yml'
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch current September data only
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          p=Path('index.html'); s=p.read_text()
+          def load_const(name,next_name):
+              m=re.search(rf'const {name}=(.*?);\nconst {next_name}=',s,re.S)
+              if not m: raise SystemExit(f'missing {name}')
+              return json.loads(m.group(1))
+          def replace_const(text,name,next_name,obj):
+              payload=json.dumps(obj,ensure_ascii=False,separators=(',',':'))
+              return re.sub(rf'const {name}=.*?;\nconst {next_name}=',f'const {name}={payload};\nconst {next_name}=',text,flags=re.S)
+          allData=load_const('allData','early')
+          early=load_const('early','shopCats')
+          shops=load_const('shops','music')
+          music=load_const('music','analysis')
+          m=re.search(r'const analysis=(.*?);\nconst monthOrder=',s,re.S)
+          if not m: raise SystemExit('missing analysis')
+          analysis=json.loads(m.group(1))
+
+          allData['sep']=[
+            {'n':'映画ちいかわ 人魚の島のひみつ','c':'Video / Streaming','s':99,'w':'🚀 MAIN / RE-ACCELERATION','v':[25,19,20,15,10,10],'e':'【CONSUMPTION● CHART● EVENT●】9/4〜6の週末で動員92.8万人・興収14.15億円を積み、国内週末1位へ再返り咲き。累計960万人・138億円突破。ロングランの惰性ではなく7週目に再加速したため98→99。','l':[['9/4〜6首位・138億円','https://anime.eiga.com/news/column/eiga_ranking/127402/'],['興行成績','https://mantan-web.jp/article/20260908dog00m200038000a.html'],['映画公式','https://www.anime-chiikawa.jp/']]},
+            {'n':'Setlog','c':'SNS / Apps','s':96,'w':'🔥 MAIN / HIGH PENETRATION','v':[21,20,20,15,10,10],'e':'【SURVEY● PLATFORM● DOWNLOAD●】若年層での高利用に加え、9/11時点でも日本App Store無料SNS1位。急上昇期ほどの新規Momentumではないが、実DLの首位を継続しているため96据え置き。','l':[['App Storeカテゴリ1位 9/11','https://www.appbrain.com/stats/appstore-rankings/top_free/social_networking/jp'],['LINEリサーチ','https://note.com/linesurveys_jp/n/n0ba6dfe47563'],['App Store','https://apps.apple.com/jp/app/setlog/id6587576438']]},
+            {'n':'ボンボンドロップシール','c':'Character / Goods','s':95,'w':'🚀 MAIN / PRODUCT WAVE','v':[24,20,18,15,9,9],'e':'【SURVEY● PRODUCT● PRE-LAUNCH● SCARCITY●】9/10にMrs. GREEN APPLE全4種の9/24先行抽選詳細が確定し、9/11にはちいかわ新作3種の9/25発売も発表。成熟したシール文化の中で具体SKUが連続投入され、商品波がさらに強まったため93→95。','l':[['ミセス 9/24先行抽選','https://www.oricon.co.jp/news/2479510/full/'],['ちいかわ新作3種 9/25','https://www.inside-games.jp/article/2026/09/11/187631.html'],['若者調査','https://www.oricon.co.jp/pressrelease/2914206/']]},
+            {'n':'EBiDAN「Yes! 東京」','c':'Video / Streaming','s':94,'w':'🚀 MAIN / RE-ACCELERATION','v':[24,19,18,15,9,9],'e':'【CHART● VIDEO● STREAMING●】Billboard JAPAN Hot 100 9/9付で総合1位。YouTubeは8/28〜9/3に545.9万回、前週比+14%で3週連続1位。初動後に動画側が再加速しているため92→94。','l':[['Billboard JAPAN Hot 100','https://www.billboard-japan.com/charts'],['YouTube3週連続1位','https://www.oricon.co.jp/news/2479177/'],['週間ストリーミング','https://www.oricon.co.jp/music/rankinglab/st/2026-09-07/']]},
+            {'n':'Mellojoy','c':'Hobby / Experience','s':91,'w':'🚀 EARLY → MAIN / REAL-WORLD BREAKOUT','v':[25,20,16,14,8,8],'e':'【SURVEY● SOCIAL● RETAIL● EXPERIENCE●】上半期の10〜20代女性調査で強かったスクイーズ波が、SNS累計10億impを経て9/9に原宿の日本初リアル体験店へ到達。入店は電子整理券で管理され、オンライン人気が「触りに行く・買いに行く」行動へ接続したためMAIN昇格。','l':[['原宿公式・整理券','https://www.mellojoyjapan.com/pages/harajuku-pop-up-shop'],['SNS10億imp・店舗開業','https://www.oricon.co.jp/news/2476337/'],['上半期Z世代調査','https://news.mynavi.jp/article/20260601-4529839/']]},
+            {'n':'M!LK / 「○○すぎて滅」','c':'Culture / Language','s':90,'w':'🔥 MAIN / LONG TAIL','v':[18,20,19,14,9,10],'e':'【SURVEY● STREAMING● VIDEO● KARAOKE●】若者語としての波と楽曲が長期接続。9/10時点YouTube Japanで「好きすぎて滅！」4位圏、オリコン週間カラオケでも2位。再加速というより高水準ロングテールのため92→90。','l':[['YouTube Japan 9/10','https://www.kworb.net/youtube/insights/jp_daily.html'],['カラオケ2位','https://www.oricon.co.jp/rank/ko/w/2026-09-07/'],['10代女子調査','https://www.mynavi.jp/news/2026/06/post_53651.html']]},
+            {'n':'シール交換 / シール帳','c':'Character / Goods','s':88,'w':'🟡 PEAK / SKU SHIFT','v':[16,20,18,14,10,10],'e':'【SURVEY● SOCIAL● RETAIL●】文化自体は若者調査で強いが、9月の新規Momentumは「シール交換」全体よりボンボンドロップ等の具体商品へ集中。広い文化波は91→88へ下げPeak判定。','l':[['10代女子調査','https://www.mynavi.jp/news/2026/06/post_53651.html'],['若者調査','https://www.oricon.co.jp/pressrelease/2914206/']]},
+            {'n':'パペットスンスン','c':'Character / Goods','s':86,'w':'🔥 MAIN / RETAIL EXPANSION','v':[18,19,17,13,9,10],'e':'【VIDEO● RETAIL● OFFICIAL●】9月はほぼ日手帳、ACCOMMODE、Fairycake Fairと生活雑貨・食品へ接点が拡張。Fairycake Fairは販売期間中整理券制。実売数量の新規ハードデータは未確認のため87→86としつつMAIN維持。','l':[['Fairycake Fair整理券・商品','https://report.iko-yo.net/articles/32959'],['ほぼ日コラボ','https://www.inside-games.jp/article/2026/08/31/187035.html'],['ACCOMMODEコラボ','https://media.kawa-colle.jp/_ct/17861551']]},
+            {'n':'めじるしアクセサリー / チャーム','c':'Character / Goods','s':82,'w':'🟡 PEAK / SUPPLY ACTIVE','v':[14,18,17,13,10,10],'e':'【SURVEY● PRODUCT● SUPPLY●】9月は新作・再販が30種超規模で継続し、9/12にも「どこでもいっしょ」の限定再販が発表。供給は非常に活発だが需要の再加速を示す実売は弱いため82据え置き。','l':[['9月新作・再販一覧','https://news.mynavi.jp/article/20260901-4899579/'],['どこでもいっしょ限定再販','https://game.watch.impress.co.jp/docs/news/2138578.html']]}]
+
+          early['sep']=[
+            ['縦型ショートドラマ / BUMP','国内発ショートドラマアプリとして累計DL・SNS再生の規模は強いが、9月第2週の新規加速を示す独立データが不足。MAIN昇格は保留。'],
+            ['2016 / 平成リバイバルの秋服化','PLAZAが9/4〜24にポルカドット・チェック・クラシックな秋服を前面展開。供給側の波は明確だが若者実購買の量的データ待ち。'],
+            ['AIイラスト','下半期ネクスト予測上位。9月第2週に利用量が急増したことを示すプラットフォーム指標がまだ不足。'],
+            ['お菓子帳','シール交換の「集める・見せる・交換する」が菓子パッケージへ派生する先行シグナル。独立した量的上昇待ち。'],
+            ['ネオ質感 / ミュートカラーリップ','LIPS 9月トレンド賞で秋冬新作のリップが上位を占める。美容プラットフォーム内の強いシグナルだが、別系統の購買データが揃うまでEarly。'],
+            ['チャーミーキティ再編集','9/12にSAMANTHAVEGA初コラボが一般発売。平成キャラの再評価がバッグ・ぬいぐるみチャームへ広がるが、発売直後の実売確認待ち。']]
+
+          shops['sep']=[
+            {'n':'Mrs. GREEN APPLE × ボンボンドロップシール 全4種','signal':'🔮 PRE-LAUNCH / 🚀 BREAKOUT','sub':'グリーン / ミュージック / パーティー / ファンタジー','cat':'Goods','s':98,'status':'PRE','price':'4種セット ¥2,640','release':'9/24 18:00〜先行抽選','disc':1,'e':'【OFFICIAL● PRE-LAUNCH● SCARCITY FIT●】9/10に先行抽選の具体日程が確定。9/24〜26申込、10月下旬には全国ローソン販売予定。ボンドロ初のアーティストコラボ×ミセスの巨大ファンダムで96→98。','l':[['抽選日程・ローソン販売','https://www.oricon.co.jp/news/2479510/full/'],['価格・抽選概要','https://www.seal-search.com/news/new-item/mrs-green-apple-bonbondrop-lottery-20260924/']]},
+            {'n':'ちいかわ ボンボンドロップシール 新作3種','signal':'🔮 PRE-LAUNCH / 🚀 BREAKOUT','sub':'ちいかわ寿司 / Chiikawa Baby / ちいかわらんど','cat':'Goods','s':97,'status':'PRE','price':'各¥550','release':'9/25 11:00〜','disc':1,'e':'【OFFICIAL● IP HEAT● PRODUCT●】映画が興収138億円まで再加速するタイミングで、ボンドロ新作3種を9/25発売。ちいかわ×ボンドロという二つの強い波が交差するため発売前97。','l':[['9/25発売・全3種','https://www.inside-games.jp/article/2026/09/11/187631.html'],['価格・販売概要','https://sachie1211.com/chiikawa-bonbon-drop-seal-itsumade/']]},
+            {'n':'Mellojoy ミニランド A035','signal':'🚀 BREAKOUT / 🔥 SOLD OUT','sub':'原宿POP-UP人気商品・ブラインドボックス','cat':'Goods','s':94,'status':'HOT','price':'¥3,598','release':'発売中 / 原宿9/9開業','disc':1,'e':'【SOCIAL● RETAIL● SOLD OUT● EXPERIENCE●】SNS10億impから原宿リアル店へ波及。公式通販のミニランドA035は売り切れ表示。店舗は電子整理券運用で、オンライン→実店舗→品薄の転換が確認できる。','l':[['公式商品・売り切れ','https://www.mellojoyjapan.com/products/mellojoy-%E3%83%A7%E3%82%A4-%E3%83%9F%E3%83%8B%E3%83%A9%E3%83%B3%E3%83%89-%E9%96%8B%E5%B0%81%E5%BE%8C%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%9B%E3%82%93-a035-%E3%83%96%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%89%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E3%81%AE%E3%81%8A%E3%82%82%E3%81%A1%E3%82%83'],['原宿公式','https://www.mellojoyjapan.com/pages/harajuku-pop-up-shop']]},
+            {'n':'パペットスンスン ビスケットパレード缶','signal':'🔥 HOT / RETAIL EXPANSION','sub':'Fairycake Fair 初コラボ・型抜きビスケット8枚','cat':'Food','s':89,'status':'HOT','price':'¥2,980','release':'9/3〜順次','disc':1,'e':'【RETAIL● OFFICIAL● EVENT●】ルミネ新宿→グランスタ東京→渋谷へ順次展開し、販売期間は整理券制。初動から1週経過し実売数量は未確認のため91→89。','l':[['商品・価格・整理券','https://report.iko-yo.net/articles/32959']]},
+            {'n':'rom&nd 豆乳エディション 42 ソイフィグ','signal':'🔥 HOT / NATIONAL LAUNCH','sub':'ザ ジューシーラスティングティント限定色','cat':'Beauty','s':86,'status':'HOT','price':'¥1,320','release':'9/11全国発売','e':'【OVERSEAS SALES● RETAIL● OFFICIAL●】韓国でシリーズ発売1週間約42,000個の実売を持ち、9/11に日本全国発売へ。国内数量実売はまだ未確認のため88→86。','l':[['韓国実売・日本発売','https://prtimes.jp/main/html/rd/p/000000373.000076505.html']]},
+            {'n':'SAMANTHAVEGA × チャーミーキティ ぬいぐるみチャーム','signal':'🆕 NEW / ♻️ REVIVAL','sub':'チャーミーキティ初コラボ・ふわふわチャーム','cat':'Fashion','s':82,'status':'HOT','price':'¥4,400','release':'9/12一般発売','disc':1,'e':'【OFFICIAL● NOSTALGIA FIT● PRODUCT●】平成キャラ再編集の具体SKUとして9/12発売。発売直後で売切れ・実売は未確認のため82、次週需要を再判定。','l':[['9/12発売・価格','https://s.animeanime.jp/article/2026/09/10/102822.html']]},
+            {'n':'どこでもいっしょ めじるしアクセサリー','signal':'♻️ REVIVAL / 🔮 REISSUE','sub':'トロ / クロほか全6種・店舗限定再販','cat':'Character','s':79,'status':'PRE','price':'¥300','release':'9月第3週','local':1,'e':'【PRODUCT● REISSUE● NOSTALGIA FIT●】1999年IP×めじるしアクセサリーの再販。全国のバンダイオフィシャルショップ等限定。KINSHICHO/RYOGOKUの個店入荷日は公式確認できていないため未確認表示。','l':[['9月第3週限定再販','https://game.watch.impress.co.jp/docs/news/2138578.html']]}]
+
+          music['sep']={
+            'japan':[
+              ['Yes! 東京 (feat. EBiDAN)','EBiDAN','🚀 RE-ACCELERATION','UPBEAT'],
+              ['Brand New','Mrs. GREEN APPLE','🔥 HOT','VLOG'],
+              ['灰色','大森元貴','🚀 BREAKOUT','MOODY'],
+              ['にゃんてずるいの!','fav me','🚀 BREAKOUT','UPBEAT'],
+              ['恋、はじめました。','=LOVE','🔥 HOT','AESTHETIC'],
+              ['わったらいふ!','わーすた','🚀 BREAKOUT','UPBEAT'],
+              ["It's Me",'ILLIT','🔥 HOT','FASHION'],
+              ['好きすぎて滅！','M!LK','🔥 HOT','UPBEAT'],
+              ['奇跡','Snow Man','🚀 BREAKOUT','MOODY'],
+              ['IRIS OUT','米津玄師','🔥 HOT','MOODY']],
+            'global':[
+              ['BbY WOW','KAROL G, Judeline, rusowsky','🚀 BREAKOUT','UPBEAT'],
+              ['Earrings','Malcolm Todd','🔥 HOT','VLOG'],
+              ['Ain’t In LA','ADÉLA','🚀 BREAKOUT','FASHION'],
+              ['Loser','Tame Impala','🔥 HOT','AESTHETIC'],
+              ['Beauty And A Beat','Justin Bieber, Nicki Minaj','♻️ REVIVAL','UPBEAT'],
+              ['The One That Got Away','Katy Perry','♻️ REVIVAL','AESTHETIC'],
+              ['the cure','Olivia Rodrigo','🔥 HOT','MOODY'],
+              ['Dai Dai','Shakira, Burna Boy','🔥 HOT','TRAVEL'],
+              ['hate that i made you love me','Ariana Grande','🔥 HOT','MOODY'],
+              ['Iris','The Goo Goo Dolls','♻️ REVIVAL','MOODY']],
+            'early':[
+              ['Less Than a Lover','JENNIE','✨ EARLY / REELS','AESTHETIC'],
+              ['Ring My Bell','Anita Ward','♻️ REVIVAL','FASHION'],
+              ['FREAKED OUT','Fat Papi, prodshushy','✨ EARLY / TIKTOK','UPBEAT'],
+              ['Cherry on the Edge','miss rany','✨ EARLY / REELS','TRAVEL'],
+              ['Yummy Little Day','emilogue','✨ EARLY / REELS','VLOG']]}
+
+          analysis['sep']=[
+            ['9月第2週は「新作」より「再加速」が強い','映画ちいかわは7週目に週末首位へ返り咲き、Yes! 東京もYouTube3週連続1位かつHot 100首位。既存の大波が新しい上映形態・UGC・複数バージョンで再び傾きを作っている。'],
+            ['シール文化は「文化→商品」への分岐がさらに鮮明','シール交換全体はPeakへ下げる一方、ボンボンドロップはミセス9/24抽選とちいかわ9/25新作が連続発表。広い文化トレンドより、限定SKU・コラボへ購買熱が圧縮されている。'],
+            ['Mellojoyはオンライン流行からリアル消費へ','若者調査とSNSで先行していたスクイーズが、原宿の日本初リアル店・電子整理券・公式通販の売切れへ接続。EARLYからMAINへ上げる条件だった「実行動への転換」が今週そろった。'],
+            ['キャラクター消費は日用品化と平成再編集が同時進行','スンスンは食品・手帳・バッグへ、チャーミーキティやどこでもいっしょは現代のチャーム・バッグへ再編集。単なる懐かしさより「今持ち歩ける形」に変換されたIPが強い。'],
+            ['Global Musicは「ストリーミング本流」と「Reels先行」を分離','Spotify週間ではBbY WOWが4週目で4,239万再生、Ain’t In LAが+20位で9位へ急伸。一方Less Than a LoverやRing My Bell等はReels用途が先行。HOTとEARLYを分けて、次週どれが総合チャートへ接続するかを見る。']]
+
+          s=replace_const(s,'allData','early',allData)
+          s=replace_const(s,'early','shopCats',early)
+          # shopCats sits between early and shops, so replace shops separately
+          payload=json.dumps(shops,ensure_ascii=False,separators=(',',':'))
+          s=re.sub(r'const shops=.*?;\nconst music=',f'const shops={payload};\nconst music=',s,flags=re.S)
+          s=replace_const(s,'music','analysis',music)
+          payload=json.dumps(analysis,ensure_ascii=False,separators=(',',':'))
+          s=re.sub(r'const analysis=.*?;\nconst monthOrder=',f'const analysis={payload};\nconst monthOrder=',s,flags=re.S)
+          s=s.replace('最終更新 2026/9/6。','最終更新 2026/9/13。')
+          required=['id="ranking"','id="categories"','id="history"','id="early"','id="shopping"','id="music"','id="analysis"','id="appendix"','2026年8月 REAL','2026年7月 REAL','document.getElementById','GLOBAL MUSIC RADAR','EARLY WAVES']
+          missing=[x for x in required if x not in s]
+          if missing: raise SystemExit('missing required: '+','.join(missing))
+          p.write_text(s)
+          PY
+      - name: Validate JavaScript syntax
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'); const s=fs.readFileSync('index.html','utf8');
+          const m=s.match(/<script>([\s\S]*)<\/script>/); if(!m) throw Error('script missing');
+          new Function(m[1]); console.log('JS syntax OK');
+          NODE
+      - name: Commit refreshed radar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Weekly Trend Radar refresh 2026-09-13"
+          git push
