@@ -1,0 +1,20 @@
+name: Fix weekly refresh runner
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-weekly-refresh-20260919.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix custom Python shell declaration
+        run: |
+          sed -i 's/^        shell: python$/        shell: python {0}/' .github/workflows/weekly-refresh-20260919.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows/weekly-refresh-20260919.yml
+          git commit -m 'fix: make weekly refresh workflow executable'
+          git push
