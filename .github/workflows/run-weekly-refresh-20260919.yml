@@ -1,0 +1,52 @@
+name: Execute Trend Radar refresh 2026-09-19
+on:
+  push:
+    paths:
+      - '.github/workflows/run-weekly-refresh-20260919.yml'
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute patch payload from weekly refresh spec
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import textwrap
+          y=Path('.github/workflows/weekly-refresh-20260919.yml').read_text()
+          a=y.index('        run: |\n', y.index('Patch current September'))+len('        run: |\n')
+          b=y.index('      - name: Validate preserved sections',a)
+          code=textwrap.dedent(y[a:b])
+          Path('/tmp/patch.py').write_text(code)
+          PY
+          python /tmp/patch.py
+      - name: Validate page contract
+        run: |
+          set -e
+          for id in moves ranking categories history early shopping music analysis audit appendix; do grep -q "id=\"$id\"" index.html; done
+          grep -q '2026年8月 REAL' index.html
+          grep -q '2026年7月 REAL' index.html
+          grep -q 'GLOBAL MUSIC RADAR' index.html
+          grep -q 'EARLY WAVES' index.html
+          grep -q 'Spotify' index.html
+          grep -q 'document.getElementById' index.html
+          grep -q '2026/9/19' index.html
+          grep -q 'シルバーウィーク旅行' index.html
+          grep -q 'Nicole Kidman' index.html
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('index.html').read_text()
+          js=s.split('<script>',1)[1].split('</script>',1)[0]
+          Path('/tmp/check.js').write_text('new Function('+repr(js)+');')
+          PY
+          node /tmp/check.js
+      - name: Commit refreshed index
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --check
+          git commit -m 'feat: refresh Trend Radar for 2026-09-19'
+          git push
