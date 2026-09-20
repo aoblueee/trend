@@ -1,0 +1,155 @@
+name: Weekly Trend Radar refresh 2026-09-19
+on:
+  push:
+    paths:
+      - '.github/workflows/weekly-refresh-20260919.yml'
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch current September data without rebuilding HTML
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
+          s=s.replace('最終更新 2026/9/13（Discovery仕様再評価）','最終更新 2026/9/19（週次Blind Discovery再評価）')
+
+          marker='const early={'
+          assert marker in s
+          block=r'''
+// 2026-09-19 weekly delta: keep historical months immutable; patch September only.
+scoreV2["映画ちいかわ 人魚の島のひみつ"]={s:99,m:[29,19,20,15,15],aud:["Youth Broad ↑↑","Mass Market ↑↑↑"]};
+scoreV2["VIVANT（2026）"]={s:90,m:[20,16,20,15,19],aud:["Mass Market ↑↑↑","Youth Broad ↑"]};
+scoreV2["ボンボンドロップシール"]={s:96,m:[29,20,19,14,14],aud:["10s Female ↑↑↑","20s Female ↑↑"]};
+scoreV2["EBiDAN「Yes! 東京」"]={s:97,m:[30,19,19,14,15],aud:["10s Female ↑↑","Youth Broad ↑↑↑"]};
+scoreV2["Setlog"]={s:88,m:[20,16,19,15,18],aud:["10s Female ↑↑","20s Female ↑↑"]};
+scoreV2["ラヴ上等 シーズン2"]={s:89,m:[21,16,19,14,19],aud:["20s Female ↑↑","Youth Broad ↑↑"]};
+scoreV2["Mellojoy"]={s:90,m:[24,18,17,13,18],aud:["10s Female ↑↑↑","20s Female ↑↑"]};
+scoreV2["パペットスンスン"]={s:80,m:[16,14,18,14,18],aud:["10s Female ↑↑","20s Female ↑"]};
+scoreV2["M!LK / 「○○すぎて滅」"]={s:87,m:[23,16,18,14,16],aud:["10s Female ↑↑","Youth Broad ↑↑"]};
+scoreV2["シール交換 / シール帳"]={s:75,m:[13,14,18,14,16],aud:["10s Female ↑↑","20s Female ↑"]};
+scoreV2["めじるしアクセサリー / チャーム"]={s:72,m:[12,13,17,14,16],aud:["10s Female ↑↑","20s Female ↑"]};
+scoreV2["シルバーウィーク旅行"]={s:91,m:[29,20,19,13,10],aud:["10s ↑↑↑","20s ↑↑","Youth Broad ↑↑↑"]};
+allData.sep.push({"n":"シルバーウィーク旅行","c":"Hobby / Experience","s":91,"w":"🚀 NEW / BEHAVIOR BREAKOUT","v":[29,20,19,13,10],"e":"【BEHAVIOR● YOUTH● SCHEDULE DATA●】11年ぶりの5連休で旅行予定が前年比7.6%増。特に10代+25%、20代+11%が伸びを牽引。国内目的地は東京・大阪・沖縄・北海道が上位で、若者起点の実行動としてBlind DiscoveryからMAIN入り。","l":[["TimeTree未来総研 9/16","https://prtimes.jp/main/html/rd/p/000000155.000017462.html"]]});
+Object.assign(allData.sep.find(x=>x.n==='映画ちいかわ 人魚の島のひみつ'),{s:99,w:'🔥 MAIN / DOMINANT',e:'【CONSUMPTION● CHART● OFFICIAL●】9/11〜13も週末動員1位を維持し、公開52日で1009万人・興収146.6億円突破。再加速後も首位を維持しているため99。9/23の自動制御ペンライト応援上映も次の接点。',l:[["週末1位・146億円","https://www.oricon.co.jp/news/2480291/"],["1000万人突破","https://www.oricon.co.jp/news/2480130/full/"],["映画公式","https://www.anime-chiikawa.jp/"]]});
+Object.assign(allData.sep.find(x=>x.n==='VIVANT（2026）'),{s:90,w:'🟡 PEAK / TEMPORARY PAUSE',e:'【PLATFORM● AUDIENCE● OFFICIAL●】TVer歴代最高という規模は強いが、9/20・27はアジア大会で2週休止。新規放送Momentumが一時的に途切れるため96→90。10/4再開時に再加速を判定。',l:[["TVer歴代1位・887万再生","https://tver.co.jp/news/20260803.html"],["2週休止・10/4再開","https://www.oricon.co.jp/news/2480111/"]]});
+Object.assign(allData.sep.find(x=>x.n==='EBiDAN「Yes! 東京」'),{s:97,w:'🚀 MAIN / RE-ACCELERATING',e:'【CHART● STREAMING● VIDEO● SALES●】9/16 Billboard JAPAN Hot 100で通算3度目の1位。オリコン週間ストリーミングは690.7万回、前週比+16.8%で5週ぶり首位、累積1.096億回。11週目で再加速しているため94→97。',l:[["Billboard JAPAN 9/16","https://www.billboard-japan.com/d_news/detail/165593/2"],["オリコン 690.7万回・+16.8%","https://www.oricon.co.jp/news/2480567/full/"]]});
+Object.assign(allData.sep.find(x=>x.n==='Setlog'),{s:88,w:'🟡 MAIN / COOLING',e:'【SURVEY● PLATFORM● OFFICIAL●】若年女性の利用基盤は強く、9月もアプリ更新は高頻度。一方、今週の新規DL順位・利用急増を示す独立ハードデータを再確認できず92→88。規模とVelocityを分離。',l:[["App Store","https://apps.apple.com/jp/app/setlog/id6587576438"],["LINEリサーチ","https://note.com/linesurveys_jp/n/n0ba6dfe47563"]]});
+Object.assign(allData.sep.find(x=>x.n==='ラヴ上等 シーズン2'),{s:89,w:'🟡 PEAK / POST-FINALE',e:'【PLATFORM● GLOBAL● SOCIAL●】9/8に全20話完結。Netflix日本で5週連続1位、アジア圏TOP10・主題歌チャート波及まで確認されたが、完結後フェーズへ入ったため92→89。',l:[["完結・5週連続1位","https://www.newscafe.ne.jp/article/2026/09/09/3029766.html"],["Netflix公式","https://about.netflix.com/ja/news/badly-in-love-season-2-teaser-art"]]});
+Object.assign(allData.sep.find(x=>x.n==='Mellojoy'),{s:90,w:'🔥 MAIN / REAL-WORLD HOLD',e:'【SOCIAL● RETAIL● EXPERIENCE●】SNS10億impと9/9原宿店への実店舗転換は維持。9/16以降も全時間帯電子整理券運用が続くが、今週の新しい実売数量は未確認のため91→90。',l:[["原宿店・SNS10億imp","https://www.oricon.co.jp/news/2476337/"],["公式原宿店","https://www.mellojoyjapan.com/pages/harajuku-pop-up-shop"]]});
+Object.assign(allData.sep.find(x=>x.n==='M!LK / 「○○すぎて滅」'),{s:87,w:'🚀 RE-ACCELERATING / NEW RELEASE',e:'【STREAMING● CHART● UGC●】既存「好きすぎて滅！」のロングテールに加え、新曲「時空超えてユニバース」が9/16 Hot Shot Songs首位、Xで#ときユニ1位、ストリーミング5位。グループ波として84→87へ再加速。',l:[["Hot Shot Songs 9/16","https://www.billboard-japan.com/d_news/detail/165584/2"],["オリコン上位動向","https://www.oricon.co.jp/news/2480567/"]]});
+'''
+          s=s.replace(marker,block+'\n'+marker,1)
+
+          marker='const shopCats='
+          assert marker in s
+          block=r'''
+early.sep.unshift(["シルバーウィーク旅行","9/19〜23の5連休で旅行予定が前年比7.6%増。10代+25%、20代+11%と若者が牽引し、検索話題ではなく予定登録という実行動データで急伸。MAINにも採用。"]);
+early.sep.unshift(["Nicole Kidman / ADÉLA","GLOBAL Music側でHOT昇格。9/18 Spotify Global日次4位、Shazamは9/14〜19に1→39市場へ拡大、TikTokでもメイク・自己表現UGCが急伸。Early捕捉の昇格検証例として記録。"]);
+'''
+          s=s.replace(marker,block+'\n'+marker,1)
+
+          marker='const music={'
+          assert marker in s
+          block=r'''
+shops.sep=shops.sep.filter(x=>!["SAMANTHAVEGA × チャーミーキティ ぬいぐるみチャーム","rom&nd 豆乳エディション 42 ソイフィグ"].includes(x.n));
+shops.sep.push({"n":"ちいかわ キーリングコスメパレット","signal":"🆕 NEW / ✨ DISCOVERY","sub":"ちいかわ / ハチワレ / うさぎ / モモンガ 全4種","cat":"Beauty","s":88,"status":"HOT","price":"各¥1,980","release":"9/18","disc":1,"e":"【OFFICIAL● PRODUCT● CROSS-CATEGORY●】9/18発売。キーリング＋パールリボンチャーム＋ハイライト＋アイシャドウを3層にまとめ、キャラクター・バッグチャーム・コスメの3波を横断。発売直後で実売未確認のため88。","l":[["9/18発売・価格","https://mantan-web.jp/prtimes/article/20260918prt00m200001330a.html"]]});
+'''
+          s=s.replace(marker,block+'\n'+marker,1)
+
+          marker='const analysis={'
+          assert marker in s
+          block=r'''
+music.sep.japan=[
+["Yes! 東京 (feat. EBiDAN)","EBiDAN","🚀 RE-ACCELERATION","UPBEAT"],
+["Dance Forever","SixTONES","🆕 NEW / 🔥 HOT","UPBEAT"],
+["時空超えてユニバース","M!LK","🚀 BREAKOUT","UPBEAT"],
+["ため息未来","SKE48","🆕 NEW","UPBEAT"],
+["マリーゴールド","あいみょん","♻️ REVIVAL","VLOG"],
+["Brand New","Mrs. GREEN APPLE","🔥 HOT","VLOG"],
+["恋、はじめました。","=LOVE","🔥 HOT","AESTHETIC"],
+["灰色","大森元貴","🔥 HOT","MOODY"],
+["好きすぎて滅！","M!LK","🔥 HOT","UPBEAT"],
+["見知らぬ糸","スピッツ","🆕 NEW","MOODY"]];
+music.sep.global=[
+["BbY WOW","KAROL G, Judeline, rusowsky","🔥 HOT / GLOBAL #1","UPBEAT"],
+["Ain’t In LA","ADÉLA","🚀 BREAKOUT","FASHION"],
+["Earrings","Malcolm Todd","🔥 HOT","VLOG"],
+["Nicole Kidman","ADÉLA","🚀 EARLY → HOT","FASHION"],
+["Beauty And A Beat","Justin Bieber, Nicki Minaj","♻️ REVIVAL","UPBEAT"],
+["Self Aware","Temper City","🔥 HOT","AESTHETIC"],
+["The One That Got Away","Katy Perry","♻️ REVIVAL","AESTHETIC"],
+["Iris","The Goo Goo Dolls","♻️ REVIVAL","MOODY"],
+["the cure","Olivia Rodrigo","🔥 HOT","MOODY"],
+["Loser","Tame Impala","🔥 HOT","AESTHETIC"]];
+music.sep.early=[
+["Sey Mami","Cinco Suave","✨ EARLY / TIKTOK","UPBEAT"],
+["Be Like a Woman","Chris Rainbow","✨ EARLY / TIKTOK","FASHION"],
+["u + me = <3","Olivia Rodrigo","✨ EARLY / RISING","VLOG"],
+["Eat Me Better","nimino","✨ EARLY / RISING","FASHION"],
+["Ring Ring Ring","Tyler, The Creator","✨ EARLY / REELS","AESTHETIC"]];
+'''
+          s=s.replace(marker,block+'\n'+marker,1)
+
+          marker="Object.assign(allData.sep.find(x=>x.n==='Setlog')"
+          assert marker in s
+          block=r'''
+moves.sep=[
+{tag:"🚀 RE-ACCELERATING",n:"EBiDAN『Yes! 東京』",d:"94 → 97",aud:["Youth Broad ↑↑↑"],why:"Hot 100通算3度目1位。週間ストリーミング690.7万回、前週比+16.8%で11週目に再加速。"},
+{tag:"🆕 NEW",n:"シルバーウィーク旅行",d:"NEW → #5圏",aud:["10s +25%","20s +11%"],why:"予定登録データで旅行が前年比+7.6%。若者が伸びを牽引する実行動型トレンド。"},
+{tag:"🔥 DOMINANT",n:"映画ちいかわ",d:"99 → 99",aud:["Mass Market ↑↑↑"],why:"9/11〜13も週末動員1位、1009万人・146.6億円。再加速後も首位維持。"},
+{tag:"⬆️ PRODUCT WAVE",n:"ボンボンドロップシール",d:"95 → 96",aud:["10s Female ↑↑↑"],why:"9/24ミセス抽選、9/25ちいかわ新作と強いIPの具体SKUが連続投入直前。"},
+{tag:"🚀 RE-ACCELERATING",n:"M!LK",d:"84 → 87",aud:["Youth Broad ↑↑"],why:"新曲『時空超えてユニバース』がHot Shot Songs首位。既存ロングテールに新しい波が接続。"},
+{tag:"⬇️ TEMP PAUSE",n:"VIVANT（2026）",d:"96 → 90",aud:["Mass Market ↑↑↑"],why:"9/20・27の2週休止で新規放送Momentumが一時停止。10/4再開時に再加速を再判定。"},
+{tag:"⬇️ COOLING",n:"Setlog",d:"92 → 88",aud:["10s Female ↑↑"],why:"若年層の規模は強いが、今週の新規DL・利用急増を示す独立ハードデータが弱い。"},
+{tag:"🔼 EARLY → HOT",n:"Nicole Kidman / ADÉLA",d:"GLOBAL MUSIC",aud:["Global Youth ↑↑↑"],why:"Spotify Global日次4位まで上昇。TikTokとShazamの市場拡大がストリーミング本流へ接続。"}];
+prevUpdate["シルバーウィーク旅行"]=null;
+'''
+          s=s.replace(marker,block+'\n'+marker,1)
+
+          # Monthly analysis: structural, not a list of isolated items.
+          needle='const analysis={'
+          # Existing object remains; prepend after it is created via insertion before Object.assign block.
+          insert='''\nanalysis.sep.unshift(["9月第3週は『予定→実行』『UGC→チャート』への転換が同時発生","若者のシルバーウィーク旅行は予定登録という行動データで急伸し、MellojoyはSNSから原宿のリアル体験へ、GLOBAL MusicではNicole KidmanがTikTok/ShazamからSpotify日次4位へ接続した。今週の共通項は認知の増加ではなく、予定・来店・再生という実行動への転換。逆にVIVANTやSetlogは規模が大きくても今週のVelocityが弱いため下げた。"]);\n'''
+          s=s.replace(marker,insert+marker,1)
+
+          p.write_text(s)
+      - name: Validate preserved sections and JavaScript
+        run: |
+          set -e
+          for id in moves ranking categories history early shopping music analysis audit appendix; do grep -q "id=\"$id\"" index.html; done
+          grep -q '2026年8月 REAL' index.html
+          grep -q '2026年7月 REAL' index.html
+          grep -q 'GLOBAL MUSIC RADAR' index.html
+          grep -q 'EARLY WAVES' index.html
+          grep -q 'Spotify' index.html
+          grep -q 'document.getElementById' index.html
+          grep -q 'Evidence' index.html
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('index.html').read_text()
+          assert s.count('const allData=')==1
+          assert s.count('const music=')==1
+          assert 'シルバーウィーク旅行' in s and 'Nicole Kidman' in s
+          assert '2026/9/19' in s
+          print('structural checks OK', len(s))
+          PY
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('index.html').read_text()
+          js=s.split('<script>',1)[1].split('</script>',1)[0]
+          Path('/tmp/check.js').write_text('new Function('+repr(js)+');')
+          PY
+          node /tmp/check.js
+      - name: Commit index delta
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --check
+          git commit -m 'feat: refresh Trend Radar for 2026-09-19'
+          git push
