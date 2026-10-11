@@ -41,3 +41,11 @@ Sources:
 
 ## Remaining limits
 No complete scan claimed. Direct UGC/search velocity and BeReal domestic retention are not verified. Scores remain editorial judgments; initial-release rank alone does not guarantee a lasting youth trend.
+
+## Live QA result (2026-10-12 JST)
+- Public page displayed October 12 revision. Overall table visibly contains 5 nonmusic rows; 4 populated category cards.
+- Desktop document width and scrollWidth both 1348px: no page-level horizontal overflow.
+- Shopping cards visually inspected; GLOBAL switch shows 10 HOT + 5 EARLY and dedicated analysis.
+- Browser console observed extension metadata errors, not application errors.
+- Subsequent polish abbreviates table metrics in Japanese and adds empty-category feedback.
+- Smartphone CSS updated, but actual 390px/820px browser test was unavailable: local preview navigation was blocked by browser URL policy. No workaround attempted; mobile visual QA remains unverified.
