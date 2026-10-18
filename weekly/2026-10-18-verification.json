@@ -1,0 +1,64 @@
+{
+  "checked_at": "2026-10-18",
+  "public_url": "https://aoblueee.github.io/trend/",
+  "content_commit": "ba27734340d055dc72398c7198fe83ff9e71066f",
+  "harness_commit": "f10d84bd732942e26bda5e70311d3debe339b484",
+  "pages_runs": {
+    "39110514788": "success",
+    "39110568331": "success"
+  },
+  "visible_date": "2026/10/18",
+  "pc": {
+    "viewport_screenshot": [
+      1348,
+      926
+    ],
+    "page_horizontal_overflow": false,
+    "table_overflow": false,
+    "month_clicks": {
+      "jul": 12,
+      "aug": 7,
+      "sep": 9,
+      "oct": 4
+    },
+    "category_SNS_rows": 1,
+    "global_hot": 10,
+    "global_early": 5,
+    "hot_source_and_spotify_links": 20
+  },
+  "mobile": {
+    "method": "same-origin public HTML iframe in actual Chromium; not handset emulation",
+    "iframe_widths": [
+      320,
+      390
+    ],
+    "effective_document_widths": [
+      305,
+      375
+    ],
+    "page_scroll_widths": [
+      305,
+      375
+    ],
+    "card_song_product_evidence_overflow": [],
+    "visual_checks": [
+      "shopping long product names and price",
+      "GLOBAL music text and Spotify button",
+      "History legend horizontal scrolling and chart contained scrolling",
+      "ranking cards and monthly deltas"
+    ],
+    "global_hot": 10,
+    "global_early": 5,
+    "history_legend_count": 21,
+    "history_paths": 4
+  },
+  "limits": [
+    "pre-publication edited page real browser unavailable",
+    "real phone and touch not tested",
+    "search trend, UGC daily and local stock gaps in research audit",
+    "mobile screenshot export timed out; visual inspection succeeded",
+    "existing weekly-refresh-20260919.yml workflow failed with zero jobs; Pages workflow succeeded; unrelated legacy workflow unchanged"
+  ],
+  "console": "Observed errors were browser extension metadata messages; no site script error was observed in the inspected logs",
+  "screenshot": "2026-10-18-desktop.jpg"
+}
