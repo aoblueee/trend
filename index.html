@@ -238,7 +238,7 @@ moves.oct.find(x=>x.n==='we fell in love in october').why='Spotify週間74位へ
 /* 2026-10-12 scope policy: music belongs exclusively in Music Radar.
    Never use category alone: earlier music records were classified as Video / Culture.
    Keep archived source records intact; apply the scope gate to general views. */
-function isMusicTrend(x){const n=typeof x==='string'?x:(Array.isArray(x)?x.join(' '):(x.n+' '+(x.e||'')));return /Mrs\. GREEN APPLE|M!LK|EBiDAN|Yes! 東京|日向坂46|Number_i|超ときめき|we fell in love in october|Nicole Kidman|GG EZ|AI生成楽曲|YouTube Music|細野晴臣|SEIKINミーム/.test(n||'')||x?.scope==='music';}
+function isMusicTrend(x){const n=typeof x==='string'?x:(Array.isArray(x)?x.join(' '):(x.n+' '+(x.e||'')));return /Mrs\. GREEN APPLE|M!LK|EBiDAN|Yes! 東京|日向坂46|Number_i|超ときめき|we fell in love in october|Nicole Kidman|GG EZ|AI生成楽曲|YouTube Music|細野晴臣/.test(n||'')||x?.scope==='music';}
 const musicAnalysisOct=analysis.oct.slice(0,3);
 analysis.oct=[
  ['美容購買は件数と単価がともに増加','9/28〜10/4のTikTok Shop推計はGMV+4.06%、件数+2.31%、平均販売価格+1.73%。美容は+16.1%だが、韓国コスメだけの内訳ではない。総合項目の名前を「TikTok Shopの美容購買」に修正。供給側の新商品数は減少しており、新作ブームより既存商品の販売拡大という読みが妥当。<a href="https://prtimes.jp/main/html/rd/p/000000065.000167462.html">Kalodata・10/9発表 ↗</a>'],
