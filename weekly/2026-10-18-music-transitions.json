@@ -1,0 +1,64 @@
+{
+  "japan": {
+    "added": [
+      "KO1KEYZ",
+      "swim?",
+      "しわあわせ",
+      "ぱわーオブらぶ",
+      "冬服に着替えたら"
+    ],
+    "removed": [
+      "Lonely...But not Alone",
+      "ありふれた世界の果てに",
+      "イチャイチャ虫",
+      "大盛りハッピー",
+      "総意♡So Free"
+    ],
+    "retained": [
+      "Brand New",
+      "Yes! 東京",
+      "共犯",
+      "好きすぎて滅!",
+      "結び"
+    ]
+  },
+  "global": {
+    "added": [
+      "Cuando No Era Cantante RMX - Remix",
+      "Die With A Smile",
+      "Just Give Me a Reason",
+      "Loser"
+    ],
+    "removed": [
+      "Great Expectation",
+      "Patient Zero",
+      "Sweater Weather",
+      "we fell in love in october"
+    ],
+    "retained": [
+      "Ain't In LA",
+      "BbY WOW",
+      "Earrings",
+      "Nicole Kidman",
+      "Stop The Wedding!",
+      "the cure"
+    ]
+  },
+  "early": {
+    "added": [
+      "Babydoll",
+      "Na Para Bang",
+      "Pós - Ao Vivo",
+      "TRALALA"
+    ],
+    "removed": [
+      "Cold Shoulder",
+      "Cuando No Era Cantante RMX - Remix",
+      "Draw You Out",
+      "STORM II"
+    ],
+    "retained": [
+      "Postinho de Gasolina"
+    ]
+  }
+}
