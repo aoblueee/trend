@@ -17,5 +17,6 @@
   "evidence_links": "pass",
   "explicit_getElementById": "preserved",
   "prepublish_real_browser": "unavailable: Playwright runtime present but no Chromium executable",
-  "postpublish_real_browser": "pending"
+  "postpublish_real_browser": "pass at 1363×936: November title, 5 month buttons, overall 3, early 8, shopping 3, Japan 10, Global 10+5, no body overflow, no empty visible grids; console has only browser-extension metadata noise",
+  "mobile_real_browser": "unavailable: cloud browser viewport cannot be resized and local Playwright has no Chromium executable; responsive CSS and DOM/static checks passed but this is not reported as a real mobile render"
 }
