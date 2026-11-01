@@ -1,0 +1,21 @@
+{
+  "as_of": "2026-11-01",
+  "syntax": "pass",
+  "dom_stub_render": "pass",
+  "archive_equivalence_jul_oct": "pass",
+  "months": 5,
+  "overall_non_music": 3,
+  "early_non_music": 8,
+  "shopping": 3,
+  "japan_music": 10,
+  "global_hot": 10,
+  "global_early": 5,
+  "candidate_records": 13,
+  "score_sums": "pass",
+  "monthly_delta_new_up_down": "pass",
+  "music_leak_general": 0,
+  "evidence_links": "pass",
+  "explicit_getElementById": "preserved",
+  "prepublish_real_browser": "unavailable: Playwright runtime present but no Chromium executable",
+  "postpublish_real_browser": "pending"
+}

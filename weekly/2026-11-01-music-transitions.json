@@ -1,0 +1,19 @@
+{
+  "as_of": "2026-11-01",
+  "japan": {
+    "retained": ["しわあわせ", "Yes! 東京", "結び", "好きすぎて滅!", "Brand New"],
+    "added": ["Touch", "NEON", "愛のダバダ", "Moonlit", "咲き誇れ"],
+    "removed_relative_priority": ["KO1KEYZ", "共犯", "ぱわーオブらぶ", "swim?", "冬服に着替えたら"]
+  },
+  "global": {
+    "early_to_hot": ["Pós - Ao Vivo", "Babydoll — Jamie Miller"],
+    "new_hot": ["Housewife", "expectations"],
+    "retained_hot": ["Stop The Wedding!", "BbY WOW", "Nicole Kidman", "Ain't In LA", "Just Give Me a Reason", "Loser — Tame Impala"],
+    "hot_removed": ["the cure", "Earrings", "Die With A Smile", "Cuando No Era Cantante RMX"],
+    "early_retained": ["Postinho de Gasolina - Ao Vivo"],
+    "early_added": ["Alfaaz", "Coming Up Roses", "FIRESTARTER", "Tarantino"],
+    "early_removed_cooling": ["Na Para Bang", "TRALALA"]
+  },
+  "global_previous_early_outcome": {"promoted": 2, "retained": 1, "cooling_removed": 2},
+  "bgm_tags_used_for_ranking": false
+}

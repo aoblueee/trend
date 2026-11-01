@@ -1,0 +1,46 @@
+{
+  "as_of": "2026-11-01",
+  "window": "2026-10-19/2026-11-01",
+  "counts": {
+    "overall": 3,
+    "early": 8,
+    "shopping": 3,
+    "japan_music": 10,
+    "global_hot": 10,
+    "global_early": 5,
+    "candidates": 13
+  },
+  "primary_urls": [
+    "https://ajitoscience.com/shop/products/TeaCountdownCalendarCatGreen-a",
+    "https://apps.apple.com/jp/charts/iphone/social-networking-apps/6005",
+    "https://ca.billboard.com/charts/billboard-global-200/2026-10-31",
+    "https://charts.youtube.com/charts/TopSongs/br/weekly/20261029",
+    "https://charts.youtube.com/charts/TopSongs/jp/weekly/20261022",
+    "https://eiga.com/ranking/jp",
+    "https://gs-tea.shop/blogs/news/advent2026-stock-notice",
+    "https://kworb.net/charts/shazam/ww.html",
+    "https://kworb.net/spotify/country/global_weekly.html",
+    "https://prtimes.jp/main/html/rd/p/000000024.000152826.html",
+    "https://prtimes.jp/main/html/rd/p/000000066.000167462.html",
+    "https://prtimes.jp/main/html/rd/p/000000108.000055204.html",
+    "https://prtimes.jp/main/html/rd/p/000000503.000097396.html",
+    "https://search.yahoo.co.jp/realtime/search?p=%E3%83%90%E3%82%BF%E3%83%BC%E9%A4%85%20%E3%82%BB%E3%83%96%E3%83%B3",
+    "https://trends.google.com/trends/",
+    "https://www.billboard-japan.com/charts/detail?a=stsongs&day=02&month=11&year=2026",
+    "https://www.billboard-japan.com/d_news/detail/166893/2",
+    "https://www.famitsu.com/article/202610/92517?page=1",
+    "https://www.fujiya-peko.co.jp/cake/item/14054.html",
+    "https://www.innisfree.jp/product/tamagotchi2026",
+    "https://www.netflix.com/tudum/top10/japan/tv?week=2026-10-25",
+    "https://www.nolyn.com/trend/tiktok-ranking-20261024/",
+    "https://www.sej.co.jp/products/a/item/290267/",
+    "https://www.valuesccg.com/news/20261016-12895/"
+  ],
+  "unconfirmed": [
+    "Google Trends comparable time series",
+    "TikTok/Reels daily audio use",
+    "game downloads",
+    "cinema audience age",
+    "official local gacha stock"
+  ]
+}
