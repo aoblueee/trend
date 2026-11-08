@@ -1,0 +1,8 @@
+{
+  "as_of":"2026-11-08","window":"2026-10-26/2026-11-08",
+  "counts":{"overall":2,"early":9,"shopping":4,"japan_music":10,"global_hot":10,"global_early":5,"candidates":17},
+  "primary_urls":[
+    "https://www.valuesccg.com/news/20261016-12895/","https://apps.apple.com/jp/charts/iphone/social-networking-apps/6005","https://www.appbrain.com/stats/google-play-rankings/top_free/social/jp","https://eiga.com/ranking/jp","https://www.famitsu.com/article/202611/93151","https://www.netflix.com/tudum/top10/japan/films?week=2026-11-01","https://note.com/short_movie_jp/n/nb400a3e392bd","https://www.nolyn.com/trend/tiktok-ranking-20261101/","https://prtimes.jp/main/html/rd/p/000000489.000026665.html","https://www.billboard-japan.com/d_news/detail/167121/2","https://www.billboard-japan.com/d_news/detail/167123/2","https://kworb.net/spotify/country/global_weekly.html","https://kworb.net/charts/shazam/ww.html","https://kworb.net/youtube/insights/uk.html"
+  ],
+  "unconfirmed":["Google Trends comparable time series","TikTok/Reels daily audio use and saves","game downloads","cinema audience age","Netflix Japan view counts","official local gacha stock"]
+}

@@ -1,0 +1,28 @@
+{
+  "as_of": "2026-11-08",
+  "index_sha256": "d67d9f8b678d9e662fcc34c6a90dbb7ad039b5be70b90eba7478b03a5b1710dc",
+  "checks": {
+    "js_syntax": true,
+    "month_switch_count": 5,
+    "archives_jul_oct_byte_equivalent": true,
+    "overall": 2,
+    "early": 9,
+    "shopping": 4,
+    "japan_music": 10,
+    "global_hot": 10,
+    "global_early": 5,
+    "candidate_records": 17,
+    "score_sums": true,
+    "monthly_deltas": true,
+    "evidence_urls": true,
+    "spotify_links": true,
+    "music_leak_general": false,
+    "required_sections_render_dom_stub": true
+  },
+  "real_browser_pre_publish": {
+    "attempted": true,
+    "confirmed": false,
+    "reason": "Local Chromium launch was blocked by the runtime process-socket sandbox; DOM stub is not reported as real-browser verification."
+  },
+  "post_publish_pages_check": "pending at commit time"
+}
