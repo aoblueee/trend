@@ -1,5 +1,7 @@
 # Trend Radar research audit — 2026-11-08
 
+> 当初公開時の記録です。数値・曲の判定・製品名の訂正は [11月10日の編集監査](2026-11-10-editorial-review.md) を参照してください。
+
 ## Scope and method
 
 - Primary observation window: 2026-10-26–2026-11-08. Older observations are labelled where used.

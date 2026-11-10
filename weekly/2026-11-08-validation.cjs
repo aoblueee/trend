@@ -8,7 +8,7 @@ function boot(path,content){
  return {h,c,elements,run:x=>vm.runInContext(x,c)};
 }
 const priorPath='weekly/2026-11-01-effective-index.html';
-let prior=fs.existsSync(priorPath)?fs.readFileSync(priorPath,'utf8'):require('child_process').execFileSync('git',['show','HEAD:index.html'],{encoding:'utf8'});
+let prior=fs.existsSync(priorPath)?fs.readFileSync(priorPath,'utf8'):require('child_process').execFileSync('git',['show','d567a0fd82482b2dbe1be7a313d91d0cfedd81dc:index.html'],{encoding:'utf8'});
 const cur=boot('index.html'),old=boot(priorPath,prior),run=cur.run;
 for(const obj of ['allData','shops','music','early','analysis','moves'])for(const m of ['jul','aug','sep','oct']){
  assert.equal(run(`JSON.stringify(${obj}.${m})`),old.run(`JSON.stringify(${obj}.${m})`),obj+'.'+m+' archive changed');
@@ -20,7 +20,7 @@ for(const m of ['jul','aug','sep','oct','nov']){
  for(const id of ['tbody','catgrid','earlygrid','movesgrid'])assert(!/M!LK|Vaundy|EBiDAN|Mrs\. GREEN APPLE|LISA|Tate McRae/.test(cur.elements[id].innerHTML),id+' music leaked '+m);
 }
 run("month='nov';filter='All';shopFilter='All';musicMarket='global';rf();rsf();render();");
-assert.equal(run('data().length'),2);assert.equal(run('early.nov.length'),9);assert.equal(run('shops.nov.length'),4);assert.equal(run('scopeScanNov.length'),17);
+assert.equal(run('data().length'),2);assert.equal(run('early.nov.length'),9);assert.equal(run('shops.nov.length'),4);assert.equal(run('scopeScanNov.length'),18);
 assert.equal(run('music.nov.japan.length'),10);assert.equal(run('music.nov.global.length'),10);assert.equal(run('music.nov.early.length'),5);
 assert.equal((cur.elements.musiclist.innerHTML.match(/class="song"/g)||[]).length,10);assert.equal((cur.elements.musicearly.innerHTML.match(/class="song"/g)||[]).length,5);
 assert.equal((cur.elements.musiclist.innerHTML.match(/open\.spotify\.com/g)||[]).length,10);assert.equal((cur.elements.musicearly.innerHTML.match(/open\.spotify\.com/g)||[]).length,5);
@@ -31,6 +31,16 @@ for(const key of ['allData.nov','shops.nov'])assert(run(`${key}.every(x=>x.l.len
 assert(run("Object.values(music.nov).flat().every(x=>x[4]&&x[4].startsWith('https://'))"));
 for(const id of ['ranking','categories','history','early','shopping','music','analysis','appendix','audit'])assert(cur.h.includes('id="'+id+'"'));
 assert(cur.h.includes('document.getElementById(id)'));assert.equal(run('monthOrder.length'),5);assert.equal((cur.h.match(/data-month=/g)||[]).length,5);
-assert(cur.elements.musicanalysis.innerHTML.includes('前週2曲継続・3曲終了'));assert(cur.elements.auditcounts.innerHTML.includes('GLOBAL EARLY'));
+assert(cur.elements.musicanalysis.innerHTML.includes('2曲継続・3曲終了'));assert(cur.elements.auditcounts.innerHTML.includes('GLOBAL EARLY'));
 assert.equal((cur.elements.auditcounts.innerHTML.match(/auditstat/g)||[]).length,7);
-console.log('PASS: syntax; five months; Jul–Oct archives byte-equivalent; all sections render in DOM stub; Nov overall 2 / early 9 / shopping 4 / music 10-10-5 / candidates 17; score sums and monthly deltas; evidence/Spotify URLs; no music leakage.');
+assert(!cur.elements['next-observations'].hidden);
+assert.deepEqual([...cur.elements.shopfilters.innerHTML.matchAll(/data-c="([^"]+)"/g)].map(x=>x[1]),['All','Emergency','Home','Beauty']);
+run("shopFilter='Home';rshop();");
+assert(cur.elements.shophot.innerHTML.includes('7層構造'));
+assert(!cur.elements.shophot.innerHTML.includes('PYKES'));
+assert(run("music.nov.early.some(x=>x[0]==='Alfaaz')"));
+assert(run("music.nov.global.some(x=>x[0]==='Pós - Ao Vivo'&&x[1]==='Felipe & Rodrigo')"));
+run("month='oct';rsf();render();");
+assert(cur.elements['next-observations'].hidden);
+assert(!cur.elements.shopfilters.innerHTML.includes('Emergency'));
+console.log('PASS: syntax; five months; Jul–Oct archives byte-equivalent; all sections render in DOM stub; Nov overall 2 / early 9 / shopping 4 / music 10-10-5 / audit records 18; score sums and monthly deltas; evidence/Spotify URLs; no music leakage.');
