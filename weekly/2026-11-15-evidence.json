@@ -704,7 +704,7 @@
   {
    "n": "検索動向／UGC日次／食品POS",
    "state": "取得不可｜監査",
-   "e": "同条件Google Trends数値、音源／非音楽投稿の日次増分、コンビニSKU別POSを取得できず。検索結果があるだけで検索需要増と数えない。",
+   "e": "同条件Google Trends数値、公式音源／非音楽投稿の日次増分、コンビニSKU別POSを取得できず。検索結果があるだけで検索需要増と数えない。",
    "url": "https://trends.google.com/trends/",
    "category": "観測系統",
    "origin": "unconfirmed",
@@ -1199,5 +1199,33 @@
    "YouTube Global対象週数値",
    "公式TikTok・Reels日次増分"
   ]
+ },
+ "verification": {
+  "automated": "2026-11-15-validation.cjs PASS",
+  "archives": "Jul–Oct allData/shops/music/early/analysis/moves unchanged; Nov8 corrected effective snapshot retained",
+  "pages": "11/15 published header and changed counts observed at https://aoblueee.github.io/trend/ after commit 2c3d470",
+  "desktop": {
+   "viewport": 1363,
+   "document_client_width": 1348,
+   "document_scroll_width": 1348,
+   "real_screenshots": [
+    "Moves",
+    "Ranking",
+    "History legend and chart",
+    "Early WATCH",
+    "Shopping",
+    "GLOBAL Music"
+   ],
+   "real_interactions": [
+    "7/8/9/10/11 month buttons",
+    "GLOBAL market button"
+   ],
+   "global_songs": 10,
+   "global_early": 5,
+   "global_spotify": 15
+  },
+  "mobile": "Unconfirmed: no viewport-size control in browser API; DevTools denied by organization policy. No bypass attempted.",
+  "prepublication": "Unconfirmed for updated HTML: file URL is denied by cloud browser policy. DOM stub testing was completed separately.",
+  "console": "Observed errors were extension metadata messages from chrome-extension://; not reported as application errors or as an entirely error-free browser."
  }
 }
