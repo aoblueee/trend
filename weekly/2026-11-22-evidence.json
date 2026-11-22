@@ -1,0 +1,1028 @@
+{
+ "checked": "2026-11-22",
+ "cutoff": "2026-11-22確認時点までの公表済み根拠。11/22当日チャートは公開時刻未記載。",
+ "coverage": [
+  [
+   "アプリ",
+   "Fuller国内市場／Sensor Towerアプリ調査",
+   "https://www.fuller-inc.com/news/202611-app-ape-10-year-appmarketreport-2026",
+   "候補あり",
+   "長期変化・占い／ソートパズルを検知。最新週の国内実数は未取得。"
+  ],
+  [
+   "配信・テレビ",
+   "Rakuten PLAYパネル・前週固定ページ",
+   "https://play.rakuten.co.jp/static/ranking",
+   "候補あり",
+   "旧VIVANT455人、窓の不一致を検知して再燃率は保留。"
+  ],
+  [
+   "映画・アニメ",
+   "興行通信社・11/13〜15",
+   "https://www.kogyotsushin.com/archives/topics/t8/202611/16153720.php",
+   "候補あり",
+   "首位と新作4本を審査。"
+  ],
+  [
+   "ゲーム",
+   "ファミ通・11/9〜15",
+   "https://www.famitsu.com/article/202611/94496",
+   "候補あり",
+   "首位とメタファー、Dungeons II、ピクミン4の新顔。"
+  ],
+  [
+   "書籍・絵本・漫画",
+   "トーハン／書店ランキング／BOOK検索",
+   "https://www.tohan.jp/bestsellers/2026_1117_weekly/",
+   "候補あり",
+   "雨穴・スンスン・遊戯王ジャンプ。部数は未取得。"
+  ],
+  [
+   "キャラクター・ガチャ・雑貨",
+   "玩具発売一覧／メーカー／UGC",
+   "https://stories.starbucks.co.jp/press/2026/pr-2026-1111/",
+   "候補あり",
+   "スタバ・スンスン。元UGC本文は取得不可。"
+  ],
+  [
+   "コンビニ・外食・食品",
+   "新商品巡回／食品購入企画／Kalodata",
+   "https://www.kalodata.com/jp/blog/2026/11/kalodata/kalodata-weekly/1291/",
+   "候補あり",
+   "発売とSKU購買を区別。新規の具体食品実売は未取得。"
+  ],
+  [
+   "ファッション・美容",
+   "新作カレンダー／若者調査／購買推計",
+   "https://www.fashion-press.net/news/calendar/beauty",
+   "候補あり",
+   "冬物購買・3CEクロミ等。ブランド別需要照合待ち。"
+  ],
+  [
+   "テクノロジー",
+   "Sensor Tower／Fuller／AI利用検索",
+   "https://sensortower.com/ja/blog",
+   "候補あり",
+   "日本と韓国の国内表現を分離。今週の日本AI急増は未確認。"
+  ],
+  [
+   "場所・体験",
+   "Livly公式／AGF体験／イベント検索",
+   "https://www.livly.com/event/openlab2026/",
+   "候補あり",
+   "11/20〜24新宿体験等。現行イベント来場実数は未取得。"
+  ]
+ ],
+ "candidates": [
+  {
+   "n": "ゴジラ-0.0",
+   "state": "🟡 MAIN / 高水準・減速",
+   "e": "11/13〜15全国週末50.8万人・8.61億円、2週連続首位。前週69.9万人・11.3億円から動員−27.3%、興収−23.8%（編集計算）。13日累計254万人・40億円、世界150億円超。新作2週目の巨大な実需で継続するが急伸とはしない。年齢・若年女性比率未確認。発表11/16、確認11/22。",
+   "url": "https://www.kogyotsushin.com/archives/topics/t8/202611/16153720.php",
+   "category": "Video / Streaming",
+   "origin": "tracking",
+   "observed": "11/13〜15",
+   "published": "11/16",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "興行実測",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "ゼルダの伝説 時のオカリナ（Switch 2）",
+   "state": "🟡 MAIN / 初動後減速",
+   "e": "11/9〜15国内パッケージ推計86,097本、累計623,138本で2週連続首位。前週537,041本から−84.0%。発売初週は実販売4日、今週7日で、発売集中の剥落を含む。DL込み81万本と合算しない。初動の記録と2週目も大きい実売は評価するが勢いを減点。若者属性未確認。発表11/19、確認11/22。",
+   "url": "https://www.famitsu.com/article/202611/94496",
+   "category": "Games",
+   "origin": "tracking",
+   "observed": "11/9〜15",
+   "published": "11/19",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "国内パッケージ推計",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "メタファー：リファンタジオ（Switch 2）",
+   "state": "保留｜ゲーム新顔",
+   "e": "2位11167本。初動継続・DL・属性待ち。",
+   "url": "https://www.famitsu.com/article/202611/94496",
+   "category": "ゲーム",
+   "origin": "new",
+   "observed": "11/9〜15",
+   "published": "11/19",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "国内パッケージ推計",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "Minecraft Dungeons II（Switch）",
+   "state": "保留｜ゲーム新顔",
+   "e": "5位4264本。初動継続・DL・属性待ち。",
+   "url": "https://www.famitsu.com/article/202611/94496",
+   "category": "ゲーム",
+   "origin": "new",
+   "observed": "11/9〜15",
+   "published": "11/19",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "国内パッケージ推計",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "ピクミン4 Nintendo Switch 2 Edition",
+   "state": "保留｜ゲーム新顔",
+   "e": "8位・実数の追記未取得。初動継続・DL・属性待ち。",
+   "url": "https://www.famitsu.com/article/202611/94496",
+   "category": "ゲーム",
+   "origin": "new",
+   "observed": "11/9〜15",
+   "published": "11/19",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "国内パッケージ推計",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "楽園追放 心のレゾナンス",
+   "state": "保留｜映画新顔",
+   "e": "新作5〜8位を審査。週末動員実数・次週維持・属性待ち。記事内クリスマス・キャロルの6位／7位表記は不一致あり、数値成長に使用しない。",
+   "url": "https://www.kogyotsushin.com/archives/topics/t8/202611/16153720.php",
+   "category": "映画",
+   "origin": "new",
+   "observed": "11/13〜15",
+   "published": "11/16",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "全国動員順位",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "クリスマス・キャロル／3人のゴーストたち",
+   "state": "保留｜映画新顔",
+   "e": "新作5〜8位を審査。週末動員実数・次週維持・属性待ち。記事内クリスマス・キャロルの6位／7位表記は不一致あり、数値成長に使用しない。",
+   "url": "https://www.kogyotsushin.com/archives/topics/t8/202611/16153720.php",
+   "category": "映画",
+   "origin": "new",
+   "observed": "11/13〜15",
+   "published": "11/16",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "全国動員順位",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "呪いのスマホ",
+   "state": "保留｜映画新顔",
+   "e": "新作5〜8位を審査。週末動員実数・次週維持・属性待ち。記事内クリスマス・キャロルの6位／7位表記は不一致あり、数値成長に使用しない。",
+   "url": "https://www.kogyotsushin.com/archives/topics/t8/202611/16153720.php",
+   "category": "映画",
+   "origin": "new",
+   "observed": "11/13〜15",
+   "published": "11/16",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "全国動員順位",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "負けへんで",
+   "state": "保留｜映画新顔",
+   "e": "新作5〜8位を審査。週末動員実数・次週維持・属性待ち。記事内クリスマス・キャロルの6位／7位表記は不一致あり、数値成長に使用しない。",
+   "url": "https://www.kogyotsushin.com/archives/topics/t8/202611/16153720.php",
+   "category": "映画",
+   "origin": "new",
+   "observed": "11/13〜15",
+   "published": "11/16",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "全国動員順位",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "パンどろぼう",
+   "state": "接点拡大 WATCH",
+   "e": "トーハン11/17調べ総合6位（前回3位）。書籍需要は確認、部数増減は不明。9月新刊→10月アニメ→11/10ファミマの接点拡大を追跡。11/20グッズも供給情報であり、コラボSKUの実購買は未確認。急伸・再燃に数えない。 https://www.tohan.jp/bestsellers/2026_1117_weekly/ https://www.family.co.jp/company/news_releases/2026/20261106_02.html",
+   "url": "https://www.tohan.jp/bestsellers/2026_1117_weekly/",
+   "category": "候補追跡",
+   "origin": "tracking",
+   "observed": "11/17調べ",
+   "published": "11/17",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "パペットスンスン",
+   "state": "接点拡大 WATCH",
+   "e": "11/11初ガイドブック発売前重版→11/17調べトーハン総合4位。約600書店の雑貨・12書店ポップアップへ展開。書籍需要と接点増を束ねたWATCH。雑貨SKU実売・若年浸透の追加加速は未確認。 https://www.tohan.jp/bestsellers/2026_1117_weekly/ https://prtimes.jp/main/html/rd/p/000001330.000031579.html",
+   "url": "https://prtimes.jp/main/html/rd/p/000001330.000031579.html",
+   "category": "候補追跡",
+   "origin": "new",
+   "observed": "11/11発売〜11/17調べ",
+   "published": "11/11・17",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "雨穴の家",
+   "state": "初動需要 WATCH",
+   "e": "11/13発売、11/17調べトーハン総合1位。初動需要を新しく検知。順位だけで成長率にせず、次：冊数・2週目維持・若年層属性。 https://www.tohan.jp/bestsellers/2026_1117_weekly/",
+   "url": "https://www.tohan.jp/bestsellers/2026_1117_weekly/",
+   "category": "候補追跡",
+   "origin": "new",
+   "observed": "11/13発売〜11/17調べ",
+   "published": "11/17",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "スターバックス ジョイフル カプセル",
+   "state": "発売／需要照合待ち",
+   "e": "11/18全国発売・880円・全5種。発売当日の品薄投稿を二次記事で検知したが、元X本文は403で未照合。全国完売・地域在庫は未確認。対象年齢15歳以上は購入者属性ではない。次：公式欠品・実購入の一次投稿・実数。 https://stories.starbucks.co.jp/press/2026/pr-2026-1111/ https://kotoibe-biyori.com/starbucks-capsuletoy-restock/",
+   "url": "https://stories.starbucks.co.jp/press/2026/pr-2026-1111/",
+   "category": "候補追跡",
+   "origin": "new",
+   "observed": "11/18発売",
+   "published": "11/11",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "VIVANT（2023）",
+   "state": "REVIVAL WATCH",
+   "e": "Rakuten PLAYの11/9〜15パネル視聴455人、9→4位。前回282人だが前回ページは11/1〜8の8日表記で、今週7日と期間不一致。+61.3%を同条件成長率とは認定しない。次：窓を揃えた視聴実数と他サービスの追随。 https://play.rakuten.co.jp/static/ranking https://play.rakuten.co.jp/static/ranking/2026_11_w2",
+   "url": "https://play.rakuten.co.jp/static/ranking",
+   "category": "候補追跡",
+   "origin": "new",
+   "observed": "11/9〜15、前回11/1〜8",
+   "published": "11/17",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "TikTok Shopの冬支度購買",
+   "state": "初動需要 WATCH",
+   "e": "11/9〜15 Kalodata推計で裏起毛パンツ5,408件・平均3,515円。冬物・美容・生活家電が上位化。ブランド・同一SKUの前週比較は未取得、若者比率不明。匿名商品をShoppingの具体SKUに置き換えない。 https://www.kalodata.com/jp/blog/2026/11/kalodata/kalodata-weekly/1291/",
+   "url": "https://www.kalodata.com/jp/blog/2026/11/kalodata/kalodata-weekly/1291/",
+   "category": "候補追跡",
+   "origin": "new",
+   "observed": "11/9〜15",
+   "published": "11/18",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "遊☆戯☆王ジャンプ／魔法使いの夜 下／サイレント・ウィッチ XIII",
+   "state": "保留｜書籍新顔",
+   "e": "トーハン総合2・9・10位。部数・前週同条件比較・支持属性待ち。",
+   "url": "https://www.tohan.jp/bestsellers/2026_1117_weekly/",
+   "category": "書籍・漫画",
+   "origin": "new",
+   "observed": "11/17調べ",
+   "published": "11/17",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "海辺のエール／おもいこみのノラ2",
+   "state": "保留｜書店入口",
+   "e": "紀伊國屋調べを掲載するカドブン11月第2週で1・2位。別観測を探索したが部数は未取得。",
+   "url": "https://kadobun.jp/ranking/ranking.html",
+   "category": "書籍",
+   "origin": "new",
+   "observed": "11/8〜15",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "スタバ品薄UGC",
+   "state": "取得不可｜元本文",
+   "e": "二次記事の11/18投稿を辿ったがX403。全国完売・錦糸町／両国の在庫は未確認。",
+   "url": "https://kotoibe-biyori.com/starbucks-capsuletoy-restock/",
+   "category": "UGC",
+   "origin": "unconfirmed",
+   "observed": "11/18投稿",
+   "published": "11/18",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "冬物パンツ／美容家電",
+   "state": "保留｜SKU特定",
+   "e": "裏起毛5408件の推計は確認、ブランド・型・色が公開本文で不明。匿名商品をShoppingへ採用しない。",
+   "url": "https://www.kalodata.com/jp/blog/2026/11/kalodata/kalodata-weekly/1291/",
+   "category": "ファッション・美容",
+   "origin": "new",
+   "observed": "11/9〜15",
+   "published": "11/18",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "Kalodata推計",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "3CE×クロミ／オルビス×ポケモン",
+   "state": "Shopping保留｜供給のみ",
+   "e": "11/21・20発売の候補をカレンダーで検知。公式仕様と当該SKU購買を照合できず保留。",
+   "url": "https://www.fashion-press.net/news/calendar/beauty",
+   "category": "美容",
+   "origin": "new",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "グラコロ／コク旨ボロネーゼグラコロ",
+   "state": "保留｜PRE-LAUNCH",
+   "e": "11/25予定を検知。恒例発売予告を予約反応・実売にしない。",
+   "url": "https://digitalpr.jp/pdf.php?r=148840",
+   "category": "食品",
+   "origin": "new",
+   "observed": "11/25予定",
+   "published": "11/19",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "CAFÉ LATORY ROOM／Livly OPEN LAB.",
+   "state": "保留｜体験供給",
+   "e": "AGF11/19〜22、Livly11/20〜24の新接点を検知。AGF延べ6000人は過去イベントの累計で当期来場ではない。予約・現行来場実数待ち。",
+   "url": "https://www.livly.com/event/openlab2026/",
+   "category": "場所・体験",
+   "origin": "new",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "AI・占いアプリ／ソートパズル",
+   "state": "保留｜アプリ新ルート",
+   "e": "Sensor Towerの11月記事一覧から発見。個別記事の同週推計を取得せずMAIN採用しない。",
+   "url": "https://sensortower.com/ja/blog",
+   "category": "アプリ・テクノロジー",
+   "origin": "new",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "国内アプリ10年変化",
+   "state": "保留｜鮮度ゲート外",
+   "e": "Fuller11/12発表だが観測2016/6〜2026/6。利用アプリ数の10年増加を今週成長に置換しない。",
+   "url": "https://www.fuller-inc.com/news/202611-app-ape-10-year-appmarketreport-2026",
+   "category": "テクノロジー",
+   "origin": "new",
+   "observed": "2016/6〜2026/6",
+   "published": "11/12",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "ノラネコぐんだん クリスマス",
+   "state": "観測不能／相対枠外",
+   "e": "今週総合TOP10で比較実数取得できず。失速とせず相対枠外。",
+   "url": "https://www.tohan.jp/bestsellers/2026_1117_weekly/",
+   "category": "前週WATCH",
+   "origin": "tracking",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "水光カラコン",
+   "state": "観測不能／相対枠外",
+   "e": "今週の同条件需要増・実数を取得できず掲載終了。過去の支持率・予告を理由に継続しない。",
+   "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+   "category": "前週WATCH",
+   "origin": "tracking",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "星型ニキビパッチ",
+   "state": "観測不能／相対枠外",
+   "e": "今週の同条件需要増・実数を取得できず掲載終了。過去の支持率・予告を理由に継続しない。",
+   "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+   "category": "前週WATCH",
+   "origin": "tracking",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "山手線一周ウォーキング",
+   "state": "観測不能／相対枠外",
+   "e": "今週の同条件需要増・実数を取得できず掲載終了。過去の支持率・予告を理由に継続しない。",
+   "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+   "category": "前週WATCH",
+   "origin": "tracking",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "ベビチッチ／コリラックマ／ポメラニアンもち",
+   "state": "観測不能／相対枠外",
+   "e": "今週の同条件需要増・実数を取得できず掲載終了。過去の支持率・予告を理由に継続しない。",
+   "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+   "category": "前週WATCH",
+   "origin": "tracking",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "Setlog",
+   "state": "観測不能／相対枠外",
+   "e": "今週の同条件需要増・実数を取得できず掲載終了。過去の支持率・予告を理由に継続しない。",
+   "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+   "category": "前週WATCH",
+   "origin": "tracking",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "BeReal",
+   "state": "観測不能／相対枠外",
+   "e": "今週の同条件需要増・実数を取得できず掲載終了。過去の支持率・予告を理由に継続しない。",
+   "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+   "category": "前週WATCH",
+   "origin": "tracking",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "PLAYGROUND CITY SHIBUYA with Pokémon",
+   "state": "観測不能／相対枠外",
+   "e": "今週の同条件需要増・実数を取得できず掲載終了。過去の支持率・予告を理由に継続しない。",
+   "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+   "category": "前週WATCH",
+   "origin": "tracking",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "前週Shopping：ゼルダ／牛すき鍋膳",
+   "state": "Shopping掲載終了",
+   "e": "ゼルダは実売減でMomentumゲート外。牛すき鍋は価格企画継続だが新規実需比較未取得。値下げだけで継続しない。",
+   "url": "https://www.famitsu.com/article/202611/94496",
+   "category": "Shopping",
+   "origin": "tracking",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  },
+  {
+   "n": "検索動向／非音楽UGC日次／食品POS",
+   "state": "取得不可",
+   "e": "同条件Google Trends数値、非音楽日次、コンビニSKU実売を取得できず。未確認を該当なしにしない。",
+   "url": "https://trends.google.com/trends/",
+   "category": "系統監査",
+   "origin": "unconfirmed",
+   "observed": "個別集計期間未取得",
+   "published": "発表日未確認",
+   "checked": "2026-11-22",
+   "country": "日本（音楽Globalは別記）",
+   "population": "媒体対象に限定、年齢属性未確認",
+   "measurement": "本文記載の範囲／不明部分は未確認",
+   "comparison": "本文記載。ない場合は未取得",
+   "next_evidence": "同条件・同期間の実数、他需要指標の追随、若者属性"
+  }
+ ],
+ "overall": [
+  {
+   "n": "ゴジラ-0.0",
+   "c": "Video / Streaming",
+   "s": 80,
+   "v": [
+    20,
+    18,
+    20,
+    8,
+    14
+   ],
+   "w": "🟡 MAIN / 高水準・減速",
+   "e": "11/13〜15全国週末50.8万人・8.61億円、2週連続首位。前週69.9万人・11.3億円から動員−27.3%、興収−23.8%（編集計算）。13日累計254万人・40億円、世界150億円超。新作2週目の巨大な実需で継続するが急伸とはしない。年齢・若年女性比率未確認。発表11/16、確認11/22。",
+   "l": [
+    [
+     "興行通信社・対象週固定",
+     "https://www.kogyotsushin.com/archives/topics/t8/202611/16153720.php"
+    ]
+   ]
+  },
+  {
+   "n": "ゼルダの伝説 時のオカリナ（Switch 2）",
+   "c": "Games",
+   "s": 75,
+   "v": [
+    15,
+    18,
+    20,
+    8,
+    14
+   ],
+   "w": "🟡 MAIN / 初動後減速",
+   "e": "11/9〜15国内パッケージ推計86,097本、累計623,138本で2週連続首位。前週537,041本から−84.0%。発売初週は実販売4日、今週7日で、発売集中の剥落を含む。DL込み81万本と合算しない。初動の記録と2週目も大きい実売は評価するが勢いを減点。若者属性未確認。発表11/19、確認11/22。",
+   "l": [
+    [
+     "ファミ通・週間推計",
+     "https://www.famitsu.com/article/202611/94496"
+    ],
+    [
+     "前週・同媒体",
+     "https://www.famitsu.com/article/202611/93799?page=1"
+    ]
+   ]
+  }
+ ],
+ "early": [
+  [
+   "パンどろぼう",
+   "トーハン11/17調べ総合6位（前回3位）。書籍需要は確認、部数増減は不明。9月新刊→10月アニメ→11/10ファミマの接点拡大を追跡。11/20グッズも供給情報であり、コラボSKUの実購買は未確認。急伸・再燃に数えない。 https://www.tohan.jp/bestsellers/2026_1117_weekly/ https://www.family.co.jp/company/news_releases/2026/20261106_02.html",
+   "接点拡大 WATCH"
+  ],
+  [
+   "パペットスンスン",
+   "11/11初ガイドブック発売前重版→11/17調べトーハン総合4位。約600書店の雑貨・12書店ポップアップへ展開。書籍需要と接点増を束ねたWATCH。雑貨SKU実売・若年浸透の追加加速は未確認。 https://www.tohan.jp/bestsellers/2026_1117_weekly/ https://prtimes.jp/main/html/rd/p/000001330.000031579.html",
+   "接点拡大 WATCH"
+  ],
+  [
+   "雨穴の家",
+   "11/13発売、11/17調べトーハン総合1位。初動需要を新しく検知。順位だけで成長率にせず、次：冊数・2週目維持・若年層属性。 https://www.tohan.jp/bestsellers/2026_1117_weekly/",
+   "初動需要 WATCH"
+  ],
+  [
+   "スターバックス ジョイフル カプセル",
+   "11/18全国発売・880円・全5種。発売当日の品薄投稿を二次記事で検知したが、元X本文は403で未照合。全国完売・地域在庫は未確認。対象年齢15歳以上は購入者属性ではない。次：公式欠品・実購入の一次投稿・実数。 https://stories.starbucks.co.jp/press/2026/pr-2026-1111/ https://kotoibe-biyori.com/starbucks-capsuletoy-restock/",
+   "発売／需要照合待ち"
+  ],
+  [
+   "VIVANT（2023）",
+   "Rakuten PLAYの11/9〜15パネル視聴455人、9→4位。前回282人だが前回ページは11/1〜8の8日表記で、今週7日と期間不一致。+61.3%を同条件成長率とは認定しない。次：窓を揃えた視聴実数と他サービスの追随。 https://play.rakuten.co.jp/static/ranking https://play.rakuten.co.jp/static/ranking/2026_11_w2",
+   "REVIVAL WATCH"
+  ],
+  [
+   "TikTok Shopの冬支度購買",
+   "11/9〜15 Kalodata推計で裏起毛パンツ5,408件・平均3,515円。冬物・美容・生活家電が上位化。ブランド・同一SKUの前週比較は未取得、若者比率不明。匿名商品をShoppingの具体SKUに置き換えない。 https://www.kalodata.com/jp/blog/2026/11/kalodata/kalodata-weekly/1291/",
+   "初動需要 WATCH"
+  ]
+ ],
+ "shopping": [
+  {
+   "n": "ポプラ社｜パペットスンスン ガイドブック",
+   "cat": "Books / Character",
+   "s": 83,
+   "status": "HOT",
+   "signal": "🆕 NEW / 初動需要",
+   "price": "¥2,090（税込）",
+   "release": "2026/11/11",
+   "sub": "ISBN 9784591191354／A5・カラー127ページ",
+   "e": "WHY NOW：発売前重版に加え、発売後11/17調べトーハン総合4位を確認。予約反応から書籍購買へ接続。冊数・前週比・購入者年齢は未公表で、急伸率は付けない。別売グッズの購買は未確認。確認11/22。",
+   "l": [
+    [
+     "ポプラ社・仕様／重版",
+     "https://prtimes.jp/main/html/rd/p/000001330.000031579.html"
+    ],
+    [
+     "トーハン調べ・11/17総合",
+     "https://www.tohan.jp/bestsellers/2026_1117_weekly/"
+    ]
+   ]
+  },
+  {
+   "n": "双葉社｜雨穴の家",
+   "cat": "Books / Fiction",
+   "s": 80,
+   "status": "HOT",
+   "signal": "🆕 NEW / 初動需要",
+   "price": "¥1,870（税込）",
+   "release": "2026/11/13",
+   "sub": "ISBN 9784575249347／四六判272ページ",
+   "e": "WHY NOW：発売直後のトーハン11/17調べ総合1位を新規検知。書誌の発売日・価格・ISBNを照合。単週の順位需要であり、販売部数の増加率・若年購買比率は不明。次週実売を追跡。確認11/22。",
+   "l": [
+    [
+     "書誌・最終更新11/12",
+     "https://www.hanmoto.com/bd/isbn/9784575249347"
+    ],
+    [
+     "トーハン調べ・11/17総合",
+     "https://www.tohan.jp/bestsellers/2026_1117_weekly/"
+    ]
+   ]
+  }
+ ],
+ "music": {
+  "japan": [
+   [
+    "ラブリーズン",
+    "原因は自分にある。",
+    "🚀 BREAKOUT / Hot100 18→1位・CD806,901枚、Streaming378.3万回",
+    "UPBEAT",
+    "https://www.billboard-japan.com/d_news/detail/167544/2"
+   ],
+   [
+    "結び",
+    "Ayumu Imazu",
+    "🔥 HOT / Streaming1位・882.4万回・前週比+14.9%",
+    "VLOG",
+    "https://www.billboard-japan.com/d_news/detail/167540/2"
+   ],
+   [
+    "Yes! 東京",
+    "EBiDAN",
+    "🔥 HOT / Hot1003→2位・Streaming839.8万回、前週比+3.8%",
+    "UPBEAT",
+    "https://www.billboard-japan.com/d_news/detail/167540/2"
+   ],
+   [
+    "しわあわせ",
+    "Vaundy",
+    "🔥 HOT / Streaming2位・858.5万回、前週855.1万回",
+    "VLOG",
+    "https://www.billboard-japan.com/d_news/detail/167540/2"
+   ],
+   [
+    "You're Under Arrest",
+    "ILLIT",
+    "🚀 BREAKOUT / Streaming8→4位・515.2万回・前週比+7.9%",
+    "UPBEAT",
+    "https://www.billboard-japan.com/d_news/detail/167540/2"
+   ],
+   [
+    "It's Me",
+    "ILLIT",
+    "♻️ REVIVAL / Streaming10位復帰・446.2万回、Hot10017→10位",
+    "FASHION",
+    "https://www.billboard-japan.com/d_news/detail/167540/2"
+   ],
+   [
+    "DEPENDS",
+    "XG",
+    "🚀 BREAKOUT / Hot10034→9位・総合点+79.3%。YouTube Japan初登場12位（別窓）",
+    "FASHION",
+    "https://www.billboard-japan.com/d_news/detail/167544/2"
+   ],
+   [
+    "Present",
+    "INI",
+    "🚀 BREAKOUT / Streaming5位・495.8万回。再生合計順と加重点順位は異なる",
+    "UPBEAT",
+    "https://www.billboard-japan.com/d_news/detail/167540/2"
+   ],
+   [
+    "拝啓、少年よ",
+    "Hump Back",
+    "♻️ REVIVAL WATCH / YouTube Japan11/12終了週7位再入・331.1万回。前週差不明",
+    "UPBEAT",
+    "https://kworb.net/youtube/insights/jp.html"
+   ],
+   [
+    "Lemon",
+    "米津玄師",
+    "♻️ REVIVAL / YouTube Japan20→11位・252.9万回、週+89.7万回（11/12終了週）",
+    "MOODY",
+    "https://kworb.net/youtube/insights/jp.html"
+   ]
+  ],
+  "global": [
+   [
+    "BbY WOW",
+    "KAROL G, Judeline, rusowsky",
+    "🔥 HOT / Spotify1位維持・31.66M、週−1.54M。高水準・減速",
+    "UPBEAT",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "Stop The Wedding!",
+    "Ashe",
+    "🚀 BREAKOUT / Spotify3→2位・30.90M、週+1.76M／Billboard Global5→3位",
+    "UPBEAT",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "Housewife",
+    "Tate McRae",
+    "🔥 HOT / Spotify2→3位・25.47M、週−5.30M。高水準・減速",
+    "FASHION",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "the cure",
+    "Olivia Rodrigo",
+    "🔥 HOT / Spotify5→4位・23.37M、週+0.27M",
+    "MOODY",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "Babydoll",
+    "Jamie Miller",
+    "🚀 BREAKOUT / Spotify8→7位・20.29M、週+1.82M／Billboard10→6位",
+    "MOODY",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "Last Christmas",
+    "Wham!",
+    "♻️ REVIVAL / Spotify19→8位・18.90M、週+3.11M／Billboard48→8位",
+    "TRAVEL",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "All I Want for Christmas Is You",
+    "Mariah Carey",
+    "🚀 EARLY→HOT / Spotify31→12位・17.77M、週+3.64M／Tokchart日次+17,871動画",
+    "UPBEAT",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "Flower In A Hurricane",
+    "Justice, Tame Impala, SZA, King Gizzard & The Lizard Wizard",
+    "🚀 EARLY→HOT / Spotify116→18位・16.34M、週+7.25M／Shazam3→1位（11/15→22）",
+    "AESTHETIC",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "Suzuki (from GTAVI: The Album)",
+    "Fuerza Regida",
+    "🚀 BREAKOUT / Spotify23→11位・18.04M、週+2.84M。日本の認知は選定条件外",
+    "TRAVEL",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "Earrings",
+    "Malcolm Todd",
+    "🔥 HOT / Spotify10→9位・18.08M、週+0.37M",
+    "VLOG",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ]
+  ],
+  "early": [
+   [
+    "Shotta's.",
+    "Season 25",
+    "✨ EARLY継続 / Spotify139→70位・10.57M、週+1.92M／Shazam2→3位",
+    "UPBEAT",
+    "https://kworb.net/spotify/country/global_weekly.html"
+   ],
+   [
+    "Rechazame",
+    "Prince Royce",
+    "♻️ REVIVAL / Tokchart日次+15,537動画、7日成長+39.2%。前回日次16,999より減速",
+    "MOODY",
+    "https://tokchart.com/tiktok-trending-songs"
+   ],
+   [
+    "Pujaan Hatiku",
+    "Jummalik",
+    "✨ EARLY / Tokchart世界1位・日次+18,036動画、7日成長+26.3%",
+    "VLOG",
+    "https://tokchart.com/tiktok-trending-songs"
+   ],
+   [
+    "Tu Me Estas Enamorando",
+    "La Piedra Urbana",
+    "✨ EARLY / Tokchart日次+35,186動画、7日成長+63.4%。配信再生への追随待ち",
+    "TRAVEL",
+    "https://tokchart.com/tiktok-trending-songs"
+   ],
+   [
+    "Mooo!",
+    "Doja Cat",
+    "♻️ REVIVAL / Tokchart新規6位・日次+9,405動画、7日成長+65.8%",
+    "UPBEAT",
+    "https://tokchart.com/tiktok-trending-songs"
+   ]
+  ]
+ },
+ "moves": [
+  {
+   "tag": "⬇️ COOLING",
+   "n": "ゴジラ-0.0",
+   "d": "89 → 80",
+   "why": "2週首位でも週末動員69.9万→50.8万人、−27.3%。巨大な規模と減速を併記。",
+   "aud": [
+    "年齢未確認"
+   ]
+  },
+  {
+   "tag": "⬇️ 初動後減速",
+   "n": "ゼルダの伝説 時のオカリナ（Switch 2）",
+   "d": "92 → 75",
+   "why": "国内パッケージ537041→86097本。発売4日の初週集中から7日の2週目へ。DL込み値と混ぜない。",
+   "aud": [
+    "国内推計"
+   ]
+  },
+  {
+   "tag": "🆕 WATCH",
+   "n": "パペットスンスン",
+   "d": "書籍入口 → 接点拡大 WATCH",
+   "why": "発売前重版に発売後トーハン4位が追随。雑貨・ポップアップの実購買は別途確認待ち。",
+   "aud": [
+    "世代属性未確認"
+   ]
+  },
+  {
+   "tag": "🆕 WATCH",
+   "n": "スターバックス ジョイフル カプセル",
+   "d": "発売 → 需要照合待ち",
+   "why": "全国発売を検知。品薄投稿の元本文を照合できず、全国完売・地元在庫を断定しない。",
+   "aud": [
+    "15歳以上は対象年齢"
+   ]
+  },
+  {
+   "tag": "観測不能／掲載終了",
+   "n": "前週の若者支持WATCH等",
+   "d": "8行終了・1行継続",
+   "why": "水光カラコン、星型パッチ、山手線一周、キャラ支持、Setlog、BeReal、渋谷Pokémonは最新需要比較未取得。失速や不人気とは認定しない。",
+   "aud": [
+    "前週9行の答え合わせ"
+   ]
+  }
+ ],
+ "analysis": [
+  [
+   "IPの接点拡大が書店を購買の観測点に変える",
+   "パンどろぼうとスンスンは動画やキャラクター雑貨から書店・コンビニへ接点を広げるが、供給の多さは売上増ではない。スンスンは発売前重版の後に取次総合4位という購入の追随が現れた。パンどろぼうは3→6位でも部数が不明で、減速率は付けない。書籍実売とグッズ実売を分けることで、IP全体の人気を個別商品へ誤って移植するのを防ぐ。"
+  ],
+  [
+   "季節と新発売は需要を集中させるが、継続率は別に測る",
+   "発売直後の大型ゲーム、映画初週、カプセルの数量限定、冬支度の衣料は短期に需要を集める。一方、ゼルダは2週首位でも推計本数が減少、ゴジラも動員−27.3%。首位維持を成長とせず、初動集中後の高水準として点数を下げた。TikTok冬物の購買推計もあるが、ブランドと同一SKU前週差が不明のためShoppingへ広げていない。"
+  ],
+  [
+   "再接触を測るときは母集団と窓の一致が先に来る",
+   "旧VIVANTのパネル視聴人数は282→455人と増えたが、取得した前週表記は8日、当週7日。順位上昇だけでも、単純比だけでも同条件の再燃率とは言えない。若者調査は9〜10月回答を11月支持の加速に流用しない。新しい名前の発見と、成長を立証する作業を分離することが今月の改善点。"
+  ]
+ ],
+ "music_analysis": [
+  [
+   "JAPAN｜6曲追加・4曲継続",
+   "追加はラブリーズン、It's Me、DEPENDS、Present、拝啓、少年よ、Lemon。結びは再生+14.9%、ILLITは+7.9%。Emotion、NOW U KNOW、ザッツ！超常、Slidin、BPM feat. KREVA、クリスマスソングを相対的に枠外へ。高順位を維持した曲の終了を一律Coolingにはしない。11/18公開の11/9〜15集計と、YouTube11/12終了週を分離。紅白発表との同時性は因果の証明ではなく、若者年齢別・UGC日次は未確認。"
+  ],
+  [
+   "GLOBAL HOT｜4曲入替・EARLY→HOT昇格2曲",
+   "Flower（週+725万回・Shazam1位）とMariah（+364万回・UGC追随）を昇格、SuzukiとEarringsを追加。Nicole Kidmanは週−287万回、Ain't In LAは−143万回で相対枠外。Irisは9→22位・−243万回、Coming Up Rosesは26→39位・−158万回でCooling。前週の昇格が維持できなかった事実も記録する。Spotify11/19終了週とBillboard11/21付は別窓。<a href=\"https://ca.billboard.com/charts/billboard-global-200/2026-11-21\">固定日チャート</a>を照合。"
+  ],
+  [
+   "GLOBAL EARLY｜2曲継続・3曲追加",
+   "前週5曲は昇格2（Flower・Mariah）、継続2（Shotta’s.・Rechazame）、相対枠外1（Starburster：Shazam10位横ばい）。新規Pujaan Hatiku、Tu Me Estas Enamorando、Mooo!を<a href=\"https://tokchart.com/tiktok-trending-songs\">Tokchart 11/22公開値</a>から選定。日次と7日成長は同社集計、音源統合・母集団の詳細不明。Rechazameは7日成長が正でも日次は前回より減少。UGC数を再生数に換算しない。公式TikTok／Reels、Spotify Viral、YouTube Global対象週数値は未取得。BGMタグは加点なし。"
+  ]
+ ],
+ "sources": {
+  "film": "https://www.kogyotsushin.com/archives/topics/t8/202611/16153720.php",
+  "game": "https://www.famitsu.com/article/202611/94496",
+  "book": "https://www.tohan.jp/bestsellers/2026_1117_weekly/",
+  "sunsun": "https://prtimes.jp/main/html/rd/p/000001330.000031579.html",
+  "rain": "https://www.hanmoto.com/bd/isbn/9784575249347",
+  "star": "https://stories.starbucks.co.jp/press/2026/pr-2026-1111/",
+  "starugc": "https://kotoibe-biyori.com/starbucks-capsuletoy-restock/",
+  "stream": "https://www.billboard-japan.com/d_news/detail/167540/2",
+  "bbj": "https://www.billboard-japan.com/d_news/detail/167544/2",
+  "sp": "https://kworb.net/spotify/country/global_weekly.html",
+  "sh": "https://kworb.net/charts/shazam/ww.html",
+  "tk": "https://tokchart.com/tiktok-trending-songs",
+  "bbg": "https://ca.billboard.com/charts/billboard-global-200/2026-11-21",
+  "yt": "https://kworb.net/youtube/insights/jp.html",
+  "tv": "https://play.rakuten.co.jp/static/ranking",
+  "tvprev": "https://play.rakuten.co.jp/static/ranking/2026_11_w2",
+  "shop": "https://www.kalodata.com/jp/blog/2026/11/kalodata/kalodata-weekly/1291/",
+  "tech": "https://sensortower.com/ja/blog",
+  "app": "https://www.fuller-inc.com/news/202611-app-ape-10-year-appmarketreport-2026",
+  "beauty": "https://www.fashion-press.net/news/calendar/beauty",
+  "place": "https://www.livly.com/event/openlab2026/",
+  "agf": "https://agf.ajinomoto.co.jp/news/2026-11-05-2310.html",
+  "gacha": "https://gachapla.com/calendar/2026-11",
+  "youth": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/"
+ }
+}

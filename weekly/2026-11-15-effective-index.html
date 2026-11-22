@@ -1,0 +1,1388 @@
+<!doctype html><!-- published 2026-11-15; weekly zero-base refresh --><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trend Radar</title><style>:root{--b:#f5f7fb;--c:#fff;--t:#17191e;--m:#707783;--l:#e6e9ef;--a:#5b5be8;--g:#078b68;--r:#c44f4f}*{box-sizing:border-box}body{margin:0;background:var(--b);color:var(--t);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI",sans-serif;overflow-x:hidden}header{background:#12141a;color:#fff;padding:20px}.nav,.months,.filters,.series{display:flex;gap:8px;overflow:auto}.nav{margin-top:14px;gap:16px}.nav a{color:#ccd1db;text-decoration:none;white-space:nowrap}main{max-width:1180px;margin:auto;padding:20px}.sub,.desc,.ev,.note{color:var(--m);line-height:1.65}.desc{font-size:13px}.note{font-size:11px}.months,.filters,.series{padding:12px 0}.months button,.filters button,.series button{border:1px solid var(--l);background:#fff;padding:8px 11px;border-radius:10px;font-weight:800;white-space:nowrap}.active{background:#eeedff!important;color:#4d48c8!important}.card{background:#fff;border:1px solid var(--l);border-radius:16px;padding:15px;margin-bottom:12px}.section{margin:28px 0}.pill,.status{display:inline-flex;padding:5px 8px;border-radius:999px;background:#eef0f5;font-size:10px;font-weight:900}.mom{font-size:11px;font-weight:900}.up{color:var(--g)}.down{color:var(--r)}.desktop{overflow:auto}.desktop table{border-collapse:collapse;width:100%;min-width:1380px}.desktop th,.desktop td{padding:11px;border-bottom:1px solid var(--l);font-size:12px;text-align:left;white-space:nowrap}.mobile{display:none}.name{font-size:18px;font-weight:900}.total b{display:block;font-size:29px}.meta{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.metric{border:1px solid var(--l);border-radius:10px;padding:8px}.metric span{font-size:10px;color:var(--m)}summary{cursor:pointer;color:#4d48c8;font-weight:800;font-size:12px}.links{display:grid;gap:6px;margin-top:8px}.links a{border:1px solid var(--l);border-radius:9px;padding:8px;text-decoration:none;color:#333;font-size:12px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--l);font-size:12px}.music{background:#fff;border:1px solid var(--l);border-radius:14px;overflow:hidden}.song{display:grid;grid-template-columns:28px 1fr 78px;gap:8px;align-items:center;padding:9px 10px;border-bottom:1px solid var(--l)}.song small{display:block;color:var(--m)}.sp{background:#111;color:#fff;text-decoration:none;border-radius:999px;padding:7px;text-align:center;font-size:10px}.shopintro{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;margin:12px 0}.shopbox{background:#fff;border:1px solid var(--l);border-radius:13px;padding:12px;font-size:11px;color:var(--m);line-height:1.6}.shop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.shopcard{background:#fff;border:1px solid var(--l);border-radius:13px;padding:10px}.shophead{display:flex;justify-content:space-between;gap:8px}.shopscore{font-size:20px;font-weight:900;text-align:right}.shopcard h4{font-size:12px;line-height:1.35;margin:6px 0}.shopmeta,.shopwhy,.local{font-size:10px;line-height:1.5}.shopmeta{color:var(--m);margin:6px 0}.status.pre{background:#f2edff;color:#5a43bd}.status.hot{background:#fff0ec;color:#b64a31}.discovery{background:#fff7d6;color:#876600}.local{margin-top:7px;padding-top:7px;border-top:1px dashed var(--l);color:var(--m)}.chartbox{background:#fff;border:1px solid var(--l);border-radius:16px;padding:12px}svg{width:100%;height:320px}.appendix{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.method{border:1px solid var(--l);border-radius:10px;padding:10px}.method p{font-size:12px;color:var(--m)}@media(max-width:900px){.shop{grid-template-columns:repeat(3,1fr)}}@media(max-width:820px){main{padding:14px}.desktop{display:none}.mobile{display:block}.grid,.appendix,.shopintro{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.shop{grid-template-columns:repeat(2,1fr)}.song{grid-template-columns:24px 1fr 74px}}
+.moves{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.movecard{background:linear-gradient(145deg,#fff,#f6f5ff);border:1px solid #dedcf9;border-radius:16px;padding:14px;min-height:136px}.movehead{display:flex;align-items:center;justify-content:space-between;gap:8px}.movebadge{font-size:10px;font-weight:900;letter-spacing:.04em;padding:5px 8px;border-radius:999px;background:#ecebff;color:#4d48c8}.movedelta{font-size:12px;font-weight:900}.moveaud{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.aud{font-size:10px;font-weight:800;padding:4px 7px;border-radius:999px;background:#eef7f4;color:#08745a}.movecard h3{font-size:15px;margin:10px 0 5px}.movecard p{font-size:11px;color:var(--m);line-height:1.55;margin:0}.auditbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.auditstat{border:1px solid var(--l);border-radius:12px;padding:10px;background:#fff}.auditstat b{display:block;font-size:22px}.auditstat span{font-size:10px;color:var(--m)}.missed{border-left:4px solid #e28b42}.legacy{font-size:10px;color:var(--m);margin-top:8px}@media(max-width:900px){.moves{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.moves,.auditbar{grid-template-columns:1fr}.movecard{min-height:0}}
+
+/* Responsive layout: shrinkable content, readable evidence, no masked overflow. */
+body{overflow-x:visible}main,section,.card,.grid>*,.moves>*,.song>*,.shophead>*{min-width:0}
+main{width:100%}p,h1,h2,h3,h4,.ev,.note,.links a,.row span,.name,.song,.shopcard{overflow-wrap:anywhere}
+h1{font-size:clamp(25px,4vw,34px)}h2{font-size:23px}.section{scroll-margin-top:18px}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.metric span{display:block;margin-top:4px}.metric b{font-size:17px}
+.desktop table{min-width:0;table-layout:fixed}.desktop th,.desktop td{white-space:normal;overflow-wrap:anywhere;padding:10px 6px;vertical-align:top;line-height:1.5}
+.desktop th:nth-child(1){width:3%}.desktop th:nth-child(2){width:17%}.desktop th:nth-child(3){width:5%}.desktop th:nth-child(4){width:7%}.desktop th:nth-child(5){width:10%}.desktop th:nth-child(6){width:9%}.desktop th:last-child{width:22%}
+.desktop .ev{font-size:12px}.desktop details[open]{padding:5px 0}.desktop summary{padding:5px 0}
+.shop{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}.shophead{display:grid;grid-template-columns:minmax(0,1fr) auto}.shopcard{padding:16px}.shopcard h4{font-size:16px;line-height:1.55}.shopmeta,.shopwhy,.local{font-size:12px}.shopscore{min-width:60px}.shopscore .mom{display:block;max-width:80px}
+.song{grid-template-columns:28px minmax(0,1fr) 78px;padding:14px 12px}.song b{font-size:15px}.song small{line-height:1.6;margin-top:4px}.sp{white-space:nowrap}
+.chartbox{overflow:auto}.chartbox svg{display:block;min-width:640px}.series{flex-wrap:wrap;overflow:visible}.series button{white-space:normal;text-align:left}.series button.active{border-color:var(--line-color);box-shadow:inset 0 -3px var(--line-color)}
+.auditbar{grid-template-columns:repeat(4,minmax(0,1fr))}.scan-note{border-left:4px solid #5b5be8}.source-link{display:inline-block;margin-top:8px;color:#4d48c8}
+@media(max-width:1100px){.desktop{display:none}.mobile{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mobile .card{margin:0}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){header{padding:18px 16px}main{padding:16px}.mobile,.grid,.shopintro,.appendix,.moves{grid-template-columns:minmax(0,1fr)}.shop{grid-template-columns:minmax(0,1fr)}.auditbar{grid-template-columns:repeat(2,minmax(0,1fr))}.song{grid-template-columns:22px minmax(0,1fr) 72px}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.metric{padding:7px}.metric span{font-size:10px}.movecard{min-height:0}.series{flex-wrap:nowrap;overflow:auto}.series button{white-space:nowrap}}
+</style>
+</head><body><header><h2>Trend Radar</h2><div>Weekly evidence-based trend intelligence · 2026/11/15</div><div class="nav"><a href="#moves">Moves</a><a href="#ranking">Ranking</a><a href="#categories">Categories</a><a href="#history">History</a><a href="#early">Early</a><a href="#shopping">Shopping</a><a href="#music">Music</a><a href="#analysis">Analysis</a><a href="#audit">Audit</a><a href="#appendix">Appendix</a></div></header><main><h1 id="pagetitle">November 2026 Trend Radar</h1><div class="sub">若者を先行センサーとして重視しながら、世代横断の巨大な波も対象にする。Survey / Social・UGC / Search / Platform・Chart / Consumption・Retail / Officialを独立観測として横断。週次版 2026/11/15。総合は音楽を除外。Music Radarは独立して分析・更新します。主な実数は11/2〜12の公表済み集計。若者調査は9〜10月回答と明記し、今週の増勢とは区別。</div><div class="months"><button class="active" data-month="nov">2026年11月 REAL</button><button data-month="oct">2026年10月 REAL</button><button data-month="sep">2026年9月 REAL</button><button data-month="aug">2026年8月 REAL</button><button data-month="jul">2026年7月 REAL</button></div>
+
+<section id="moves" class="section"><h2>THIS WEEK'S MOVES</h2><div class="desc">順位より先に、前回更新から何が変わったかを見る。NEW / BREAKOUT / RE-ACCELERATING / COOLING / OUTを同じ基準で表示。</div><div class="moves" id="movesgrid"></div></section>
+
+<section id="ranking" class="section"><h2>総合トレンドランキング</h2><div class="desc">9/13再評価から、Velocity / Freshness / Evidence / Source Diversity / Current Scale の5軸へ移行。楽曲・アーティスト・音楽由来のダンス／ミームはMusic Radarに集約。総合は件数を固定せず、実利用と直近の変化を評価します。</div><div class="filters" id="filters"></div><div class="desktop card"><table><thead><tr id="rankhead"></tr></thead><tbody id="tbody"></tbody></table></div><div class="mobile" id="mobile"></div></section>
+
+
+<section id="categories" class="section"><h2>カテゴリー別</h2><div class="grid" id="catgrid"></div></section>
+
+
+<section id="history" class="section"><h2>Trend History 📈</h2><div class="desc">非音楽トレンドの月次Total Score。過去の原データは保存。7〜8月と9月以降では採点方式が異なるため、点差を成長率とは扱いません。</div><div class="series" id="series"></div><div class="chartbox"><svg id="chart" viewBox="0 0 900 320"></svg></div></section>
+
+
+<section id="early" class="section"><h2>Early Signal</h2><div class="grid" id="earlygrid"></div></section>
+
+
+<section id="next-observations" class="section" hidden><h2>探索ルートと確認状況 · 11/15</h2><p class="desc">既存名の追跡より先にカテゴリから探索。候補があってもMAIN採用とは限りません。未確認を該当なしに置き換えません。</p><div class="grid" id="coveragegrid"></div></section>
+<section id="shopping" class="section"><h2>Shopping Radar 🛍️</h2><div class="desc">具体商品・シリーズ・SKU単位で「今なぜ動くか」を追跡。定番人気ではなくFreshness / Momentumを必須条件にします。</div><div class="shopintro"><div class="shopbox"><b>📡 WHY NOW?</b><br>🆕 NEW / 🚀 BREAKOUT / ♻️ REVIVAL / ✨ DISCOVERY / 🔮 PRE-LAUNCH を商品ごとに表示。発売前は予約・過去実売・品薄・限定性などで早期検知。</div><div class="shopbox"><b>📍 LOCAL CHECK</b><br>ガチャ系のみ全国発売と店舗入荷を分離。錦糸町・両国は公式に確認できた時だけ在庫・入荷日を表示し、推測しません。</div></div><p class="note" id="shopcoverage"></p><div class="filters" id="shopfilters"></div><h3>🔥 HOT NOW</h3><div class="shop" id="shophot"></div><h3 style="margin-top:24px">🔮 COMING SOON</h3><div class="shop" id="shoppre"></div></section>
+
+
+<section id="music" class="section"><h2>Music Radar 🎧</h2><div class="desc">JAPANとGLOBALを独立観測。GLOBALはHOT 10＋EARLY WAVES 5。BGM FITはInstagram投稿との相性を示す補助タグで順位には影響しません。</div><div class="filters" id="musicfilters"><button class="active" data-music="japan">🇯🇵 JAPAN</button><button data-music="global">🌍 GLOBAL</button></div><div id="musicintro" class="shopbox" style="margin-bottom:10px"></div><h3 id="musichotlabel">🔥 HOT NOW — 10 tracks</h3><div class="music" id="musiclist"></div><div id="musicearlywrap"><h3 style="margin-top:20px">✨ EARLY WAVES — 5 tracks</h3><div class="desc">新曲・急伸・REVIVALを追跡。今週はチャート起点の監視枠で、UGC日次増加は未確認。</div><div class="music" id="musicearly"></div></div><div class="card" id="musicanalysis" style="margin-top:16px"></div></section>
+
+
+<section id="scan" class="section"><h2>追加探索 · 非音楽の候補</h2><p class="desc">11/15の再調査。既存MAINの追跡と、新しい候補の探索を分けて記録。採用保留も理由を残します。</p><div class="grid" id="scangrid"></div></section>
+<section id="analysis" class="section"><h2>Monthly Analysis</h2><div class="card" id="analysiscard"></div></section>
+
+
+<section id="audit" class="section"><h2>Discovery Audit</h2><div class="card"><div class="auditbar" id="auditcounts"></div><p class="ev" id="auditnote"></p><p class="ev">音楽の除外はスコープ変更であり、人気低下によるOUTとは数えません。検索動向・UGC日次増分・食品POSは未確認。探索ログと確認できた範囲を公開し、未調査・未確認を成功扱いにしません。</p><a href="https://github.com/aoblueee/trend/blob/main/weekly/2026-11-15-research-audit.md">11/15版の調査記録 ↗</a> · <a href="weekly/2026-11-10-editorial-review.md">11/10の訂正・評価 ↗</a></div></section>
+
+<section id="appendix" class="section"><h2>Appendix</h2><details class="card"><summary>新しい探索・採点仕様を表示</summary><div class="appendix"><div class="method"><h3>Blind Discovery</h3><p>カテゴリー名による候補探索と既存項目の追跡を分離。候補記録の実数を表示し、全カテゴリー・全6系統の完全巡回とは主張しません。</p></div><div class="method"><h3>Velocity /30</h3><p>同期間・同指標の実数変化を優先。順位差は成長率に換算せず、初動と継続増加を区別。</p></div><div class="method"><h3>Freshness /20</h3><p>直近1〜3か月で新しい行動・購買・UGCが生まれたか。</p></div><div class="method"><h3>Evidence /20</h3><p>再生、販売、興収、DL、利用率など直接的で新しい実利用データを優先。</p></div><div class="method"><h3>Source Diversity /15</h3><p>Survey / Social・UGC / Search / Platform・Chart / Consumption・Retail / Officialを独立評価。転載は同一観測。</p></div><div class="method"><h3>Current Scale /15</h3><p>現在の規模。巨大でも直近の速度が弱い場合は上位固定しません。</p></div><div class="method"><h3>Incumbency Check</h3><p>前回掲載TrendがBlind Discoveryで自然に再検知されなければ、直近需要を追跡。減速・相対的な枠外・観測不能を区別し、未取得をCoolingにしない。</p></div><div class="method"><h3>Trend Lifecycle</h3><p>Forecast → Early → Breakout/Main → Peak → Cooling → Out。Early内でも急伸／再燃・高水準／減速・接点拡大WATCH・発表／初動待ちを分離。接点数を総合点へ加点しない。</p></div><div class="method"><h3>Shopping Score /100</h3><p>具体SKU単位でFreshness / Velocityを必須ゲートにし、実売・品薄・予約・再販を追跡。</p></div><div class="method"><h3>Music Radar</h3><p>Chart Position × VelocityでHOTとEARLYを分離。BGM FITはInstagram用途の補助タグで、順位には加点しません。</p></div></div><div class="legacy">※7〜8月は旧6軸スコアを保存。9月の再評価分から新5軸へ移行しています。</div></details></section>
+
+</main>
+<script>
+const scoreV2={
+  "映画ちいかわ 人魚の島のひみつ":{s:99,m:[30,20,20,15,14],aud:["Youth Broad ↑↑","Mass Market ↑↑↑"]},
+  "VIVANT（2026）":{s:96,m:[29,18,20,15,14],aud:["Mass Market ↑↑↑","Youth Broad ↑"]},
+  "ボンボンドロップシール":{s:95,m:[29,20,18,14,14],aud:["10s Female ↑↑↑","20s Female ↑↑"]},
+  "EBiDAN「Yes! 東京」":{s:94,m:[29,18,18,14,15],aud:["10s Female ↑↑","Youth Broad ↑↑"]},
+  "Setlog":{s:92,m:[25,17,20,15,15],aud:["10s Female ↑↑↑","20s Female ↑↑"]},
+  "ラヴ上等 シーズン2":{s:92,m:[27,17,19,14,15],aud:["20s Female ↑↑","Youth Broad ↑↑"]},
+  "Mellojoy":{s:91,m:[30,19,17,13,12],aud:["10s Female ↑↑↑","20s Female ↑↑"]},
+  "パペットスンスン":{s:84,m:[21,16,18,14,15],aud:["10s Female ↑↑","20s Female ↑"]},
+  "M!LK / 「○○すぎて滅」":{s:84,m:[22,15,18,14,15],aud:["10s Female ↑↑","Youth Broad ↑"]},
+  "シール交換 / シール帳":{s:79,m:[17,15,18,14,15],aud:["10s Female ↑↑↑","20s Female ↑"]},
+  "めじるしアクセサリー / チャーム":{s:76,m:[17,13,17,14,15],aud:["10s Female ↑↑","20s Female ↑"]}
+};
+const moves={sep:[
+  {tag:"🆕 NEW",n:"VIVANT（2026）",d:"圏外 → #2",aud:["Mass Market ↑↑↑","Youth Broad ↑"],why:"TVer歴代最高を強制Candidateとして再捕捉。配信・放送・リアル体験の3面で巨大波。"},
+  {tag:"🆕 NEW",n:"ラヴ上等 シーズン2",d:"圏外 → #5",aud:["20s Female ↑↑","Youth Broad ↑↑"],why:"Netflix日本で5週連続1位。Platform定点巡回から見つかった新規MAIN。"},
+  {tag:"🔼 EARLY → MAIN",n:"Mellojoy",d:"#7 / 91",aud:["10s Female ↑↑↑"],why:"SNS先行から原宿店・整理券・売切れへ接続し、実行動のGateを通過。"},
+  {tag:"♻️ RE-ACCELERATING",n:"映画ちいかわ",d:"98 → 99",aud:["Mass Market ↑↑↑"],why:"公開7週目に週末興収1位へ返り咲き。人気継続ではなく再加速。"},
+  {tag:"⬆️ ACCELERATING",n:"Yes! 東京",d:"92 → 94",aud:["Youth Broad ↑↑"],why:"Hot 100首位とYouTube3週連続1位が同時進行。"},
+  {tag:"⬇️ VELOCITY DOWN",n:"Setlog",d:"96 → 92",aud:["10s Female ↑↑↑"],why:"規模は強いが新規加速は鈍化。新5軸でCurrent ScaleとVelocityを分離。"},
+  {tag:"⬇️ COOLING",n:"シール交換 / シール帳",d:"88 → 79",aud:["10s Female ↑↑↑"],why:"文化全体より具体SKUへ熱が移動。MAIN上位からCoolingへ。"},
+  {tag:"❌ OUT",n:"トモダチコレクション",d:"MAIN → OUT",aud:["Youth Broad →"],why:"今週のBlind Discoveryで再検知されず、新規Momentumも立証できなかった。"}
+]};
+const prevUpdate={"映画ちいかわ 人魚の島のひみつ":98,"Setlog":96,"ボンボンドロップシール":93,"EBiDAN「Yes! 東京」":92,"Mellojoy":null,"M!LK / 「○○すぎて滅」":92,"シール交換 / シール帳":88,"パペットスンスン":87,"めじるしアクセサリー / チャーム":82};
+const cats=['All','Video / Streaming','SNS / Apps','Character / Goods','Food / Drink','Fashion / Beauty','Culture / Language','Hobby / Experience','Games','Books / Manga','Technology'];
+const allData={"jul":[{"n":"シール帳 / シール交換","c":"Character / Goods","s":94,"w":"🔥 高止まり","v":[24,20,18,14,9,9],"e":"高校生夏トレンド調査で「シール交換」1位。15〜29歳調査でもシール帳が上位で、7月時点の若年層文化として根拠が厚い。","l":[["高校生夏トレンド調査","https://prtimes.jp/main/html/rd/p/000000215.000026876.html"],["若年層流行調査","https://prtimes.jp/main/html/rd/p/000000670.000018991.html"]]},{"n":"ボンボンドロップシール","c":"Character / Goods","s":92,"w":"🔥 高止まり","v":[23,20,18,14,9,8],"e":"15〜29歳の流行アイテム1位。特に女性で強く、シール文化の中心商品として定着。","l":[["若年層流行調査","https://prtimes.jp/main/html/rd/p/000000670.000018991.html"]]},{"n":"Setlog","c":"SNS / Apps","s":91,"w":"🚀 急上昇","v":[25,20,17,14,10,5],"e":"高校生調査で上位。LINEリサーチでも15〜24歳、特に若年女性で上位。","l":[["LINEリサーチ","https://note.com/linesurveys_jp/n/n0ba6dfe47563"]]},{"n":"トモダチコレクション わくわく生活","c":"Hobby / Experience","s":86,"w":"🌱 上昇中","v":[21,18,17,12,8,10],"e":"女性全年齢層でTOP10。新作起点の再燃。","l":[["任天堂公式","https://www.nintendo.com/jp/switch/blfga/index.html"]]},{"n":"たまごっち","c":"Character / Goods","s":85,"w":"🌱 上昇中","v":[19,19,17,13,9,8],"e":"若年女性でキャラクター人気が強い。","l":[["たまごっち公式","https://tamagotchi-official.com/jp/"]]},{"n":"麻辣湯","c":"Food / Drink","s":84,"w":"🔥 継続","v":[18,20,17,13,9,7],"e":"若年層の流行グルメ上位。","l":[["若年層流行調査","https://prtimes.jp/main/html/rd/p/000000670.000018991.html"]]},{"n":"今日、好きになりました。夏休み編2026","c":"Video / Streaming","s":82,"w":"🌱 上昇中","v":[20,20,15,12,9,6],"e":"高校生の定番コンテンツ。","l":[["ABEMA","https://abema.tv/video/genre/romance"]]},{"n":"めじるしアクセサリー","c":"Character / Goods","s":81,"w":"🚀 急上昇","v":[23,18,14,12,8,6],"e":"高校生調査で上位。LINEリサーチでも急上昇。","l":[["高校生夏トレンド調査","https://prtimes.jp/main/html/rd/p/000000215.000026876.html"]]},{"n":"ドバイチョコ餅","c":"Food / Drink","s":78,"w":"🔥 継続","v":[15,20,15,12,9,7],"e":"若年層の上半期グルメ上位。","l":[["若年層流行調査","https://prtimes.jp/main/html/rd/p/000000670.000018991.html"]]},{"n":"ガチャガチャ","c":"Hobby / Experience","s":77,"w":"🔥 継続","v":[16,16,16,12,9,8],"e":"若年層文化に定着。","l":[["LINEリサーチ","https://note.com/linesurveys_jp/n/n0ba6dfe47563"]]},{"n":"映画ちいかわ 人魚の島のひみつ","c":"Video / Streaming","s":76,"w":"🚀 急上昇","v":[24,16,17,12,4,3],"e":"7月24日公開。月末の伸びをLate July breakoutとして評価。","l":[["公式","https://www.anime-chiikawa.jp/"]]},{"n":"Melojoy","c":"Hobby / Experience","s":72,"w":"👀 WATCH","v":[19,18,12,9,8,6],"e":"高校生夏トレンド調査でTOP10入り。","l":[["高校生夏トレンド調査","https://prtimes.jp/main/html/rd/p/000000215.000026876.html"]]}],"aug":[{"n":"映画ちいかわ 人魚の島のひみつ","c":"Video / Streaming","s":96,"w":"🔥 MAIN / MEGA HIT","v":[23,19,20,15,10,9],"e":"【CONSUMPTION● OFFICIAL● SOCIAL●】7/24公開後、8月下旬まで100億円級へ伸長した巨大な実消費を維持。今週は新規加速より高水準継続と判断し96据え置き。","l":[["公式","https://www.anime-chiikawa.jp/"],["興収100億円到達","https://www.oricon.co.jp/news/2475206/full/"]]},{"n":"Setlog","c":"SNS / Apps","s":95,"w":"🔥 MAIN / 高浸透","v":[21,20,19,15,10,10],"e":"【SURVEY● PLATFORM● BEHAVIOR●】15〜24歳4,729人調査で若年女性上位、学生479人調査で認知91.4%・利用73.7%。8月中旬App Store上位も確認済み。急上昇期から高浸透局面へ移ったため前週97から95へ。","l":[["LINEリサーチ","https://note.com/linesurveys_jp/n/n0ba6dfe47563"],["学生利用実態","https://prtimes.jp/main/html/rd/p/000000102.000033964.html"],["App Store","https://apps.apple.com/jp/app/setlog/id6587576438"]]},{"n":"シール交換 / シール帳","c":"Character / Goods","s":95,"w":"🔥 MAIN / 高止まり","v":[21,20,19,14,10,11],"e":"【SURVEY● RETAIL● SCARCITY● SOCIAL●】複数若者調査で上位が続き、8月後半もボンボンドロップ新作の売切れ・二次流通高騰が発生。文化全体の新規加速は春より弱いが、購買熱が再点火しているため94→95。","l":[["高校生夏トレンド","https://shibuya-trendresearch.jp/monthlytrendsurvey/4480/"],["LINEリサーチ","https://note.com/linesurveys_jp/n/n0ba6dfe47563"],["ドラえもん新作高騰","https://bonbon-navi.com/info/news/doraemon-bonbon-drop-seal-mercari-price-rise-202608/"]]},{"n":"M!LK / 「○○すぎて滅」","c":"Culture / Language","s":91,"w":"🔥 MAIN / 高水準","v":[18,20,19,14,10,10],"e":"【SURVEY● UGC● VIDEO●】若者調査で言葉・アーティスト双方が強く、8月後半もM!LK新規ライブ映像がYouTube Trending入り。前週の再加速ピークからは一段落として93→91。","l":[["10代女子調査","https://gakumado.mynavi.jp/teens/articles/88881"],["YouTube Japan 8/29","https://yt-trends.sarojmeher.com/japan/music"]]},{"n":"EBiDAN「Yes! 東京」","c":"Video / Streaming","s":90,"w":"🔥 MAIN / BREAKOUT継続","v":[22,18,18,14,9,9],"e":"【SALES● VIDEO● CHART●】初週ミリオン級セールス後も、8/17〜23集計のBillboard JAPAN Hot 100で3位、動画指標は1位を継続。初動ピーク後も複数指標で残っているためMAIN維持。","l":[["Billboard JAPAN 8/26","https://www.billboard-japan.com/d_news/detail/164871/2"],["YouTube Japan","https://yt-trends.sarojmeher.com/japan/music"]]},{"n":"ボンボンドロップシール","c":"Character / Goods","s":88,"w":"🚀 PRODUCT HEAT 再加速","v":[21,20,17,14,8,8],"e":"【SURVEY● RETAIL● SCARCITY● PRODUCT●】8/14ドラえもん限定新作が売切れ後に定価の約8倍水準で二次流通成立。8/29には派生の前髪クリップ新柄12種も出荷開始。商品熱の再加速を受け84→88。","l":[["ドラえもん高騰","https://bonbon-navi.com/info/news/doraemon-bonbon-drop-seal-mercari-price-rise-202608/"],["前髪クリップ新柄","https://happycruise.jp/bonbondrop-bangs-clip-2026/"]]},{"n":"トモダチコレクション わくわく生活","c":"Hobby / Experience","s":84,"w":"🟡 PEAK → COOLING","v":[13,18,20,13,10,10],"e":"【CONSUMPTION● OFFICIAL●】4/16発売から約4か月で世界800万本超という巨大実績。ただし今週の新たな加速材料は乏しく、人気継続とMomentumを分離して86→84。MAINには残すがCooling監視。","l":[["任天堂公式","https://www.nintendo.com/jp/topics/article/45d42c50-0991-4405-895a-64f0ad37fa89"],["800万本超","https://news.denfaminicogamer.jp/news/2608062w"]]},{"n":"めじるしアクセサリー / チャーム","c":"Character / Goods","s":83,"w":"🟡 PEAK監視","v":[15,18,17,13,10,10],"e":"【SURVEY● PRODUCT● SOCIAL●】複数若者調査とInstagram投稿量で強さは確認できる一方、8月最終週の新規加速を示す販売データは弱い。85→83でPeak監視。","l":[["上半期Z世代トレンド","https://www.fun-japan.jp/en/articles/14663"],["ガシャポン発売予定","https://gashapon.jp/schedule/"]]},{"n":"フレネミー","c":"Culture / Language","s":79,"w":"🟡 COOLING監視","v":[17,20,14,11,8,9],"e":"【SURVEY● SOCIAL●】複数若者パネルで一致した言葉だが、8月最終週の再加速データが薄い。MAIN下位に残し81→79。","l":[["αZ総研","https://prtimes.jp/main/html/rd/p/000000116.000020799.html"],["中高生調査","https://alpha-gen-lab.com/news/XCgNsL9s"]]}],
+"sep":[
+{"n":"VIVANT（2026）","c":"Video / Streaming","s":96,"w":"🚀 NEW / MASS BREAKOUT","v":[25,15,20,15,10,11],"e":"【PLATFORM● AUDIENCE● SOCIAL● EXPERIENCE●】第1話はTVer8日間887万再生で全番組・全エピソード歴代1位。9/6放送の第17話もTBS FREE上位を占め、9/16から体験型イベントが始まる。若年女性限定ではなく世代横断の巨大波としてBlind ScanからMAINへ追加。","l":[["TVer歴代1位・887万再生","https://tver.co.jp/news/20260803.html"],["TBS FREEランキング","https://cu.tbs.co.jp/playlist/5e5135cccd254122bbd5419cafb50a8f"],["IMMERSIVE MISSION","https://www.tbs.co.jp/VIVANT-immersive-mission/ticket/"]]},
+{"n":"ラヴ上等 シーズン2","c":"Video / Streaming","s":92,"w":"🚀 NEW / PLATFORM DOMINANT","v":[24,18,19,14,9,8],"e":"【PLATFORM● GLOBAL● SOCIAL●】Netflix日本の週間TOP10で5週連続1位（8/31〜9/6時点）。香港・台湾でも首位実績があり、恋愛リアリティーから主題歌・出演者会話へ波及。名前検索ではなくNetflix定点巡回から新規捕捉したMAIN。","l":[["Netflix日本 5週連続1位","https://www.netflix.com/tudum/top10/japan/tv?week=2026-10-25"],["3週連続1位・海外TOP10","https://www.oricon.co.jp/news/2477004/full/"],["Netflix公式","https://about.netflix.com/ja/news/badly-in-love-season-2-teaser-art"]]},
+{"n":"映画ちいかわ 人魚の島のひみつ","c":"Video / Streaming","s":99,"w":"🚀 MAIN / RE-ACCELERATION","v":[25,19,20,15,10,10],"e":"【CONSUMPTION● CHART● EVENT●】9/4〜6の週末で動員92.8万人・興収14.15億円を積み、国内週末1位へ再返り咲き。累計960万人・138億円突破。ロングランの惰性ではなく7週目に再加速したため98→99。","l":[["9/4〜6首位・138億円","https://anime.eiga.com/news/column/eiga_ranking/127402/"],["興行成績","https://mantan-web.jp/article/20260908dog00m200038000a.html"],["映画公式","https://www.anime-chiikawa.jp/"]]},{"n":"Setlog","c":"SNS / Apps","s":96,"w":"🔥 MAIN / HIGH PENETRATION","v":[21,20,20,15,10,10],"e":"【SURVEY● PLATFORM● DOWNLOAD●】若年層での高利用に加え、9/11時点でも日本App Store無料SNS1位。急上昇期ほどの新規Momentumではないが、実DLの首位を継続しているため96据え置き。","l":[["App Storeカテゴリ1位 9/11","https://www.appbrain.com/stats/appstore-rankings/top_free/social_networking/jp"],["LINEリサーチ","https://note.com/linesurveys_jp/n/n0ba6dfe47563"],["App Store","https://apps.apple.com/jp/app/setlog/id6587576438"]]},{"n":"ボンボンドロップシール","c":"Character / Goods","s":95,"w":"🚀 MAIN / PRODUCT WAVE","v":[24,20,18,15,9,9],"e":"【SURVEY● PRODUCT● PRE-LAUNCH● SCARCITY●】9/10にMrs. GREEN APPLE全4種の9/24先行抽選詳細が確定し、9/11にはちいかわ新作3種の9/25発売も発表。成熟したシール文化の中で具体SKUが連続投入され、商品波がさらに強まったため93→95。","l":[["ミセス 9/24先行抽選","https://www.oricon.co.jp/news/2479510/full/"],["ちいかわ新作3種 9/25","https://www.inside-games.jp/article/2026/09/11/187631.html"],["若者調査","https://www.oricon.co.jp/pressrelease/2914206/"]]},{"n":"EBiDAN「Yes! 東京」","c":"Video / Streaming","s":94,"w":"🚀 MAIN / RE-ACCELERATION","v":[24,19,18,15,9,9],"e":"【CHART● VIDEO● STREAMING●】Billboard JAPAN Hot 100 9/9付で総合1位。YouTubeは8/28〜9/3に545.9万回、前週比+14%で3週連続1位。初動後に動画側が再加速しているため92→94。","l":[["Billboard JAPAN Hot 100","https://www.billboard-japan.com/charts"],["YouTube3週連続1位","https://www.oricon.co.jp/news/2479177/"],["週間ストリーミング","https://www.oricon.co.jp/music/rankinglab/st/2026-09-07/"]]},{"n":"Mellojoy","c":"Hobby / Experience","s":91,"w":"🚀 EARLY → MAIN / REAL-WORLD BREAKOUT","v":[25,20,16,14,8,8],"e":"【SURVEY● SOCIAL● RETAIL● EXPERIENCE●】上半期の10〜20代女性調査で強かったスクイーズ波が、SNS累計10億impを経て9/9に原宿の日本初リアル体験店へ到達。入店は電子整理券で管理され、オンライン人気が「触りに行く・買いに行く」行動へ接続したためMAIN昇格。","l":[["原宿公式・整理券","https://www.mellojoyjapan.com/pages/harajuku-pop-up-shop"],["SNS10億imp・店舗開業","https://www.oricon.co.jp/news/2476337/"],["上半期Z世代調査","https://news.mynavi.jp/article/20260601-4529839/"]]},{"n":"M!LK / 「○○すぎて滅」","c":"Culture / Language","s":90,"w":"🔥 MAIN / LONG TAIL","v":[18,20,19,14,9,10],"e":"【SURVEY● STREAMING● VIDEO● KARAOKE●】若者語としての波と楽曲が長期接続。9/10時点YouTube Japanで「好きすぎて滅！」4位圏、オリコン週間カラオケでも2位。再加速というより高水準ロングテールのため92→90。","l":[["YouTube Japan 9/10","https://www.kworb.net/youtube/insights/jp_daily.html"],["カラオケ2位","https://www.oricon.co.jp/rank/ko/w/2026-09-07/"],["10代女子調査","https://www.mynavi.jp/news/2026/06/post_53651.html"]]},{"n":"シール交換 / シール帳","c":"Character / Goods","s":88,"w":"🟡 PEAK / SKU SHIFT","v":[16,20,18,14,10,10],"e":"【SURVEY● SOCIAL● RETAIL●】文化自体は若者調査で強いが、9月の新規Momentumは「シール交換」全体よりボンボンドロップ等の具体商品へ集中。広い文化波は91→88へ下げPeak判定。","l":[["10代女子調査","https://www.mynavi.jp/news/2026/06/post_53651.html"],["若者調査","https://www.oricon.co.jp/pressrelease/2914206/"]]},{"n":"パペットスンスン","c":"Character / Goods","s":86,"w":"🔥 MAIN / RETAIL EXPANSION","v":[18,19,17,13,9,10],"e":"【VIDEO● RETAIL● OFFICIAL●】9月はほぼ日手帳、ACCOMMODE、Fairycake Fairと生活雑貨・食品へ接点が拡張。Fairycake Fairは販売期間中整理券制。実売数量の新規ハードデータは未確認のため87→86としつつMAIN維持。","l":[["Fairycake Fair整理券・商品","https://report.iko-yo.net/articles/32959"],["ほぼ日コラボ","https://www.inside-games.jp/article/2026/08/31/187035.html"],["ACCOMMODEコラボ","https://media.kawa-colle.jp/_ct/17861551"]]},{"n":"めじるしアクセサリー / チャーム","c":"Character / Goods","s":82,"w":"🟡 PEAK / SUPPLY ACTIVE","v":[14,18,17,13,10,10],"e":"【SURVEY● PRODUCT● SUPPLY●】9月は新作・再販が30種超規模で継続し、9/12にも「どこでもいっしょ」の限定再販が発表。供給は非常に活発だが需要の再加速を示す実売は弱いため82据え置き。","l":[["9月新作・再販一覧","https://news.mynavi.jp/article/20260901-4899579/"],["どこでもいっしょ限定再販","https://game.watch.impress.co.jp/docs/news/2138578.html"]]}]};
+scoreV2["映画ちいかわ 人魚の島のひみつ"]={s:99,m:[29,19,20,15,15],aud:["Youth Broad ↑↑","Mass Market ↑↑↑"]};
+scoreV2["VIVANT（2026）"]={s:90,m:[20,16,20,15,19],aud:["Mass Market ↑↑↑","Youth Broad ↑"]};
+scoreV2["ボンボンドロップシール"]={s:96,m:[29,20,19,14,14],aud:["10s Female ↑↑↑","20s Female ↑↑"]};
+scoreV2["EBiDAN「Yes! 東京」"]={s:97,m:[30,19,19,14,15],aud:["10s Female ↑↑","Youth Broad ↑↑↑"]};
+scoreV2["Setlog"]={s:88,m:[20,16,19,15,18],aud:["10s Female ↑↑","20s Female ↑↑"]};
+scoreV2["ラヴ上等 シーズン2"]={s:89,m:[21,16,19,14,19],aud:["20s Female ↑↑","Youth Broad ↑↑"]};
+scoreV2["Mellojoy"]={s:90,m:[24,18,17,13,18],aud:["10s Female ↑↑↑","20s Female ↑↑"]};
+scoreV2["パペットスンスン"]={s:80,m:[16,14,18,14,18],aud:["10s Female ↑↑","20s Female ↑"]};
+scoreV2["M!LK / 「○○すぎて滅」"]={s:87,m:[23,16,18,14,16],aud:["10s Female ↑↑","Youth Broad ↑↑"]};
+scoreV2["シール交換 / シール帳"]={s:75,m:[13,14,18,14,16],aud:["10s Female ↑↑","20s Female ↑"]};
+scoreV2["めじるしアクセサリー / チャーム"]={s:72,m:[12,13,17,14,16],aud:["10s Female ↑↑","20s Female ↑"]};
+scoreV2["シルバーウィーク旅行"]={s:91,m:[29,20,19,13,10],aud:["10s ↑↑↑","20s ↑↑","Youth Broad ↑↑↑"]};
+allData.sep.push({n:"シルバーウィーク旅行",c:"Hobby / Experience",s:91,w:"🚀 NEW / BEHAVIOR BREAKOUT",v:[29,20,19,13,10],e:"【BEHAVIOR● YOUTH● SCHEDULE DATA●】11年ぶりの5連休で旅行予定が前年比7.6%増。10代+25%、20代+11%が伸びを牽引。検索話題ではなく予定登録という実行動データでMAIN入り。",l:[["TimeTree未来総研 9/16","https://prtimes.jp/main/html/rd/p/000000155.000017462.html"]]});
+Object.assign(allData.sep.find(x=>x.n==="映画ちいかわ 人魚の島のひみつ"),{s:99,w:"🔥 MAIN / DOMINANT",e:"【CONSUMPTION● CHART● OFFICIAL●】9/11〜13も週末動員1位。公開52日で1009万人・興収146.6億円を突破し、再加速後も首位を維持。",l:[["週末1位・146億円","https://www.oricon.co.jp/news/2480291/"],["1000万人突破","https://www.oricon.co.jp/news/2480130/full/"]]});
+Object.assign(allData.sep.find(x=>x.n==="VIVANT（2026）"),{s:90,w:"🟡 PEAK / TEMPORARY PAUSE",e:"【PLATFORM● AUDIENCE● OFFICIAL●】TVer歴代最高の規模は強いが9/20・27は2週休止。新規放送Momentumが一時的に途切れるため96→90。10/4再開時に再加速を判定。",l:[["TVer歴代1位・887万再生","https://tver.co.jp/news/20260803.html"],["2週休止・10/4再開","https://www.oricon.co.jp/news/2480111/"]]});
+Object.assign(allData.sep.find(x=>x.n==="EBiDAN「Yes! 東京」"),{s:97,w:"🚀 MAIN / RE-ACCELERATING",e:"【CHART● STREAMING● VIDEO●】9/16 Hot 100で通算3度目の1位。週間ストリーミング690.7万回、前週比+16.8%、累積1.096億回。11週目の再加速。",l:[["Billboard JAPAN 9/16","https://www.billboard-japan.com/d_news/detail/165593/2"],["オリコン +16.8%","https://www.oricon.co.jp/news/2480567/full/"]]});
+Object.assign(allData.sep.find(x=>x.n==="Setlog"),{s:88,w:"🟡 MAIN / COOLING",e:"【SURVEY● PLATFORM● OFFICIAL●】若年女性の利用基盤は強いが、今週の新規DL・利用急増を示す独立ハードデータを再確認できず92→88。",l:[["App Store","https://apps.apple.com/jp/app/setlog/id6587576438"],["LINEリサーチ","https://note.com/linesurveys_jp/n/n0ba6dfe47563"]]});
+Object.assign(allData.sep.find(x=>x.n==="ラヴ上等 シーズン2"),{s:89,w:"🟡 PEAK / POST-FINALE",e:"【PLATFORM● GLOBAL● SOCIAL●】9/8に全20話完結。Netflix日本5週連続1位、アジア圏TOP10まで確認されたが完結後フェーズのため92→89。",l:[["完結・5週連続1位","https://www.newscafe.ne.jp/article/2026/09/09/3029766.html"]]});
+Object.assign(allData.sep.find(x=>x.n==="M!LK / 「○○すぎて滅」"),{s:87,w:"🚀 RE-ACCELERATING / NEW RELEASE",e:"【STREAMING● CHART● UGC●】新曲「時空超えてユニバース」が9/16 Hot Shot Songs首位、Xで#ときユニ1位、ストリーミング5位。既存ロングテールに新波が接続し84→87。",l:[["Hot Shot Songs","https://www.billboard-japan.com/d_news/detail/165584/2"]]});
+const early={"jul":[["AIイラスト","若年層のネクスト候補。"],["日本三國","ネクスト候補。"],["伊能忠敬界隈","ネット文脈の次点シグナル。"],["ねぎ塩豚丼","次の食候補。"],["お菓子帳","交換・収集文化の派生。"]],"aug":[["パペットスンスン","上半期キャラクター調査1位級に加え、8/23に細野晴臣とのYouTube Music Weekendコラボ。露出の質は上がっているが、8月最終週の利用・購買急増という独立ハードデータがまだ弱いためMAIN昇格は保留。"],["Mellojoy","上半期若者調査では強いが、8月最終週の再加速データ不足。定番人気とBreakoutを分けて監視継続。"],["ボンボンドロップ前髪クリップ","8/29に新柄12種が出荷開始。巨大なシール熱が別カテゴリへ派生する兆候としてEARLY。実売・UGCが追随すればMAIN/Shopping上位へ。"],["AIイラスト","下半期ネクスト予測上位。現在利用量の独立した急増確認待ち。"],["GG EZ / AI生成楽曲×ダンス","AI生成楽曲×TikTokダンスの先行事例。単曲ヒットからカテゴリ波へ広がるか監視。"],["天女界隈","先行観測はあるが、独立した検索・購買・別パネルの追随待ち。"],["ジェリーバッグ / ジェリーシューズ","商品投入は続くが、若者全体の実購買を示すデータ待ち。"],["ランジェリーコア / 2016リバイバル","2016 nostalgiaの大きな波と整合。ファッション購買へ転換するか監視。"],["お菓子帳","シール交換の収集・交換行動が菓子パッケージへ派生する兆候。"],["ワホー（SEIKINミーム再燃）","REVIVAL型ミーム。8月末の再加速確認待ち。"]],
+"sep":[
+["縦型ショートドラマ / BUMP","国内発ショートドラマアプリとして累計DL・SNS再生の規模は強いが、9月第2週の新規加速を示す独立データが不足。MAIN昇格は保留。"],["2016 / 平成リバイバルの秋服化","PLAZAが9/4〜24にポルカドット・チェック・クラシックな秋服を前面展開。供給側の波は明確だが若者実購買の量的データ待ち。"],["AIイラスト","下半期ネクスト予測上位。9月第2週に利用量が急増したことを示すプラットフォーム指標がまだ不足。"],["お菓子帳","シール交換の「集める・見せる・交換する」が菓子パッケージへ派生する先行シグナル。独立した量的上昇待ち。"],["ネオ質感 / ミュートカラーリップ","LIPS 9月トレンド賞で秋冬新作のリップが上位を占める。美容プラットフォーム内の強いシグナルだが、別系統の購買データが揃うまでEarly。"],["チャーミーキティ再編集","9/12にSAMANTHAVEGA初コラボが一般発売。平成キャラの再評価がバッグ・ぬいぐるみチャームへ広がるが、発売直後の実売確認待ち。"]]};
+early.sep.unshift(["シルバーウィーク旅行","旅行予定が前年比7.6%増、10代+25%、20代+11%。予定登録という実行動データで急伸しMAINにも採用。"]);
+early.sep.unshift(["Nicole Kidman / ADÉLA","GLOBAL MusicでEARLY→HOT昇格。9/18 Spotify Global日次4位、TikTok・Shazamの先行波がストリーミング本流へ接続。"]);
+const shops={"jul":[{"n":"おちゃめ 1day（せいやの瞳カラコン）","signal":"🚀 BREAKOUT","sub":"せいやの裸眼色を再現","cat":"Beauty","s":78,"status":"HOT","price":"10枚 ¥1,760","release":"7/15","e":"SNS発の商品化。","l":[["公式","https://hotelovers.co.jp/news/press-release/2990"]]},{"n":"ボンボンドロップシール","signal":"🔥 CURRENT","sub":"ぷっくり立体シール","cat":"Goods","s":95,"status":"HOT","price":"商品別","release":"発売中","e":"シール交換の購買中心。","l":[["調査","https://prtimes.jp/main/html/rd/p/000000670.000018991.html"]]},{"n":"めじるしアクセサリー","sub":"キャラクター系ガシャポン","cat":"Character","s":84,"status":"HOT","price":"¥300〜","release":"発売中","e":"7月はカテゴリ全体を捕捉。","l":[["調査","https://prtimes.jp/main/html/rd/p/000000215.000026876.html"]]},{"n":"Melojoy スクイーズ","sub":"高品質スクイーズ","cat":"Goods","s":72,"status":"HOT","price":"商品別","release":"発売中","e":"触感系アイテム。","l":[["調査","https://prtimes.jp/main/html/rd/p/000000215.000026876.html"]]},{"n":"おもちゃコスメ","sub":"持ち歩いて遊べるコスメ","cat":"Beauty","s":68,"status":"HOT","price":"商品別","release":"発売中","e":"2026年予測枠。","l":[["SHIBUYA109 lab.","https://www.shibuya109.co.jp/shibuya109lab/reports/shibuya109-lab-%E3%83%88%E3%83%AC%E3%83%B3%E3%83%89%E4%BA%88%E6%B8%AC2026/"]]}],"aug":[{"n":"ボンボンドロップシール ドラえもん / 藤子・F・不二雄キャラクターズ","signal":"🚀 BREAKOUT / 🔥 SCARCITY","sub":"8/14限定新作2種","cat":"Goods","s":95,"status":"HOT","price":"定価各¥550","release":"8/14","e":"【RETAIL● SCARCITY● RESALE●】売切れ後、2種セットが8,000〜10,000円台、8,888円で成約表示も確認。定価合計1,100円の約8倍という異常な二次流通熱で92→95。","l":[["高騰・売切れ","https://bonbon-navi.com/info/news/doraemon-bonbon-drop-seal-mercari-price-rise-202608/"]]},{"n":"rom&nd 豆乳エディション 42 ソイフィグ","signal":"🆕 NEW / 🚀 LAUNCH","sub":"ザ ジューシーラスティングティント限定色","cat":"Beauty","s":92,"status":"HOT","price":"¥1,320","release":"8/28先行 / 9/11全国","disc":1,"e":"【OVERSEAS SALES● RETAIL● OFFICIAL●】韓国Qoo10公式でシリーズ発売1週間約42,000個、日本では8/28からLOFT・PLAZA・@cosme先行発売へ移行。PREからHOTへ昇格。国内実売は次週再評価。","l":[["韓国実売・日本発売","https://prtimes.jp/main/html/rd/p/000000373.000076505.html"]]},{"n":"Urumia × 矢沢あい Heroine Collection","signal":"🔥 HOT","sub":"NANA / ご近所物語 / 天使なんかじゃない / Paradise Kiss","cat":"Beauty","s":90,"status":"HOT","price":"10枚 ¥1,870","release":"8/19","e":"初週の売切れ・POPUP行列という強いEvidenceは維持。ただし発売初動から時間が経過したため96→90。","l":[["公式","https://urumia.com/"]]},{"n":"ボンボンドロップ前髪クリップ 新柄12種","signal":"🆕 NEW / ✨ DISCOVERY","sub":"ハシビロコウ・マヌルネコ等","cat":"Goods","s":84,"status":"HOT","price":"各¥660","release":"8/29出荷開始","disc":1,"e":"【OFFICIAL● PRODUCT● CULTURE FIT●】8/29に新柄12種の出荷開始。シールで形成されたボンボンドロップの購買熱がアクセサリーへ横展開する新規シグナル。実売は次週確認。","l":[["新柄12種","https://happycruise.jp/bonbondrop-bangs-clip-2026/"]]},{"n":"rom&nd ジューシーフラッシュリップオイル 11 ソイミルク","signal":"🆕 NEW / 🚀 LAUNCH","sub":"豆乳エディション限定色","cat":"Beauty","s":88,"status":"HOT","price":"¥1,485","release":"8/28先行 / 9/11全国","e":"豆乳エディションの具体SKU。8/28先行発売へ移行したためPREからHOTへ。国内実売待ちでスコアは抑制。","l":[["発売情報","https://prtimes.jp/main/html/rd/p/000000373.000076505.html"]]},{"n":"ANGEL BLUE × サンキューマート シールバインダー","signal":"♻️ REVIVAL / 🔮 PRE-LAUNCH","sub":"平成女児×シール文化","cat":"Goods","s":86,"status":"PRE","price":"¥429","release":"9月上旬","disc":1,"e":"平成女児リバイバルと現在のシール交換を接続する具体SKU。発売直前のため継続監視。","l":[["公式","https://thankyoumart.jp/blogs/news/angelblue"]]},{"n":"サンリオキャラクターズ くだものめじるしアクセサリー","signal":"🆕 NEW","sub":"全5種","cat":"Character","s":75,"status":"HOT","price":"¥300","release":"8月第2週","local":1,"e":"カテゴリ人気は強いが、このSKU単体の8月最終週販売熱は未確認。78→75。","l":[["ガシャポン公式","https://gashapon.jp/schedule/"]]}],"sep":[{"n":"Mrs. GREEN APPLE × ボンボンドロップシール 全4種","signal":"🔮 PRE-LAUNCH / 🚀 BREAKOUT","sub":"グリーン / ミュージック / パーティー / ファンタジー","cat":"Goods","s":98,"status":"PRE","price":"4種セット ¥2,640","release":"9/24 18:00〜先行抽選","disc":1,"e":"【OFFICIAL● PRE-LAUNCH● SCARCITY FIT●】9/10に先行抽選の具体日程が確定。9/24〜26申込、10月下旬には全国ローソン販売予定。ボンドロ初のアーティストコラボ×ミセスの巨大ファンダムで96→98。","l":[["抽選日程・ローソン販売","https://www.oricon.co.jp/news/2479510/full/"],["価格・抽選概要","https://www.seal-search.com/news/new-item/mrs-green-apple-bonbondrop-lottery-20260924/"]]},{"n":"ちいかわ ボンボンドロップシール 新作3種","signal":"🔮 PRE-LAUNCH / 🚀 BREAKOUT","sub":"ちいかわ寿司 / Chiikawa Baby / ちいかわらんど","cat":"Goods","s":97,"status":"PRE","price":"各¥550","release":"9/25 11:00〜","disc":1,"e":"【OFFICIAL● IP HEAT● PRODUCT●】映画が興収138億円まで再加速するタイミングで、ボンドロ新作3種を9/25発売。ちいかわ×ボンドロという二つの強い波が交差するため発売前97。","l":[["9/25発売・全3種","https://www.inside-games.jp/article/2026/09/11/187631.html"],["価格・販売概要","https://sachie1211.com/chiikawa-bonbon-drop-seal-itsumade/"]]},{"n":"Mellojoy ミニランド A035","signal":"🚀 BREAKOUT / 🔥 SOLD OUT","sub":"原宿POP-UP人気商品・ブラインドボックス","cat":"Goods","s":94,"status":"HOT","price":"¥3,598","release":"発売中 / 原宿9/9開業","disc":1,"e":"【SOCIAL● RETAIL● SOLD OUT● EXPERIENCE●】SNS10億impから原宿リアル店へ波及。公式通販のミニランドA035は売り切れ表示。店舗は電子整理券運用で、オンライン→実店舗→品薄の転換が確認できる。","l":[["公式商品・売り切れ","https://www.mellojoyjapan.com/products/mellojoy-%E3%83%A7%E3%82%A4-%E3%83%9F%E3%83%8B%E3%83%A9%E3%83%B3%E3%83%89-%E9%96%8B%E5%B0%81%E5%BE%8C%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%9B%E3%82%93-a035-%E3%83%96%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%89%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E3%81%AE%E3%81%8A%E3%82%82%E3%81%A1%E3%82%83"],["原宿公式","https://www.mellojoyjapan.com/pages/harajuku-pop-up-shop"]]},{"n":"パペットスンスン ビスケットパレード缶","signal":"🔥 HOT / RETAIL EXPANSION","sub":"Fairycake Fair 初コラボ・型抜きビスケット8枚","cat":"Food","s":89,"status":"HOT","price":"¥2,980","release":"9/3〜順次","disc":1,"e":"【RETAIL● OFFICIAL● EVENT●】ルミネ新宿→グランスタ東京→渋谷へ順次展開し、販売期間は整理券制。初動から1週経過し実売数量は未確認のため91→89。","l":[["商品・価格・整理券","https://report.iko-yo.net/articles/32959"]]},{"n":"rom&nd 豆乳エディション 42 ソイフィグ","signal":"🔥 HOT / NATIONAL LAUNCH","sub":"ザ ジューシーラスティングティント限定色","cat":"Beauty","s":86,"status":"HOT","price":"¥1,320","release":"9/11全国発売","e":"【OVERSEAS SALES● RETAIL● OFFICIAL●】韓国でシリーズ発売1週間約42,000個の実売を持ち、9/11に日本全国発売へ。国内数量実売はまだ未確認のため88→86。","l":[["韓国実売・日本発売","https://prtimes.jp/main/html/rd/p/000000373.000076505.html"]]},{"n":"SAMANTHAVEGA × チャーミーキティ ぬいぐるみチャーム","signal":"🆕 NEW / ♻️ REVIVAL","sub":"チャーミーキティ初コラボ・ふわふわチャーム","cat":"Fashion","s":82,"status":"HOT","price":"¥4,400","release":"9/12一般発売","disc":1,"e":"【OFFICIAL● NOSTALGIA FIT● PRODUCT●】平成キャラ再編集の具体SKUとして9/12発売。発売直後で売切れ・実売は未確認のため82、次週需要を再判定。","l":[["9/12発売・価格","https://s.animeanime.jp/article/2026/09/10/102822.html"]]},{"n":"どこでもいっしょ めじるしアクセサリー","signal":"♻️ REVIVAL / 🔮 REISSUE","sub":"トロ / クロほか全6種・店舗限定再販","cat":"Character","s":79,"status":"PRE","price":"¥300","release":"9月第3週","local":1,"e":"【PRODUCT● REISSUE● NOSTALGIA FIT●】1999年IP×めじるしアクセサリーの再販。全国のバンダイオフィシャルショップ等限定。KINSHICHO/RYOGOKUの個店入荷日は公式確認できていないため未確認表示。","l":[["9月第3週限定再販","https://game.watch.impress.co.jp/docs/news/2138578.html"]]}]};
+shops.sep=shops.sep.filter(x=>!["SAMANTHAVEGA × チャーミーキティ ぬいぐるみチャーム","rom&nd 豆乳エディション 42 ソイフィグ"].includes(x.n));
+shops.sep.push({n:"ちいかわ キーリングコスメパレット",signal:"🆕 NEW / ✨ DISCOVERY",sub:"ちいかわ / ハチワレ / うさぎ / モモンガ 全4種",cat:"Beauty",s:88,status:"HOT",price:"各¥1,980",release:"9/18",disc:1,e:"【OFFICIAL● PRODUCT● CROSS-CATEGORY●】9/18発売。キーリング＋パールリボンチャーム＋ハイライト＋アイシャドウで、キャラクター・バッグチャーム・コスメの波を横断。発売直後で実売未確認のため88。",l:[["9/18発売・価格","https://mantan-web.jp/prtimes/article/20260918prt00m200001330a.html"]]});
+const music={"jul":{"japan":[["Hug feat. kojikoji","空音","🔥 HOT","VLOG"],["きゃわぽっぴんどぅー","iLiFE!","🔥 HOT","UPBEAT"],["Partner","有華","🔥 HOT","VLOG"],["はくちゅーむ","BPM15Q & Yunomi","✨ DISCOVERY","AESTHETIC"],["SUMMER SONG","YUI","♻️ REVIVAL","TRAVEL"],["夜の踊り子","サカナクション","♻️ REVIVAL","MOODY"],["愛のレンタル","マカロニえんぴつ","🔥 HOT","MOODY"],["おつかれSUMMER","HALCALI","♻️ REVIVAL","TRAVEL"],["君セン！","iLiFE!","🔥 HOT","UPBEAT"],["お姫様の作り方","=LOVE","🔥 HOT","AESTHETIC"]],"global":[],"early":[]},"aug":{"japan":[["セツナハナビ (Setsuna Hanabi)","TOMORROW X TOGETHER","🚀 BREAKOUT","TRAVEL"],["Yes! 東京 (feat. EBiDAN)","EBiDAN","🔥 HOT","UPBEAT"],["好きish","AKB48","🆕 NEW","UPBEAT"],["show time...","Snow Man","🚀 BREAKOUT","FASHION"],["灰色","大森元貴","🚀 BREAKOUT","MOODY"],["爆裂愛してる","M!LK","🚀 BREAKOUT","UPBEAT"],["好きすぎて滅！","M!LK","🔥 HOT","UPBEAT"],["Brand New","Mrs. GREEN APPLE","🔥 HOT","VLOG"],["JANE DOE","米津玄師, 宇多田ヒカル","🔥 HOT","MOODY"],["This & That","Stray Kids","🔥 HOT","UPBEAT"]],"global":[["Dai Dai","Shakira, Burna Boy","🔥 HOT","TRAVEL"],["Earrings","Malcolm Todd","🚀 BREAKOUT","VLOG"],["Loser","Tame Impala","🚀 BREAKOUT","AESTHETIC"],["Boston","STELLA LEFTY","🚀 BREAKOUT","TRAVEL"],["hate that i made you love me","Ariana Grande","🔥 HOT","MOODY"],["So Easy (To Fall In Love)","Olivia Dean","🔥 HOT","AESTHETIC"],["Animal","KATSEYE","🚀 BREAKOUT","FASHION"],["petal","Ariana Grande","🔥 HOT","AESTHETIC"],["Stateside + Zara Larsson","PinkPantheress, Zara Larsson","🔥 HOT","FASHION"],["Risk It All","Bruno Mars","🔥 HOT","TRAVEL"]],"early":[["FREAKED OUT","Fat Papi, prodshushy","✨ EARLY","UPBEAT"],["End of August","Noah Kahan","✨ EARLY","TRAVEL"],["Landslide","Fleetwood Mac","♻️ REVIVAL","MOODY"],["Gut Genug","KITSCHKRIEG, Blumengarten, Shirin David","✨ EARLY","AESTHETIC"],["Movin’ to the Sun","HUGEL, Imael Angel, Ultra Naté","✨ EARLY","TRAVEL"]]},"sep":{"japan":[["Yes! 東京 (feat. EBiDAN)","EBiDAN","🚀 RE-ACCELERATION","UPBEAT"],["Brand New","Mrs. GREEN APPLE","🔥 HOT","VLOG"],["灰色","大森元貴","🚀 BREAKOUT","MOODY"],["にゃんてずるいの!","fav me","🚀 BREAKOUT","UPBEAT"],["恋、はじめました。","=LOVE","🔥 HOT","AESTHETIC"],["わったらいふ!","わーすた","🚀 BREAKOUT","UPBEAT"],["It's Me","ILLIT","🔥 HOT","FASHION"],["好きすぎて滅！","M!LK","🔥 HOT","UPBEAT"],["奇跡","Snow Man","🚀 BREAKOUT","MOODY"],["IRIS OUT","米津玄師","🔥 HOT","MOODY"]],"global":[["BbY WOW","KAROL G, Judeline, rusowsky","🚀 BREAKOUT","UPBEAT"],["Earrings","Malcolm Todd","🔥 HOT","VLOG"],["Ain’t In LA","ADÉLA","🚀 BREAKOUT","FASHION"],["Loser","Tame Impala","🔥 HOT","AESTHETIC"],["Beauty And A Beat","Justin Bieber, Nicki Minaj","♻️ REVIVAL","UPBEAT"],["The One That Got Away","Katy Perry","♻️ REVIVAL","AESTHETIC"],["the cure","Olivia Rodrigo","🔥 HOT","MOODY"],["Dai Dai","Shakira, Burna Boy","🔥 HOT","TRAVEL"],["hate that i made you love me","Ariana Grande","🔥 HOT","MOODY"],["Iris","The Goo Goo Dolls","♻️ REVIVAL","MOODY"]],"early":[["Less Than a Lover","JENNIE","✨ EARLY / REELS","AESTHETIC"],["Ring My Bell","Anita Ward","♻️ REVIVAL","FASHION"],["FREAKED OUT","Fat Papi, prodshushy","✨ EARLY / TIKTOK","UPBEAT"],["Cherry on the Edge","miss rany","✨ EARLY / REELS","TRAVEL"],["Yummy Little Day","emilogue","✨ EARLY / REELS","VLOG"]]}};
+music.sep.japan=[["Yes! 東京 (feat. EBiDAN)","EBiDAN","🚀 RE-ACCELERATION","UPBEAT"],["Dance Forever","SixTONES","🆕 NEW / 🔥 HOT","UPBEAT"],["時空超えてユニバース","M!LK","🚀 BREAKOUT","UPBEAT"],["ため息未来","SKE48","🆕 NEW","UPBEAT"],["マリーゴールド","あいみょん","♻️ REVIVAL","VLOG"],["Brand New","Mrs. GREEN APPLE","🔥 HOT","VLOG"],["恋、はじめました。","=LOVE","🔥 HOT","AESTHETIC"],["灰色","大森元貴","🔥 HOT","MOODY"],["好きすぎて滅！","M!LK","🔥 HOT","UPBEAT"],["見知らぬ糸","スピッツ","🆕 NEW","MOODY"]];
+music.sep.global=[["BbY WOW","KAROL G, Judeline, rusowsky","🔥 HOT / GLOBAL #1","UPBEAT"],["Ain’t In LA","ADÉLA","🚀 BREAKOUT","FASHION"],["Earrings","Malcolm Todd","🔥 HOT","VLOG"],["Nicole Kidman","ADÉLA","🚀 EARLY → HOT","FASHION"],["Beauty And A Beat","Justin Bieber, Nicki Minaj","♻️ REVIVAL","UPBEAT"],["Self Aware","Temper City","🔥 HOT","AESTHETIC"],["The One That Got Away","Katy Perry","♻️ REVIVAL","AESTHETIC"],["Iris","The Goo Goo Dolls","♻️ REVIVAL","MOODY"],["the cure","Olivia Rodrigo","🔥 HOT","MOODY"],["Loser","Tame Impala","🔥 HOT","AESTHETIC"]];
+music.sep.early=[["Sey Mami","Cinco Suave","✨ EARLY / TIKTOK","UPBEAT"],["Be Like a Woman","Chris Rainbow","✨ EARLY / TIKTOK","FASHION"],["u + me = <3","Olivia Rodrigo","✨ EARLY / RISING","VLOG"],["Eat Me Better","nimino","✨ EARLY / RISING","FASHION"],["Ring Ring Ring","Tyler, The Creator","✨ EARLY / REELS","AESTHETIC"]];
+const analysis={"jul":[["7月の中心は「シール文化」","収集・交換行動そのものが強かった。"],["Setlogは7月時点ですでに急上昇","若い女性で強いシグナル。"],["VIVANTは7月MAINから除外","月末スタートのため根拠不足。"],["Late July breakout","月末開始コンテンツは月全体と分離評価。"]],"aug":[["8月最終週は「巨大ヒット」と「今週の伸び」を分離","映画ちいかわ・トモコレは巨大な実消費を維持する一方、今週の新規加速は限定的。規模の強さでMAINを維持しつつ、Momentumは下げてPeak/Coolingを明示した。"],["シール文化は商品側で再点火","文化全体は成熟局面だが、8/14ドラえもん限定ボンボンドロップが売切れ後に定価の約8倍で二次流通成立。8/29には前髪クリップ新柄12種も登場し、熱がSKUと派生カテゴリへ移っている。"],["音楽は「市場を二枚に分ける」ことで解像度が上がった","JAPANは8/17〜23集計のBillboard JAPANとYouTube Japanを重視し、TXT・EBiDAN・Snow Man・大森元貴・M!LKなど直近の動きを反映。GLOBALはBillboard Global、Spotify Global、TikTok系UGCを独立観測し、日本の知名度を条件にしない。"],["Globalでは大ヒットとUGC先行を分離","Dai DaiはBillboard Global 200で6週首位、Spotify GlobalではEarrings・Loser・Dai Daiが最上位圏。一方FREAKED OUT、End of August、Landslide等はTikTok利用文脈が先行しておりEARLY WAVESとして分離した。"],["EARLYは昇格を急がない","パペットスンスンは細野晴臣とのYouTube Music Weekendコラボで露出の質が上がったが、購買・利用の新規急増が確認できるまではEarlyに残す。Mellojoyも同様に上半期実績と8月末Momentumを分けて判断する。"]],"sep":[["9月第2週は「新作」より「再加速」が強い","映画ちいかわは7週目に週末首位へ返り咲き、Yes! 東京もYouTube3週連続1位かつHot 100首位。既存の大波が新しい上映形態・UGC・複数バージョンで再び傾きを作っている。"],["シール文化は「文化→商品」への分岐がさらに鮮明","シール交換全体はPeakへ下げる一方、ボンボンドロップはミセス9/24抽選とちいかわ9/25新作が連続発表。広い文化トレンドより、限定SKU・コラボへ購買熱が圧縮されている。"],["Mellojoyはオンライン流行からリアル消費へ","若者調査とSNSで先行していたスクイーズが、原宿の日本初リアル店・電子整理券・公式通販の売切れへ接続。EARLYからMAINへ上げる条件だった「実行動への転換」が今週そろった。"],["キャラクター消費は日用品化と平成再編集が同時進行","スンスンは食品・手帳・バッグへ、チャーミーキティやどこでもいっしょは現代のチャーム・バッグへ再編集。単なる懐かしさより「今持ち歩ける形」に変換されたIPが強い。"],["Global Musicは「ストリーミング本流」と「Reels先行」を分離","Spotify週間ではBbY WOWが4週目で4,239万再生、Ain’t In LAが+20位で9位へ急伸。一方Less Than a LoverやRing My Bell等はReels用途が先行。HOTとEARLYを分けて、次週どれが総合チャートへ接続するかを見る。"]]};
+moves.sep=[{tag:"🚀 RE-ACCELERATING",n:"EBiDAN『Yes! 東京』",d:"94 → 97",aud:["Youth Broad ↑↑↑"],why:"Hot 100通算3度目1位。週間ストリーミング690.7万回、前週比+16.8%。"},{tag:"🆕 NEW",n:"シルバーウィーク旅行",d:"NEW → MAIN",aud:["10s +25%","20s +11%"],why:"旅行予定が前年比+7.6%。若者が伸びを牽引する実行動型トレンド。"},{tag:"🔥 DOMINANT",n:"映画ちいかわ",d:"99 → 99",aud:["Mass Market ↑↑↑"],why:"9/11〜13も週末動員1位、1009万人・146.6億円。"},{tag:"⬆️ PRODUCT WAVE",n:"ボンボンドロップシール",d:"95 → 96",aud:["10s Female ↑↑↑"],why:"9/24ミセス抽選、9/25ちいかわ新作の連続投入直前。"},{tag:"🚀 RE-ACCELERATING",n:"M!LK",d:"84 → 87",aud:["Youth Broad ↑↑"],why:"新曲「時空超えてユニバース」がHot Shot Songs首位。"},{tag:"⬇️ TEMP PAUSE",n:"VIVANT（2026）",d:"96 → 90",aud:["Mass Market ↑↑↑"],why:"9/20・27の2週休止。10/4再開時に再加速を判定。"},{tag:"⬇️ COOLING",n:"Setlog",d:"92 → 88",aud:["10s Female ↑↑"],why:"規模は強いが今週の新規DL・利用急増の独立ハードデータが弱い。"},{tag:"🔼 EARLY → HOT",n:"Nicole Kidman / ADÉLA",d:"GLOBAL MUSIC",aud:["Global Youth ↑↑↑"],why:"Spotify Global日次4位。TikTok/Shazamの先行波がストリーミング本流へ接続。"}];
+prevUpdate["シルバーウィーク旅行"]=null;
+analysis.sep.unshift(["9月第3週は『予定→実行』『UGC→チャート』への転換が同時発生","シルバーウィーク旅行は予定登録という行動データで急伸し、MellojoyはSNSから原宿のリアル体験へ、GLOBAL MusicではNicole KidmanがTikTok/ShazamからSpotify日次4位へ接続。今週の共通項は認知の増加ではなく、予定・来店・再生という実行動への転換。逆にVIVANTやSetlogは規模が大きくても今週のVelocityが弱いため下げた。"]);
+Object.assign(allData.sep.find(x=>x.n==='Setlog'),{w:'🟡 MAIN / SCALE STRONG, VELOCITY DOWN',e:'【SURVEY● PLATFORM● DOWNLOAD●】若年層での高利用と9/11時点の日本App Store無料SNS1位は維持。一方、急上昇期ほどの新規Momentumは確認できないため、新5軸でCurrent ScaleとVelocityを分離して96→92。'});
+Object.assign(allData.sep.find(x=>x.n==='M!LK / 「○○すぎて滅」'),{w:'🟡 COOLING / LONG TAIL',e:'【SURVEY● STREAMING● VIDEO● KARAOKE●】若者語と楽曲の長期接続、YouTube・カラオケ上位は継続。ただし9月第2週の新しい加速材料が弱いため、ロングテールと現在Velocityを分けて92→84。'});
+Object.assign(allData.sep.find(x=>x.n==='シール交換 / シール帳'),{w:'🟡 COOLING / SKU SHIFT',e:'【SURVEY● SOCIAL● RETAIL●】文化自体は若者調査で強いが、今週の熱はボンボンドロップ等の具体SKUへ集中。Blind Discoveryで文化全体の再加速を確認できず88→79、Coolingへ。'});
+Object.assign(allData.sep.find(x=>x.n==='パペットスンスン'),{w:'🟡 MAIN / VELOCITY DOWN',e:'【VIDEO● RETAIL● OFFICIAL●】ほぼ日手帳、ACCOMMODE、Fairycake Fairへ接点は拡張。一方、今週の実売数量やUGC加速は未確認のため、規模を維持しつつVelocityを下げ87→84。'});
+Object.assign(allData.sep.find(x=>x.n==='めじるしアクセサリー / チャーム'),{w:'🟡 COOLING / SUPPLY ACTIVE',e:'【SURVEY● PRODUCT● SUPPLY●】9月も新作・再販供給は活発だが、需要側の再加速を示す実売・検索・UGCが弱い。供給量とTrend Velocityを分けて82→76。'});
+early.sep.unshift(["Tamagotchi ring","8/27の初回受注が早期終了し、翌日に2次受注へ。世界最小28mm・シリーズ初の指輪型という新規性と、30周年の平成リバイバルが接続。反響は強いが、一般市場での実利用は2027年2月発送後になるためEarly。"]) ;
+shops.sep.push({"n":"Tamagotchi ring","signal":"🆕 NEW / 🔮 PRE-LAUNCH","sub":"世界最小28mm・シリーズ初の指輪型たまごっち","cat":"Goods","s":93,"status":"PRE","price":"¥7,700","release":"受注中 / 2027年2月発送","disc":1,"e":"【OFFICIAL● RESERVATION● NOSTALGIA● GLOBAL●】8/27の初回受注が早期終了し2次受注へ。30周年・世界最小カラー液晶・リング型という強い商品フックがあり、海外メディアにも波及。実利用前のためPRE-LAUNCH。","l":[["バンダイ公式発表","https://www.bandai.co.jp/press/2026/260827.php"],["公式商品ページ","https://p-bandai.jp/item/item-1000256484/"]]});
+analysis.sep.unshift(["Blind Discoveryで映像トレンドの欠落を補正","TVer・Netflixを名前検索ではなく定点巡回し、VIVANT（2026）とラヴ上等 シーズン2を新規MAINへ追加。VIVANTは若者限定ではないが、TVer歴代最高・現在の放送加速・体験イベントを持つ世代横断の巨大波。ラヴ上等はNetflix日本で5週連続1位のため、既存の若者商品群より優先度が高いと判定した。"]) ;
+
+/* 2026-09-26 weekly zero-base refresh */
+Object.assign(prevUpdate,{"映画ちいかわ 人魚の島のひみつ":99,"VIVANT（2026）":90,"ボンボンドロップシール":96,"EBiDAN「Yes! 東京」":97,"Setlog":88,"Mellojoy":91,"M!LK / 「○○すぎて滅」":87,"シール交換 / シール帳":79,"パペットスンスン":84,"めじるしアクセサリー / チャーム":76,"シルバーウィーク旅行":91,"ラヴ上等 シーズン2":92});
+Object.assign(scoreV2,{
+"映画ちいかわ 人魚の島のひみつ":{s:100,m:[30,20,20,15,15],aud:["Youth Broad ↑↑","Mass Market ↑↑↑"]},
+"ボンボンドロップシール":{s:98,m:[30,20,19,15,14],aud:["10s Female ↑↑↑","20s Female ↑↑"]},
+"EBiDAN「Yes! 東京」":{s:97,m:[29,18,19,15,16],aud:["10s Female ↑↑","Youth Broad ↑↑↑"]},
+"Netflix『ダウンタイム』":{s:95,m:[30,20,19,14,12],aud:["20s Female ↑↑","Youth Broad ↑↑","Mass Market ↑"]},
+"TikTok Shop × 韓国コスメ":{s:93,m:[29,19,19,14,12],aud:["20s Female ↑↑","Youth Broad ↑↑"]},
+"Setlog":{s:90,m:[24,16,19,15,16],aud:["10s Female ↑↑↑","20s Female ↑↑"]},
+"M!LK / 「○○すぎて滅」":{s:90,m:[27,17,18,14,14],aud:["10s Female ↑↑","Youth Broad ↑↑"]},
+"VIVANT（2026）":{s:86,m:[17,14,20,15,20],aud:["Mass Market ↑↑↑","Youth Broad ↑"]},
+"Mellojoy":{s:85,m:[20,16,17,13,19],aud:["10s Female ↑↑","20s Female ↑"]},
+"パペットスンスン":{s:82,m:[18,14,18,14,18],aud:["10s Female ↑↑","20s Female ↑"]},
+"シール交換 / シール帳":{s:75,m:[14,13,18,14,16],aud:["10s Female ↑↑","20s Female ↑"]},
+"めじるしアクセサリー / チャーム":{s:72,m:[13,12,17,14,16],aud:["10s Female ↑","20s Female ↑"]}
+});
+delete scoreV2["ラヴ上等 シーズン2"];
+for(let i=allData.sep.length-1;i>=0;i--)if(["シルバーウィーク旅行","ラヴ上等 シーズン2"].includes(allData.sep[i].n))allData.sep.splice(i,1);
+if(!allData.sep.some(x=>x.n==="Netflix『ダウンタイム』"))allData.sep.push({n:"Netflix『ダウンタイム』",c:"Video / Streaming",s:95,w:"🚀 BREAKOUT / NEW #1",v:[30,20,19,14,12],e:"【PLATFORM● GLOBAL● OFFICIAL●】9/17配信開始後、Netflix日本週間番組ランキングで初登場1位。香港・タイ・台湾でもTOP10、グローバル非英語番組5位。国内だけでなく海外視聴へ同時接続。",l:[["Netflix週間ランキング","https://www.oricon.co.jp/news/2482681/full/"],["Netflix公式","https://about.netflix.com/en/news/plasticbeauty-maintrailer-and-keyart"]]});
+if(!allData.sep.some(x=>x.n==="TikTok Shop × 韓国コスメ"))allData.sep.push({n:"TikTok Shop × 韓国コスメ",c:"Fashion / Beauty",s:93,w:"🚀 BREAKOUT / COMMERCE",v:[29,19,19,14,12],e:"【CONSUMPTION● PLATFORM● CATEGORY●】9/14〜20の日本TikTok ShopはGMV21.49億円で3週の縮小から下げ止まり、新規ファン378.82万人・前週比+48.62%。韓国コスメWEEKを背景に美容GMVは4.55億円・+10.5%で首位。UGC閲覧から購買へ移る波として採用。",l:[["Kalodata週次","https://www.kalodata.com/jp/blog/2026/09/kalodata-weekly/1138/"],["市場データ詳細","https://prtimes.jp/main/html/rd/p/000000063.000167462.html"]]});
+Object.assign(allData.sep.find(x=>x.n==="映画ちいかわ 人魚の島のひみつ"),{w:"🔥 DOMINANT / RE-ACCELERATING",e:"【BOX OFFICE● RETAIL● SOCIAL●】公開9週目でも9/18〜20週末動員1位。3日間64.3万人・興収9.99億円、9/23まで累計1133万人・165億円。2026年公開興行1位。",l:[["週末興行・165億円","https://www.cinematoday.jp/news/N0157042"],["2026年興行1位","https://game.watch.impress.co.jp/docs/news/2142548.html"]]});
+Object.assign(allData.sep.find(x=>x.n==="ボンボンドロップシール"),{w:"🚀 BREAKOUT / SKU WAVE",e:"【RETAIL● OFFICIAL● COLLAB●】9/24にMrs. GREEN APPLE全4種の先行抽選が開始し、9/25にはちいかわ新作3種が発売。予告から応募・購買へ移行したため96→98。",l:[["ミセス先行抽選","https://bg-mania.jp/2026/09/24703164.html"],["ちいかわ新作3種","https://www.inside-games.jp/article/2026/09/25/188212.html"]]});
+Object.assign(allData.sep.find(x=>x.n==="EBiDAN「Yes! 東京」"),{w:"🔥 HOT / MULTI-WEEK",e:"【CHART● STREAMING● SALES●】9/23 Hot 100は2位へ下がったが、セールス前週比197%、ストリーミング103%へ増加。順位低下をMomentum低下と誤認せず実数の伸びを優先し97維持。",l:[["Billboard JAPAN 9/23","https://www.billboard-japan.com/d_news/detail/165778/2"]]});
+Object.assign(allData.sep.find(x=>x.n==="Setlog"),{w:"🔥 HOT / SCALE STRONG",e:"【APP CHART● SURVEY●】9/26時点でも日本App Store無料SNS 1位を維持。急上昇初期ほどのAccelerationはないが、首位継続で88→90。",l:[["App Storeカテゴリ順位","https://www.appbrain.com/stats/appstore-rankings/top_free/social_networking/jp"]]});
+Object.assign(allData.sep.find(x=>x.n==="VIVANT（2026）"),{w:"🟡 COOLING / PAUSE",e:"【PLATFORM● SCALE●】放送休止中で新規放送由来のVelocityは弱い。一方Netflix日本でも9/21時点5位。10/4再開時に再加速を再判定。",l:[["配信ランキング9/21","https://flixpatrol.com/top10/streaming/japan/2026-09-21/"]]});
+moves.sep=[
+{tag:"🔥 DOMINANT",n:"映画ちいかわ",d:"99 → 100",aud:["Mass Market ↑↑↑"],why:"公開9週目も週末1位。9/23まで1133万人・165億円、2026年公開興行1位。"},
+{tag:"🚀 BREAKOUT",n:"Netflix『ダウンタイム』",d:"NEW → MAIN",aud:["20s Female ↑↑","Global ↑"],why:"配信4日でNetflix日本週間1位、グローバル非英語5位。"},
+{tag:"🚀 COMMERCE",n:"TikTok Shop × 韓国コスメ",d:"NEW → MAIN",aud:["20s Female ↑↑"],why:"新規ファン+48.62%、美容GMV+10.5%。閲覧から購買への転換が加速。"},
+{tag:"⬆️ PRODUCT WAVE",n:"ボンボンドロップシール",d:"96 → 98",aud:["10s Female ↑↑↑"],why:"ミセス抽選開始とちいかわ新作3種発売が同週に実行フェーズへ。"},
+{tag:"🔥 MULTI-WEEK",n:"Yes! 東京",d:"97 → 97",aud:["Youth Broad ↑↑↑"],why:"Hot 100は2位でもセールス197%、ストリーミング103%へ増加。"},
+{tag:"⬆️ SCALE HOLDS",n:"Setlog",d:"88 → 90",aud:["10s Female ↑↑↑"],why:"9/26も日本App Store無料SNS 1位。"},
+{tag:"⬇️ COOLING",n:"VIVANT（2026）",d:"90 → 86",aud:["Mass Market ↑↑↑"],why:"放送休止でVelocity低下。Netflix日本TOP10には残るためOutではない。"},
+{tag:"❌ OUT",n:"シルバーウィーク旅行",d:"91 → OUT",aud:["Youth Broad →"],why:"連休終了。季節イベントの実行期間終了で惰性継続しない。"},
+{tag:"❌ OUT",n:"ラヴ上等 シーズン2",d:"92 → OUT",aud:["20s Female →"],why:"6週首位の履歴は保存し、今週は新作『ダウンタイム』への首位交代を反映。"},
+{tag:"🔼 EARLY → HOT",n:"Nicole Kidman / ADÉLA",d:"GLOBAL MUSIC",aud:["Global Youth ↑↑↑"],why:"Spotify Global週間2位、前週比+14位・+688万再生。"}];
+early.sep=early.sep.filter(x=>!["シルバーウィーク旅行","Nicole Kidman / ADÉLA"].includes(x[0]));
+early.sep.unshift(["ぬい日和","9/24に日本App Store無料SNSで#41→#27へ14ランク上昇。『ぬい活』を記録・共有する垂直SNSとして、まだ規模は小さいがVelocityを検知。次週DL・継続順位・UGCを確認。"]);
+shops.sep=shops.sep.filter(x=>!["Mellojoy ミニランド A035","パペットスンスン ビスケットパレード缶","どこでもいっしょ めじるしアクセサリー"].includes(x.n));
+let mrs=shops.sep.find(x=>x.n==="Mrs. GREEN APPLE × ボンボンドロップシール 全4種");if(mrs)Object.assign(mrs,{signal:"🚀 BREAKOUT / 🆕 LAUNCH",s:99,status:"HOT",release:"9/24〜26先行抽選",e:"【OFFICIAL● LOTTERY LIVE● COLLAB●】9/24 18:00に先行抽選開始。全4種セット2,640円＋送料350円、応募は9/26 23:59まで。10月下旬ローソン一般販売予定。",l:[["抽選概要","https://bg-mania.jp/2026/09/24703164.html"],["発売情報","https://contents.oricon.co.jp/news/2479510/"]]});
+let ck=shops.sep.find(x=>x.n==="ちいかわ ボンボンドロップシール 新作3種");if(ck)Object.assign(ck,{signal:"🆕 NEW / 🚀 LAUNCH",s:98,status:"HOT",release:"9/25発売",e:"【OFFICIAL● LAUNCH● IP HEAT●】9/25に『ちいかわ寿司』『Chiikawa Baby』『ちいかわらんど』3種が発売。映画165億円のピークと商品投入が重なる。発売直後で個別売切れは未確認。",l:[["9/25発売","https://www.inside-games.jp/article/2026/09/25/188212.html"]]});
+music.sep.japan=[["You Know What To Do","INI","🔥 HOT / JAPAN #1","UPBEAT"],["Yes! 東京 (feat. EBiDAN)","EBiDAN","🔥 HOT / SALES+STREAMING UP","UPBEAT"],["時空超えてユニバース","M!LK","🔥 HOT / VIDEO #1","UPBEAT"],["WATCH ME feat. BIA","BE:FIRST","🚀 BREAKOUT / HOT SHOT #1","FASHION"],["愛MUST BE","櫻坂46","🚀 BREAKOUT","UPBEAT"],["運命さがし","マカロニえんぴつ","🚀 BREAKOUT","VLOG"],["ありふれた世界の果てに","YAO feat. Awich, CHICO CARLITO, ONE OK ROCK & Paledusk","🚀 RISING","MOODY"],["Made My Night","LE SSERAFIM","🚀 RISING +29→7","FASHION"],["マイオンリー","SixTONES","🔥 HOT / #8","UPBEAT"],["愛されたいマジで。","ONE LOVE ONE HEART","✨ HEATSEEKER #1","UPBEAT"]];
+music.sep.global=[["BbY WOW","KAROL G, Judeline, rusowsky","🔥 HOT / SPOTIFY #1","UPBEAT"],["Nicole Kidman","ADÉLA","🚀 BREAKOUT / #2 (+14)","FASHION"],["Ain’t In LA","ADÉLA","🚀 BREAKOUT / #3","FASHION"],["Earrings","Malcolm Todd","🔥 HOT / #4","VLOG"],["Beauty And A Beat","Justin Bieber, Nicki Minaj","♻️ REVIVAL / #5","UPBEAT"],["Self Aware","Temper City","🔥 HOT / #6","AESTHETIC"],["The One That Got Away","Katy Perry","♻️ REVIVAL / #7","AESTHETIC"],["the cure","Olivia Rodrigo","🔥 HOT / #8","MOODY"],["Iris","The Goo Goo Dolls","♻️ REVIVAL / #9","MOODY"],["back to friends","sombr","🔥 HOT / #10","VLOG"]];
+music.sep.early=[["Flores Amarillas","Floricienta / Cris Morena Group","♻️ REVIVAL / TIKTOK +151.8%","AESTHETIC"],["COMPA COLETO (uy_como)","ARIA VEGA","✨ EARLY / 410K UGC","UPBEAT"],["Mi Chico","DJ Goja, Jason Derulo, Melody","✨ EARLY / SHAZAM #1","FASHION"],["LET ME BE","The Second Voice","✨ EARLY / SHAZAM #2","MOODY"],["CHANEL","Tyla","✨ EARLY / SHAZAM #4","FASHION"]];
+analysis.sep=[
+["9月第4週は『見ている』から『買う・使う』への転換がさらに鮮明","TikTok ShopはGMVが下げ止まる中、新規ファンが前週比48.62%増。美容はGMV+10.5%で首位。ボンボンドロップもミセス抽選とちいかわ新作が同週に実売フェーズへ入り、AttentionからActionへの転換が今週の共通構造。"],
+["映像は『長期覇権』から『新作の瞬発力』へ首位交代","ラヴ上等2は6週連続Netflix日本1位という強い履歴を残したが、9/17開始の『ダウンタイム』が初登場1位、グローバル非英語5位へ。既存の強さを惰性で残さず、新作が奪った視聴時間をMAINへ反映。"],
+["ちいかわはPeakではなく再加速を繰り返す異例のロングラン","公開9週目でも週末動員1位、9/23まで165億円。入場特典第5弾と連休が再来場を作り、9/25のボンボンドロップ新作へ購買熱も波及。"],
+["音楽は『順位』より『速度』を優先","JAPANではINIがHot 100首位だが、Yes! 東京は2位でもセールス197%、ストリーミング103%。GLOBALではNicole KidmanがSpotify週間+14位で2位へ。増分を見ることで勢いの誤判定を避けた。"],
+["Cooling/Outを増やして鮮度を守る","シルバーウィーク旅行はイベント終了でOut。ラヴ上等2は6週首位でも新作へ首位交代したためOut。VIVANTは放送休止でCooling。今週の観測装置に再び強く引っ掛かるかを継続条件にした。"]
+];
+
+allData.oct=JSON.parse(JSON.stringify(allData.sep));
+allData.oct=allData.oct.filter(x=>!["VIVANT（2026）","Mellojoy","パペットスンスン","シール交換 / シール帳","めじるしアクセサリー / チャーム"].includes(x.n));
+const octPatch={
+"映画ちいかわ 人魚の島のひみつ":{s:97,w:"🟡 PEAK / HOLD",v:[20,15,20,15,27],e:"【BOX OFFICE● OFFICIAL● RETAIL●】9/23まで1133万人・165億円、公開9週目も週末動員1位。巨大規模は維持するが、10月入り後の新しい興収ハードデータがまだ薄いため100→97。",l:[["興収165億円・週末1位","https://www.crank-in.net/news/191709"]]},
+"Netflix『ダウンタイム』":{s:96,w:"🔥 MAIN / STREAMING #1",v:[29,19,19,14,15],e:"【PLATFORM● GLOBAL● OFFICIAL●】9/28時点でNetflix日本TV 1位を11日継続。9/17配信開始から首位を維持し、新作瞬発ではなく継続視聴へ移行。",l:[["Netflix日本 9/28","https://flixpatrol.com/top10/netflix/japan/2026-09-28/"],["Netflix公式","https://about.netflix.com/en/news/plasticbeauty-maintrailer-and-keyart"]]},
+"TikTok Shop × 韓国コスメ":{s:95,w:"🚀 BREAKOUT / COMMERCE",v:[28,18,20,14,15],e:"【CONSUMPTION● PLATFORM● CATEGORY●】9/21〜27の日本TikTok ShopはGMV22.62億円・前週比+5.26%、販売102.72万件・+1.45%。美容は4.74億円で最大20.9%シェア。前週の新規ファン急増から、今週は売上そのものの再加速へ。",l:[["Kalodata 10/1週次","https://www.kalodata.com/jp/blog/2026/10/kalodata-weekly/1145/"],["週次市場データ","https://prtimes.jp/main/html/rd/p/000000064.000167462.html"]]},
+"Setlog":{s:94,w:"🔥 MAIN / CROSS-PLATFORM",v:[25,16,19,15,19],e:"【APP CHART● CROSS-PLATFORM●】10/4時点で日本App Store無料SNS 1位、Google Play無料Social 2位。若年層先行アプリが両OSで上位を維持。",l:[["iOSカテゴリ順位 10/4","https://www.appbrain.com/stats/appstore-rankings/top_free/social_networking/jp"],["Google Play 10/4","https://www.appbrain.com/stats/google-play-rankings/top_free/social/jp"]]},
+"ボンボンドロップシール":{s:93,w:"🔥 HOT / PRODUCT WAVE",v:[21,16,19,14,23],e:"【RETAIL● OFFICIAL● COLLAB●】9月末のミセス抽選・ちいかわ新作投入で商品波は継続。ただし10/4時点で前週を上回る新しい実売ハードデータは確認できず、98→93。",l:[["ミセス抽選・発売情報","https://bg-mania.jp/2026/09/24703164.html"]]},
+"EBiDAN「Yes! 東京」":{s:92,w:"🔥 HOT / STREAMING #1",v:[20,14,19,14,25],e:"【CHART● STREAMING● SALES●】9/30 Hot 100は3位へ後退した一方、ストリーミング1位。CDも28,893枚、累計約165.9万枚。絶対規模は強いがVelocityはピークアウト方向。",l:[["Billboard JAPAN 9/30","https://www.billboard-japan.com/d_news/detail/166017/2"],["週間セールス","https://www.billboard-japan.com/d_news/detail/165950/2"]]},
+"M!LK / 「○○すぎて滅」":{s:90,w:"🔥 HOT / MULTI-TRACK",v:[20,14,18,14,24],e:"【CHART● ARTIST●】9/30 Hot 100で『好きすぎて滅!』4位、『時空超えてユニバース』5位。10/1 Artist 100でもM!LK 2位。単曲ではなく複数曲同時滞在を評価。",l:[["Billboard JAPAN Charts","https://www.billboard-japan.com/charts/"]]}
+};
+for(const x of allData.oct)if(octPatch[x.n])Object.assign(x,octPatch[x.n]);
+allData.oct.push({n:"Number_i『REBON / DIGITAL GIRL』",c:"Video / Streaming",s:94,w:"🚀 BREAKOUT / NEW",v:[30,20,20,14,10],e:"【CHART● SALES● DOWNLOAD●】9/30 Billboard JAPAN Hot 100でREBON初登場1位、DIGITAL GIRL 2位。REBONは初週304,863枚・32,268DLでCD/DL双方1位。Hot Shot Songsも1・2位独占。",l:[["Hot 100","https://www.billboard-japan.com/d_news/detail/166017/2"],["Hot Shot Songs","https://www.billboard-japan.com/d_news/detail/166016/2"],["初週30.4万枚","https://www.billboard-japan.com/d_news/detail/165950/2"]]});
+moves.oct=[
+{tag:"🚀 BREAKOUT",n:"Number_i『REBON / DIGITAL GIRL』",d:"NEW → MAIN",aud:["Youth Broad ↑↑"],why:"Hot 100とHot Shot Songsを1・2位独占。REBONは30.4万枚＋3.2万DLで初週から実消費へ。"},
+{tag:"⬆️ COMMERCE",n:"TikTok Shop × 韓国コスメ",d:"93 → 95",aud:["20s Female ↑↑"],why:"GMV22.62億円・+5.26%。美容4.74億円で最大シェア。ファン獲得の次に売上が再加速。"},
+{tag:"⬆️ CROSS-PLATFORM",n:"Setlog",d:"90 → 94",aud:["10s Female ↑↑↑"],why:"10/4時点でiOS無料SNS 1位、Google Play Social 2位。"},
+{tag:"🔥 HOLD",n:"Netflix『ダウンタイム』",d:"95 → 96",aud:["20s Female ↑↑"],why:"Netflix日本1位を11日継続。初動から継続視聴へ移行。"},
+{tag:"⬇️ PEAK",n:"映画ちいかわ",d:"100 → 97",aud:["Mass Market ↑↑↑"],why:"165億円の巨大規模は維持。ただし10月入り後の新しい興収ハードデータ待ち。"},
+{tag:"⬇️ VELOCITY DOWN",n:"ボンボンドロップシール",d:"98 → 93",aud:["10s Female ↑↑↑"],why:"商品波は強いが、前週の抽選・新作発売を上回る新しい実売証拠は未確認。"},
+{tag:"⬇️ HOT → HOLD",n:"Yes! 東京",d:"97 → 92",aud:["Youth Broad ↑↑"],why:"Hot 100は3位へ。ただしストリーミング1位なのでCoolingまでは落とさない。"},
+{tag:"❌ OUT",n:"VIVANT（2026）",d:"86 → OUT",aud:["Mass Market →"],why:"10/4放送再開日は到来したが、更新時点で再開後の視聴ハードデータ未確定。再加速確認後に復帰判定。"}
+];
+early.oct=[
+["Piik","10/4 Google Play無料Social 6位、iOS無料SNS 12位。ホーム画面で友人と写真を共有する軽量SNSが両OSで上位化。次週はDL・順位持続を確認。"],
+["BeReal 再上昇","10/4 Google Play Social 9位、iOS無料SNS 10位。新規サービスではないためREVIVAL候補として扱い、継続上昇が出るまでMAINには上げない。"],
+["peripera × CU","10/1 Qoo10先行発売。韓国コンビニCUとの限定パッケージで、10/28からオフライン展開予定。現時点は発売情報のみで実売データ待ち。"]
+];
+shops.oct=JSON.parse(JSON.stringify(shops.sep));
+shops.oct=shops.oct.filter(x=>x.n!=="Mrs. GREEN APPLE × ボンボンドロップシール 全4種");
+shops.oct.push({n:"peripera × CU 限定コレクション",sub:"ティント / 眉マスカラ / グロス / チーク / アイパレット",cat:"Beauty",price:"商品別",release:"10/1 Qoo10 / 10/28〜店頭",status:"HOT",signal:"🆕 NEW / ✨ DISCOVERY",s:89,e:"【OFFICIAL● LAUNCH● K-BEAUTY●】韓国大手コンビニCUとの限定コラボ。10/1 Qoo10 CLIO公式で発売、10/28からオフライン順次。発売直後のため実売・売切れは未確認で89点に抑制。",l:[["CLIO Japan発表","https://prtimes.jp/main/html/rd/p/000000102.000056098.html"]]});
+music.oct={japan:[
+["REBON","Number_i","🔥 HOT / HOT100 #1","UPBEAT"],["DIGITAL GIRL","Number_i","🚀 BREAKOUT / HOT100 #2","FASHION"],["Yes! 東京 (feat. EBiDAN)","EBiDAN","🔥 HOT / STREAMING #1","UPBEAT"],["好きすぎて滅!","M!LK","🔥 HOT / #4","UPBEAT"],["時空超えてユニバース","M!LK","🔥 HOT / #5","UPBEAT"],["Brand New","Mrs. GREEN APPLE","🔥 HOT / #6","VLOG"],["運命さがし","マカロニえんぴつ","🚀 RISING / #8","VLOG"],["WATCH ME feat. BIA","BE:FIRST","🚀 BREAKOUT","FASHION"],["愛MUST BE","櫻坂46","🚀 BREAKOUT","UPBEAT"],["NUMBERS PT.2","Number_i","✨ HOT SHOT / DL #7","MOODY"]
+],global:[
+["Patient Zero","Taylor Swift","🚀 BREAKOUT / SPOTIFY #1 NEW","AESTHETIC"],["BbY WOW","KAROL G, Judeline, rusowsky","🔥 HOT / BILLBOARD GLOBAL #1","UPBEAT"],["Nicole Kidman","ADÉLA","🔥 HOT / SPOTIFY #3","FASHION"],["Cleveland!","Taylor Swift","🚀 BREAKOUT / SPOTIFY #4 NEW","VLOG"],["Babylon","Taylor Swift","🚀 BREAKOUT / SPOTIFY #5 NEW","MOODY"],["Ain't In LA","ADÉLA","🔥 HOT / SPOTIFY #6","FASHION"],["Pink Clouding","Taylor Swift","🚀 BREAKOUT / SPOTIFY #7 NEW","AESTHETIC"],["Earrings","Malcolm Todd","🔥 HOT / SPOTIFY #8","VLOG"],["the cure","Olivia Rodrigo","🔥 HOT / SPOTIFY #9","MOODY"],["Beauty And A Beat","Justin Bieber, Nicki Minaj","♻️ REVIVAL / SPOTIFY #10","UPBEAT"]
+],early:[
+["we fell in love in october","girl in red","♻️ REVIVAL / SEASONAL UGC","AESTHETIC"],["QKThr","Aphex Twin","✨ EARLY / TIKTOK UGC","MOODY"],["Courtly Elegance Boccherini","Lucien Marceau","✨ EARLY / TIKTOK RISING","AESTHETIC"],["Chopin Nocturne No. 2 Piano Mono","moshimo sound design","✨ EARLY / TIKTOK RISING","MOODY"],["Dai Dai","Shakira, Burna Boy","✨ EARLY / SPOTIFY POPULARITY","UPBEAT"]
+]};
+analysis.oct=[
+["10月第1週は『発見』より『定着と転換』の強さが目立つ","SetlogはiOS 1位・Google Play 2位、Netflix『ダウンタイム』は日本1位を11日維持。9月に急浮上したものが、単発バズではなく複数プラットフォームや継続利用へ移れるかが分岐点になった。"],
+["購買はファン獲得から単価・GMVへフェーズ移行","TikTok Shopは前週の新規ファン急増から一転して新規ファンが減る一方、GMV+5.26%、平均単価+3.72%。美容は最大シェアを維持。『人が増えた』から『既存流入が買う』への質的転換が見える。"],
+["音楽は大型初動と継続ストリーミングを分離して読む","Number_iは30.4万枚と3.2万DLでREBONが初登場1位。一方Yes! 東京は総合3位でもストリーミング1位。初週のコアファン消費とライト層の継続再生を別の波として評価した。"],
+["GLOBALはTaylor Swiftの新作瞬発力がチャート構造を一気に塗り替え","Spotify週間ではPatient Zeroが47.6MでNEW #1、同一作品から複数曲がTOP10へ。一方Billboard Global 200ではBbY WOWが4週連続1位。更新速度の違う観測装置を併置し、単一チャート依存を避けた。"],
+["Outは『弱い』ではなく『今週の新証拠が足りない』","VIVANTは10/4再開でも、更新時点では再開後の視聴ハードデータがまだないため一旦Out。次週TVer・配信・視聴行動が再加速すれば復帰させる。"]
+];
+
+/* 2026-10-11: 10/04 week retained in snapshot; past months untouched. */
+const octSnapshot1004={overall:JSON.parse(JSON.stringify(allData.oct)),shopping:JSON.parse(JSON.stringify(shops.oct)),music:JSON.parse(JSON.stringify(music.oct))};
+allData.oct=[{"n":"Mrs. GREEN APPLE『POPS』/「共犯」","c":"Culture / Language","s":99,"v":[30,20,20,15,14],"w":"🚀 BREAKOUT / MAIN","e":"10/7公開：『POPS』初週638,788枚、オリコンCD・デジタル首位。『共犯』Hot100初登場8位・496.7万再生。16曲全てHot100入り。","l":[["10月11日確認","https://www.billboard-japan.com/d_news/detail/166207/2"],["追加根拠","https://www.billboard-japan.com/d_news/detail/166257/2"]]},{"n":"TikTok Shop × 韓国コスメ","c":"Fashion / Beauty","s":97,"v":[28,19,20,15,15],"w":"🚀 BREAKOUT / COMMERCE","e":"9/28〜10/4推計GMV23.54億円・前週比+4.06%、105.09万件+2.31%。美容5.50億円+16.1%。同一調査会社の転載は独立根拠に数えない。","l":[["10月11日確認","https://www.kalodata.com/jp/blog/2026/10/kalodata-weekly/1152/"]]},{"n":"Netflix『ダウンタイム』","c":"Video / Streaming","s":96,"v":[29,18,19,15,15],"w":"🔥 MAIN / 3週連続1位","e":"9/28〜10/4日本Netflixシリーズ週間1位・3週連続。香港1位、11国・地域Top10、世界非英語番組5位。","l":[["10月11日確認","https://news.livedoor.com/article/detail/32534268/"]]},{"n":"EBiDAN「Yes! 東京」","c":"Culture / Language","s":96,"v":[28,18,20,15,15],"w":"🚀 STREAMING / #2","e":"10/7 Hot100前週3位→2位。ストリーミング744.5万回・動画1位、CD22,323枚。","l":[["10月11日確認","https://www.billboard-japan.com/d_news/detail/166257/2"]]},{"n":"Setlog","c":"SNS / Apps","s":95,"v":[27,18,20,15,15],"w":"🔥 MAIN / CROSS-OS","e":"10/11日本iOS無料SNS1位、Android Social2位。Android推計累計440万DL・直近30日36万DLは世界集計であり国内数値ではない。","l":[["10月11日確認","https://www.appbrain.com/stats/appstore-rankings/top_free/social_networking/jp"],["追加根拠","https://www.appbrain.com/stats/google-play-rankings/top_free/social/jp"]]},{"n":"映画ちいかわ 人魚の島のひみつ","c":"Video / Streaming","s":94,"v":[26,18,20,15,15],"w":"🟡 PEAK / COOLING","e":"10/2〜4週末動員4位、公開11週目で累計1176万人・171億円。規模は巨大だが週次の順位は減速。","l":[["10月11日確認","https://www.gem-standard.com/ranking/1119"]]},{"n":"日向坂46「イチャイチャ虫」","c":"Culture / Language","s":91,"v":[29,17,19,12,14],"w":"🆕 NEW / BREAKOUT","e":"9/30発売・初週523,787枚、Hot100前週32位→10/7首位。ストリーミング36位・213.6万回でファン購買主導。","l":[["10月11日確認","https://www.billboard-japan.com/d_news/detail/166257/2"]]},{"n":"ボンボンドロップシール","c":"Character / Goods","s":86,"v":[21,17,19,14,15],"w":"🟡 PEAK / PRODUCT WATCH","e":"9月末のコラボ・新SKU展開は確認。10/5〜11の新規実売・売切れ加速は未確認で93→86。","l":[["10月11日確認","https://bg-mania.jp/2026/09/24703164.html"]]},{"n":"M!LK / 「○○すぎて滅」","c":"Culture / Language","s":86,"v":[20,17,20,14,15],"w":"🟡 PEAK / HOLD","e":"10/7『好きすぎて滅!』Hot100 9位（前週4位）、468.7万再生。上半期10代調査の支持は今週の加速根拠に数えない。","l":[["10月11日確認","https://www.billboard-japan.com/d_news/detail/166257/2"]]},{"n":"Number_i『REBON / DIGITAL GIRL』","c":"Culture / Language","s":80,"v":[17,15,18,15,15],"w":"⬇️ COOLING / LAUNCH DECAY","e":"9/30のHot100 1・2位独占から10/7トップ10圏外へ。初週REBON 304,863枚・32,268DLの規模と今週速度を区別。","l":[["10月11日確認","https://www.billboard-japan.com/d_news/detail/166257/2"],["追加根拠","https://www.billboard-japan.com/d_news/detail/166017/2"]]}];
+moves.oct=[{"tag":"🆕 BREAKOUT","n":"Mrs. GREEN APPLE『POPS』","d":"NEW→99","why":"初週638,788枚・新曲496.7万再生","aud":["Youth / Evidence"]},{"tag":"🆕 BREAKOUT","n":"日向坂46「イチャイチャ虫」","d":"NEW→91","why":"52.4万枚、Hot100 32→1位。ストリーミング36位","aud":["Youth / Evidence"]},{"tag":"⬆️ COMMERCE","n":"TikTok Shop × 韓国コスメ","d":"95→97","why":"GMV23.54億円+4.06%、美容5.50億円+16.1%","aud":["Youth / Evidence"]},{"tag":"⬆️ STREAMING","n":"Yes! 東京","d":"92→96","why":"Hot100 3→2位・744.5万再生","aud":["Youth / Evidence"]},{"tag":"⬆️ CROSS-OS","n":"Setlog","d":"94→95","why":"iOS1位・Android2位を維持","aud":["Youth / Evidence"]},{"tag":"⬇️ COOLING","n":"Number_i『REBON』","d":"94→80","why":"Hot100初週首位からトップ10圏外へ","aud":["Youth / Evidence"]},{"tag":"⬇️ PEAK","n":"映画ちいかわ","d":"97→94","why":"171億円に拡大も週末動員4位","aud":["Youth / Evidence"]},{"tag":"⬇️ PEAK","n":"ボンボンドロップ","d":"93→86","why":"新しい実売・売切れ増加未確認","aud":["Youth / Evidence"]},{"tag":"✨ EARLY","n":"Piik / Bump","d":"DISCOVERY","why":"Piik推計直近30日5.8万DL、Bump iOS2位","aud":["Youth / Evidence"]},{"tag":"🔼 EARLY→HOT","n":"we fell in love in october","d":"GLOBAL","why":"Spotify+93位・TikTok世界1位","aud":["Youth / Evidence"]}];
+early.oct=[["Piik｜✨ EARLY","Android推計8.6万DL中、直近30日5.8万。10/11 Android Social14位、iOS SNS22位。順位後退も新規DLが多い。 https://www.appbrain.com/app/piik-friends-on-home-screen/com.parallelcorp.piik"],["Bump｜✨ DISCOVERY","10/11 iOS無料SNS2位。直近国内DL・MAUは未確認。 https://www.appbrain.com/stats/appstore-rankings/top_free/social_networking/jp"],["BeReal｜♻️ REVIVAL WATCH","10/11 iOS8位・Android6位。短期順位回復は見えるが復帰率・MAU増は未確認で再燃と断定しない。 https://www.appbrain.com/stats/google-play-rankings/top_free/social/jp"],["スティール・ボール・ラン 2nd & 3rd STAGE｜✨ EARLY","Netflix日本9/28〜10/4初登場2位。独立した若者UGC増加は未確認。 https://news.livedoor.com/article/detail/32534268/"],["ファミマ 無限クリーム｜🔮 FORECAST","10/13から約1.65万店で2新作・4改良。販売前の実売はゼロ、予告段階。 https://www.family.co.jp/company/news_releases/2026/20261006_02.html"],["超ときめき♡宣伝部 大盛りハッピー｜✨ EARLY","10/7 Hot100初登場3位、CD214,107枚。ストリーミング伸長は未確認。 https://www.billboard-japan.com/d_news/detail/166257/2"]];
+
+// Complete the October 11 weekly update.
+shops.oct=[{"n":"rom&nd UFOカバークッション","cat":"Beauty","s":84,"status":"PRE","signal":"NEW / 発売予告","price":"¥2,970","release":"10/19 ドン・キホーテ系列先行","e":"全3色。11月中旬からバラエティショップ等で順次展開予定。発売予定を確認。実売・予約増・売切れは未確認。","l":[["販売元公式発表","https://prtimes.jp/main/html/rd/p/000000457.000076505.html"]]},{"n":"ファミマ ほぼクリームのケーキ","cat":"Food","s":82,"status":"PRE","signal":"NEW / 発売予告","price":"¥248","release":"10/13","e":"新しいホイップクリームと生クリームを使う新商品。全国発売予定（一部地域・店舗で取扱い差）。発売前のため販売実績は未確認。","l":[["ファミリーマート公式","https://www.family.co.jp/company/news_releases/2026/20261006_02.html"]]},{"n":"SKZOO ぷくっとバースデークリアリング～PuppyM＆Wolf Chan＆Leebit～","cat":"Character","s":80,"status":"WATCH","signal":"NEW / 発売週","price":"1回 ¥500","release":"10月第2週より順次","e":"全12種。公式発売案内を確認。店舗別の入荷・在庫・売切れは未確認。発売週の商品候補として掲載し、購買加速は断定しない。","l":[["公式発売案内","https://skz-stayjapan.com/s/n104/news/detail/13243?ima=3845"],["バンダイ商品ページ","https://gashapon.jp/products/detail.php?jan_code=4570118184276000"]]}];
+music.oct={"japan":[["共犯","Mrs. GREEN APPLE","🚀 NEW / Hot100 #8・496.7万再生","MOODY"],["Yes! 東京","EBiDAN","🔥 Hot100 #2・744.5万再生","UPBEAT"],["イチャイチャ虫","日向坂46","🆕 #1 / CD主導・Streaming #36","UPBEAT"],["大盛りハッピー","超ときめき♡宣伝部","🆕 #3 / CD主導","UPBEAT"],["Brand New","Mrs. GREEN APPLE","🔥 #7・666.6万再生","UPBEAT"],["結び","Ayumu Imazu","✨ NEW #20 / Streaming #10","VLOG"],["好きすぎて滅!","M!LK","🟡 #9・468.7万再生","UPBEAT"],["ありふれた世界の果てに","YAO feat. Awich, CHICO CARLITO, ONE OK ROCK & Paledusk","🔥 #10・589.7万再生","MOODY"],["総意♡So Free","CANDY TUNE","🆕 #5 / CD主導","UPBEAT"],["Lonely...But not Alone","モーニング娘。'26","🆕 #4 / CD主導","UPBEAT"]],"global":[["Nicole Kidman","ADÉLA","🔥 #2 / +161.9万再生","FASHION"],["Stop The Wedding!","Ashe","🚀 NEW HOT / #12 (+39)・+505.3万","MOODY"],["we fell in love in october","girl in red","♻️ EARLY→HOT / #74 (+93)・+196.8万","AESTHETIC"],["BbY WOW","KAROL G, Judeline, rusowsky","🔥 #1 / 再生数は前週減","UPBEAT"],["the cure","Olivia Rodrigo","🔥 #5 / +39.1万再生","MOODY"],["Sweater Weather","The Neighbourhood","♻️ #14 / +75.7万再生","AESTHETIC"],["Great Expectation","SIENNA SPIRO","🚀 #19 / +97.6万再生","MOODY"],["Ain't In LA","ADÉLA","🔥 #4 / 再生数は微減","FASHION"],["Earrings","Malcolm Todd","🔥 #6 / 再生数は前週減","VLOG"],["Patient Zero","Taylor Swift","🟡 COOLING / #3・再生数約45%減","MOODY"]],"early":[["Postinho de Gasolina","João Gustavo e Murilo, Grelo","✨ CHART WATCH / #91 (+102)・+190.1万","UPBEAT"],["STORM II","GENER8ION, Yung Lean","✨ NEW #88 / 初週・継続確認待ち","FASHION"],["Draw You Out","Noah Kahan, The Hunger Games","✨ NEW #69 / 初週・継続確認待ち","MOODY"],["Cold Shoulder","Drake, Don Toliver, Yebba","✨ NEW #89 / 初週・継続確認待ち","MOODY"],["Cuando No Era Cantante RMX - Remix","El Bogueto, Anuel AA, Fuerza Regida, Yung Beef","♻️ WATCH / #65 (+99)・+262.4万","UPBEAT"]]};
+analysis.oct=[["初週購買と継続聴取を分けて評価","Mrs. GREEN APPLEと日向坂46の初週購買が強い一方、Yes! 東京は744.5万再生。CD主導の初動と継続的なストリーミングを同じ加速として扱わない。"],["GLOBALは季節再燃と新しい急伸","girl in redはSpotify週間74位へ93ランク上昇しEARLYからHOTへ。Asheも12位へ39ランク上昇。TikTok世界首位という過去調査の記述は再確認できず、採用根拠から外した。"],["順位上昇だけで再生増とは判定しない","BbY WOWは首位へ戻ったが週間再生数は減少。Patient Zeroも3位という規模と前週から約45%減という速度を分ける。GLOBAL EARLYは今週チャート初登場・急伸の追跡枠で、UGC先行を確認した枠ではない。"],["Shoppingは発売予告と実売を分離","rom&ndとファミマはPRE-LAUNCH。SKZOOは発売週WATCH。既存SKUの直近実売加速を確認できないため今週の掲載から外す。点数は編集上の注目度で販売実績を示さない。"],["BeRealは再燃の確認待ち","両OSの上位順位は観測されたが、国内MAUの週次増加や復帰率は未確認。REVIVAL WATCHを維持する。TikTok Shopの売上は第三者推計、AppBrainの累計DLは世界集計として区別する。"]];
+moves.oct.find(x=>x.n==='we fell in love in october').why='Spotify週間74位へ+93位、再生数+196.8万。TikTok首位は再確認できず根拠から除外。';
+
+
+
+/* 2026-10-12 scope policy: music belongs exclusively in Music Radar.
+   Never use category alone: earlier music records were classified as Video / Culture.
+   Keep archived source records intact; apply the scope gate to general views. */
+function isMusicTrend(x){const n=typeof x==='string'?x:(Array.isArray(x)?x.join(' '):(x.n+' '+(x.e||'')));return /Mrs\. GREEN APPLE|M!LK|EBiDAN|Yes! 東京|日向坂46|Number_i|超ときめき|we fell in love in october|Nicole Kidman|GG EZ|AI生成楽曲|YouTube Music|細野晴臣/.test(n||'')||x?.scope==='music';}
+const musicAnalysisOct=analysis.oct.slice(0,3);
+analysis.oct=[
+ ['美容購買は件数と単価がともに増加','9/28〜10/4のTikTok Shop推計はGMV+4.06%、件数+2.31%、平均販売価格+1.73%。美容は+16.1%だが、韓国コスメだけの内訳ではない。総合項目の名前を「TikTok Shopの美容購買」に修正。供給側の新商品数は減少しており、新作ブームより既存商品の販売拡大という読みが妥当。<a href="https://prtimes.jp/main/html/rd/p/000000065.000167462.html">Kalodata・10/9発表 ↗</a>'],
+ ['映像は累計の大きさと、新しい首位を別々に追う','ちいかわは累計171億円でも週末4位。10/2〜4の新しい首位は「ママがもうこの世界にいなくても」（初動29.2万人・4.41億円）。後者を追加調査候補へ。1週の初動だけで継続加速・若年層浸透は断定せず、次週の維持率と検索・UGCを確認する。<a href="https://www.gem-standard.com/ranking/1119">興行通信社集計／GEM ↗</a>'],
+ ['ゲーム売上も探索入口に追加','9/28〜10/4はACE COMBAT 8が推定63,013本で初登場首位。真・三國無双2リマスターは2機種計30,408本。購入というハードデータから候補を作り、既存掲載名だけを検索する偏りを減らす。DL専売分や若者比率はこの集計では分からない。<a href="https://www.famitsu.com/article/202610/90441">ファミ通・10/8発表 ↗</a>'],
+ ['食品は発売予告から販売検証へ','ファミマのクリーム新作は10/13発売予定。現時点の発売情報を売れ行きに置き換えない。食品POSとメーカー新商品ランキングも探索したが、今回、直近の若者支持と継続成長を両方確認できる追加MAINは得られなかった。発売後の販売数・同条件の前週比・品切れ期間を追う。'],
+ ['BeRealは短期順位の戻り。再定着はまだ別の問い','10/4→10/11の保存観測ではiOS無料SNS 10→8位、Android Social 9→6位。ただし順位差は利用者の増加率ではない。6/24〜7/4の服飾学生960人調査にはBeRealのピークアウトとSetlog浮上があり、対象・時点の違うデータとして併記。復帰理由、新規／復帰の内訳、国内MAU・継続率が確認できるまでREVIVAL WATCHを維持する。<a href="https://lp.press-room.cloud/presskit/company/pressRelease/detail?pressReleaseId=12905">双葉通信社・調査条件 ↗</a>']
+];
+const commerce=allData.oct.find(x=>x.n==='TikTok Shop × 韓国コスメ');
+commerce.displayName='TikTok Shopの美容購買';
+commerce.e+=' 美容カテゴリー全体の数値であり、韓国コスメだけの伸びではない。GMVはKalodata独自推計。';
+commerce.l=[['Kalodata発表・集計9/28〜10/4','https://prtimes.jp/main/html/rd/p/000000065.000167462.html']];
+const scopeScan=[
+ {n:'ACE COMBAT 8',state:'新規候補・初動確認',e:'9/28〜10/4の国内ソフト推定販売63,013本で初登場1位。継続週、若者利用、別系統の反応が未確認のためMAIN保留。',url:'https://www.famitsu.com/article/202610/90441'},
+ {n:'ママがもうこの世界にいなくても',state:'新規候補・初動確認',e:'10/2〜4の週末動員1位。29.2万人・4.41億円。次週の維持率と検索・UGCを確認。初動の規模だけで若者トレンドとは判定しない。',url:'https://www.gem-standard.com/ranking/1119'},
+ {n:'Pasco ザクふわチョコパンケーキ',state:'探索済み・採用保留',e:'Pascoの10/1〜5新商品売上数量1位。メーカー内の初動順位で、市場全体の首位ではない。若者支持・継続成長が未確認のため総合は保留。食品POSも継続観測する。',url:'https://www.pasco-sc.fun/article/newsletter/info/65369/'}
+];
+function displayName(x){return x.displayName||x.n;}
+function sourceText(t){return t.replace(/https?:\/\/[^\s<]+/g,u=>`<a class="source-link" href="${u}" target="_blank" rel="noopener">根拠を読む ↗</a>`);}
+
+
+/* Weekly refresh 2026-10-18: prior monthly data untouched; weekly snapshot in weekly/. */
+allData.oct=[{"n": "映画ちいかわ 人魚の島のひみつ", "c": "Video / Streaming", "s": 91, "v": [29, 19, 20, 9, 14], "w": "🚀 RE-ACCELERATING / MAIN", "e": "10/9〜11の国内週末動員は4→1位、37.5万人・5.63億円。10/12まで累計1,229万人・179億円。ING高校生調査のキャラ支持は映画観客属性ではない。累計だけでなく12週目の再浮上を採用。 確認10/18。", "l": [["film · 10/18確認", "https://eiga.com/ranking/jp/"], ["ing · 10/18確認", "https://prtimes.jp/main/html/rd/p/000000221.000026876.html"]]}, {"n": "ママがもうこの世界にいなくても 私の命の日記", "c": "Video / Streaming", "s": 83, "v": [29, 19, 19, 5, 11], "w": "🆕 NEW / MAIN", "e": "10/9〜11は32.7万人・4.88億円。前週29.2万人・4.41億円から動員+12.0%、興収+10.7%。順位1→3でも実利用は増加。若年層比率・UGC増は未確認。 確認10/18。", "l": [["film · 10/18確認", "https://eiga.com/ranking/jp/"]]}, {"n": "Setlog", "c": "SNS / Apps", "s": 82, "v": [23, 17, 19, 9, 14], "w": "🔥 MAIN / PLATEAU WATCH", "e": "国内iOS無料SNS1位、Android Social2位を維持。INGの9/15〜21高校生200人調査で流行33.9%。国内MAU・復帰率は未確認。Android世界累計450万DLを国内利用者と扱わない。 確認10/18。", "l": [["ios · 10/18確認", "https://www.appbrain.com/stats/appstore-rankings/top_free/social_networking/jp"], ["android · 10/18確認", "https://www.appbrain.com/stats/google-play-rankings/top_free/social/jp"], ["ing · 10/18確認", "https://prtimes.jp/main/html/rd/p/000000221.000026876.html"]]}, {"n": "Netflix『ダウンタイム』", "c": "Video / Streaming", "s": 68, "v": [15, 16, 18, 5, 14], "w": "⬇️ COOLING / MAIN", "e": "10/5〜11の日本シリーズ週間1→4位。順位低下を視聴者減少率には換算しない。新作の押上げもあり、国内視聴時間・若者比率は未確認。 確認10/18。", "l": [["netflix · 10/18確認", "https://www.topics.or.jp/articles/-/1511109"]]}];
+early.oct=[["バター餅｜🔮 FORECAST → 販売検証", "高校生調査の食品回答3.7%と10/20のセブン店内焼成導入を別系統で確認。商品実売は発売後に追う。 https://prtimes.jp/main/html/rd/p/000000221.000026876.html https://prtimes.jp/main/html/rd/p/000001218.000155396.html"], ["AIに「似合う」を相談｜✨ NEW USE WATCH", "9/1〜3・15〜30歳女性のMERY調査。コスメ45.5%、ファッション45.2%が似合う物を相談する項目を選択。対象設問の回答率で、全若者利用率でも時系列成長でもない。 https://prtimes.jp/main/html/rd/p/000000146.000029212.html"], ["NIMS シリアル｜🔮 FORECAST", "ING高校生調査の次の流行候補。ASMR・TikTok Shopとの接点は定性記述。直近のSKU実売とUGC増加数は未確認。 https://prtimes.jp/main/html/rd/p/000000221.000026876.html"], ["ボンボンドロップシール → ネイル｜✨ NEW USE WATCH", "シールのMAIN掲載を終了。ボンドロネイルという使い方は調査で捕捉したが、直近の購買増・売切れ加速は未確認。 https://prtimes.jp/main/html/rd/p/000000221.000026876.html"], ["BeReal｜♻️ REVIVAL WATCH", "iOS SNS8→9位、Android Social6位維持。国内MAU・復帰・継続率の増加が確認できず、再燃認定しない。 https://www.appbrain.com/stats/appstore-rankings/top_free/social_networking/jp https://www.appbrain.com/stats/google-play-rankings/top_free/social/jp"], ["TikTok Shopの美容購買｜WATCH", "10/5〜11の市場全体GMVは21.12億円・前週比−10.30%。最新の美容単独GMVは未取得。全体減を美容減と読み替えずMAINから観測待ちへ。 https://www.kalodata.com/jp/blog/2026/10/kalodata-weekly/1183/"], ["あいの里 シーズン3｜✨ LAUNCH WATCH", "10/5〜11日本Netflixシリーズ初登場1位。実利用の入口として捕捉。翌週維持と10〜20代への浸透は未確認。 https://www.topics.or.jp/articles/-/1511109"]];
+shops.oct=[{"n": "セブンカフェ ベーカリー｜お店で焼いた カリッもちっバター餅", "cat": "Food", "s": 74, "status": "PRE", "signal": "🔮 PRE-LAUNCH / 🆕 NEW", "price": "税込 ¥160.92", "release": "2026/10/20〜順次", "sub": "全国のセブンカフェ ベーカリー取扱店限定", "e": "WHY NOW：発売2日前。高校生調査に登場したバター餅が日常の購入接点へ広がる。需要シグナルと供給拡大を分離し、新SKUの販売・予約実績は未確認。10/18確認。", "l": [["seven · 10/18確認", "https://prtimes.jp/main/html/rd/p/000001218.000155396.html"], ["ing · 10/18確認", "https://prtimes.jp/main/html/rd/p/000000221.000026876.html"]]}, {"n": "不二家洋菓子店｜生ドーナツ（復刻カスタード）", "cat": "Food", "s": 70, "status": "PRE", "signal": "🔮 PRE-LAUNCH / ♻️ REVIVAL", "price": "税込 ¥388", "release": "2026/11/1", "sub": "シリーズ実売を根拠にした発売14日前の監視枠", "e": "WHY NOW：生ドーナツシリーズは6〜9月の4か月で累計100万個。これはシリーズの過去実売であり、新SKUの予約・販売ではない。復刻味の反応と発売後の実売を次回確認。10/18確認。", "l": [["fujiya · 10/18確認", "https://prtimes.jp/main/html/rd/p/000000503.000097396.html"]]}];
+music.oct={"japan": [["結び", "Ayumu Imazu", "🚀 BREAKOUT / Hot100 20→5・930.5万再生", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"], ["KO1KEYZ", "KO1KEYZ", "🆕 HOT / 初登場1位・CD52.5万枚", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"], ["共犯", "Mrs. GREEN APPLE", "🚀 HOT / 8→2・574.9万再生", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"], ["しわあわせ", "Vaundy", "♻️ REVIVAL / 49→10・583.6万再生", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"], ["Yes! 東京", "EBiDAN", "🔥 HOT / 2→3でも再生794.6万へ増", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"], ["ぱわーオブらぶ", "FRUITS ZIPPER", "🚀 BREAKOUT / 68→6・CD7.28万枚", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"], ["swim?", "KAITO", "🆕 HOT / 初登場8位・2.83万DL", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"], ["冬服に着替えたら", "STU48", "🆕 HOT / 初登場4位・CD20.3万枚", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"], ["Brand New", "Mrs. GREEN APPLE", "🔥 HOT / 7位維持・606.4万再生、前週減", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"], ["好きすぎて滅!", "M!LK", "🔥 HOT / 9位維持・464.0万再生、微減", "", "https://www.billboard-japan.com/d_news%20/detail/166474/2"]], "global": [["Nicole Kidman", "ADÉLA", "🚀 HOT / Spotify2位・週+443.9万、Billboard6→3", "FASHION", "https://kworb.net/spotify/country/global_weekly.html"], ["Stop The Wedding!", "Ashe", "🚀 BREAKOUT / 12→6・週+291.4万、Billboard49→16", "MOODY", "https://kworb.net/spotify/country/global_weekly.html"], ["BbY WOW", "KAROL G, Judeline, rusowsky", "🔥 HOT / Spotify1位維持・週−57.2万、Shazam2位", "UPBEAT", "https://kworb.net/spotify/country/global_weekly.html"], ["Ain't In LA", "ADÉLA", "🔥 HOT / 4→3・週+74.7万、Billboard9→5", "FASHION", "https://kworb.net/spotify/country/global_weekly.html"], ["the cure", "Olivia Rodrigo", "🔥 HOT / 5→4・週+103.9万", "MOODY", "https://kworb.net/spotify/country/global_weekly.html"], ["Earrings", "Malcolm Todd", "🔥 HOT / 6→5・週+51.1万", "VLOG", "https://kworb.net/spotify/country/global_weekly.html"], ["Die With A Smile", "Lady Gaga, Bruno Mars", "♻️ REVIVAL / 15→10・週+183.1万", "TRAVEL", "https://kworb.net/spotify/country/global_weekly.html"], ["Just Give Me a Reason", "P!nk, Nate Ruess", "♻️ REVIVAL / 39→22・週+218.6万、Shazam22位", "MOODY", "https://kworb.net/spotify/country/global_weekly.html"], ["Cuando No Era Cantante RMX - Remix", "El Bogueto, Anuel AA, Fuerza Regida, Yung Beef", "🚀 EARLY→HOT / 65→47・週+139.8万", "UPBEAT", "https://kworb.net/spotify/country/global_weekly.html"], ["Loser", "Tame Impala", "🔥 HOT / Spotify18位・週+30.1万、Shazam4位", "AESTHETIC", "https://kworb.net/spotify/country/global_weekly.html"]], "early": [["Postinho de Gasolina", "João Gustavo e Murilo, Grelo", "✨ EARLY継続 / 91→53・週+225.4万", "UPBEAT", "https://kworb.net/spotify/country/global_weekly.html"], ["Na Para Bang", "Mariah Deborah", "✨ NEW EARLY / 168→77・週+214.4万", "VLOG", "https://kworb.net/spotify/country/global_weekly.html"], ["Babydoll", "Jamie Miller", "✨ NEW EARLY / 190→105・週+149.6万", "MOODY", "https://kworb.net/spotify/country/global_weekly.html"], ["Pós - Ao Vivo", "Felipe e Rodrigo", "✨ NEW EARLY / 初登場56位・1,202.9万再生", "UPBEAT", "https://kworb.net/spotify/country/global_weekly.html"], ["TRALALA", "manifest", "✨ NEW EARLY / 初登場59位・1,161.4万再生", "FASHION", "https://kworb.net/spotify/country/global_weekly.html"]]};
+analysis.oct=[["順位と実需要を分けると「定着」と「再加速」が同時に見える", "新作が増えると順位は押し下がるが、観客数まで減るとは限らない。「ママ…」は1→3位でも動員+12.0%。一方、ちいかわは12週目に首位へ戻った。単純な新旧交代ではなく、長期作品の再動員と新作の口コミ拡大が並存している可能性がある。口コミを原因と断定するUGC計測は未取得。"], ["発見から購入への距離が短くなるが、供給増は需要増ではない", "バター餅は高校生調査の回答からコンビニの購入接点へ移る。AI相談も「似合う」を探す行動を支えるが、MERY調査ではAI回答だけで購入する層はコスメ17.6%、服7.7%にとどまる。発見後のSNS照合・店頭確認が残るという仮説が立つ。TikTok Shopは新商品数が増える一方で市場GMVが減った。露出・新商品の増加を購買の加速と同一視しない。"], ["大きいサービスを固定せず、持続を測る", "Setlogは両OS上位と高校生調査の二系統で残すが、国内利用者の増加率は未知。BeRealも順位だけでは再定着といえない。今月はランキングの高位より、国内MAU・復帰・継続率と購入・視聴の比較値を次の観測課題にする。"], ["今週の採点と観測限界", "10/18はSource Diversityの過大評価を補正。同じ一次情報の転載、OS別順位、同一会社のチャートを独立系統として水増ししない。点数の低下は需要減のみを意味せず、根拠の再評価も含む。総合MAIN4件。Google Trendsの同条件系列、SNS/UGCの日次増分、食品POSの対象SKU比較値は未確認。Shoppingは発売前2商品、HOT商品は0件。"]];
+moves.oct=[{"tag": "🚀 RE-ACCELERATING", "n": "映画ちいかわ 人魚の島のひみつ", "d": "週末4→1位", "why": "公開12週目に37.5万人。週次スコア94→91は多様性評価の補正であり、再浮上と分けて読む。"}, {"tag": "🆕 NEW MAIN", "n": "ママがもうこの世界にいなくても 私の命の日記", "d": "候補→MAIN", "why": "2週目の動員29.2→32.7万人。公開初動だけの保留を解除。"}, {"tag": "⬇️ COOLING", "n": "Netflix『ダウンタイム』", "d": "Netflix1→4位", "why": "新作との相対順位が後退。視聴者数の減少率は未確認。スコア96→68には採点補正も含む。"}, {"tag": "🔥 HOLD / 再評価", "n": "Setlog", "d": "iOS1位・Android2位", "why": "上位維持。国内MAU増は未取得。95→82は加速・多様性の慎重評価。"}, {"tag": "MAIN→WATCH", "n": "TikTok Shopの美容購買", "d": "美容の直近値待ち", "why": "市場全体は−10.30%だが美容単独の最新比較値がない。韓国コスメ限定の指標でもない。"}, {"tag": "MAIN→WATCH", "n": "ボンボンドロップシール", "d": "新用途を追跡", "why": "実購買の新たな加速は未確認。ネイルへの転用を別の観測候補にする。"}, {"tag": "EARLY掲載終了", "n": "Piik / Bump / SBR / 無限クリーム", "d": "根拠・状態を更新", "why": "PiikはiOS22→26・Android14→20。Bumpは上位維持のみ。SBRはNetflix2→6。無限クリームは発売済みとなり販売検証待ち。終了は消滅の意味ではない。"}];
+scopeScan.splice(0,scopeScan.length,...[{"n": "ママがもうこの世界にいなくても 私の命の日記", "state": "採用 MAIN", "e": "公開2週目で動員+12.0%。前回の初週保留から昇格。次：若者比率・3週目維持。", "url": "https://eiga.com/ranking/jp/"}, {"n": "バイオハザード", "state": "保留 / 映画新顔", "e": "10/9〜11初登場2位、35.6万人・6.27億円。次：2週目維持、若者浸透。", "url": "https://eiga.com/ranking/jp/"}, {"n": "KINGDOM HEARTS Collection I–III", "state": "保留 / ゲーム首位", "e": "10/5〜11推計：Switch2 23,411本＋PS5 6,261本。初動合計29,672本。次：翌週維持・DL専売・年齢。", "url": "https://www.famitsu.com/article/202610/91095"}, {"n": "ドラゴンズドグマ2 ダークアリズン", "state": "保留 / ゲーム新顔", "e": "Switch2＋PS5初週計12,413本。次：継続販売と若者支持。", "url": "https://www.famitsu.com/article/202610/91095"}, {"n": "地球防衛軍5 Switch2", "state": "保留 / ゲーム新顔", "e": "初週推計5,237本。新規発売だけではMAINにしない。次：翌週。", "url": "https://www.famitsu.com/article/202610/91095"}, {"n": "ACE COMBAT 8", "state": "上昇候補から除外", "e": "推計63,013→13,801本（−78.1%）。発売後の通常減速かの判断には3週目が必要。", "url": "https://www.famitsu.com/article/202610/91095"}, {"n": "あいの里 シーズン3 / 薬屋のひとりごと シーズン3", "state": "保留 / 配信新顔", "e": "日本Netflix初登場1位／2位。前者をEarly監視へ。次：翌週・若者比率・視聴時間。", "url": "https://www.topics.or.jp/articles/-/1511109"}, {"n": "AIのコスメ・服選び相談", "state": "採用 WATCH / 技術・美容", "e": "15〜30歳女性調査で新用途を捕捉。時系列がなく急伸とは認定しない。次：同条件の利用率比較。", "url": "https://prtimes.jp/main/html/rd/p/000000146.000029212.html"}, {"n": "バンビコア / オルンニョジャメイク", "state": "保留 / 服・美容", "e": "高校生の次の流行予測。次：UGC増分と商品別実売。予測を実需に置き換えない。", "url": "https://prtimes.jp/main/html/rd/p/000000221.000026876.html"}, {"n": "NIMS シリアル / ボンドロネイル", "state": "採用 WATCH / 食品・新用途", "e": "調査の定性予測のみ。次：SKU、販売増、UGC増分。Shoppingの実売認定はしない。", "url": "https://prtimes.jp/main/html/rd/p/000000221.000026876.html"}, {"n": "rom&nd BROWN・BLACKエディション", "state": "保留 / Beauty", "e": "10/8発売案内を確認。色別発売時期と限定性だけでは需要加速不明。次：予約・売切れ・販売比較。", "url": "https://www.mapion.co.jp/news/release/000000453.000076505-all/"}, {"n": "こびとづかん 新作シール", "state": "保留 / Character", "e": "10月の商品発表を確認。全国発売と両国・錦糸町の店舗入荷は別。公式在庫未取得。次：SKU実売。", "url": "https://www.kobitos.com/post/sunstar2610"}, {"n": "ファミマ ほぼクリームのケーキ", "state": "PRE→販売検証待ち", "e": "税込248円・10/13発売。10/18時点の販売増は未確認。Shoppingの予告枠を終了。", "url": "https://www.family.co.jp/company/news_releases/2026/20261006_02.html"}, {"n": "いきもの超ワールド展", "state": "保留 / 場所・体験", "e": "10/1まで累計30万人。累計の大きさだけでは今週の波を示さない。次：週次来場・若者比率。", "url": "https://www.atpress.ne.jp/news/636866"}, {"n": "セブン バター餅 / 不二家 生ドーナツ", "state": "採用 PRE / 食品", "e": "調査＋身近な購入接点、またはシリーズ過去実売を根拠に発売前検知。新SKU実売は未確認。", "url": "https://prtimes.jp/main/html/rd/p/000001218.000155396.html"}]);
+musicAnalysisOct.splice(0,musicAnalysisOct.length,...[["JAPAN｜再生の急伸とCD初動を分ける", "10/14公開・10/5〜11集計。「結び」はHot100 20→5、Streaming 13→1へ（前回ページのStreaming #10は誤記として訂正）。「しわあわせ」は49→10。「KO1KEYZ」「冬服に着替えたら」「ぱわーオブらぶ」はCD初動の寄与が大きい。HOT新規5曲、継続5曲。除外はイチャイチャ虫、大盛りハッピー、ありふれた世界の果てに、総意♡So Free、Lonely...But not Alone。後退・相対優先度と曲の消滅を区別する。INGの高校生調査は若者との接点確認に使い、直近の成長率には転用しない。YouTube国内単独・TikTok日次増分は未確認。"], ["GLOBAL｜HOT入替とEARLYの答え合わせ", "10/15終了Spotifyを主軸に、10/17付Billboard Global 200・10/18確認Shazamを照合。集計窓は一致しない。「Cuando No Era Cantante RMX」はEARLY→HOT。「Die With A Smile」「Just Give Me a Reason」「Loser」をHOT新規へ。Patient Zeroは週再生−28.7%でCooling、we fell in love in octoberも週減でHOT終了。Sweater WeatherとGreat Expectationは再生増のためCoolingとは呼ばず、今週の相対優先度で除外。HOT入替4曲。"], ["GLOBAL｜EARLYは4曲追加・1曲継続", "Postinho de Gasolinaは91→53位で継続。Na Para Bang、Babydoll（Jamie Miller）、Pós - Ao Vivo、TRALALA（manifest）を追加。STORM IIは88→145位でCooling、Draw You OutとCold Shoulderは当週Top200で再確認できず除外（再生ゼロを意味しない）。前週EARLY5曲の結果は昇格1・継続1・Cooling1・再確認できず2。現時点はCHART EARLYでありUGC先行成功とは主張しない。TikTok/Reelsの日次件数・地域別保存率、YouTube Globalは未確認。BGMタグは選定後の用途案。<a href=\"https://ca.billboard.com/charts/billboard-global-200/2026-10-17\">Billboard Global ↗</a> · <a href=\"https://kworb.net/charts/shazam/ww.html\">Shazam ↗</a>"]]);
+
+
+/* Weekly refresh 2026-11-01: November added; July–October raw data retained. */
+/* Weekly refresh 2026-11-15. Previous effective November data archived in weekly/. */
+allData.nov=[
+ {
+  "n": "ゼルダの伝説 時のオカリナ（Switch 2）",
+  "c": "Games",
+  "s": 92,
+  "v": [
+   30,
+   20,
+   20,
+   8,
+   14
+  ],
+  "w": "🚀 BREAKOUT / 初動",
+  "e": "11/5発売。11/8まで4日間で世界520万本・国内81万本（任天堂、パッケージ＋DL）。別観測のファミ通は11/2〜8国内パッケージ推計537,041本で初登場1位。母集団が違うため合算しない。Switch 2ソフトの発売4日間記録で初動を評価。継続成長・購入者年齢は未確認。発表11/11・12、確認11/15。",
+  "l": [
+   [
+    "任天堂・販売実績",
+    "https://www.nintendo.co.jp/corporate/release/2026/261111.html"
+   ],
+   [
+    "ファミ通・独立推計",
+    "https://www.famitsu.com/article/202611/93799?page=1"
+   ]
+  ]
+ },
+ {
+  "n": "ゴジラ-0.0",
+  "c": "Video / Streaming",
+  "s": 89,
+  "v": [
+   29,
+   20,
+   20,
+   6,
+   14
+  ],
+  "w": "🚀 BREAKOUT / 初動",
+  "e": "11/3公開。11/6〜8の国内週末動員69.9万人・興収11.3億円で初登場1位、6日累計161万人・25億円。北米11/6〜8は先行上映込み3,160万ドル。東宝の国内値は興行通信社、北米値はBox Office Mojoを再掲したもので、公式発表を第三の需要観測と数えない。初日興収の前作比201%は単日の作品間比較。2週目と若者属性は未確認。発表11/9、確認11/15。",
+  "l": [
+   [
+    "興行通信社集計を掲載・対象週固定",
+    "https://eiga.com/news/20261109/19/"
+   ],
+   [
+    "東宝・日米の対象と出所",
+    "https://www.toho.co.jp/company/2026/1109-pr-2.pdf"
+   ]
+  ]
+ }
+];
+
+moves.nov=[
+ {
+  "tag": "🆕 BREAKOUT",
+  "n": "ゼルダの伝説 時のオカリナ（Switch 2）",
+  "d": "初登場 → MAIN 92",
+  "why": "国内81万本／世界520万本の発売4日間実績と独立パッケージ推計を照合。初動の記録で採用し、週次成長とは区別。",
+  "aud": [
+   "購入者年齢未確認"
+  ]
+ },
+ {
+  "tag": "🆕 BREAKOUT",
+  "n": "ゴジラ-0.0",
+  "d": "初動待ち → MAIN 89",
+  "why": "前回追補候補を今回の公表窓で審査。日米の初週実需が確認できたため昇格。",
+  "aud": [
+   "国内・北米"
+  ]
+ },
+ {
+  "tag": "⬇️ WATCHへ",
+  "n": "Setlog",
+  "d": "MAIN 89 → 高水準 WATCH",
+  "why": "11/11公開の女子調査で39.1%が「流行したモノ」に選択。ただし9月回答で利用率ではなく、MAUの直近増加は未確認。速度を立証できずMAINから移す。",
+  "aud": [
+   "15〜19歳女性586人"
+  ]
+ },
+ {
+  "tag": "⬇️ COOLING / OUT",
+  "n": "ママがもうこの世界にいなくても 私の命の日記",
+  "d": "MAIN 80 → 枠外",
+  "why": "週末動員20.5万→13.7万人、約33.2%減。累計38億円でも直近の減速を優先。",
+  "aud": [
+   "全国週末実測"
+  ]
+ },
+ {
+  "tag": "🆕 接点拡大 WATCH",
+  "n": "パンどろぼう",
+  "d": "書籍入口 → WATCH",
+  "why": "取次の書籍需要と、アニメ・外食・コンビニへの展開を束ねて検知。ファミマのSKU実売や若年層への拡大は未確認。",
+  "aud": [
+   "支持年齢未確認"
+  ]
+ }
+];
+
+early.nov=[
+ [
+  "パンどろぼう",
+  "11/10調べトーハン総合3位（前回1位、部数未公表）。9月新刊→10月アニメ→11月外食・11/10ファミマ展開と接点が増加。書籍需要はあるが横断的加速・若年女性比率は不明。コラボ発売を購買と扱わず、パン2種の実売待ち。 https://www.tohan.jp/bestsellers/2026_1110_weekly/ https://www.family.co.jp/company/news_releases/2026/20261106_02.html",
+  "接点拡大 WATCH"
+ ],
+ [
+  "ノラネコぐんだん クリスマス",
+  "取次・絵本入口から新顔を検知。11/10調べトーハン総合9位。単週順位だけで伸びは未判定。次：部数・翌週維持・キャラクター商品の購入への追随。 https://www.tohan.jp/bestsellers/2026_1110_weekly/",
+  "発表／初動待ち"
+ ],
+ [
+  "水光カラコン",
+  "9/24〜30、15〜19歳女性586人の選択式調査で「流行したモノ」21.5%。11/11発表。使用率・SKU別売上・今週の増加ではない。次：ブランド・度数／色ごとの購買と継続。 https://www.mynavi.jp/news/2026/11/post_55151.html",
+  "若者支持 WATCH"
+ ],
+ [
+  "星型ニキビパッチ",
+  "9〜10月、15〜24歳女性676人の選択式調査で美容2位（11/10発表）。装飾化という用途変化を監視。メーカー横断の売上・直近投稿増分は未確認。 https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "若者支持 WATCH"
+ ],
+ [
+  "山手線一周ウォーキング",
+  "同じ109調査の体験3位。低予算・達成共有の体験候補として発見。参加人数・投稿の日次増加・今週の増勢は未確認。次：日付固定の参加／投稿系列。 https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "若者支持 WATCH"
+ ],
+ [
+  "ベビチッチ／コリラックマ／ポメラニアンもち",
+  "109調査でキャラ部門同率1位の2件と3位。新たな探索候補として束ねた表示行であり、IPは別々に審査する。支持調査だけではSKU購買や同週成長を示さない。 https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "若者支持 WATCH"
+ ],
+ [
+  "Setlog",
+  "9月回答の女子調査39.1%は「流行したモノ」の選択率。7月MAU279万人の既存推計を11月の増勢に流用しない。若者支持は再確認、直近国内MAU・継続率待ち。 https://www.mynavi.jp/news/2026/11/post_55151.html https://www.valuesccg.com/news/20261016-12895/",
+  "高水準／速度未確認"
+ ],
+ [
+  "BeReal",
+  "国内の復帰・継続率や月次利用増加を今回も確認できず。7月までの265万人推計・2年前比は直近再燃の証明ではない。観測不足のままREVIVAL WATCHを維持。 https://www.valuesccg.com/news/20261016-12895/",
+  "REVIVAL WATCH"
+ ],
+ [
+  "PLAYGROUND CITY SHIBUYA with Pokémon",
+  "11/21〜22開催予定。事前応募期間終了後の応募数・満席・来場は未確認。次：公式当日実績。開催予告だけで需要点を付けない。 https://fds.or.jp/pressrelease/1105/",
+  "🔮 発表／初動待ち"
+ ]
+];
+
+shops.nov=[
+ {
+  "n": "任天堂｜ゼルダの伝説 時のオカリナ パッケージ版",
+  "cat": "Games",
+  "s": 92,
+  "status": "HOT",
+  "signal": "🆕 NEW / 🚀 BREAKOUT",
+  "price": "希望小売価格 ¥8,980（税込）",
+  "release": "2026/11/5",
+  "sub": "Nintendo Switch 2専用／商品ページ識別 aa9ja",
+  "e": "WHY NOW：11/2〜8の国内パッケージ推計537,041本で新顔首位。DL込み国内81万本とは集計範囲を分離。初動実需と発売の新しさで採用。継続成長・年齢・色別SKUは未確認。11/15確認。",
+  "l": [
+   [
+    "公式商品・価格",
+    "https://www.nintendo.com/jp/games/switch2/aa9ja/products/soft.html"
+   ],
+   [
+    "国内パッケージ推計",
+    "https://www.famitsu.com/article/202611/93799?page=1"
+   ],
+   [
+    "DL込みメーカー販売実績",
+    "https://www.nintendo.co.jp/corporate/release/2026/261111.html"
+   ]
+  ]
+ },
+ {
+  "n": "吉野家｜牛すき鍋膳 並盛",
+  "cat": "Food / Drink",
+  "s": 80,
+  "status": "HOT",
+  "signal": "✨ DISCOVERY / 季節再登場",
+  "price": "店内 ¥799（通常¥899）／持帰り¥783（通常¥883）",
+  "release": "2026/10/23／価格企画11/10〜24",
+  "sub": "牛すき祭：11/10 11:00〜11/24 15:00。一部対象外店あり",
+  "e": "WHY NOW：今季発売から10日で100万食突破と公式公表。11/10開始の100円引き企画が新しい購買接点。前年同期間比・割引後販売数・購入者年齢は不明のため急伸とは呼ばない。11/15確認。",
+  "l": [
+   [
+    "公式・実績／価格／対象期間",
+    "https://www.yoshinoya.com/campaign/gyusuki_matsuri_202611/"
+   ],
+   [
+    "10/23発売の公式告知",
+    "https://www.yoshinoya.com/2026/1019_01/"
+   ]
+  ]
+ }
+];
+
+music.nov={
+ "japan": [
+  [
+   "Emotion",
+   "Aぇ! group",
+   "🆕 HOT / Hot100初登場1位・CD496,736枚。継続需要は未確認",
+   "UPBEAT",
+   "https://www.billboard-japan.com/d_news/detail/167358/2"
+  ],
+  [
+   "NOW U KNOW",
+   "BE:FIRST",
+   "🚀 BREAKOUT / Hot100初登場2位・動画1位・13,621DL",
+   "FASHION",
+   "https://www.billboard-japan.com/d_news/detail/167358/2"
+  ],
+  [
+   "You're Under Arrest",
+   "ILLIT",
+   "🚀 BREAKOUT / Streaming24→8位・477.3万回・前週比+50.1%",
+   "UPBEAT",
+   "https://www.billboard-japan.com/d_news/detail/167355/2"
+  ],
+  [
+   "Slidin",
+   "HANA",
+   "🚀 BREAKOUT / Hot10022→11位・総合点+56.4%・393.1万回",
+   "FASHION",
+   "https://www.billboard-japan.com/d_news/detail/167358/2"
+  ],
+  [
+   "結び",
+   "Ayumu Imazu",
+   "🔥 HOT / Hot1006→5位・767.8万回（前週742.6万回）",
+   "VLOG",
+   "https://www.billboard-japan.com/d_news/detail/167358/2"
+  ],
+  [
+   "Yes! 東京",
+   "EBiDAN",
+   "🔥 HOT / Hot1002→3位・808.3万回（前週803.3万回）",
+   "UPBEAT",
+   "https://www.billboard-japan.com/d_news/detail/167358/2"
+  ],
+  [
+   "ザッツ！超常",
+   "M!LK",
+   "🔥 HOT / Hot1001→6位・518.7万回（前週616.8万回）",
+   "UPBEAT",
+   "https://www.billboard-japan.com/d_news/detail/167358/2"
+  ],
+  [
+   "しわあわせ",
+   "Vaundy",
+   "🔥 HOT / Streaming1位・855.1万回、前週比約−3.8%",
+   "VLOG",
+   "https://www.billboard-japan.com/d_news/detail/167355/2"
+  ],
+  [
+   "BPM feat. KREVA",
+   "Kvi Baba",
+   "♻️ REVIVAL / Streaming91→31位・前週比+74.4%",
+   "UPBEAT",
+   "https://www.billboard-japan.com/d_news/detail/167355/2"
+  ],
+  [
+   "クリスマスソング",
+   "back number",
+   "♻️ REVIVAL / Streaming指標が前週の122%・動画168%",
+   "MOODY",
+   "https://www.billboard-japan.com/d_news/detail/167358/2"
+  ]
+ ],
+ "global": [
+  [
+   "BbY WOW",
+   "KAROL G, Judeline, rusowsky",
+   "🔥 HOT / Spotify2→1位・33.20M、週−0.52M／Shazam1位",
+   "UPBEAT",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "Housewife",
+   "Tate McRae",
+   "🔥 HOT / 高水準・減速：Spotify1→2位・30.77M、週−5.57M",
+   "FASHION",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "Stop The Wedding!",
+   "Ashe",
+   "🚀 BREAKOUT / Spotify4→3位・29.14M、週+2.23M／Shazam9位",
+   "UPBEAT",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "Nicole Kidman",
+   "ADÉLA",
+   "🔥 HOT / 高水準・減速：Spotify3→4位・25.59M、週−3.85M",
+   "FASHION",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "the cure",
+   "Olivia Rodrigo",
+   "🔥 HOT / Spotify6→5位・23.10M、週+0.49M",
+   "MOODY",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "Ain't In LA",
+   "ADÉLA",
+   "🔥 HOT / 高水準・減速：Spotify5→6位・22.32M、週−1.56M",
+   "FASHION",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "Babydoll",
+   "Jamie Miller",
+   "🚀 BREAKOUT / Spotify13→8位・18.47M、週+1.14M／Shazam22→6位（11/8→15観測）",
+   "MOODY",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "Coming Up Roses",
+   "Harry Styles",
+   "🚀 EARLY→HOT / Spotify40→26位・14.75M、週+1.43M／Shazam23→20位",
+   "AESTHETIC",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "Last Christmas",
+   "Wham!",
+   "♻️ REVIVAL / Spotify90→19位・15.79M、週+5.72M",
+   "TRAVEL",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "Iris",
+   "The Goo Goo Dolls",
+   "♻️ REVIVAL / Spotify12→9位・18.05M、週+0.31M",
+   "MOODY",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ]
+ ],
+ "early": [
+  [
+   "Flower In A Hurricane",
+   "Justice, Tame Impala, SZA, King Gizzard & The Lizard Wizard",
+   "✨ EARLY継続 / Shazam13→3位（11/8→15）・Spotify116位RE、9.09M。再入の前週差は不明",
+   "AESTHETIC",
+   "https://kworb.net/charts/shazam/ww.html"
+  ],
+  [
+   "Shotta’s.",
+   "Season 25",
+   "✨ EARLY / Spotify139位NEW・8.66M／Shazam2位。初登場は再生ゼロからの差ではない",
+   "UPBEAT",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ],
+  [
+   "Rechazame",
+   "Prince Royce",
+   "♻️ REVIVAL / Tokchart世界1位・日次+16,999動画、7日成長+45.9%（同社集計）。再生への追随待ち",
+   "MOODY",
+   "https://tokchart.com/tiktok-trending-songs"
+  ],
+  [
+   "Starburster",
+   "Fontaines D.C.",
+   "♻️ REVIVAL WATCH / Shazam16→10位（11/8→15観測）。再生数・地域別追随未確認",
+   "FASHION",
+   "https://kworb.net/charts/shazam/ww.html"
+  ],
+  [
+   "All I Want for Christmas Is You",
+   "Mariah Carey",
+   "♻️ REVIVAL / Spotify103→31位・14.14M、週+4.59M。季節波の早期監視",
+   "UPBEAT",
+   "https://kworb.net/spotify/country/global_weekly.html"
+  ]
+ ]
+};
+
+analysis.nov=[
+ [
+  "新作の初動と、既知IPの接点拡大が別の速度で重なる",
+  "大型ゲームの発売と映画の日米公開は、短い集計窓に購買・来場を集中させる。一方、絵本IPは書店、アニメ、外食、コンビニへ接点を順に増やす。前者は初週実需を直接測定でき、後者は書籍需要を起点に横断的な追随を待つ段階。どちらも既知IPだが、供給の多さを需要増に置き換えると検知精度が落ちる。パンどろぼうは接点拡大WATCHとし、コラボ商品の売上は不明のまま分離した。"
+ ],
+ [
+  "自己表現の小型化と低予算の体験は、共通仮説として追う",
+  "水光カラコン、星型ニキビパッチ、スマホ周辺小物、山手線一周ウォーキングは、日常の見た目や行動を少ない持ち物・比較的低い出費で変え、共有できる点が共通する。9〜10月の女子調査が複数の入口を示すが、同週の実売・参加者の増加は未確認。節約やSNSが原因だと断定せず、SKU購買と参加／投稿の時系列で仮説を検証する。"
+ ],
+ [
+  "季節需要と発売集中が、順位の読み違いを生む",
+  "牛すき鍋は今季10日で100万食という実需に新たな価格企画が重なる。ただし前年比は不明。映画・ゲームの旧上位は新作に順位を押されるだけでなく、ママの週末動員やSwitch Sportsの販売本数自体も減少した。順位、累計、当週実数を分けることで、規模の強さと速度の鈍化を同時に示す。音楽の季節再燃はMusic Radar内だけで分析する。"
+ ]
+];
+
+const scopeScanNov=[
+ {
+  "n": "ゼルダの伝説 時のオカリナ（Switch 2）",
+  "state": "採用｜初動BREAKOUT",
+  "e": "11/5発売。11/8まで4日間で世界520万本・国内81万本（任天堂、パッケージ＋DL）。別観測のファミ通は11/2〜8国内パッケージ推計537,041本で初登場1位。母集団が違うため合算しない。Switch 2ソフトの発売4日間記録で初動を評価。継続成長・購入者年齢は未確認。発表11/11・12、確認11/15。",
+  "url": "https://www.nintendo.co.jp/corporate/release/2026/261111.html",
+  "category": "ゲーム",
+  "origin": "new",
+  "observed": "2026-11-05〜08／ファミ通11-02〜08",
+  "published": "2026-11-11／12",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "メーカー販売実績＋国内パッケージ推計",
+  "demand": "国内81万・世界520万本／推計537041本",
+  "exposure": "11/5発売",
+  "youth": "未確認"
+ },
+ {
+  "n": "ゴジラ-0.0",
+  "state": "採用｜初動BREAKOUT",
+  "e": "11/3公開。11/6〜8の国内週末動員69.9万人・興収11.3億円で初登場1位、6日累計161万人・25億円。北米11/6〜8は先行上映込み3,160万ドル。東宝の国内値は興行通信社、北米値はBox Office Mojoを再掲したもので、公式発表を第三の需要観測と数えない。初日興収の前作比201%は単日の作品間比較。2週目と若者属性は未確認。発表11/9、確認11/15。",
+  "url": "https://eiga.com/news/20261109/19/",
+  "category": "映画・アニメ",
+  "origin": "new",
+  "observed": "2026-11-06〜08",
+  "published": "2026-11-09",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "国内興行実測・北米集計",
+  "demand": "国内69.9万人／11.3億円、北米3160万ドル",
+  "exposure": "11/3国内・11/6北米公開",
+  "youth": "未確認"
+ },
+ {
+  "n": "Stellar Blade コンプリートエディション（Switch 2）",
+  "state": "保留｜初動待ち",
+  "e": "新顔4位・8,042本。単週初動。次：翌週実売・DLと購入者属性。",
+  "url": "https://www.famitsu.com/article/202611/93799?page=1",
+  "category": "ゲーム",
+  "origin": "new",
+  "observed": "2026-11-02〜08",
+  "published": "2026-11-12",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "国内パッケージ推計",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "仮面ライダーカブト20th 天を継ぐもの",
+  "state": "保留｜映画新顔",
+  "e": "週末動員ランキング初登場4位。実数の継続比較・若者属性待ち。首位以外の新顔も審査。",
+  "url": "https://eiga.com/news/20261109/19/",
+  "category": "映画・アニメ",
+  "origin": "new",
+  "observed": "2026-11-06〜08",
+  "published": "2026-11-09",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "動員順位・実数未取得",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "ヴェリティ 真実",
+  "state": "保留｜映画新顔",
+  "e": "週末動員ランキング初登場6位。実数の継続比較・若者属性待ち。首位以外の新顔も審査。",
+  "url": "https://eiga.com/news/20261109/19/",
+  "category": "映画・アニメ",
+  "origin": "new",
+  "observed": "2026-11-06〜08",
+  "published": "2026-11-09",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "動員順位・実数未取得",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "GROTESQQQUE グロテスク",
+  "state": "保留｜映画新顔",
+  "e": "週末動員ランキング初登場8位。実数の継続比較・若者属性待ち。首位以外の新顔も審査。",
+  "url": "https://eiga.com/news/20261109/19/",
+  "category": "映画・アニメ",
+  "origin": "new",
+  "observed": "2026-11-06〜08",
+  "published": "2026-11-09",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "動員順位・実数未取得",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "4アウト",
+  "state": "保留｜映画新顔",
+  "e": "週末動員ランキング初登場10位。実数の継続比較・若者属性待ち。首位以外の新顔も審査。",
+  "url": "https://eiga.com/news/20261109/19/",
+  "category": "映画・アニメ",
+  "origin": "new",
+  "observed": "2026-11-06〜08",
+  "published": "2026-11-09",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "動員順位・実数未取得",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "パンどろぼう",
+  "state": "接点拡大 WATCH",
+  "e": "11/10調べトーハン総合3位（前回1位、部数未公表）。9月新刊→10月アニメ→11月外食・11/10ファミマ展開と接点が増加。書籍需要はあるが横断的加速・若年女性比率は不明。コラボ発売を購買と扱わず、パン2種の実売待ち。 https://www.tohan.jp/bestsellers/2026_1110_weekly/ https://www.family.co.jp/company/news_releases/2026/20261106_02.html",
+  "url": "https://www.tohan.jp/bestsellers/2026_1110_weekly/",
+  "category": "書籍・キャラクター",
+  "origin": "new",
+  "observed": "11/10調べ（集計日範囲未記載）",
+  "published": "2026-11-10",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "取次売上順位・部数未公表",
+  "demand": "書籍総合3位、前回1位。成長率不明",
+  "exposure": "9月新刊→10月アニメ→11月外食・コンビニ",
+  "youth": "未確認"
+ },
+ {
+  "n": "ノラネコぐんだん クリスマス",
+  "state": "保留｜初動待ち",
+  "e": "取次・絵本入口から新顔を検知。11/10調べトーハン総合9位。単週順位だけで伸びは未判定。次：部数・翌週維持・キャラクター商品の購入への追随。 https://www.tohan.jp/bestsellers/2026_1110_weekly/",
+  "url": "https://www.tohan.jp/bestsellers/2026_1110_weekly/",
+  "category": "書籍",
+  "origin": "new",
+  "observed": "11/10調べ",
+  "published": "2026-11-10",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "取次順位",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "SPY×FAMILY18／ダンダダン26／SAKAMOTO DAYS29",
+  "state": "保留｜漫画候補",
+  "e": "漫画ランキング検索から新刊候補を得たが、一次ページの冊数比較を取得できず。次：取次部門表・週刊BOOK実売本文。",
+  "url": "https://popmaster.jp/report/report-20261102/",
+  "category": "漫画",
+  "origin": "new",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "二次紹介、実売本文未照合",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "水光カラコン",
+  "state": "若者支持 WATCH",
+  "e": "9/24〜30、15〜19歳女性586人の選択式調査で「流行したモノ」21.5%。11/11発表。使用率・SKU別売上・今週の増加ではない。次：ブランド・度数／色ごとの購買と継続。 https://www.mynavi.jp/news/2026/11/post_55151.html",
+  "url": "https://www.mynavi.jp/news/2026/11/post_55151.html",
+  "category": "若者調査",
+  "origin": "new",
+  "observed": "2026-09-24〜30",
+  "published": "2026-11-11",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "選択式アンケート",
+  "demand": null,
+  "exposure": null,
+  "youth": "女性15〜19歳586人"
+ },
+ {
+  "n": "星型ニキビパッチ",
+  "state": "若者支持 WATCH",
+  "e": "9〜10月、15〜24歳女性676人の選択式調査で美容2位（11/10発表）。装飾化という用途変化を監視。メーカー横断の売上・直近投稿増分は未確認。 https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "category": "若者調査",
+  "origin": "new",
+  "observed": "2026-09〜10",
+  "published": "2026-11-10",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "選択式アンケート",
+  "demand": null,
+  "exposure": null,
+  "youth": "女性15〜24歳676人"
+ },
+ {
+  "n": "山手線一周ウォーキング",
+  "state": "若者支持 WATCH",
+  "e": "同じ109調査の体験3位。低予算・達成共有の体験候補として発見。参加人数・投稿の日次増加・今週の増勢は未確認。次：日付固定の参加／投稿系列。 https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "category": "若者調査",
+  "origin": "new",
+  "observed": "2026-09〜10",
+  "published": "2026-11-10",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "選択式アンケート",
+  "demand": null,
+  "exposure": null,
+  "youth": "女性15〜24歳676人"
+ },
+ {
+  "n": "ベビチッチ／コリラックマ／ポメラニアンもち",
+  "state": "若者支持 WATCH",
+  "e": "109調査でキャラ部門同率1位の2件と3位。新たな探索候補として束ねた表示行であり、IPは別々に審査する。支持調査だけではSKU購買や同週成長を示さない。 https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "url": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "category": "若者調査",
+  "origin": "new",
+  "observed": "2026-09〜10",
+  "published": "2026-11-10",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "選択式アンケート",
+  "demand": null,
+  "exposure": null,
+  "youth": "女性15〜24歳676人"
+ },
+ {
+  "n": "ドパガキ",
+  "state": "保留｜若者支持",
+  "e": "マイナビ45.6%（選択式）と109コトバ1位。異なる調査で追随したが今週のUGC増分は不明。次：同語の投稿時系列。",
+  "url": "https://www.mynavi.jp/news/2026/11/post_55151.html",
+  "category": "文化・言葉",
+  "origin": "new",
+  "observed": "9月末／9〜10月",
+  "published": "11/10・11",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "二つの調査、現在週の増加不明",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "吉野家 牛すき鍋膳",
+  "state": "Shopping採用｜季節再登場",
+  "e": "WHY NOW：今季発売から10日で100万食突破と公式公表。11/10開始の100円引き企画が新しい購買接点。前年同期間比・割引後販売数・購入者年齢は不明のため急伸とは呼ばない。11/15確認。",
+  "url": "https://www.yoshinoya.com/campaign/gyusuki_matsuri_202611/",
+  "category": "食品",
+  "origin": "new",
+  "observed": "10/23発売後10日／11/10〜24価格企画",
+  "published": "2026-11-09頃・ページ日付未記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "メーカー食数実績",
+  "demand": "今季10日100万食",
+  "exposure": "100円引き",
+  "youth": "未確認"
+ },
+ {
+  "n": "パンどろぼう×ファミマ パン2種・グッズ",
+  "state": "Shopping保留｜供給確認",
+  "e": "11/10パン2種発売。198円／168円、約16500店。11/20グッズ予定。SKU売上・売切れを未確認。書籍需要をコラボ実売に転用しない。",
+  "url": "https://www.family.co.jp/company/news_releases/2026/20261106_02.html",
+  "category": "食品・雑貨",
+  "origin": "new",
+  "observed": "11/10発売・11/20予定",
+  "published": "2026-11-06",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "公式供給情報",
+  "demand": "SKU別未確認",
+  "exposure": "販路拡大",
+  "youth": null
+ },
+ {
+  "n": "まじかるちいかわ ボンボンドロップシール ジュエル",
+  "state": "保留｜一次照合待ち",
+  "e": "11/6発売・売切れとの二次記事を検知。公式商品ページで対象SKU・在庫時点を照合できずShopping採用しない。",
+  "url": "https://yukalid.com/?p=15042",
+  "category": "キャラクター",
+  "origin": "new",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "二次報道、未確認",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "ちいかわ カプセル／グッズ",
+  "state": "保留｜意向と購買を分離",
+  "e": "カプセル希望リストを確認したがページの更新見出しと集計時点が違う。11/6 15:57の希望数を11/15実売扱いしない。両国・錦糸町の公式在庫なし。",
+  "url": "https://gacha-gacha.jp/want/",
+  "category": "キャラクター",
+  "origin": "new",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "参加者の意向・販売ではない",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "JILL STUART Lip Blossom Balm 110 sugar nap",
+  "state": "Shopping保留｜発売のみ",
+  "e": "11/13発売・3520円、11/6予約開始。予約反応・売切れ・実売を未確認。次：当該色の購入データ。",
+  "url": "https://www.tokyu-dept.co.jp/shibuyabeautyjam/cosmeticfair/2026winter/newitems.html",
+  "category": "美容",
+  "origin": "new",
+  "observed": "11/13発売",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "百貨店販売情報",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "Brighte ELEKI LIFT マリー特別モデル",
+  "state": "Shopping保留｜発表／初動待ち",
+  "e": "11/10発表・11/16発売予定。通常セットの販売推計を流用せず、特別モデルの予約・実購買待ち。",
+  "url": "https://brighte.jp/shop/information/20261110",
+  "category": "美容",
+  "origin": "new",
+  "observed": "11/16予定",
+  "published": "2026-11-10",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "公式供給情報",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "VIVANT（2026）",
+  "state": "保留｜支持と視聴を分離",
+  "e": "女子調査コト部門22.7%は9月回答。直近週の配信視聴実数を未確認。",
+  "url": "https://www.mynavi.jp/news/2026/11/post_55151.html",
+  "category": "配信・テレビ",
+  "origin": "new",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "調査支持、視聴実数なし",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "ChatGPT／国内アプリ利用",
+  "state": "保留｜市場観測",
+  "e": "Fuller Q3（7〜9月）国内Android、MAU500以上の対象アプリ。ChatGPTのMAU順位は前年7→5位。順位差を利用成長率にしない。他国の1800万人報道を日本に流用しない。次：国内月次実数。",
+  "url": "https://www.fuller-inc.com/news/202611-mobilemarketreport-2026q3",
+  "category": "テクノロジー",
+  "origin": "new",
+  "observed": "2026-Q3",
+  "published": "2026-11-10",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "国内Android推計",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "Setlog",
+  "state": "継続追跡｜WATCH",
+  "e": "9月回答の女子調査39.1%は「流行したモノ」の選択率。7月MAU279万人の既存推計を11月の増勢に流用しない。若者支持は再確認、直近国内MAU・継続率待ち。 https://www.mynavi.jp/news/2026/11/post_55151.html https://www.valuesccg.com/news/20261016-12895/",
+  "url": "https://www.mynavi.jp/news/2026/11/post_55151.html",
+  "category": "既存追跡",
+  "origin": "tracking",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "不明",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "BeReal",
+  "state": "継続追跡｜WATCH",
+  "e": "国内の復帰・継続率や月次利用増加を今回も確認できず。7月までの265万人推計・2年前比は直近再燃の証明ではない。観測不足のままREVIVAL WATCHを維持。 https://www.valuesccg.com/news/20261016-12895/",
+  "url": "https://www.valuesccg.com/news/20261016-12895/",
+  "category": "既存追跡",
+  "origin": "tracking",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "不明",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "PLAYGROUND CITY SHIBUYA with Pokémon",
+  "state": "継続追跡｜WATCH",
+  "e": "11/21〜22開催予定。事前応募期間終了後の応募数・満席・来場は未確認。次：公式当日実績。開催予告だけで需要点を付けない。 https://fds.or.jp/pressrelease/1105/",
+  "url": "https://fds.or.jp/pressrelease/1105/",
+  "category": "既存追跡",
+  "origin": "tracking",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "不明",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "ママがもうこの世界にいなくても 私の命の日記",
+  "state": "減速｜MAINからOUT",
+  "e": "全国週末20.5万→13.7万人（−33.2%）。累計274万人・38億円。次：減少の底打ちと客層。",
+  "url": "https://eiga.com/news/20261109/19/",
+  "category": "映画",
+  "origin": "tracking",
+  "observed": "10/30〜11/1→11/6〜8",
+  "published": "11/2→11/9",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "国内動員実測",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "汝、星のごとく",
+  "state": "減速｜相対的に枠外",
+  "e": "動員10.7万→7.2万人（約−32.7%）。2→3位。前週Earlyを終了、増勢なし。",
+  "url": "https://eiga.com/news/20261109/19/",
+  "category": "映画",
+  "origin": "tracking",
+  "observed": "11/6〜8",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "国内動員実測",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "Nintendo Switch Sports Resort",
+  "state": "減速｜相対的に枠外",
+  "e": "23466→16621本（約−29.2%）、1→2位。継続実売はあるが初動後減速。",
+  "url": "https://www.famitsu.com/article/202611/93799?page=1",
+  "category": "ゲーム",
+  "origin": "tracking",
+  "observed": "11/2〜8",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "国内パッケージ推計",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "Minecraft（Switch 2）",
+  "state": "減速｜相対的に枠外",
+  "e": "11754→3828本（約−67.4%）、3→9位。初週後減速。",
+  "url": "https://www.famitsu.com/article/202611/93799?page=1",
+  "category": "ゲーム",
+  "origin": "tracking",
+  "observed": "11/2〜8",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "国内パッケージ推計",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "サンリオ パーティランド／耳をすませば4K",
+  "state": "観測不能｜前週Early",
+  "e": "今回開いた上位表で実数の比較を取得できず。順位圏外を需要ゼロ・減速と断定しない。次：下位表の実数。",
+  "url": "https://www.famitsu.com/article/202611/93799?page=1",
+  "category": "既存追跡",
+  "origin": "tracking",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "比較値未取得",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "前週TikTok Shop4商品・課題解決型購買",
+  "state": "観測不能｜掲載終了",
+  "e": "PYKES PEAK、京童工房、SaiKuCo、Brighte水光チャージ。10/25〜31以降の同条件推計を取得できず。4商品の失速とは判定しない。",
+  "url": "https://note.com/short_movie_jp/n/nb400a3e392bd",
+  "category": "Shopping追跡",
+  "origin": "tracking",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "最新比較値未取得",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "ダイソー商品動画",
+  "state": "観測不能｜前週Early終了",
+  "e": "前回120動画サンプル以降の同条件増分・SKU販売を取得できず。全UGCへの外挿なし。",
+  "url": "https://www.nolyn.com/trend/tiktok-ranking-20261101/",
+  "category": "UGC追跡",
+  "origin": "tracking",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "最新比較値未取得",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ },
+ {
+  "n": "検索動向／UGC日次／食品POS",
+  "state": "取得不可｜監査",
+  "e": "同条件Google Trends数値、公式音源／非音楽投稿の日次増分、コンビニSKU別POSを取得できず。検索結果があるだけで検索需要増と数えない。",
+  "url": "https://trends.google.com/trends/",
+  "category": "観測系統",
+  "origin": "unconfirmed",
+  "observed": "本文記載の対象期間",
+  "published": "本文記載",
+  "checked": "2026-11-15",
+  "country": "日本（別記を除く）",
+  "population": "媒体の対象に限定・年齢不明（別記を除く）",
+  "measurement": "未確認",
+  "demand": null,
+  "exposure": null,
+  "youth": null
+ }
+];
+
+const discoveryCoverageNov=[
+ [
+  "アプリ",
+  "Fuller Q3市場／女子調査／アプリチャート",
+  "https://www.fuller-inc.com/news/202611-mobilemarketreport-2026q3",
+  "候補あり",
+  "ChatGPT・Setlog等を再検知。国内Q3 MAU順位と流行選択率は週次成長でない。"
+ ],
+ [
+  "配信・テレビ",
+  "女子調査の作品支持／配信ランキング検索",
+  "https://www.mynavi.jp/news/2026/11/post_55151.html",
+  "候補あり",
+  "VIVANTを9月支持調査で検知。今週視聴実数は未取得。"
+ ],
+ [
+  "映画・アニメ",
+  "週末興行の首位・新顔／配給",
+  "https://eiga.com/news/20261109/19/",
+  "候補あり",
+  "ゴジラ採用、新顔4作品を保留。若者属性未確認。"
+ ],
+ [
+  "ゲーム",
+  "週間実売推計／メーカー実績",
+  "https://www.famitsu.com/article/202611/93799?page=1",
+  "候補あり",
+  "ゼルダ採用、Stellar Blade新顔を保留。"
+ ],
+ [
+  "書籍・絵本・漫画",
+  "トーハン週間／BOOK実売・書店検索",
+  "https://www.tohan.jp/bestsellers/2026_1110_weekly/",
+  "候補あり",
+  "パンどろぼう・ノラネコぐんだんを検知。冊数の比較は未取得。"
+ ],
+ [
+  "キャラクター・ガチャ・雑貨",
+  "若者調査／カプセル意向／版元・小売",
+  "https://gacha-gacha.jp/want/",
+  "候補あり",
+  "キャラ調査とちいかわ系を検知。意向は購買ではない、地元公式在庫は未確認。"
+ ],
+ [
+  "コンビニ・外食・食品",
+  "小売新商品／外食購入企画／若者調査",
+  "https://www.yoshinoya.com/campaign/gyusuki_matsuri_202611/",
+  "候補あり",
+  "牛すき鍋実需、ファミマIP商品は実売待ち。"
+ ],
+ [
+  "ファッション・美容",
+  "女子調査／百貨店新商品／TikTok購買追跡",
+  "https://www.tokyu-dept.co.jp/shibuyabeautyjam/cosmeticfair/2026winter/newitems.html",
+  "候補あり",
+  "水光カラコン・星型パッチ。限定品は需要未確認。"
+ ],
+ [
+  "テクノロジー",
+  "国内アプリ市場／生成AI利用調査",
+  "https://www.fuller-inc.com/news/202611-mobilemarketreport-2026q3",
+  "候補あり",
+  "国内Android推計の範囲を確認。新しい週次加速は未確認。"
+ ],
+ [
+  "場所・体験",
+  "若者調査／イベント・ポップアップ検索",
+  "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/",
+  "候補あり",
+  "山手線一周を検知。今週参加実数なし。"
+ ]
+];
+
+const musicAnalysisNov=[
+ [
+  "JAPAN｜6曲新規・4曲継続",
+  "Emotion、NOW U KNOW、You're Under Arrest、Slidin、BPM feat. KREVA、クリスマスソングを追加。ILLITはStreaming+50.1%、BPMは+74.4%、Slidinは総合点+56.4%。CD初動のEmotionは継続視聴とは分ける。Yes! 東京と結びは再生増、しわあわせとザッツ！超常は再生減でも高水準で継続。シンデレラ、ありふれた世界の果てに、Brand New、NEON、好きすぎて滅！、日曜日は相対的に枠外で、すべてを減速と呼ばない。<a href=\"https://www.billboard-japan.com/d_news/detail/167355/2\">国内Streamingの対象週と指標</a>。YouTube Japanは11/5終了の別窓を照合。"
+ ],
+ [
+  "GLOBAL HOT｜3曲入替・EARLY→HOT昇格1曲",
+  "Coming Up Rosesを40→26位・週+142.6万回で昇格。Last ChristmasとIrisを追加。back to friends、Beauty And A Beat、Pós - Ao Vivoは週次再生がそれぞれ約127万・145万・110万回減り、相対優先度から枠外。BbY WOWは首位でも再生減。Housewife・Nicole Kidman・Ain't In LAも高水準の減速を表示した。Spotifyは11/12終了、Billboardは11/14付で公表窓を区別。<a href=\"https://ca.billboard.com/charts/billboard-global-200/2026-11-14\">Billboard Global 200・固定日</a>。"
+ ],
+ [
+  "GLOBAL EARLY｜継続1・追加4・追跡結果を分離",
+  "Flower In A Hurricaneを継続し、Shotta’s.、Rechazame、Starburster、All I Want for Christmas Is Youを追加。前週5曲の結果は昇格1（Coming Up Roses）、継続1（Flower）、減速1（Alfaaz：Spotify37→43位・週−95.6万回）、相対的に枠外1（Movin' To The Sun：Shazam3→4位）、版の照合未了1（Bad Times：今週はImael Angel & Cali Bee名義があり前週版との一致未確認）。Shazamは識別需要で実再生ではない。UGCは<a href=\"https://tokchart.com/tiktok-trending-songs\">11/15公開リスト</a>も探索したが音源別日次増分は取得不可。Spotify ViralとYouTube Globalの対象週数値も未確認。BGMタグは採点不使用。"
+ ]
+];
+
+const monthOrder=['jul','aug','sep','oct','nov']; const monthLabels={jul:'July 2026',aug:'August 2026',sep:'September 2026',oct:'October 2026',nov:'November 2026'};
+let month='nov',filter='All',shopFilter='All',musicMarket='japan';
+const E=id=>document.getElementById(id);
+function data(){return (allData[month]||[]).filter(x=>!isMusicTrend(x))}
+function scoreOf(x){return month==='sep'&&scoreV2[x.n]?scoreV2[x.n].s:x.s}
+function metricOf(x){return month==='sep'&&scoreV2[x.n]?scoreV2[x.n].m:x.v}
+function audOf(x){return month==='sep'&&scoreV2[x.n]?scoreV2[x.n].aud:[]}
+function metricSpec(){return (month==='sep'||month==='oct'||month==='nov')?{names:['Velocity','Freshness','Evidence','Sources','Scale'],max:[30,20,20,15,15]}:{names:['Momentum','Youth','Mainstream','Heat','Action','Opportunity'],max:[25,20,20,15,10,10]}}
+function prevMonth(m){let i=monthOrder.indexOf(m);return i>0?monthOrder[i-1]:null}
+function scoreMap(m,src=allData){let p=prevMonth(m);if(!p)return {};return Object.fromEntries((src[p]||[]).map(x=>[x.n,(p==='sep'&&src===allData&&scoreV2[x.n]?scoreV2[x.n].s:x.s)]))}
+function lk(x){return (x.l||[]).map(q=>`<a target="_blank" rel="noopener" href="${q[1]}">${q[0]} ↗</a>`).join('')}
+function mh(x,src=allData){if(!prevMonth(month))return '<span class="mom">前月比 —</span>';const p=scoreMap(month,src),v=p[x.n];if(v==null)return '<span class="mom up">前月比 NEW</span>';const current=src===allData?scoreOf(x):x.s,d=current-v;return `<span class="mom ${d>0?'up':d<0?'down':''}">前月比 ${d===0?'±0':(d>0?'+':'')+d}</span>`;}
+function rf(){E('filters').innerHTML=cats.map(c=>`<button class="${c===filter?'active':''}" data-c="${c}">${c}</button>`).join('');E('filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{filter=b.dataset.c;rf();render()})}
+function rsf(){const shopCats=['All',...new Set((shops[month]||[]).map(x=>x.cat))];if(!shopCats.includes(shopFilter))shopFilter='All';E('shopfilters').innerHTML=shopCats.map(c=>`<button class="${c===shopFilter?'active':''}" data-c="${c}">${c}</button>`).join('');E('shopfilters').querySelectorAll('button').forEach(b=>b.onclick=()=>{shopFilter=b.dataset.c;rsf();rshop()})}
+function sc(x){return`<div class="shopcard"><div class="shophead"><div><span class="status ${x.status==='PRE'?'pre':'hot'}">${x.status==='PRE'?'PRE-LAUNCH':x.status==='WATCH'?'DISCOVERY / WATCH':'HOT NOW'}</span>${x.signal?`<span class="status discovery">${x.signal}</span>`:''}<h4>${x.n}</h4><div class="note">${x.sub||''}</div></div><div class="shopscore">${x.s}<div class="note">/100</div>${mh(x,shops)}</div></div><div class="shopmeta"><b>${x.price}</b><br>発売 ${x.release} · ${x.cat}</div><p class="shopwhy">${x.e}</p>${x.local?'<div class="local">📍 KINSHICHO：未確認（公式在庫情報なし）<br>📍 RYOGOKU：未確認（推測なし）</div>':''}<details><summary>公式・根拠</summary><div class="links">${lk(x)}</div></details></div>`}
+function rshop(){E('shopcoverage').textContent=month==='nov'?'11/15再選定：国内パッケージ実売推計のゲームと、食数実績の外食を掲載。前週4商品は最新の同条件推計が未取得で終了（失速認定ではない）。コラボ商品はSKU購買を確認できず保留。PRE-LAUNCHの採用は0件。':'';let s=(shops[month]||[]).filter(x=>shopFilter==='All'||x.cat===shopFilter);E('shophot').innerHTML=s.filter(x=>x.status==='HOT'||x.status==='WATCH').sort((a,b)=>b.s-a.s).map(sc).join('')||'<p class="ev">この条件で需要の加速を確認できた掲載商品はありません。</p>';E('shoppre').innerHTML=s.filter(x=>x.status==='PRE').sort((a,b)=>b.s-a.s).map(sc).join('')||'<p class="ev">この条件で需要の加速を確認できた掲載商品はありません。</p>'}
+function songrow(x,i){return`<div class="song"><div>${String(i+1).padStart(2,'0')}</div><div><b>${x[0]}</b><small>${x[1]} · ${x[2]||''}${x[3]?` · 🎬 ${x[3]}`:''}</small>${x[4]?`<small><a href="${x[4]}" target="_blank" rel="noopener">根拠 ↗</a></small>`:''}</div><a class="sp" target="_blank" rel="noopener" href="https://open.spotify.com/search/${encodeURIComponent(x[0]+' '+x[1])}">Spotify ↗</a></div>`}
+function rmusic(){let m=music[month]||{japan:[],global:[],early:[]};E('musicfilters').querySelectorAll('button').forEach(b=>{b.classList.toggle('active',b.dataset.music===musicMarket);b.onclick=()=>{musicMarket=b.dataset.music;rmusic()}});if(musicMarket==='japan'){E('musicintro').innerHTML='<b>🇯🇵 JAPAN MUSIC RADAR</b><br>Billboard Japan / YouTube Japan / 国内ストリーミング / TikTok・UGC等から、日本の10〜20代市場で今動く10曲。';E('musiclist').innerHTML=(m.japan||[]).map(songrow).join('');E('musicearlywrap').style.display='none'}else{E('musicintro').innerHTML='<b>🌍 GLOBAL MUSIC RADAR</b><br>Spotify Global / Billboard Global / TikTok・Reels系UGC / YouTube / Shazam等から海外市場を独立観測。🎬 BGM FITはInstagram用途の補助タグ。';E('musiclist').innerHTML=(m.global||[]).map(songrow).join('')||'<div class="song"><div>—</div><div><b>データなし</b></div><div></div></div>';E('musicearlywrap').style.display='block';E('musicearly').innerHTML=(m.early||[]).map(songrow).join('')||'<div class="song"><div>—</div><div><b>データなし</b></div><div></div></div>'}}
+const musicEvidence={japan:'https://www.billboard-japan.com/d_news/detail/167358/2',global:'https://kworb.net/spotify/country/global_weekly.html'};
+const originalMusicRender=rmusic;
+rmusic=function(){originalMusicRender();const ma=month==='nov'?musicAnalysisNov:(month==='oct'?musicAnalysisOct:[]);E('musicanalysis').innerHTML=ma.length?'<h3>Music Analysis</h3>'+ma.filter((x,i)=>musicMarket==='japan'?i===0:i>0).map(x=>`<h4>${x[0]}</h4><p class="ev">${x[1]}</p>`).join(''):'';E('musicanalysis').style.display=ma.length?'block':'none';if(month==='nov')E('musicintro').innerHTML+='<p class="note">11/15更新 · '+(musicMarket==='japan'?'11/11公開Hot100・Streaming（11/2〜8）とYouTube Japanの11/5終了週を別窓で照合。年齢内訳・UGC日次は未確認。':'11/12終了Spotify週間・11/14付Billboard Global・11/15 Shazamを照合。Kworbはプラットフォーム数値の転載で独立した第三観測と数えない。Spotify Viral・YouTube Globalの数値は未確認。UGCはTokchart公開集計の一部、公式TikTok・Reelsの日次は未確認。')+' <a target="_blank" rel="noopener" href="'+musicEvidence[musicMarket]+'">根拠データ ↗</a></p>';};
+function rmoves(){E('moves').style.display=(month==='sep'||month==='oct'||month==='nov')?'block':'none';E('movesgrid').innerHTML=(moves[month]||[]).filter(x=>!isMusicTrend(x)).map(x=>`<article class="movecard"><div class="movehead"><span class="movebadge">${x.tag}</span><span class="movedelta">${x.d}</span></div><h3>${x.n==='TikTok Shop × 韓国コスメ'?'TikTok Shopの美容購買':x.n}</h3><p>${x.why}</p><div class="moveaud">${(x.aud||[]).filter(a=>a!=='Youth / Evidence').map(a=>`<span class="aud">${a}</span>`).join('')}</div></article>`).join('')}
+function render(){let spec=metricSpec(),d=filter==='All'?data():data().filter(x=>x.c===filter);d=[...d].sort((a,b)=>scoreOf(b)-scoreOf(a));E('rankhead').innerHTML=`<th>#</th><th>Trend</th><th>Total</th><th>前月比</th><th>Wave</th><th>Category</th>${spec.names.map(n=>`<th>${({Velocity:'速度',Freshness:'鮮度',Evidence:'根拠',Sources:'多様性',Scale:'規模'})[n]||n}</th>`).join('')}${month==='sep'?'<th>Audience</th>':''}<th>Sources / Detail</th>`;E('tbody').innerHTML=d.map((x,i)=>`<tr><td>${i+1}</td><td><b>${displayName(x)}</b></td><td><b>${scoreOf(x)}</b></td><td>${mh(x)}</td><td>${x.w}</td><td>${x.c}</td>${metricOf(x).map((v,j)=>`<td>${v}/${spec.max[j]}</td>`).join('')}${month==='sep'?`<td>${audOf(x).map(a=>`<span class="aud">${a}</span>`).join(' ')}</td>`:''}<td><details><summary>根拠</summary><div class="ev">${x.e}</div><div class="links">${lk(x)}</div></details></td></tr>`).join('');E('mobile').innerHTML=d.map((x,i)=>`<div class="card"><div class="name">#${i+1} ${displayName(x)}</div><div class="total"><b>${scoreOf(x)}/100</b>${mh(x)}</div><div class="meta"><span class="pill">${x.c}</span><span class="pill">${x.w}</span>${audOf(x).map(a=>`<span class="aud">${a}</span>`).join('')}</div><div class="metrics">${spec.names.map((n,j)=>`<div class="metric"><b>${metricOf(x)[j]}/${spec.max[j]}</b><span>${n}</span></div>`).join('')}</div><details><summary>根拠・URL</summary><div class="ev">${x.e}</div><div class="links">${lk(x)}</div></details></div>`).join('');if(!d.length){E('tbody').innerHTML='<tr><td colspan="13">このカテゴリーで基準を満たす総合掲載はありません。</td></tr>';E('mobile').innerHTML='<p class="ev">このカテゴリーで基準を満たす総合掲載はありません。</p>';}E('catgrid').innerHTML=cats.filter(c=>c!=='All'&&data().some(x=>x.c===c)).map(c=>`<div class="card"><b>${c}</b>${data().filter(x=>x.c===c).sort((a,b)=>scoreOf(b)-scoreOf(a)).slice(0,3).map(x=>`<div class="row"><span>${displayName(x)}</span><b>${scoreOf(x)}</b></div>`).join('')}</div>`).join('');E('earlygrid').innerHTML=(early[month]||[]).filter(x=>!isMusicTrend(x)).map(x=>`<div class="card"><span class="pill">${x[2]||'EARLY'}</span><h3>${x[0]}</h3><div class="ev">${sourceText(x[1])}</div></div>`).join('');rmoves();rshop();rmusic();renderScanAudit();E('analysiscard').innerHTML=(analysis[month]||[]).map((x,i)=>`<h3>${i+1}｜${x[0]}</h3><p class="ev">${x[1]}</p>`).join('');E('pagetitle').textContent=monthLabels[month]+' Trend Radar'}
+
+function renderScanAudit(){
+ E('next-observations').hidden=month!=='nov';
+ E('coveragegrid').innerHTML=month==='nov'?discoveryCoverageNov.map(x=>`<article class="card"><span class="pill">${x[3]}</span><h3>${x[0]}</h3><p class="ev">${x[1]}：${x[4]}</p><a class="source-link" href="${x[2]}" target="_blank" rel="noopener">確認した入口 ↗</a></article>`).join(''):'';
+ E('scan').style.display=(month==='oct'||month==='nov')?'block':'none';
+ const scanData=month==='nov'?scopeScanNov:scopeScan;
+ E('scangrid').innerHTML=scanData.map(x=>`<article class="card scan-note"><span class="pill">${x.state}</span><h3>${x.n}</h3><p class="ev">${x.e}</p><a class="source-link" href="${x.url}" target="_blank" rel="noopener">根拠を読む ↗</a></article>`).join('');
+ const counts=[[data().length,'総合掲載'],[(early[month]||[]).filter(x=>!isMusicTrend(x)).length,'非音楽Early / Watch'],[(music[month]?.japan||[]).length,'JAPAN Music'],[(music[month]?.global||[]).length,'GLOBAL Music HOT'],[(music[month]?.early||[]).length,'GLOBAL EARLY'],[(shops[month]||[]).length,'Shopping'],[(month==='nov'?scopeScanNov.length:(month==='oct'?scopeScan.length:0)),'監査記録（追跡・候補等）'],...(month==='nov'?['new','tracking','unconfirmed'].map((k,i)=>[scopeScanNov.filter(x=>x.origin===k).length,['新顔探索の記録行','既存追跡の記録行','取得不可の記録行'][i]]):[])];
+ E('auditcounts').innerHTML=counts.map(x=>`<div class="auditstat"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
+ E('auditnote').textContent=month==='nov'?'11/15版：表示データから総合'+data().length+'件、非音楽Early / Watch '+early.nov.filter(x=>!isMusicTrend(x)).length+'件、候補・追跡記録'+scopeScanNov.length+'行。複数商品を束ねた行がありユニーク商品数ではない。前月比は10月最終スコアとの差、Movesは11/8訂正版との差。検索・UGC日次・食品POSは未確認。':(month==='oct'?'10/18更新：総合新規1件、2件をMAIN→WATCH。点数は根拠の再評価を含む編集判断。前月比は9月最終スコアとの差、Movesは前回更新との差。候補記録は複数商品をまとめた行を含み、ユニーク商品数ではありません。':'選択月の表示件数です。過去の原データを保存したまま、総合表示を非音楽に統一しています。');
+}
+
+const th={}; monthOrder.forEach((m,mi)=>(allData[m]||[]).filter(x=>!isMusicTrend(x)).forEach(x=>{if(!th[x.n])th[x.n]=Array(monthOrder.length).fill(null);th[x.n][mi]=m==='sep'&&scoreV2[x.n]?scoreV2[x.n].s:x.s}));let active=new Set(['ゼルダの伝説 時のオカリナ（Switch 2）','ゴジラ-0.0','Setlog']);
+function rseries(){E('series').innerHTML=Object.keys(th).map(n=>`<button class="${active.has(n)?'active':''}" data-n="${n}">${n==='TikTok Shop × 韓国コスメ'?'TikTok Shopの美容購買':n}</button>`).join('');E('series').querySelectorAll('button').forEach(b=>b.onclick=()=>{let n=b.dataset.n;if(active.has(n)){if(active.size>1)active.delete(n)}else active.add(n);rseries();draw()})}
+const palette=['#5b5be8','#078b68','#c45b31','#b43c8c','#167a9b','#8b7017'];
+function lineColor(n){return palette[Object.keys(th).indexOf(n)%palette.length]}
+function draw(){let W=900,H=320,p={l:55,r:35,t:20,b:42},xs=monthOrder.map((_,i)=>p.l+i*(W-p.l-p.r)/(monthOrder.length-1)),y=v=>H-p.b-v*(H-p.t-p.b)/100,q='';
+[0,20,40,60,80,100].forEach(v=>q+=`<line x1="${p.l}" x2="${W-p.r}" y1="${y(v)}" y2="${y(v)}" stroke="#e9ebf0"/><text x="${p.l-10}" y="${y(v)+4}" text-anchor="end" font-size="11">${v}</text>`);
+monthOrder.forEach((m,i)=>q+=`<text x="${xs[i]}" y="310" text-anchor="middle" font-size="14">${i+7}月</text>`);
+Object.entries(th).forEach(([n,vs])=>{if(!active.has(n))return;let color=lineColor(n),path='',last=false;vs.forEach((v,j)=>{if(v==null){last=false;return;}path+=(last?'L':'M')+xs[j]+','+y(v)+' ';last=true;});q+=`<path d="${path}" fill="none" stroke="${color}" stroke-width="3"/>`;vs.forEach((v,j)=>{if(v!=null)q+=`<circle cx="${xs[j]}" cy="${y(v)}" r="4" fill="${color}"><title>${n}: ${v}</title></circle>`})});E('chart').innerHTML=q;
+E('series').querySelectorAll('button').forEach(b=>b.style.setProperty('--line-color',lineColor(b.dataset.n)));}
+document.querySelectorAll('.months button').forEach(b=>b.onclick=()=>{month=b.dataset.month;document.querySelectorAll('.months button').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=shopFilter='All';rf();rsf();render()});
+rf();rsf();render();rseries();draw();
+</script></body></html>
+
+
