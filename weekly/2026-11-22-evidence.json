@@ -1024,5 +1024,38 @@
   "agf": "https://agf.ajinomoto.co.jp/news/2026-11-05-2310.html",
   "gacha": "https://gachapla.com/calendar/2026-11",
   "youth": "https://www.shibuya109.co.jp/shibuya109lab/reports/261110/"
+ },
+ "verification": {
+  "syntax_and_render": "2026-11-22-validation.cjs PASS; DOM stub, not visual",
+  "archives": "Jul–Oct unchanged; Nov15 complete effective HTML preserved",
+  "pages": {
+   "http_status": 200,
+   "html_matches_local": true,
+   "sha256": "d8e3755d3c503dd6011086197bc3531dbd64073dac6c7ae97e4b5d8fd4b20746",
+   "commit": "e66029e383119c5d7027b81eba6443e3e9d0d4ee"
+  },
+  "browser": {
+   "viewport": 1363,
+   "document_client_width": 1348,
+   "document_scroll_width": 1348,
+   "month_rows": [
+    12,
+    7,
+    9,
+    4,
+    2
+   ],
+   "games_filtered_rows": 1,
+   "japan": 10,
+   "global_hot": 10,
+   "global_early": 5,
+   "global_spotify": 15,
+   "watch": 6,
+   "shopping": 2
+  },
+  "unconfirmed": [
+   "updated prepublication real-browser preview",
+   "mobile-width real-browser preview (no viewport control in available API)"
+  ]
  }
 }
